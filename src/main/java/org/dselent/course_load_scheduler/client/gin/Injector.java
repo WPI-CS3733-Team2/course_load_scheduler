@@ -11,6 +11,7 @@ import org.dselent.course_load_scheduler.client.presenter.impl.UserSearchPresent
 import org.dselent.course_load_scheduler.client.presenter.impl.UserCreatePresenterImpl;
 import org.dselent.course_load_scheduler.client.presenter.impl.UserDetailsPresenterImpl;
 import org.dselent.course_load_scheduler.client.view.impl.CreateScheduleVisualViewImpl;
+import org.dselent.course_load_scheduler.client.presenter.impl.ConfirmSchedulePresenterImpl;
 import org.dselent.course_load_scheduler.client.view.impl.FacultyCourseMappingViewImpl;
 import org.dselent.course_load_scheduler.client.view.impl.IndexViewImpl;
 import org.dselent.course_load_scheduler.client.view.impl.LoginViewImpl;
@@ -20,6 +21,7 @@ import org.dselent.course_load_scheduler.client.view.impl.SearchScheduleViewImpl
 import org.dselent.course_load_scheduler.client.view.impl.UserSearchViewImpl;
 import org.dselent.course_load_scheduler.client.view.impl.UserCreateViewImpl;
 import org.dselent.course_load_scheduler.client.view.impl.UserDetailsViewImpl;
+import org.dselent.course_load_scheduler.client.view.impl.ConfirmScheduleViewImpl;
 
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.event.shared.SimpleEventBus;
@@ -57,6 +59,7 @@ public interface Injector extends Ginjector
     public UserCreatePresenterImpl getUserCreatePresenter();
     public UserDetailsPresenterImpl getUserDetailsPresenter();
     public CreateScheduleVisualPresenterImpl getCreateScheduleVisualPresenter();
+    public ConfirmSchedulePresenterImpl getConfirmSchedulePresenter();
          
     //views
     public IndexViewImpl getIndexView();
@@ -69,4 +72,5 @@ public interface Injector extends Ginjector
     public UserCreateViewImpl getUserCreateView();
     public UserDetailsViewImpl getUserDetailsView();
     public CreateScheduleVisualViewImpl getCreateScheduleVisualView();
+    public ConfirmScheduleViewImpl getConfirmScheduleView();
 }

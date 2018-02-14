@@ -7,7 +7,7 @@
 	<g:HTMLPanel>
 		<g:VerticalPanel ui:field="createPanel">
 			<g:Cell horizontalAlignment="ALIGN_CENTER">
-				<g:Label text="Create New User" width="641px" styleName="userSearchLabel"/>
+				<g:Label text="Create New User" width="641px" styleName="pageTitle"/>
 			</g:Cell>
 			<g:Button text="Back to Search" ui:field="returnToSearchButton"/>
 			<g:Cell width="" height="" horizontalAlignment="ALIGN_CENTER">
