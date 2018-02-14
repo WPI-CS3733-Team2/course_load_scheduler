@@ -1,12 +1,14 @@
 package org.dselent.course_load_scheduler.client;
 
 import org.dselent.course_load_scheduler.client.gin.Injector;
+import org.dselent.course_load_scheduler.client.presenter.impl.CreateScheduleVisualPresenterImpl;
 import org.dselent.course_load_scheduler.client.presenter.impl.FacultyCourseMappingPresenterImpl;
 import org.dselent.course_load_scheduler.client.presenter.impl.IndexPresenterImpl;
 import org.dselent.course_load_scheduler.client.presenter.impl.LoginPresenterImpl;
 import org.dselent.course_load_scheduler.client.presenter.impl.ScheduleListPresenterImpl;
 import org.dselent.course_load_scheduler.client.presenter.impl.ScheduleSpecificsPresenterImpl;
 import org.dselent.course_load_scheduler.client.presenter.impl.SearchSchedulePresenterImpl;
+import org.dselent.course_load_scheduler.client.view.CreateScheduleVisualView;
 import org.dselent.course_load_scheduler.client.view.FacultyCourseMappingView;
 import org.dselent.course_load_scheduler.client.view.IndexView;
 import org.dselent.course_load_scheduler.client.view.ScheduleListView;
@@ -68,7 +70,7 @@ public class CourseLoadScheduler implements EntryPoint
 		
 		indexPresenter.go(root);
 		
-		switch (3) {
+		switch (5) {
 		case 0:
 			LoginPresenterImpl loginPresenter = injector.getLoginPresenter();
 			loginPresenter.init();
@@ -101,6 +103,12 @@ public class CourseLoadScheduler implements EntryPoint
 			scheduleListPresenter.init();
 			ScheduleListView scheduleListView = scheduleListPresenter.getView();
 			scheduleListPresenter.go(indexView.getViewRootPanel());
+		break;
+		case 5:
+			CreateScheduleVisualPresenterImpl createScheduleVisualPresenter = injector.getCreateScheduleVisualPresenter();
+			createScheduleVisualPresenter.init();
+			CreateScheduleVisualView createScheduleVisualView = createScheduleVisualPresenter.getView();
+			createScheduleVisualPresenter.go(indexView.getViewRootPanel());
 		break;
 		}
 	}

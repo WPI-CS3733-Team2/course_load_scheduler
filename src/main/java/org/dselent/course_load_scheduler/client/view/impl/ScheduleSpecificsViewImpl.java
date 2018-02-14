@@ -1,5 +1,6 @@
 package org.dselent.course_load_scheduler.client.view.impl;
 
+import org.dselent.course_load_scheduler.client.presenter.CreateScheduleVisualPresenter;
 import org.dselent.course_load_scheduler.client.presenter.ScheduleSpecificsPresenter;
 import org.dselent.course_load_scheduler.client.view.ScheduleSpecificsView;
 
@@ -114,5 +115,5 @@ import com.google.gwt.user.client.ui.Grid;
 		calendarGrid.setText(13, 0, "8:00 pm");
 		
 	}
-	
+
 }
