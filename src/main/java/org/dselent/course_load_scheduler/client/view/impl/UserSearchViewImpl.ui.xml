@@ -6,7 +6,7 @@
 	</ui:style>
 	<g:HTMLPanel width="450" height="300">
 		<g:VerticalPanel ui:field="searchPanel" height="94px" width="641px">
-			<g:Label text="View Users" width="621px" height="46px" horizontalAlignment="ALIGN_CENTER" styleName="userSearchLabel" ui:field="viewUsersLabel"/>
+			<g:Label text="View Users" width="621px" height="46px" horizontalAlignment="ALIGN_CENTER" styleName="pageTitle" ui:field="viewUsersLabel"/>
 			<g:HorizontalPanel ui:field="searchBarPanel" width="644px">
 				<g:Cell width="173px" height="34">
 					<g:TextBox ui:field="searchUserBox"/>

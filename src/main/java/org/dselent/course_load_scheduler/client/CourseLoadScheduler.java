@@ -7,11 +7,15 @@ import org.dselent.course_load_scheduler.client.presenter.impl.LoginPresenterImp
 import org.dselent.course_load_scheduler.client.presenter.impl.ScheduleListPresenterImpl;
 import org.dselent.course_load_scheduler.client.presenter.impl.ScheduleSpecificsPresenterImpl;
 import org.dselent.course_load_scheduler.client.presenter.impl.SearchSchedulePresenterImpl;
+import org.dselent.course_load_scheduler.client.presenter.impl.UserSearchPresenterImpl;
+import org.dselent.course_load_scheduler.client.presenter.impl.ConfirmSchedulePresenterImpl;
 import org.dselent.course_load_scheduler.client.view.FacultyCourseMappingView;
 import org.dselent.course_load_scheduler.client.view.IndexView;
 import org.dselent.course_load_scheduler.client.view.ScheduleListView;
 import org.dselent.course_load_scheduler.client.view.ScheduleSpecificsView;
 import org.dselent.course_load_scheduler.client.view.SearchScheduleView;
+import org.dselent.course_load_scheduler.client.view.UserSearchView;
+import org.dselent.course_load_scheduler.client.view.ConfirmScheduleView;
 
 import com.google.gwt.core.client.EntryPoint;
 import com.google.gwt.user.client.ui.RootLayoutPanel;
@@ -68,7 +72,7 @@ public class CourseLoadScheduler implements EntryPoint
 		
 		indexPresenter.go(root);
 		
-		switch (3) {
+		switch (6) {
 		case 0:
 			LoginPresenterImpl loginPresenter = injector.getLoginPresenter();
 			loginPresenter.init();
@@ -102,6 +106,20 @@ public class CourseLoadScheduler implements EntryPoint
 			ScheduleListView scheduleListView = scheduleListPresenter.getView();
 			scheduleListPresenter.go(indexView.getViewRootPanel());
 		break;
+		case 5:
+			UserSearchPresenterImpl userSearchPresenter = injector.getUserSearchPresenter();
+			userSearchPresenter.init();
+			UserSearchView userSearchView = injector.getUserSearchView();
+			userSearchPresenter.go(indexView.getViewRootPanel());
+		break;
+		case 6:
+			ConfirmSchedulePresenterImpl confirmSchedulePresenter = injector.getConfirmSchedulePresenter();
+			confirmSchedulePresenter.init();
+			ConfirmScheduleView confirmScheduleView = injector.getConfirmScheduleView();
+			confirmSchedulePresenter.go(indexView.getViewRootPanel());
+		break;
 		}
+		
+			
 	}
 }
