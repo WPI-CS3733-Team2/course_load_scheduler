@@ -1,0 +1,54 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
+	xmlns:g="urn:import:com.google.gwt.user.client.ui" xmlns:p1="urn:import:com.google.gwt.user.cellview.client">
+	<ui:style>
+	
+	</ui:style>
+	<g:HTMLPanel>
+		<g:MenuBar>
+			<g:MenuItem text="Account"/>
+			<g:MenuItem text="Schedules"/>
+			<g:MenuItem text="Courses"/>
+			<g:MenuItem text="Users"/>
+		</g:MenuBar>
+		<g:Grid>
+			<g:row/>
+			<g:row>
+				<g:customCell>
+					<g:Button text="Add Course"/>
+				</g:customCell>
+				<g:customCell>
+					<g:Label text="Search Course:"/>
+				</g:customCell>
+				<g:customCell>
+					<g:TextBox/>
+				</g:customCell>
+			</g:row>
+			<g:row/>
+		</g:Grid>
+		<g:FlowPanel height="214px">
+			<g:DecoratorPanel>
+				<g:Grid>
+					<g:row>
+						<g:customCell>
+							<g:VerticalPanel>
+								<g:VerticalPanel>
+									<g:Label text="Course Name" height="28px"/>
+									<g:VerticalPanel>
+										<g:Label text="Course Number"/>
+									</g:VerticalPanel>
+								</g:VerticalPanel>
+							</g:VerticalPanel>
+						</g:customCell>
+						<g:customCell>
+							<p1:DataGrid width="326px" height="106px" ui:field="dataGrid" rowCount="3" pageSize="3"/>
+						</g:customCell>
+						<g:customCell>
+							<g:Button text="Modify" width="72px"/>
+						</g:customCell>
+					</g:row>
+				</g:Grid>
+			</g:DecoratorPanel>
+		</g:FlowPanel>
+	</g:HTMLPanel>
+</ui:UiBinder> 

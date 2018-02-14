@@ -1,0 +1,16 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
+	xmlns:g="urn:import:com.google.gwt.user.client.ui">
+	<ui:style>
+	
+	</ui:style>
+	<g:HTMLPanel>
+		<g:Label text="User Details" ui:field="userDetailsLabel" styleName="userSearchLabel" horizontalAlignment="ALIGN_CENTER"/>
+		<g:VerticalPanel ui:field="userDetailsPanel" width="640px">
+			<g:Button ui:field="returnToSearchButton" text="Back to Search"/>
+			<g:Cell horizontalAlignment="ALIGN_CENTER">
+				<g:Button ui:field="terminateAccountButton" text="Terminate This Account"/>
+			</g:Cell>
+		</g:VerticalPanel>
+	</g:HTMLPanel>
+</ui:UiBinder> 

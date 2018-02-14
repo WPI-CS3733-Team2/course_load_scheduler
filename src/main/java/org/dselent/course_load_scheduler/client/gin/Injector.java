@@ -1,9 +1,27 @@
 package org.dselent.course_load_scheduler.client.gin;
 
+import org.dselent.course_load_scheduler.client.presenter.impl.CreateScheduleVisualPresenterImpl;
+import org.dselent.course_load_scheduler.client.presenter.impl.FacultyCourseMappingPresenterImpl;
 import org.dselent.course_load_scheduler.client.presenter.impl.IndexPresenterImpl;
 import org.dselent.course_load_scheduler.client.presenter.impl.LoginPresenterImpl;
+import org.dselent.course_load_scheduler.client.presenter.impl.ScheduleListPresenterImpl;
+import org.dselent.course_load_scheduler.client.presenter.impl.ScheduleSpecificsPresenterImpl;
+import org.dselent.course_load_scheduler.client.presenter.impl.SearchSchedulePresenterImpl;
+import org.dselent.course_load_scheduler.client.presenter.impl.UserSearchPresenterImpl;
+import org.dselent.course_load_scheduler.client.presenter.impl.UserCreatePresenterImpl;
+import org.dselent.course_load_scheduler.client.presenter.impl.UserDetailsPresenterImpl;
+import org.dselent.course_load_scheduler.client.view.impl.CreateScheduleVisualViewImpl;
+import org.dselent.course_load_scheduler.client.presenter.impl.ConfirmSchedulePresenterImpl;
+import org.dselent.course_load_scheduler.client.view.impl.FacultyCourseMappingViewImpl;
 import org.dselent.course_load_scheduler.client.view.impl.IndexViewImpl;
 import org.dselent.course_load_scheduler.client.view.impl.LoginViewImpl;
+import org.dselent.course_load_scheduler.client.view.impl.ScheduleListViewImpl;
+import org.dselent.course_load_scheduler.client.view.impl.ScheduleSpecificsViewImpl;
+import org.dselent.course_load_scheduler.client.view.impl.SearchScheduleViewImpl;
+import org.dselent.course_load_scheduler.client.view.impl.UserSearchViewImpl;
+import org.dselent.course_load_scheduler.client.view.impl.UserCreateViewImpl;
+import org.dselent.course_load_scheduler.client.view.impl.UserDetailsViewImpl;
+import org.dselent.course_load_scheduler.client.view.impl.ConfirmScheduleViewImpl;
 
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.event.shared.SimpleEventBus;
@@ -33,8 +51,26 @@ public interface Injector extends Ginjector
     // presenters
     public IndexPresenterImpl getIndexPresenter();
     public LoginPresenterImpl getLoginPresenter();
-    
+    public FacultyCourseMappingPresenterImpl getFacultyCourseMappingPresenter();
+    public SearchSchedulePresenterImpl getSearchSchedulePresenter();
+    public ScheduleSpecificsPresenterImpl getScheduleSpecificsPresenter();
+    public ScheduleListPresenterImpl getScheduleListPresenter();
+    public UserSearchPresenterImpl getUserSearchPresenter();
+    public UserCreatePresenterImpl getUserCreatePresenter();
+    public UserDetailsPresenterImpl getUserDetailsPresenter();
+    public CreateScheduleVisualPresenterImpl getCreateScheduleVisualPresenter();
+    public ConfirmSchedulePresenterImpl getConfirmSchedulePresenter();
+         
     //views
     public IndexViewImpl getIndexView();
     public LoginViewImpl getLoginView();
+    public FacultyCourseMappingViewImpl getFacultyCourseMappingView();
+    public SearchScheduleViewImpl getSearchScheduleView();
+    public ScheduleSpecificsViewImpl getScheduleSpecificsView();
+    public ScheduleListViewImpl getScheduleListView();
+    public UserSearchViewImpl getUserSearchView();
+    public UserCreateViewImpl getUserCreateView();
+    public UserDetailsViewImpl getUserDetailsView();
+    public CreateScheduleVisualViewImpl getCreateScheduleVisualView();
+    public ConfirmScheduleViewImpl getConfirmScheduleView();
 }
