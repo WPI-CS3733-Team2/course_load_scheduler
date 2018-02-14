@@ -1,0 +1,116 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
+	xmlns:g="urn:import:com.google.gwt.user.client.ui" xmlns:p1="urn:import:com.google.gwt.user.cellview.client">
+	<ui:style>
+	
+	</ui:style>
+	<g:HTMLPanel>
+		<g:MenuBar>
+			<g:MenuItem text="Account"/>
+			<g:MenuItem text="Schedules"/>
+			<g:MenuItem text="Courses"/>
+			<g:MenuItem text="Users"/>
+		</g:MenuBar>
+		<g:Grid>
+			<g:row/>
+			<g:row>
+				<g:customCell>
+					<g:Label text="Course Name:"/>
+				</g:customCell>
+				<g:customCell>
+					<g:TextBox/>
+				</g:customCell>
+				<g:customCell>
+					<g:Label text="Course Number:"/>
+				</g:customCell>
+				<g:customCell>
+					<g:TextBox/>
+				</g:customCell>
+			</g:row>
+			<g:row/>
+		</g:Grid>
+		<g:Grid>
+			<g:row>
+				<g:customCell>
+					<g:Grid>
+						<g:row>
+							<g:customCell>
+								<g:VerticalPanel height="22px">
+									<g:Label text="Terms"/>
+									<g:SimpleCheckBox width="28px" height="25px"/>
+								</g:VerticalPanel>
+							</g:customCell>
+						</g:row>
+					</g:Grid>
+				</g:customCell>
+				<g:customCell>
+					<g:FlowPanel width="247px">
+						<p1:CellTable ui:field="cellTable" height="50px" pageSize="1"/>
+					</g:FlowPanel>
+				</g:customCell>
+				<g:customCell>
+					<g:Label text="Times:"/>
+				</g:customCell>
+				<g:customCell>
+					<g:Grid>
+						<g:row>
+							<g:customCell>
+								<g:CheckBox text="8:00 AM - 9:00 AM"/>
+							</g:customCell>
+							<g:customCell>
+								<g:CheckBox text="9:00 AM - 10:00 AM"/>
+							</g:customCell>
+						</g:row>
+						<g:row>
+							<g:customCell>
+								<g:CheckBox text="10:00 AM - 11:00 AM"/>
+							</g:customCell>
+							<g:customCell>
+								<g:CheckBox text="11:00 AM - 12:00 PM"/>
+							</g:customCell>
+						</g:row>
+						<g:row>
+							<g:customCell>
+								<g:CheckBox text="12:00 PM - 1:00 PM"/>
+							</g:customCell>
+							<g:customCell>
+								<g:CheckBox text="1:00 PM - 2:00 PM"/>
+							</g:customCell>
+						</g:row>
+						<g:row>
+							<g:customCell>
+								<g:CheckBox text="2:00 PM - 3: 00 PM"/>
+							</g:customCell>
+							<g:customCell>
+								<g:CheckBox text="3:00 PM - 4:00 PM"/>
+							</g:customCell>
+						</g:row>
+						<g:row>
+							<g:customCell>
+								<g:CheckBox text="4:00 PM - 5:00 PM"/>
+							</g:customCell>
+							<g:customCell>
+								<g:CheckBox text="5:00 PM - 6:00 PM"/>
+							</g:customCell>
+						</g:row>
+					</g:Grid>
+				</g:customCell>
+			</g:row>
+		</g:Grid>
+		<g:Grid>
+			<g:row/>
+			<g:row>
+				<g:customCell>
+					<g:FlowPanel width="558px">
+						<g:Button width="75px">Cancel</g:Button>
+					</g:FlowPanel>
+				</g:customCell>
+				<g:customCell>
+					<g:FlowPanel>
+						<g:Button ui:field="button" width="75px">Submit</g:Button>
+					</g:FlowPanel>
+				</g:customCell>
+			</g:row>
+		</g:Grid>
+	</g:HTMLPanel>
+</ui:UiBinder> 
