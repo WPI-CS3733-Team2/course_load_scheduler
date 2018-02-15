@@ -6,6 +6,7 @@ import org.dselent.course_load_scheduler.client.presenter.impl.FacultyCoursePres
 import org.dselent.course_load_scheduler.client.presenter.impl.IndexPresenterImpl;
 import org.dselent.course_load_scheduler.client.presenter.impl.LoginPresenterImpl;
 import org.dselent.course_load_scheduler.client.presenter.impl.RequestCoursePresenterImpl;
+import org.dselent.course_load_scheduler.client.presenter.impl.RequestInboxPresenterImpl;
 import org.dselent.course_load_scheduler.client.presenter.impl.ScheduleListPresenterImpl;
 import org.dselent.course_load_scheduler.client.presenter.impl.ScheduleSpecificsPresenterImpl;
 import org.dselent.course_load_scheduler.client.presenter.impl.SearchSchedulePresenterImpl;
@@ -25,6 +26,7 @@ import org.dselent.course_load_scheduler.client.view.impl.FacultyCourseViewImpl;
 import org.dselent.course_load_scheduler.client.view.impl.IndexViewImpl;
 import org.dselent.course_load_scheduler.client.view.impl.LoginViewImpl;
 import org.dselent.course_load_scheduler.client.view.impl.RequestCourseViewImpl;
+import org.dselent.course_load_scheduler.client.view.impl.RequestInboxViewImpl;
 import org.dselent.course_load_scheduler.client.view.impl.ScheduleListViewImpl;
 import org.dselent.course_load_scheduler.client.view.impl.ScheduleSpecificsViewImpl;
 import org.dselent.course_load_scheduler.client.view.impl.SearchScheduleViewImpl;
@@ -78,6 +80,7 @@ public interface Injector extends Ginjector
     public AdminCoursePresenterImpl getAdminCoursePresenter();
     public FacultyCoursePresenterImpl getFacultyCoursePresenter();
     public RequestCoursePresenterImpl getRequestCoursePresenter();
+    public RequestInboxPresenterImpl getRequestInboxPresenter();
          
     //views
     public IndexViewImpl getIndexView();
@@ -97,5 +100,6 @@ public interface Injector extends Ginjector
     public AdminCourseViewImpl getAdminCourseView();
     public FacultyCourseViewImpl getFacultyCourseView();
     public RequestCourseViewImpl getRequestCourseView();
+    public RequestInboxViewImpl getRequestInboxView();
 
 }

@@ -1,8 +1,10 @@
 package org.dselent.course_load_scheduler.client.view.impl;
 
 import org.dselent.course_load_scheduler.client.gin.Injector;
+import org.dselent.course_load_scheduler.client.presenter.AccountDetailsPresenter;
 import org.dselent.course_load_scheduler.client.presenter.BasePresenter;
 import org.dselent.course_load_scheduler.client.presenter.IndexPresenter;
+import org.dselent.course_load_scheduler.client.presenter.RequestInboxPresenter;
 import org.dselent.course_load_scheduler.client.presenter.ScheduleListPresenter;
 import org.dselent.course_load_scheduler.client.presenter.UserSearchPresenter;
 import org.dselent.course_load_scheduler.client.presenter.impl.IndexPresenterImpl;
@@ -54,6 +56,14 @@ public class IndexViewImpl extends BaseViewImpl<IndexPresenter> implements Index
 		accountMenuItem.setScheduledCommand(new Command() {
 			@Override
 			public void execute() {	
+				final Injector injector = Injector.INSTANCE;
+				
+				IndexPresenterImpl indexPresenter = injector.getIndexPresenter(); // on-demand injection
+				IndexView indexView = indexPresenter.getView();		
+				
+				AccountDetailsPresenter accountDetailsPresenter = injector.getAccountDetailsPresenter();
+				
+				accountDetailsPresenter.go(indexView.getViewRootPanel());
 			}
 		});
 		
@@ -112,6 +122,14 @@ public class IndexViewImpl extends BaseViewImpl<IndexPresenter> implements Index
 		requestsMenuItem.setScheduledCommand(new Command() {
 			@Override
 			public void execute() {	
+				final Injector injector = Injector.INSTANCE;
+				
+				IndexPresenterImpl indexPresenter = injector.getIndexPresenter(); // on-demand injection
+				IndexView indexView = indexPresenter.getView();		
+				
+				RequestInboxPresenter requestInboxPresenter = injector.getRequestInboxPresenter();
+				
+				requestInboxPresenter.go(indexView.getViewRootPanel());
 			}
 		});
 		
