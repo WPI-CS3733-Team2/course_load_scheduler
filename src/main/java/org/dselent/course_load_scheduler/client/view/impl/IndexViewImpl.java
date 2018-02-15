@@ -3,6 +3,8 @@ package org.dselent.course_load_scheduler.client.view.impl;
 import org.dselent.course_load_scheduler.client.gin.Injector;
 import org.dselent.course_load_scheduler.client.presenter.BasePresenter;
 import org.dselent.course_load_scheduler.client.presenter.IndexPresenter;
+import org.dselent.course_load_scheduler.client.presenter.ScheduleListPresenter;
+import org.dselent.course_load_scheduler.client.presenter.UserSearchPresenter;
 import org.dselent.course_load_scheduler.client.presenter.impl.IndexPresenterImpl;
 import org.dselent.course_load_scheduler.client.view.IndexView;
 
@@ -58,6 +60,14 @@ public class IndexViewImpl extends BaseViewImpl<IndexPresenter> implements Index
 		schedulesMenuItem.setScheduledCommand(new Command() {
 			@Override
 			public void execute() {	
+				final Injector injector = Injector.INSTANCE;
+				
+				IndexPresenterImpl indexPresenter = injector.getIndexPresenter(); // on-demand injection
+				IndexView indexView = indexPresenter.getView();		
+				
+				ScheduleListPresenter scheduleListPresenter = injector.getScheduleListPresenter();
+				
+				scheduleListPresenter.go(indexView.getViewRootPanel());
 			}
 		});
 		
@@ -88,6 +98,14 @@ public class IndexViewImpl extends BaseViewImpl<IndexPresenter> implements Index
 		usersMenuItem.setScheduledCommand(new Command() {
 			@Override
 			public void execute() {	
+				final Injector injector = Injector.INSTANCE;
+				
+				IndexPresenterImpl indexPresenter = injector.getIndexPresenter(); // on-demand injection
+				IndexView indexView = indexPresenter.getView();		
+				
+				UserSearchPresenter userSearchPresenter = injector.getUserSearchPresenter();
+				
+				userSearchPresenter.go(indexView.getViewRootPanel());
 			}
 		});
 		
