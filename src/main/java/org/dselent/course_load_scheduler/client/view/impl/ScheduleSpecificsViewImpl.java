@@ -1,21 +1,21 @@
 package org.dselent.course_load_scheduler.client.view.impl;
 
-import org.dselent.course_load_scheduler.client.presenter.CreateScheduleVisualPresenter;
 import org.dselent.course_load_scheduler.client.presenter.ScheduleSpecificsPresenter;
 import org.dselent.course_load_scheduler.client.view.ScheduleSpecificsView;
 
 import com.google.gwt.core.client.GWT;
-import com.google.gwt.dev.asm.Label;
+import com.google.gwt.event.dom.client.ClickEvent;
+import com.google.gwt.event.logical.shared.SelectionEvent;
 import com.google.gwt.uibinder.client.UiBinder;
-import com.google.gwt.user.client.ui.Composite;
 import com.google.gwt.user.client.ui.HasWidgets;
 import com.google.gwt.user.client.ui.Widget;
 import com.google.gwt.uibinder.client.UiField;
+import com.google.gwt.uibinder.client.UiHandler;
 import com.google.gwt.user.client.ui.TextBox;
 import com.google.gwt.user.client.ui.VerticalPanel;
-import com.google.gwt.user.cellview.client.DataGrid;
 import com.google.gwt.user.client.ui.ListBox;
 import com.google.gwt.user.client.ui.Grid;
+import com.google.gwt.user.client.ui.TabBar;
 
 //public class ScheduleSpecificsViewImpl extends Composite {
 	public class ScheduleSpecificsViewImpl extends BaseViewImpl<ScheduleSpecificsPresenter> implements ScheduleSpecificsView {
@@ -25,6 +25,7 @@ import com.google.gwt.user.client.ui.Grid;
 	@UiField VerticalPanel verticalPanel;
 	@UiField ListBox navDropDown;
 	@UiField Grid calendarGrid;
+	@UiField TabBar calendarTabs;
 
 	interface ScheduleSpecificsViewImplUiBinder extends UiBinder<Widget, ScheduleSpecificsViewImpl> {
 	}
@@ -32,14 +33,20 @@ import com.google.gwt.user.client.ui.Grid;
 	public ScheduleSpecificsViewImpl() {
 		initWidget(uiBinder.createAndBindUi(this));
 		initGrid();
+		initTabs();
+	}
+	
+	public TabBar getCalendarTabs() {
+		return calendarTabs;
 	}
 
-	
+	public void setCalendarTabs(TabBar calendarTabs) {
+		this.calendarTabs = calendarTabs;
+	}
+
 	public VerticalPanel getVerticalPanel() {
 		return verticalPanel;
 	}
-
-
 
 	public void setVerticalPanel(VerticalPanel verticalPanel) {
 		this.verticalPanel = verticalPanel;
@@ -114,6 +121,30 @@ import com.google.gwt.user.client.ui.Grid;
 		calendarGrid.setText(12, 0, "7:00 pm");
 		calendarGrid.setText(13, 0, "8:00 pm");
 		
+	}
+	
+	public void initTabs() {
+		calendarTabs.addTab("A Term");
+		calendarTabs.addTab("B Term");
+		calendarTabs.addTab("C Term");
+		calendarTabs.addTab("D Term");
+		calendarTabs.addTab("Fall Semester");
+		calendarTabs.addTab("Spring Semester");
+		calendarTabs.selectTab(0, false);
+	}
+	
+	public void clearGrid() {
+		for(int i = 1; i <= 13; i++) {
+			for (int j = 1; j <= 5; j++) {
+				calendarGrid.clearCell(i, j);
+			}
+		}
+	}
+
+	@UiHandler("calendarTabs")
+	void onTabSelected(SelectionEvent<Integer> evt)
+	{
+		presenter.updateGrid();
 	}
 
 }

@@ -8,6 +8,7 @@
 	<g:VerticalPanel ui:field="verticalPanel" width="100%">
 			<g:ListBox width="100%" ui:field="navDropDown"/>
 			<g:TextBox readOnly="true" width="100%" ui:field="report"/>
-			<g:Grid width="100%" ui:field="calendarGrid"  borderWidth="1"/>
+			<g:TabBar ui:field="calendarTabs" width="100%"/>
+				<g:Grid width="100%" ui:field="calendarGrid"  borderWidth="1"/>
 		</g:VerticalPanel>
 </ui:UiBinder> 
