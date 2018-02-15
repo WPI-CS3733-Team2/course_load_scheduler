@@ -5,6 +5,7 @@ import org.dselent.course_load_scheduler.client.view.CreateScheduleVisualView;
 
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.event.dom.client.ClickEvent;
+import com.google.gwt.event.logical.shared.SelectionEvent;
 import com.google.gwt.uibinder.client.UiBinder;
 import com.google.gwt.uibinder.client.UiField;
 import com.google.gwt.uibinder.client.UiHandler;
@@ -12,6 +13,7 @@ import com.google.gwt.user.client.ui.Button;
 import com.google.gwt.user.client.ui.HasWidgets;
 import com.google.gwt.user.client.ui.Widget;
 import com.google.gwt.user.client.ui.ListBox;
+import com.google.gwt.user.client.ui.TabBar;
 import com.google.gwt.user.client.ui.Label;
 import com.google.gwt.user.client.ui.Grid;
 import com.google.gwt.user.client.ui.VerticalPanel;
@@ -26,6 +28,7 @@ public class CreateScheduleVisualViewImpl extends BaseViewImpl<CreateScheduleVis
 	@UiField Grid scheduleGrid;
 	@UiField Button nextPageButton;
 	@UiField VerticalPanel verticalPanel;
+	@UiField TabBar calendarTabs;
 
 	interface CreateScheduleVisualViewImplUiBinder extends UiBinder<Widget, CreateScheduleVisualViewImpl> {
 	}
@@ -33,6 +36,14 @@ public class CreateScheduleVisualViewImpl extends BaseViewImpl<CreateScheduleVis
 	public CreateScheduleVisualViewImpl() {
 		initWidget(uiBinder.createAndBindUi(this));
 		initGrid();
+	}
+	
+	public TabBar getCalendarTabs() {
+		return calendarTabs;
+	}
+
+	public void setCalendarTabs(TabBar calendarTabs) {
+		this.calendarTabs = calendarTabs;
 	}
 
 	public ListBox getNavDropDown() {
@@ -116,5 +127,28 @@ public class CreateScheduleVisualViewImpl extends BaseViewImpl<CreateScheduleVis
 		return verticalPanel;
 	}
 	
+	public void initTabs() {
+		calendarTabs.addTab("A Term");
+		calendarTabs.addTab("B Term");
+		calendarTabs.addTab("C Term");
+		calendarTabs.addTab("D Term");
+		calendarTabs.addTab("Fall Semester");
+		calendarTabs.addTab("Spring Semester");
+		calendarTabs.selectTab(0, false);
+	}
+	
+	public void clearGrid() {
+		for(int i = 1; i <= 13; i++) {
+			for (int j = 1; j <= 5; j++) {
+				scheduleGrid.clearCell(i, j);
+			}
+		}
+	}
+
+	@UiHandler("calendarTabs")
+	void onTabSelected(SelectionEvent<Integer> evt)
+	{
+		presenter.updateGrid();
+	}
 	
 }

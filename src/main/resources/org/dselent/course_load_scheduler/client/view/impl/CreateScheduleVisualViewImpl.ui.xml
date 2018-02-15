@@ -7,6 +7,7 @@
 		<g:VerticalPanel width="100%" ui:field="verticalPanel">
 			<g:ListBox ui:field="navDropDown" width="100%"/>
 			<g:Label text="Confirm Schedule" width="100%" ui:field="confirmLabel"/>
+			<g:TabBar ui:field="calendarTabs" width="100%"/>
 			<g:Grid width="100%" ui:field="scheduleGrid" borderWidth="1"/>
 			<g:HorizontalPanel width="100%">
 				<g:Cell horizontalAlignment="ALIGN_RIGHT">

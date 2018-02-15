@@ -142,7 +142,7 @@ public class CourseLoadScheduler implements EntryPoint
 			//ConfirmScheduleView confirmScheduleView = injector.getConfirmScheduleView();
 			confirmSchedulePresenter.go(indexView.getViewRootPanel());
 		break;
-		}*/
+		*/
 		
 			
 	}
