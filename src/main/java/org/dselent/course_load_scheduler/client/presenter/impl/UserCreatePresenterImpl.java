@@ -97,6 +97,8 @@ public class UserCreatePresenterImpl extends BasePresenterImpl implements UserCr
 			
 			//Becomes false if any of the fields are left empty
 			boolean validUser = true;
+			//Becomes false if field is not an integer
+			boolean validWpiId = true;
 			
 			try 
 			{
@@ -145,10 +147,10 @@ public class UserCreatePresenterImpl extends BasePresenterImpl implements UserCr
 			
 			//Don't know if I need to throw another exception
 			if(!wpiId.matches("\\d+")) {
-				validUser = false;
+				validWpiId = false;
 			}
 			
-			if(validUser){
+			if(validUser && validWpiId){
 				//Create user
 				
 			}else{
@@ -156,11 +158,13 @@ public class UserCreatePresenterImpl extends BasePresenterImpl implements UserCr
 				view.getFinalizeCreateButton().setEnabled(true);
 				creationInProgress = false;
 				
-				//Might want to customize this so it tells you the specific field that was left empty.
-				//Also might want to combine error messages into one.
-				view.showErrorMessages("No fields can be left empty.");
+				if(!validUser) {
+					//Might want to customize this so it tells you the specific field that was left empty.
+					//Also might want to combine error messages into one.
+					view.showErrorMessages("No fields can be left empty.");
+				}
 				
-				if(!wpiId.matches("\\d+")) {
+				if(!validWpiId) {
 					view.showErrorMessages("WPI ID must be an integer.");
 				}
 			}
