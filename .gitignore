@@ -1,5 +1,3 @@
 /gwt-unitCache
 /war/course_load_scheduler
 /.settings
-/src/main/java/org/dselent/course_load_scheduler/client/event_handler/InvalidUserEventHandler.java
-/src/main/java/org/dselent/course_load_scheduler/client/event_handler/NavigateEventHandler.java
