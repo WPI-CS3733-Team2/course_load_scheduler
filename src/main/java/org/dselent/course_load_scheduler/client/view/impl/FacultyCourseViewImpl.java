@@ -1,7 +1,11 @@
 package org.dselent.course_load_scheduler.client.view.impl;
 
+import org.dselent.course_load_scheduler.client.gin.Injector;
 import org.dselent.course_load_scheduler.client.presenter.FacultyCoursePresenter;
+import org.dselent.course_load_scheduler.client.presenter.impl.IndexPresenterImpl;
+import org.dselent.course_load_scheduler.client.presenter.impl.RequestCoursePresenterImpl;
 import org.dselent.course_load_scheduler.client.view.FacultyCourseView;
+import org.dselent.course_load_scheduler.client.view.IndexView;
 
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.uibinder.client.UiBinder;
@@ -36,6 +40,14 @@ public class FacultyCourseViewImpl extends BaseViewImpl<FacultyCoursePresenter> 
 
 	@UiHandler("requestCourseBtn")
 	void onRequestCourseBtnClick(ClickEvent event) {
+		final Injector injector = Injector.INSTANCE;
+		
+		IndexPresenterImpl indexPresenter = injector.getIndexPresenter(); // on-demand injection
+		IndexView indexView = indexPresenter.getView();		
+
+		RequestCoursePresenterImpl requestCoursePresenter = injector.getRequestCoursePresenter();
+		
+		requestCoursePresenter.go(indexView.getViewRootPanel());
 	}
 
 	@Override

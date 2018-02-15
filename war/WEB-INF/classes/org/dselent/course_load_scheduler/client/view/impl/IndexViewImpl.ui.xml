@@ -35,12 +35,12 @@
 			<g:HTMLPanel ui:field="mainPanel"/>
 		</g:Dock>
 		<g:Dock direction="NORTH">
-			<g:MenuBar>
-				<g:MenuItem text="Account"/>
-				<g:MenuItem text="Schedules"/>
-				<g:MenuItem text="Courses"/>
-				<g:MenuItem text="Users"/>
-				<g:MenuItem text="Requests"/>
+			<g:MenuBar ui:field="navigationMenu">
+				<g:MenuItem text="Account" ui:field="accountMenuItem"/>
+				<g:MenuItem text="Schedules" ui:field="schedulesMenuItem"/>
+				<g:MenuItem text="Courses" ui:field="coursesMenuItem"/>
+				<g:MenuItem text="Users" ui:field="usersMenuItem"/>
+				<g:MenuItem text="Requests" ui:field="requestsMenuItem"/>
 			</g:MenuBar>
 		</g:Dock>
 	</g:DockPanel>
