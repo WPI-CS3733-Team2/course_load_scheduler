@@ -153,5 +153,18 @@ public class UserSearchPresenterImpl extends BasePresenterImpl implements UserSe
 		
 	}*/
 	
+	@Override
+	public void onSearchUser(SearchUserEvent evt) {
+		parentPresenter.hideLoadScreen();
+		view.getSearchUserButton().setEnabled(true);
+		searchInProgress = false;
+		//For now, it just navigates to the user details presenter.
+		//In the future, the search function will require retrieving data to the server.
+		final Injector injector = Injector.INSTANCE;
+		UserDetailsPresenterImpl userDetailsPresenter = injector.getUserDetailsPresenter();
+		userDetailsPresenter.init();
+		userDetailsPresenter.go(parentPresenter.getView().getViewRootPanel());
+	}
+	
 	
 }
