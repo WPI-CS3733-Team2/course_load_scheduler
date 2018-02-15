@@ -19,7 +19,7 @@ import org.dselent.course_load_scheduler.client.event.CreateScheduleEvent;
  * 
  */
 public abstract class EventHandlerAdapter
-implements InvalidLoginEventHandler, SendLoginEventHandler, NavigateEventHandler, SearchUserEventHandler, 
+implements InvalidLoginEventHandler, SendLoginEventHandler, SearchUserEventHandler, 
 	CreateUserEventHandler, TerminateAccountEventHandler, CreateScheduleEventHandler
 {
 	@Override
