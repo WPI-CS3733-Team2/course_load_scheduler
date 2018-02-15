@@ -134,9 +134,9 @@ public class UserSearchPresenterImpl extends BasePresenterImpl implements UserSe
 	public void toCreateUsers(){
 		final Injector injector = Injector.INSTANCE;
 		UserCreatePresenterImpl userCreatePresenter = injector.getUserCreatePresenter();
-		NavigateAction na = new NavigateAction(userCreatePresenter);
+		/*NavigateAction na = new NavigateAction(userCreatePresenter);
 		NavigateEvent ne = new NavigateEvent(na);
-		eventBus.fireEvent(ne);
+		eventBus.fireEvent(ne);*/
 		userCreatePresenter.init();
 		userCreatePresenter.go(parentPresenter.getView().getViewRootPanel());
 	}
@@ -146,12 +146,12 @@ public class UserSearchPresenterImpl extends BasePresenterImpl implements UserSe
 	//Namely, it needs a way to pass on the type of the presenter you want to make without creating a
 	// specific presenter implementation, so all the injector stuff can be done in this function.
 	//Also, if we use this, we might want to move it to BasePresenterImpl.
-	@Override
+	/*@Override
 	public void onNavigate(NavigateEvent evt){
 		evt.getAction().getPresenterImpl().init();
 		evt.getAction().getPresenterImpl().go(parentPresenter.getView().getViewRootPanel());
 		
-	}
+	}*/
 	
 	
 }
