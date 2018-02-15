@@ -3,7 +3,7 @@ package org.dselent.course_load_scheduler.client.event_handler;
 import org.dselent.course_load_scheduler.client.event.InvalidLoginEvent;
 import org.dselent.course_load_scheduler.client.event.SendLoginEvent;
 import org.dselent.course_load_scheduler.client.event.TerminateAccountEvent;
-import org.dselent.course_load_scheduler.client.event.NavigateEvent;
+//import org.dselent.course_load_scheduler.client.event.NavigateEvent;
 import org.dselent.course_load_scheduler.client.event.SearchUserEvent;
 import org.dselent.course_load_scheduler.client.event.CreateUserEvent;
 import org.dselent.course_load_scheduler.client.event.CreateScheduleEvent;
@@ -28,8 +28,8 @@ implements InvalidLoginEventHandler, SendLoginEventHandler, NavigateEventHandler
 	@Override
 	public void onSendLogin(SendLoginEvent evt) {}
 	
-	@Override
-	public void onNavigate(NavigateEvent evt) {}
+	//@Override
+	//public void onNavigate(NavigateEvent evt) {}
 	
 	@Override
 	public void onSearchUser(SearchUserEvent evt) {}
