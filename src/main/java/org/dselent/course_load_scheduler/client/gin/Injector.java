@@ -98,5 +98,4 @@ public interface Injector extends Ginjector
     public FacultyCourseViewImpl getFacultyCourseView();
     public RequestCourseViewImpl getRequestCourseView();
 
->>>>>>> assignment5_fix
 }

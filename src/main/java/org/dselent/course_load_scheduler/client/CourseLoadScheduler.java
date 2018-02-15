@@ -17,6 +17,7 @@ import org.dselent.course_load_scheduler.client.presenter.impl.SearchSchedulePre
 import org.dselent.course_load_scheduler.client.presenter.impl.UserSearchPresenterImpl;
 import org.dselent.course_load_scheduler.client.presenter.impl.CreateModifyCoursePresenterImpl;
 import org.dselent.course_load_scheduler.client.view.IndexView;
+import org.dselent.course_load_scheduler.client.view.ScheduleListView;
 
 /*
 import org.dselent.course_load_scheduler.client.view.ConfirmScheduleView;
