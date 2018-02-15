@@ -5,4 +5,5 @@ public interface ScheduleSpecificsPresenter extends BasePresenter
 {
 	IndexPresenter getParentPresenter();
 	void setParentPresenter(IndexPresenter parentPresenter);
+	void updateGrid();
 }

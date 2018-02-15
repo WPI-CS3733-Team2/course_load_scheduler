@@ -6,6 +6,7 @@ import com.google.gwt.user.cellview.client.DataGrid;
 import com.google.gwt.user.client.ui.Button;
 import com.google.gwt.user.client.ui.Grid;
 import com.google.gwt.user.client.ui.ListBox;
+import com.google.gwt.user.client.ui.TabBar;
 import com.google.gwt.user.client.ui.TextBox;
 import com.google.gwt.user.client.ui.VerticalPanel;
 
@@ -19,5 +20,8 @@ public interface ScheduleSpecificsView extends BaseView<ScheduleSpecificsPresent
 	void setVerticalPanel(VerticalPanel verticalPanel);
 	ListBox getNavDropDown();
 	void setNavDropDown(ListBox navDropDown);
+	TabBar getCalendarTabs();
+	void setCalendarTabs(TabBar calendarTabs);
+	void clearGrid();
 	
 }

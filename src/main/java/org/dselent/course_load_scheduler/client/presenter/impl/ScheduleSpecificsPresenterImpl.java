@@ -11,6 +11,7 @@ import org.dselent.course_load_scheduler.client.errorstring.InvalidLoginStrings;
 import org.dselent.course_load_scheduler.client.event.InvalidLoginEvent;
 import org.dselent.course_load_scheduler.client.event.SendLoginEvent;
 import org.dselent.course_load_scheduler.client.exceptions.EmptyStringException;
+import org.dselent.course_load_scheduler.client.model.Calendar;
 import org.dselent.course_load_scheduler.client.presenter.IndexPresenter;
 import org.dselent.course_load_scheduler.client.presenter.LoginPresenter;
 import org.dselent.course_load_scheduler.client.presenter.ScheduleSpecificsPresenter;
@@ -26,6 +27,8 @@ public class ScheduleSpecificsPresenterImpl extends BasePresenterImpl implements
 {
 	private IndexPresenter parentPresenter;
 	private ScheduleSpecificsView view;
+	
+	private List<Calendar> calendars = new ArrayList<Calendar>();
 
 	@Inject
 	public ScheduleSpecificsPresenterImpl(IndexPresenter parentPresenter, ScheduleSpecificsView view)
@@ -34,8 +37,34 @@ public class ScheduleSpecificsPresenterImpl extends BasePresenterImpl implements
 		this.parentPresenter = parentPresenter;
 		view.setPresenter(this);
 		this.insertText();
-		this.insertDropDown();
-		this.fillCalendar("MR", "6:00", "8:50", "Test Text");
+		Calendar calendar1 = new Calendar();
+		calendar1.setId(1);
+		calendar1.setYear(2018);
+		calendar1.setSemester("A");
+		calendar1.setDays("MR");
+		calendar1.setStart_time("9:00");
+		calendar1.setEnd_time("10:50");
+		calendars.add(calendar1);
+		this.fillCalendar(calendar1, "Some Course You're Assigned");
+		
+		Calendar calendar2 = new Calendar();
+		calendar2.setId(1);
+		calendar2.setYear(2018);
+		calendar2.setSemester("B");
+		calendar2.setDays("WTF");
+		calendar2.setStart_time("9:00");
+		calendar2.setEnd_time("10:50");
+		calendars.add(calendar2);
+		
+		Calendar calendar3 = new Calendar();
+		calendar3.setId(1);
+		calendar3.setYear(2018);
+		calendar3.setSemester("C");
+		calendar3.setDays("R");
+		calendar3.setStart_time("9:00");
+		calendar3.setEnd_time("10:50");
+		calendars.add(calendar3);
+	
 	}
 	
 	public void insertText() {
@@ -89,7 +118,14 @@ public class ScheduleSpecificsPresenterImpl extends BasePresenterImpl implements
 		this.parentPresenter = parentPresenter;
 	}
 	
-	public void fillCalendar(String days, String startTime, String endTime, String courseDetails) {
+	public void fillCalendar(Calendar calendar, String courseDetails) {
+		view.clearGrid();
+		
+		String startTime = calendar.getStart_time();
+		String endTime = calendar.getEnd_time();
+		String days = calendar.getDays();
+		String semester = calendar.getSemester();
+		
 		int endRow = 1;
 
 		Map<String, Integer> startMap = new HashMap<String,Integer>();
@@ -104,6 +140,14 @@ public class ScheduleSpecificsPresenterImpl extends BasePresenterImpl implements
 		startMap.put("4:00", 9);
 		startMap.put("5:00", 10);
 		startMap.put("6:00", 11);
+		
+		Map<String, Integer> tabMap = new HashMap<String,Integer>();
+		tabMap.put("A", 0);
+		tabMap.put("B", 1);
+		tabMap.put("C", 2);
+		tabMap.put("D", 3);
+		tabMap.put("F", 4);
+		tabMap.put("S", 5);
 		
 		if (endTime.contains("8:")) {
 			if(startTime.contentEquals("8:00")) {
@@ -147,6 +191,8 @@ public class ScheduleSpecificsPresenterImpl extends BasePresenterImpl implements
 			endRow = 12;
 		}
 		
+		//view.getCalendarTabs().selectTab(Integer.parseInt(tabMap.get(semester).toString()), false);
+		
 		for (int col: daysToCols(days))
 			for (int row = Integer.parseInt(startMap.get(startTime).toString()); row <= endRow; row++)
 				view.getCalendarGrid().setText(row, col, courseDetails);
@@ -171,6 +217,12 @@ public class ScheduleSpecificsPresenterImpl extends BasePresenterImpl implements
 			columns.add(5);
 		}
 		return columns;
+	}
+	
+	@Override
+	public void updateGrid() {
+		int tabIndex = view.getCalendarTabs().getSelectedTab();
+		fillCalendar(calendars.get(tabIndex), "brooooo");
 	}
 	
 }
