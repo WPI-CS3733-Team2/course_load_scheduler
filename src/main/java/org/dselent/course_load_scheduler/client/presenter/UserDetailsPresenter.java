@@ -4,4 +4,5 @@ public interface UserDetailsPresenter extends BasePresenter{
 	IndexPresenter getParentPresenter();
 	void setParentPresenter(IndexPresenter parentPresenter);
 	void backToSearch(); //returns to user search page
+	void terminateAccount();
 }

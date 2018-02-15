@@ -23,4 +23,6 @@ public interface UserCreateView extends BaseView<UserCreatePresenter>{
 	TextBox getLastNameBox();
 	TextBox getEmailBox();
 	ListBox getUserRole();
+	Button getFinalizeCreateButton();
+	void showErrorMessages(String errorMessages);
 }

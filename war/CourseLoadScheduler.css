@@ -32,3 +32,8 @@ h1 {
 #closeButton {
   margin: 15px 6px 6px;
 }
+.pageTitle {
+	font-weight: bold;
+	font-size: 36px;
+	font-family: Arial;
+}

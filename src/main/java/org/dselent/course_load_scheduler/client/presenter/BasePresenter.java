@@ -45,4 +45,7 @@ public interface BasePresenter
 	 * Unbinds all speficied event handlers to the presenter
 	 */
 	void unbind();
+	
+	//Navigates to the specified presenter
+	//void navigate(BasePresenter presenter);
 }

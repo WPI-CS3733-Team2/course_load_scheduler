@@ -36,12 +36,23 @@ public class ConfirmScheduleViewImpl extends BaseViewImpl<ConfirmSchedulePresent
 
 	@UiHandler("confirmScheduleButton")
 	void onConfirmScheduleButtonClick(ClickEvent event) {
+		presenter.createSchedule();
 	}
 	
 	@Override
 	public void setPresenter(ConfirmSchedulePresenter presenter)
 	{
 		this.presenter = presenter;
+	}
+	
+	@Override
+	public TextBox getScheduleNameBox(){
+		return scheduleNameBox;
+	}
+	
+	@Override
+	public Button getConfirmScheduleButton(){
+		return confirmScheduleButton;
 	}
 	
 	@Override

@@ -3,12 +3,15 @@ package org.dselent.course_load_scheduler.client.model;
 import java.sql.Timestamp;
 import java.time.Instant;
 
+//All references to the createdAt and updatedAt fields have been commented out until we can figure out how to
+// import the proper modules.
 
 public class User extends Model
 {	
 	// attributes
 	
 	private Integer id;
+	private Integer wpiId;
 	private String userName;
 	private String firstName;
 	private String lastName;
@@ -16,8 +19,8 @@ public class User extends Model
 	private String encryptedPassword;
 	private String salt;
 	private Integer userStateId;
-	private Instant createdAt;
-	private Instant updatedAt;
+	//private Instant createdAt;
+	//private Instant updatedAt;
 
 	// methods
 		
@@ -30,6 +33,16 @@ public class User extends Model
 	public void setId(Integer id)
 	{
 		this.id = id;
+	}
+	
+	public Integer getWpiId()
+	{
+		return wpiId;
+	}
+
+	public void setWpiId(Integer wpiId)
+	{
+		this.wpiId = wpiId;
 	}
 
 	public String getUserName()
@@ -103,7 +116,7 @@ public class User extends Model
 		this.userStateId = userStateId;
 	}
 
-	public Instant getCreatedAt()
+	/*public Instant getCreatedAt()
 	{
 		return createdAt;
 	}
@@ -111,17 +124,17 @@ public class User extends Model
 	public void setCreatedAt(Instant createdAt)
 	{
 		this.createdAt = createdAt;
-	}
+	}*/
 	
-	public void setCreatedAt(Timestamp createdAt)
+	/*public void setCreatedAt(Timestamp createdAt)
 	{
 		if(createdAt != null)
 		{
 			this.createdAt = createdAt.toInstant();
 		}
-	}
+	}*/
 
-	public Instant getUpdatedAt()
+	/*public Instant getUpdatedAt()
 	{
 		return updatedAt;
 	}
@@ -129,29 +142,30 @@ public class User extends Model
 	public void setUpdatedAt(Instant updatedAt)
 	{
 		this.updatedAt = updatedAt;
-	}
+	}*/
 	
-	public void setUpdatedAt(Timestamp updatedAt)
+	/*public void setUpdatedAt(Timestamp updatedAt)
 	{
 		if(updatedAt != null)
 		{
 			this.updatedAt = updatedAt.toInstant();
 		}
-	}
+	}*/
 
 	@Override
 	public int hashCode()
 	{
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + ((createdAt == null) ? 0 : createdAt.hashCode());
+		//result = prime * result + ((createdAt == null) ? 0 : createdAt.hashCode());
 		result = prime * result + ((email == null) ? 0 : email.hashCode());
 		result = prime * result + ((encryptedPassword == null) ? 0 : encryptedPassword.hashCode());
 		result = prime * result + ((firstName == null) ? 0 : firstName.hashCode());
 		result = prime * result + ((id == null) ? 0 : id.hashCode());
+		result = prime * result + ((wpiId == null) ? 0 : wpiId.hashCode());
 		result = prime * result + ((lastName == null) ? 0 : lastName.hashCode());
 		result = prime * result + ((salt == null) ? 0 : salt.hashCode());
-		result = prime * result + ((updatedAt == null) ? 0 : updatedAt.hashCode());
+		//result = prime * result + ((updatedAt == null) ? 0 : updatedAt.hashCode());
 		result = prime * result + ((userName == null) ? 0 : userName.hashCode());
 		result = prime * result + ((userStateId == null) ? 0 : userStateId.hashCode());
 		return result;
@@ -173,7 +187,7 @@ public class User extends Model
 			return false;
 		}
 		User other = (User) obj;
-		if (createdAt == null)
+		/*if (createdAt == null)
 		{
 			if (other.createdAt != null)
 			{
@@ -183,7 +197,7 @@ public class User extends Model
 		else if (!createdAt.equals(other.createdAt))
 		{
 			return false;
-		}
+		}*/
 		if (email == null)
 		{
 			if (other.email != null)
@@ -228,6 +242,17 @@ public class User extends Model
 		{
 			return false;
 		}
+		if (wpiId == null)
+		{
+			if (other.wpiId != null)
+			{
+				return false;
+			}
+		}
+		else if (!wpiId.equals(other.wpiId))
+		{
+			return false;
+		}
 		if (lastName == null)
 		{
 			if (other.lastName != null)
@@ -250,7 +275,7 @@ public class User extends Model
 		{
 			return false;
 		}
-		if (updatedAt == null)
+		/*if (updatedAt == null)
 		{
 			if (other.updatedAt != null)
 			{
@@ -260,7 +285,7 @@ public class User extends Model
 		else if (!updatedAt.equals(other.updatedAt))
 		{
 			return false;
-		}
+		}*/
 		if (userName == null)
 		{
 			if (other.userName != null)
@@ -293,6 +318,8 @@ public class User extends Model
 		StringBuilder builder = new StringBuilder();
 		builder.append("Users [id=");
 		builder.append(id);
+		builder.append(", wpiId=");
+		builder.append(wpiId);
 		builder.append(", userName=");
 		builder.append(userName);
 		builder.append(", firstName=");
@@ -307,10 +334,10 @@ public class User extends Model
 		builder.append(salt);
 		builder.append(", userStateId=");
 		builder.append(userStateId);
-		builder.append(", createdAt=");
+		/*builder.append(", createdAt=");
 		builder.append(createdAt);
 		builder.append(", updatedAt=");
-		builder.append(updatedAt);
+		builder.append(updatedAt);*/
 		builder.append("]");
 		return builder.toString();
 	}

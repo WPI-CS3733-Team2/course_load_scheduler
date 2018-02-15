@@ -16,6 +16,7 @@ import com.google.gwt.user.client.ui.HasWidgets;
 import com.google.gwt.user.client.ui.ListBox;
 import com.google.gwt.user.client.ui.Label;
 import com.google.gwt.user.client.ui.TextBox;
+import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.ui.Button;
 import com.google.gwt.uibinder.client.UiHandler;
 import com.google.gwt.event.dom.client.ClickEvent;
@@ -29,7 +30,6 @@ public class UserCreateViewImpl extends BaseViewImpl<UserCreatePresenter> implem
 	@UiField Grid createUserGrid;
 	@UiField Label userRoleLabel;
 	@UiField Label wpiIdLabel;
-	@UiField TextBox wpiIdBox;
 	@UiField Label usernameLabel;
 	@UiField TextBox firstNameBox;
 	@UiField Label firstNameLabel;
@@ -41,6 +41,7 @@ public class UserCreateViewImpl extends BaseViewImpl<UserCreatePresenter> implem
 	@UiField Button returnToSearchButton;
 	@UiField ListBox userRoleList;
 	@UiField TextBox usernameBox;
+	@UiField TextBox wpiIdBox;
 
 	interface UserCreateViewImplUiBinder extends UiBinder<Widget, UserCreateViewImpl> {
 	}
@@ -83,6 +84,12 @@ public class UserCreateViewImpl extends BaseViewImpl<UserCreatePresenter> implem
 	{
 		return emailBox;
 	}
+	
+	@Override
+	public Button getFinalizeCreateButton()
+	{
+		return finalizeCreateButton;
+	}
 
 	@UiHandler("finalizeCreateButton")
 	void onFinalizeCreateButtonClick(ClickEvent event) {
@@ -93,6 +100,12 @@ public class UserCreateViewImpl extends BaseViewImpl<UserCreatePresenter> implem
 	public void setPresenter(UserCreatePresenter presenter)
 	{
 		this.presenter = presenter;
+	}
+	
+	@Override
+	public void showErrorMessages(String errorMessages)
+	{
+		Window.alert(errorMessages);
 	}
 	
 	@Override

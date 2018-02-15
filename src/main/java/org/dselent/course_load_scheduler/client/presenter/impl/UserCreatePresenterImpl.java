@@ -1,5 +1,8 @@
 package org.dselent.course_load_scheduler.client.presenter.impl;
 
+import org.dselent.course_load_scheduler.client.action.CreateUserAction;
+import org.dselent.course_load_scheduler.client.event.CreateUserEvent;
+import org.dselent.course_load_scheduler.client.event.InvalidLoginEvent;
 import org.dselent.course_load_scheduler.client.exceptions.EmptyStringException;
 import org.dselent.course_load_scheduler.client.gin.Injector;
 import org.dselent.course_load_scheduler.client.presenter.IndexPresenter;
@@ -7,6 +10,7 @@ import org.dselent.course_load_scheduler.client.presenter.UserCreatePresenter;
 import org.dselent.course_load_scheduler.client.view.UserCreateView;
 //import org.dselent.course_load_scheduler.client.view.UserSearchView;
 
+import com.google.gwt.event.shared.HandlerRegistration;
 import com.google.gwt.user.client.ui.HasWidgets;
 import com.google.inject.Inject;
 
@@ -57,11 +61,27 @@ public class UserCreatePresenterImpl extends BasePresenterImpl implements UserCr
 		userSearchPresenter.go(parentPresenter.getView().getViewRootPanel());
 	}
 	
+	@Override
+	public void init()
+	{
+		bind();
+	}
+
+	@Override
+	public void bind()
+	{
+		HandlerRegistration registration;
+		
+		registration = eventBus.addHandler(CreateUserEvent.TYPE, this);
+		eventBusRegistration.put(CreateUserEvent.TYPE, registration);
+	}
+	
 	//Initiates the "create user" action
 	public void createUser(){
 		if(!creationInProgress) {
 			creationInProgress = true;
 			parentPresenter.showLoadScreen();
+			view.getFinalizeCreateButton();
 			
 			System.out.println(view.getUserRole());
 			
@@ -123,14 +143,41 @@ public class UserCreatePresenterImpl extends BasePresenterImpl implements UserCr
 				validUser = false;
 			}
 			
+			//Don't know if I need to throw another exception
+			if(!wpiId.matches("\\d+")) {
+				validUser = false;
+			}
+			
 			if(validUser){
 				//Create user
+				
 			}else{
-				//Invalid user event
-				//Maybe don't need a whole event; just have to send message to screen that
-				// says certain fields were left empty
+				parentPresenter.hideLoadScreen();
+				view.getFinalizeCreateButton().setEnabled(true);
+				creationInProgress = false;
+				
+				//Might want to customize this so it tells you the specific field that was left empty.
+				//Also might want to combine error messages into one.
+				view.showErrorMessages("No fields can be left empty.");
+				
+				if(!wpiId.matches("\\d+")) {
+					view.showErrorMessages("WPI ID must be an integer.");
+				}
 			}
 		}
+	}
+	
+	private void createUserEventFire(Integer userRole, Integer wpiId, String userName, String firstName, String lastName, String email) {
+		CreateUserAction cua = new CreateUserAction();
+		//May need a more effective way to do this
+		cua.setUserRole(userRole);
+		cua.setWpiId(wpiId);
+		cua.setUserName(userName);
+		cua.setFirstName(firstName);
+		cua.setLastName(lastName);
+		cua.setEmail(email);
+		CreateUserEvent cue = new CreateUserEvent(cua);
+		eventBus.fireEvent(cue);
 	}
 	
 	private void checkEmptyString(String string) throws EmptyStringException
