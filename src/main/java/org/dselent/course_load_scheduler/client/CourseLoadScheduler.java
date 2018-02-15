@@ -9,6 +9,7 @@ import org.dselent.course_load_scheduler.client.presenter.impl.ScheduleSpecifics
 import org.dselent.course_load_scheduler.client.presenter.impl.SearchSchedulePresenterImpl;
 import org.dselent.course_load_scheduler.client.presenter.impl.UserSearchPresenterImpl;
 import org.dselent.course_load_scheduler.client.presenter.impl.ConfirmSchedulePresenterImpl;
+import org.dselent.course_load_scheduler.client.presenter.impl.UserDetailsPresenterImpl;
 import org.dselent.course_load_scheduler.client.view.FacultyCourseMappingView;
 import org.dselent.course_load_scheduler.client.view.IndexView;
 import org.dselent.course_load_scheduler.client.view.ScheduleListView;
@@ -16,6 +17,7 @@ import org.dselent.course_load_scheduler.client.view.ScheduleSpecificsView;
 import org.dselent.course_load_scheduler.client.view.SearchScheduleView;
 import org.dselent.course_load_scheduler.client.view.UserSearchView;
 import org.dselent.course_load_scheduler.client.view.ConfirmScheduleView;
+import org.dselent.course_load_scheduler.client.view.UserDetailsView;
 
 import com.google.gwt.core.client.EntryPoint;
 import com.google.gwt.user.client.ui.RootLayoutPanel;
@@ -117,6 +119,12 @@ public class CourseLoadScheduler implements EntryPoint
 			confirmSchedulePresenter.init();
 			ConfirmScheduleView confirmScheduleView = injector.getConfirmScheduleView();
 			confirmSchedulePresenter.go(indexView.getViewRootPanel());
+		break;
+		case 7:
+			UserDetailsPresenterImpl userDetailsPresenter = injector.getUserDetailsPresenter();
+			userDetailsPresenter.init();
+			UserDetailsView userDetailsView = injector.getUserDetailsView();
+			userDetailsPresenter.go(indexView.getViewRootPanel());
 		break;
 		}
 		
