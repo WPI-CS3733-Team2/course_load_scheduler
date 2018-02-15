@@ -1,7 +1,10 @@
 package org.dselent.course_load_scheduler.client.event_handler;
 
+import org.dselent.course_load_scheduler.client.event.InvalidChangePasswordEvent;
 import org.dselent.course_load_scheduler.client.event.InvalidLoginEvent;
+import org.dselent.course_load_scheduler.client.event.SendChangePasswordEvent;
 import org.dselent.course_load_scheduler.client.event.SendLoginEvent;
+import org.dselent.course_load_scheduler.client.event.TriggerChangePasswordWindowEvent;
 
 /**
  * Adapter class for convenience
@@ -10,15 +13,24 @@ import org.dselent.course_load_scheduler.client.event.SendLoginEvent;
  * Need to register all event handling functions with this class by implementing the handler and
  * overriding with an empty method
  * 
- * @author dselent
+ * 
  * 
  */
 public abstract class EventHandlerAdapter
-implements InvalidLoginEventHandler, SendLoginEventHandler
+implements InvalidLoginEventHandler, SendLoginEventHandler, TriggerChangePasswordWindowEventHandler, SendChangePasswordEventHandler, InvalidChangePasswordEventHandler
 {
 	@Override
 	public void onInvalidLogin(InvalidLoginEvent evt) {}
 	
 	@Override
 	public void onSendLogin(SendLoginEvent evt) {}
+	
+	@Override
+	public void onTriggerChangePasswordWindow(TriggerChangePasswordWindowEvent evt) {}
+	
+	@Override
+	public void onSendChangePassword(SendChangePasswordEvent evt){}
+	
+	@Override
+	public void onInvalidChangePassword(InvalidChangePasswordEvent evt) {}
 }

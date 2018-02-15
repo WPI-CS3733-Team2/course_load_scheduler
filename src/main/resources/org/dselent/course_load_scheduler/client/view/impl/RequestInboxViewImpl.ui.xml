@@ -1,0 +1,242 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
+	xmlns:g="urn:import:com.google.gwt.user.client.ui">
+	<ui:style>
+
+	.center
+	{
+		position: absolute;
+		width:500px;
+		height:250px;
+		margin-left:250px;
+	}
+
+	.left
+	{
+		position: absolute;
+		width:500px;
+		height:250px;
+		margin-left:0px;
+		margin-top:0px
+	}
+	
+    .accountDetails-panel
+	{
+		background-color:rgb(255,255,);
+	}
+	
+	.view-label
+	{
+		font-family:Calibri;
+		font-size:32px;
+		color:rgb(0, 0, 0);
+	}
+	
+	.accountDetails-form
+	{
+		border-style:solid;
+		border-width:2px;
+		border-color:black;
+		margin-top:20px;
+		margin-left:50px;
+		margin-right:50px;
+	}
+	
+	.accountDetails-label
+	{
+		font-family:Times New Roman;
+		font-style:normal;
+		font-size:14px;
+		font-weight:bold;
+		font-stretch:normal;
+		font-variant:normal;
+		color:rgb(0, 0, 0);
+		float:right;
+		margin-left:0px;
+		margin-right:8px;
+		margin-top:0px;
+		margin-bottom:0px;
+		padding-left:0px;
+		padding-right:0px;
+		padding-top:0px;
+		padding-bottom:0px;
+	}
+	 
+	.accountDetails-text
+	{
+		font-family:Times New Roman;
+		font-size:14px;
+		font-weight: normal;
+		float:right;
+	 }
+	 
+	.warning-label
+	{
+		font-family:Times New Roman;
+		font-size:18px;
+		font-weight: bold;
+		color: rgb(255, 0, 0);
+		margin-top:4px;
+		padding-left:50px;
+		padding-right:50px;
+	}
+	
+	.accountDetails-button
+	{
+		font-family:Times New Roman;
+		font-size:14px;
+		float:right;
+		margin-top:10px;
+		margin-right:20px;
+		margin-bottom:4px;
+	}
+
+	.button {
+    	color: white;
+    	padding: 10px 20px;
+    	text-align:left;
+    	text-decoration: none;
+    	font-size: 16px;
+	}
+
+	.button_request {
+    	color: black;
+    	padding: 10px 20px;
+    	text-align:left;
+    	text-decoration: none;
+    	font-size: 16px;
+	}
+
+	.button_pos {
+    	position:relative;
+    	top: 50%;
+    	left: 4%;
+	}
+
+	.button_type {
+		background-color: Transparent;
+    	background-repeat:no-repeat;
+    	border: none;
+    	cursor:pointer;
+    	overflow: hidden;
+    	outline:none;
+	}
+
+	.grid_tab {
+  		display: grid;
+  		grid-gap: 10px;
+  		grid-auto-rows: 0px;
+		background-color: rgb(172,43,55);
+	}
+	
+	.grid_inbox_tab {
+		border-style:solid;
+		border-width:2px;
+    	border-radius: 10px;
+    	background: rgb(200,200,200);
+    	padding: 10px; 
+    	width: 1000px;
+    	height: 40px; 
+	}
+
+	.listBox {
+		margin-top:20px
+		margin-bottom:20px
+	}
+
+	</ui:style>
+	<g:HTMLPanel>
+	<g:VerticalPanel ui:field="RequestInboxPanel" addStyleNames="{style.accountDetails-panel},{style.center}" horizontalAlignment="center" width="1028px" height="547px">
+		<g:Grid width="1028px" height="75px" addStyleNames="{style.grid_tab}">
+			<g:row>
+				<g:customCell>
+					<g:Button text="Account" ui:field="AccountButton" addStyleNames="{style.button},{style.button_pos},{style.button_type}" width="92px"></g:Button>
+				</g:customCell>
+				<g:customCell>
+					<g:Button text="Cources" ui:field="CourcesButton" addStyleNames="{style.button},{style.button_pos},{style.button_type}" width="97px"></g:Button>
+				</g:customCell>
+				<g:customCell>
+					<g:Button text="Schedules" ui:field="SchedulesButton" addStyleNames="{style.button},{style.button_pos},{style.button_type}" width="112px"></g:Button>
+				</g:customCell>
+				<g:customCell>
+					<g:Button text="Users" ui:field="UsersButton" addStyleNames="{style.button},{style.button_pos},{style.button_type}" width="78px"></g:Button>
+				</g:customCell>
+				<g:customCell>
+					<g:Button text="Inbox" ui:field="InboxButton" addStyleNames="{style.button},{style.button_pos},{style.button_type}" width="108px"></g:Button>
+				</g:customCell>
+			</g:row>
+		</g:Grid>
+		<g:Grid addStyleNames="{style.grid_inbox_tab}">
+			<g:row>
+				<g:customCell>
+					<g:Label ui:field="viewLabel" width="59px">Inbox(0)</g:Label>
+				</g:customCell>
+				<g:customCell>
+					<g:Button text="Approve" ui:field="ApproveButton" addStyleNames="{style.button_request},{style.button_pos},{style.button_type}" width="92px"></g:Button>
+				</g:customCell>
+				<g:customCell>
+					<g:Button text="Deny" ui:field="DenyButton" addStyleNames="{style.button_request},{style.button_pos},{style.button_type}" width="92px"></g:Button>
+				</g:customCell>
+				<g:customCell>
+					<g:Button text="Delete" ui:field="DeleteButton" addStyleNames="{style.button_request},{style.button_pos},{style.button_type}" width="92px"></g:Button>
+				</g:customCell>
+			</g:row>
+		</g:Grid>
+		<g:Grid>
+			<g:row>
+				<g:customCell>
+					<g:ScrollPanel>
+						<g:Grid width="214px" height="100%">
+							<g:row>
+								<g:customCell>
+									<g:Button text="REQUEST" ui:field="request1Button" addStyleNames="{style.button_request},{style.button_type}"></g:Button>
+								</g:customCell>
+							</g:row>
+							<g:row>
+								<g:customCell>
+									<g:Button text="REQUEST" ui:field="request2Button" addStyleNames="{style.button_request},{style.button_type}"></g:Button>
+								</g:customCell>
+							</g:row>
+							<g:row>
+								<g:customCell>
+									<g:Button text="REQUEST" ui:field="request3Button" addStyleNames="{style.button_request},{style.button_type}"></g:Button>
+								</g:customCell>
+							</g:row>
+							<g:row>
+								<g:customCell>
+									<g:Button text="REQUEST" ui:field="request4Button" addStyleNames="{style.button_request},{style.button_type}"></g:Button>
+								</g:customCell>
+							</g:row>
+							<g:row>
+								<g:customCell>
+									<g:Button text="REQUEST" ui:field="request5Button" addStyleNames="{style.button_request},{style.button_type}"></g:Button>
+								</g:customCell>
+							</g:row>
+							<g:row>
+								<g:customCell>
+									<g:Button text="REQUEST" ui:field="request6Button" addStyleNames="{style.button_request},{style.button_type}"></g:Button>
+								</g:customCell>
+							</g:row>
+							<g:row>
+								<g:customCell>
+									<g:Button text="REQUEST" ui:field="request7Button" addStyleNames="{style.button_request},{style.button_type}"></g:Button>
+								</g:customCell>
+							</g:row>
+						</g:Grid>
+					</g:ScrollPanel>
+				</g:customCell>
+				<g:customCell>
+					<g:Frame url="http://www.google.com" height="303px" width="758px">
+						
+					</g:Frame>
+				</g:customCell>
+				
+			</g:row>
+		</g:Grid>	
+	
+	 
+	
+</g:VerticalPanel>
+
+	</g:HTMLPanel>
+</ui:UiBinder> 
