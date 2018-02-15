@@ -1,0 +1,20 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
+	xmlns:g="urn:import:com.google.gwt.user.client.ui">
+	<ui:style>
+	</ui:style>
+	<g:HTMLPanel>
+		<g:VerticalPanel width="100%" ui:field="verticalPanel">
+			<g:ListBox ui:field="navDropDown" width="100%"/>
+			<g:Label text="Confirm Schedule" width="100%" ui:field="confirmLabel"/>
+			<g:TabBar ui:field="calendarTabs" width="100%"/>
+			<g:Grid width="100%" ui:field="scheduleGrid" borderWidth="1"/>
+			<g:HorizontalPanel width="100%">
+				<g:Cell horizontalAlignment="ALIGN_RIGHT">
+					<g:Button text="Next" ui:field="nextPageButton"/>
+				</g:Cell>
+			</g:HorizontalPanel>
+		</g:VerticalPanel>
+	
+	</g:HTMLPanel>
+</ui:UiBinder> 

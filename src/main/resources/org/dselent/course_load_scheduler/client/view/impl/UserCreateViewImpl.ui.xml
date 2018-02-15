@@ -1,0 +1,73 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
+	xmlns:g="urn:import:com.google.gwt.user.client.ui">
+	<ui:style>
+	
+	</ui:style>
+	<g:HTMLPanel>
+		<g:VerticalPanel ui:field="createPanel">
+			<g:Cell horizontalAlignment="ALIGN_CENTER">
+				<g:Label text="Create New User" width="641px" styleName="pageTitle"/>
+			</g:Cell>
+			<g:Button text="Back to Search" ui:field="returnToSearchButton"/>
+			<g:Cell width="" height="" horizontalAlignment="ALIGN_CENTER">
+				<g:Grid ui:field="createUserGrid">
+					<g:row>
+						<g:customCell>
+							<g:Label text="Role" ui:field="userRoleLabel"/>
+						</g:customCell>
+						<g:customCell>
+							<g:ListBox visibleItemCount="2" ui:field="userRoleList" focus="false" height="45px">
+								<g:item value='1'>Admin</g:item>
+								<g:item value='2'>Faculty</g:item>
+							</g:ListBox>
+						</g:customCell>
+					</g:row>
+					<g:row>
+						<g:customCell>
+							<g:Label text="WPI ID" ui:field="wpiIdLabel"/>
+						</g:customCell>
+						<g:customCell>
+							<g:TextBox ui:field="wpiIdBox"/>
+						</g:customCell>
+					</g:row>
+					<g:row>
+						<g:customCell>
+							<g:Label text="Username" ui:field="usernameLabel"/>
+						</g:customCell>
+						<g:customCell>
+							<g:TextBox ui:field="usernameBox"/>
+						</g:customCell>
+					</g:row>
+					<g:row>
+						<g:customCell>
+							<g:Label text="First Name" ui:field="firstNameLabel"/>
+						</g:customCell>
+						<g:customCell>
+							<g:TextBox ui:field="firstNameBox"/>
+						</g:customCell>
+					</g:row>
+					<g:row>
+						<g:customCell>
+							<g:Label text="Last Name" ui:field="lastNameLabel"/>
+						</g:customCell>
+						<g:customCell>
+							<g:TextBox ui:field="lastNameBox"/>
+						</g:customCell>
+					</g:row>
+					<g:row>
+						<g:customCell>
+							<g:Label text="Email" ui:field="emailLabel"/>
+						</g:customCell>
+						<g:customCell>
+							<g:TextBox ui:field="emailBox"/>
+						</g:customCell>
+					</g:row>
+				</g:Grid>
+			</g:Cell>
+			<g:Cell horizontalAlignment="ALIGN_CENTER">
+				<g:Button ui:field="finalizeCreateButton" text="Create User"/>
+			</g:Cell>
+		</g:VerticalPanel>
+	</g:HTMLPanel>
+</ui:UiBinder> 
