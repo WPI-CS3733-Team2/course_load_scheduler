@@ -102,13 +102,13 @@
 	
     .login-panel
 	{
-		background-color:rgb(204,234,247);
+		background-color:rgb(169,176,183);
 	}
 	
 	.view-label
 	{
-		font-family:Times New Roman;
-		font-size:32px;
+		font-family:Calibri;
+		font-size:20px;
 	}
 	
 	.login-form
@@ -116,9 +116,10 @@
 		border-style:solid;
 		border-width:2px;
 		border-color:black;
-		margin-top:20px;
-		margin-left:50px;
-		margin-right:50px;
+		margin-top:50px;
+		margin-bottom:70px;
+		margin-left:100px;
+		margin-right:100px;
 	}
 	
 	.login-label
@@ -152,9 +153,10 @@
 	.warning-label
 	{
 		font-family:Times New Roman;
-		font-size:18px;
-		font-weight: bold;
-		color: rgb(255, 0, 0);
+		font-size:10px;
+		font-weight: normal;
+		float:left;
+		color: rgb(172, 43, 55);
 		margin-top:4px;
 		padding-left:50px;
 		padding-right:50px;
@@ -164,17 +166,27 @@
 	{
 		font-family:Times New Roman;
 		font-size:14px;
-		float:right;
+		float:center;
 		margin-top:10px;
-		margin-right:20px;
+		margin-right:0px;
 		margin-bottom:4px;
 	}
 	
 </ui:style>
 
 <g:VerticalPanel ui:field="loginPanel" addStyleNames="{style.login-panel} {style.center}" horizontalAlignment="center">
+	<g:Grid height="37px">
+		<g:row>
+			<g:customCell>
+					<g:Image ui:field="loadingImage" width="100px" height="50px" url="WEB-INF/classes/org/dselent/course_load_scheduler/client/view/images/WPI_logo.png" />
+			</g:customCell>
+			<g:customCell>
+				<g:Image width="400px" height="50px"/>
+			</g:customCell>
+		</g:row>
+	</g:Grid>
 
-	<g:Label ui:field="viewLabel" addStyleNames="{style.view-label}">Couse Load Scheduling System</g:Label>
+	<g:Label ui:field="viewLabel" addStyleNames="{style.view-label}">Welcome to WPI Faculty Couse Load Scheduling System!           </g:Label>
 	 
 	<g:VerticalPanel horizontalAlignment="center" addStyleNames="{style.login-form}">
 		<!-- Grid panel -->
@@ -204,7 +216,7 @@
 		</g:Grid>
 			
 		<g:Label ui:field="warningLabel" addStyleNames="{style.warning-label}">Warning! Your password will appear as plain text and is not encrypted.</g:Label>
-		<g:Button ui:field="loginButton" addStyleNames="{style.login-button}">Login</g:Button>
+		<g:Button ui:field="loginButton" addStyleNames="{style.login-button}" width="158px">Login</g:Button>
 				
 	</g:VerticalPanel>
 	

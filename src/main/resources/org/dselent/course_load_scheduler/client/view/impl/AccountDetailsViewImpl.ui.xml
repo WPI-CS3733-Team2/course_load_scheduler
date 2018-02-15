@@ -1,0 +1,230 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
+	xmlns:g="urn:import:com.google.gwt.user.client.ui"
+	xmlns:d="urn:import:org.dselent.course_load_scheduler.client.view.impl">
+	<ui:style>
+
+	.center
+	{
+		position: absolute;
+		width:500px;
+		height:250px;
+		margin-left:250px;
+	}
+	
+    .accountDetails-panel
+	{
+		background-color:rgb(255,255,255);
+	}
+
+	.red
+	{
+		color:rgb(172,43,55);
+	}
+
+
+	.logo-pose
+	{
+		position: absolute;
+		left:50px;
+		top:50px;
+	}
+	.view-label
+	{
+		font-family:Calibri;
+		font-size:20px;
+	}
+	
+	.accountDetails-form
+	{
+		border-style:solid;
+		border-width:2px;
+		border-color:black;
+		margin-top:0px;
+		margin-left:0px;
+		margin-right:0px;
+		form-color:rgb(255,0,0);
+	}
+	
+	.accountDetails-label
+	{
+		font-family:Times New Roman;
+		font-style:normal;
+		font-size:10px;
+		font-weight:bold;
+		font-stretch:normal;
+		font-variant:normal;
+		color:rgb(0, 0, 0);
+		float:right;
+		margin-left:0px;
+		margin-right:8px;
+		margin-top:0px;
+		margin-bottom:0px;
+		padding-left:0px;
+		padding-right:0px;
+		padding-top:0px;
+		padding-bottom:0px;
+	}
+	 
+	.accountDetails-text
+	{
+		font-family:Times New Roman;
+		font-size:14px;
+		font-weight: normal;
+		float:right;
+	 }
+	 
+	.warning-label
+	{
+		font-family:Times New Roman;
+		font-size:18px;
+		font-weight: bold;
+		color: rgb(255, 0, 0);
+		margin-top:4px;
+		padding-left:50px;
+		padding-right:50px;
+	}
+	
+	.accountDetails-button
+	{
+		font-family:Times New Roman;
+		font-size:14px;
+		float:right;
+		margin-top:10px;
+		margin-right:20px;
+		margin-bottom:4px;
+	}
+
+	.loading-glass-panel
+	{
+		position:fixed;
+		width:100%;
+		height:100%;
+	}
+		
+	.gwt-popup-panel-glass
+	{
+		background-color:rgb(0, 0, 0);
+		opacity:0.8;
+	}
+
+	.loading-popup
+	{
+		position:fixed;
+		display:block;
+    	margin-left:50%;
+    	margin-right:50%;
+    	z-index: 1;
+    	visibility:hidden;
+	}
+
+	</ui:style>
+	<g:HTMLPanel>
+	<d:ChangePasswordViewImpl ui:field="changePasswordPopupPanel" addStyleNames="{style.loading-glass-panel},{style.loading-popup},{style.gwt-popup-panel-glass}" width="500"/>
+	<g:VerticalPanel ui:field="accountDetailsPanel" addStyleNames="{style.accountDetails-panel},{style.center}" horizontalAlignment="center" width="500px">
+		<g:Grid height="37px">
+			<g:row>
+				<g:customCell>
+					<g:Image width="100px" height="50px" altText="logo" ui:field="logo"/>
+				</g:customCell>
+				<g:customCell>
+					<g:Image width="400px" height="50px"/>
+				</g:customCell>
+			</g:row>
+		</g:Grid>
+
+	<g:Label ui:field="viewLabel" addStyleNames="{style.view-label}">Account Details</g:Label>
+	 
+	<g:VerticalPanel horizontalAlignment="center" addStyleNames="{style.accountDetails-form}" height="190px" width="450px" verticalAlignment="ALIGN_TOP">
+		<!-- Grid panel -->
+		<!-- http://www.gwtproject.org/javadoc/latest/com/google/gwt/user/client/ui/Grid.html -->
+		<g:Grid height="142px" width="350px">
+			<g:row height="30px"/>
+				
+			<g:row>
+				<!-- cell only works for html -->
+				<!-- customcell works for widgets -->
+				<g:customCell>
+					<g:Label ui:field="userNameLabel" addStyleNames="{style.accountDetails-label}">User Name:</g:Label>
+				</g:customCell>
+						
+				<g:customCell>
+					<g:Label ui:field="userName" addStyleNames="{style.accountDetails-label}">mj</g:Label>
+				</g:customCell>
+				<g:cell height="10px" width="10px"/>
+			</g:row>
+					
+			<g:row>
+				<g:customCell>
+					<g:Label ui:field="accountTypeLabel" addStyleNames="{style.accountDetails-label}">Account Type:</g:Label>
+				</g:customCell>
+						
+				<g:customCell>
+					<g:Label ui:field="accountType" addStyleNames="{style.accountDetails-label}">Faculty</g:Label>
+				</g:customCell>
+				<g:cell height="10px" width="30px"/>
+			</g:row>
+			
+			<g:row>
+				<g:customCell>
+					<g:Label ui:field="accountStateLabel" addStyleNames="{style.accountDetails-label}">Account State:</g:Label>
+				</g:customCell>
+						
+				<g:customCell>
+					<g:Label ui:field="accountState" addStyleNames="{style.accountDetails-label}">Active</g:Label>
+				</g:customCell>
+				<g:cell height="10px" width="30px"/>
+			</g:row>
+			
+			<g:row>
+				<g:customCell>
+					<g:Label ui:field="wpiIdLabel" addStyleNames="{style.accountDetails-label}">WPI ID:</g:Label>
+				</g:customCell>
+						
+				<g:customCell>
+					<g:Label ui:field="wpiId" addStyleNames="{style.accountDetails-label}">000000000</g:Label>
+				</g:customCell>
+				<g:cell height="10px" width="30px"/>
+			</g:row>
+			
+			<g:row>
+				<g:customCell>
+					<g:Label ui:field="nameLabel" addStyleNames="{style.accountDetails-label}">Name:</g:Label>
+				</g:customCell>
+						
+				<g:customCell>
+					<g:Label ui:field="firstName" addStyleNames="{style.accountDetails-label}">Michael</g:Label>
+				</g:customCell>
+				
+				
+				<g:customCell>
+					<g:Label ui:field="lastName" addStyleNames="{style.accountDetails-label}">Jackson</g:Label>
+				</g:customCell>
+				<g:cell height="80px" width="80px"/>
+				<g:cell height="10px" width="10px"/>
+				<g:cell height="10px" width="10px"/>
+				<g:cell height="10px" width="10px"/>
+				<g:cell height="10px" width="10px"/>
+				<g:cell height="10px" width="10px"/>
+				<g:cell height="10px" width="10px"/>
+				<g:cell height="10px" width="10px"/>
+			</g:row>
+			
+			<g:row>
+				<g:customCell>
+					<g:Label ui:field="emailLabel" addStyleNames="{style.accountDetails-label}">Email:</g:Label>
+				</g:customCell>
+						
+				<g:customCell>
+					<g:Label ui:field="email" addStyleNames="{style.accountDetails-label}">mj@wpi.edu</g:Label>
+				</g:customCell>
+				<g:cell height="10px" width="30px"/>
+			</g:row>
+		</g:Grid>
+			
+		<g:Button ui:field="toChangePasswordButton" addStyleNames="{style.accountDetails-button}">Change Password</g:Button>
+				
+		</g:VerticalPanel>
+	</g:VerticalPanel>
+	</g:HTMLPanel>
+</ui:UiBinder> 

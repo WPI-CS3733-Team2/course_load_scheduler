@@ -1,6 +1,8 @@
 package org.dselent.course_load_scheduler.client;
 
 import org.dselent.course_load_scheduler.client.gin.Injector;
+import org.dselent.course_load_scheduler.client.presenter.impl.AccountDetailsPresenterImpl;
+import org.dselent.course_load_scheduler.client.presenter.impl.ChangePasswordPresenterImpl;
 import org.dselent.course_load_scheduler.client.presenter.impl.AdminCoursePresenterImpl;
 import org.dselent.course_load_scheduler.client.presenter.impl.ConfirmSchedulePresenterImpl;
 import org.dselent.course_load_scheduler.client.presenter.impl.CreateScheduleVisualPresenterImpl;
@@ -15,6 +17,7 @@ import org.dselent.course_load_scheduler.client.presenter.impl.SearchSchedulePre
 import org.dselent.course_load_scheduler.client.presenter.impl.UserSearchPresenterImpl;
 import org.dselent.course_load_scheduler.client.presenter.impl.CreateModifyCoursePresenterImpl;
 import org.dselent.course_load_scheduler.client.view.IndexView;
+import org.dselent.course_load_scheduler.client.view.ScheduleListView;
 
 /*
 import org.dselent.course_load_scheduler.client.view.ConfirmScheduleView;
@@ -78,6 +81,7 @@ public class CourseLoadScheduler implements EntryPoint
 		
 		IndexPresenterImpl indexPresenter = injector.getIndexPresenter(); // on-demand injection
 		indexPresenter.init();
+
 		IndexView indexView = indexPresenter.getView();		
 		
 		indexPresenter.go(root);
@@ -90,7 +94,7 @@ public class CourseLoadScheduler implements EntryPoint
 		indexPresenter.go(root);
 		adminCoursePresenter.go(indexView.getViewRootPanel());
 
-		/*switch (6) {
+		switch (6) {
 
 		case 0:
 			LoginPresenterImpl loginPresenter = injector.getLoginPresenter();
@@ -101,6 +105,7 @@ public class CourseLoadScheduler implements EntryPoint
 			//indexPresenter.go(root);
 			loginPresenter.go(indexView.getViewRootPanel());
 			break;
+
 		case 1:
 			FacultyCourseMappingPresenterImpl facultyCourseMappingPresenter = injector.getFacultyCourseMappingPresenter();
 			facultyCourseMappingPresenter.init();
@@ -122,28 +127,38 @@ public class CourseLoadScheduler implements EntryPoint
 		case 4:
 			ScheduleListPresenterImpl scheduleListPresenter = injector.getScheduleListPresenter();
 			scheduleListPresenter.init();
-			//ScheduleListView scheduleListView = scheduleListPresenter.getView();
+			ScheduleListView scheduleListView = scheduleListPresenter.getView();
 			scheduleListPresenter.go(indexView.getViewRootPanel());
 		break;
 		case 5:
+			AccountDetailsPresenterImpl accountDetailsPresenter = injector.getAccountDetailsPresenter();
+			accountDetailsPresenter.init();
+			indexPresenter.go(root);
+			accountDetailsPresenter.go(indexView.getViewRootPanel());
+		break;
+		case 6:
+			ChangePasswordPresenterImpl changePasswordPresenter = injector.getChangePasswordPresenter();
+			changePasswordPresenter.init();
+			indexPresenter.go(root);
+			changePasswordPresenter.go(indexView.getViewRootPanel());
+		break;
+		case 7:
 			CreateScheduleVisualPresenterImpl createScheduleVisualPresenter = injector.getCreateScheduleVisualPresenter();
 			createScheduleVisualPresenter.init();
 			//CreateScheduleVisualView createScheduleVisualView = createScheduleVisualPresenter.getView();
 			createScheduleVisualPresenter.go(indexView.getViewRootPanel());
-		case 6:
+		case 8:
 			UserSearchPresenterImpl userSearchPresenter = injector.getUserSearchPresenter();
 			userSearchPresenter.init();
 			//UserSearchView userSearchView = injector.getUserSearchView();
 			userSearchPresenter.go(indexView.getViewRootPanel());
 		break;
-		case 7:
+		case 9:
 			ConfirmSchedulePresenterImpl confirmSchedulePresenter = injector.getConfirmSchedulePresenter();
 			confirmSchedulePresenter.init();
 			//ConfirmScheduleView confirmScheduleView = injector.getConfirmScheduleView();
 			confirmSchedulePresenter.go(indexView.getViewRootPanel());
 		break;
-		*/
-		
-			
+		}
 	}
 }
