@@ -5,24 +5,24 @@ import org.dselent.course_load_scheduler.client.event.InvalidLoginEvent;
 import org.dselent.course_load_scheduler.client.event.SendChangePasswordEvent;
 import org.dselent.course_load_scheduler.client.event.SendLoginEvent;
 import org.dselent.course_load_scheduler.client.event.TerminateAccountEvent;
+import org.dselent.course_load_scheduler.client.event.TriggerChangePasswordWindowEvent;
 import org.dselent.course_load_scheduler.client.event.SearchUserEvent;
 import org.dselent.course_load_scheduler.client.event.CreateUserEvent;
 import org.dselent.course_load_scheduler.client.event.CreateScheduleEvent;
 
 /**
- * Adapter class for convenience
- * All classes that need to implement an event handler can extend from this class
- * This allows for presenters or other classes not to implement a large number of handler interfaces
- * Need to register all event handling functions with this class by implementing the handler and
- * overriding with an empty method
+ * Adapter class for convenience All classes that need to implement an event
+ * handler can extend from this class This allows for presenters or other
+ * classes not to implement a large number of handler interfaces Need to
+ * register all event handling functions with this class by implementing the
+ * handler and overriding with an empty method
  * 
  * 
  * 
  */
-public abstract class EventHandlerAdapter
-implements InvalidLoginEventHandler, SendLoginEventHandler, SearchUserEventHandler, 
-	CreateUserEventHandler, TerminateAccountEventHandler, CreateScheduleEventHandler
-{
+public abstract class EventHandlerAdapter implements InvalidLoginEventHandler, SendLoginEventHandler,
+		SearchUserEventHandler, CreateUserEventHandler, TerminateAccountEventHandler, CreateScheduleEventHandler,
+		InvalidChangePasswordEventHandler, SendChangePasswordEventHandler, TriggerChangePasswordWindowEventHandler {
 	@Override
 	public void onInvalidLogin(InvalidLoginEvent evt) {}
 	
