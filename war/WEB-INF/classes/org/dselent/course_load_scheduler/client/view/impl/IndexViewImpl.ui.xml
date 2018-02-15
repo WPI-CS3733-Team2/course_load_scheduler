@@ -30,7 +30,20 @@
 </ui:style>
 
 <g:VerticalPanel>
-	<g:HTMLPanel ui:field="mainPanel"/>
+	<g:DockPanel>
+		<g:Dock direction="CENTER">
+			<g:HTMLPanel ui:field="mainPanel"/>
+		</g:Dock>
+		<g:Dock direction="NORTH">
+			<g:MenuBar>
+				<g:MenuItem text="Account"/>
+				<g:MenuItem text="Schedules"/>
+				<g:MenuItem text="Courses"/>
+				<g:MenuItem text="Users"/>
+				<g:MenuItem text="Requests"/>
+			</g:MenuBar>
+		</g:Dock>
+	</g:DockPanel>
 	<g:Image ui:field="loadingImage" url="WEB-INF/classes/org/dselent/course_load_scheduler/client/view/images/loading.gif" addStyleNames="{style.loading-image}"/>
 	<g:PopupPanel ui:field="glassLoadingPanel" addStyleNames="{style.loading-glass-panel}, {style.gwt-popup-panel-glass}"/>
 </g:VerticalPanel>

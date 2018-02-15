@@ -11,6 +11,7 @@ import org.dselent.course_load_scheduler.client.presenter.impl.SearchSchedulePre
 import org.dselent.course_load_scheduler.client.view.CreateScheduleVisualView;
 import org.dselent.course_load_scheduler.client.presenter.impl.UserSearchPresenterImpl;
 import org.dselent.course_load_scheduler.client.presenter.impl.ConfirmSchedulePresenterImpl;
+import org.dselent.course_load_scheduler.client.presenter.impl.CreateModifyCoursePresenterImpl;
 import org.dselent.course_load_scheduler.client.view.FacultyCourseMappingView;
 import org.dselent.course_load_scheduler.client.view.IndexView;
 import org.dselent.course_load_scheduler.client.view.ScheduleListView;
@@ -74,7 +75,15 @@ public class CourseLoadScheduler implements EntryPoint
 		
 		indexPresenter.go(root);
 
-		switch (6) {
+		CreateModifyCoursePresenterImpl createModifyCoursePresenter = injector.getCreateModifyCoursePresenter();
+		createModifyCoursePresenter.init();
+		// LoginView loginView = loginPresenter.getView();
+
+		// indexPresenter.go(RootPanel.get("indexContainer"));
+		indexPresenter.go(root);
+		createModifyCoursePresenter.go(indexView.getViewRootPanel());
+
+		/*switch (6) {
 		case 0:
 			LoginPresenterImpl loginPresenter = injector.getLoginPresenter();
 			loginPresenter.init();
@@ -125,7 +134,7 @@ public class CourseLoadScheduler implements EntryPoint
 			ConfirmScheduleView confirmScheduleView = injector.getConfirmScheduleView();
 			confirmSchedulePresenter.go(indexView.getViewRootPanel());
 		break;
-		}
+		}*/
 		
 			
 	}
