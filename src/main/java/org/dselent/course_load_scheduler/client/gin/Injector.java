@@ -2,8 +2,10 @@ package org.dselent.course_load_scheduler.client.gin;
 
 import org.dselent.course_load_scheduler.client.presenter.impl.CreateScheduleVisualPresenterImpl;
 import org.dselent.course_load_scheduler.client.presenter.impl.FacultyCourseMappingPresenterImpl;
+import org.dselent.course_load_scheduler.client.presenter.impl.FacultyCoursePresenterImpl;
 import org.dselent.course_load_scheduler.client.presenter.impl.IndexPresenterImpl;
 import org.dselent.course_load_scheduler.client.presenter.impl.LoginPresenterImpl;
+import org.dselent.course_load_scheduler.client.presenter.impl.RequestCoursePresenterImpl;
 import org.dselent.course_load_scheduler.client.presenter.impl.ScheduleListPresenterImpl;
 import org.dselent.course_load_scheduler.client.presenter.impl.ScheduleSpecificsPresenterImpl;
 import org.dselent.course_load_scheduler.client.presenter.impl.SearchSchedulePresenterImpl;
@@ -11,17 +13,21 @@ import org.dselent.course_load_scheduler.client.presenter.impl.UserSearchPresent
 import org.dselent.course_load_scheduler.client.presenter.impl.UserCreatePresenterImpl;
 import org.dselent.course_load_scheduler.client.presenter.impl.UserDetailsPresenterImpl;
 import org.dselent.course_load_scheduler.client.view.impl.CreateScheduleVisualViewImpl;
+import org.dselent.course_load_scheduler.client.presenter.impl.AdminCoursePresenterImpl;
 import org.dselent.course_load_scheduler.client.presenter.impl.ConfirmSchedulePresenterImpl;
 import org.dselent.course_load_scheduler.client.presenter.impl.CreateModifyCoursePresenterImpl;
 import org.dselent.course_load_scheduler.client.view.impl.FacultyCourseMappingViewImpl;
+import org.dselent.course_load_scheduler.client.view.impl.FacultyCourseViewImpl;
 import org.dselent.course_load_scheduler.client.view.impl.IndexViewImpl;
 import org.dselent.course_load_scheduler.client.view.impl.LoginViewImpl;
+import org.dselent.course_load_scheduler.client.view.impl.RequestCourseViewImpl;
 import org.dselent.course_load_scheduler.client.view.impl.ScheduleListViewImpl;
 import org.dselent.course_load_scheduler.client.view.impl.ScheduleSpecificsViewImpl;
 import org.dselent.course_load_scheduler.client.view.impl.SearchScheduleViewImpl;
 import org.dselent.course_load_scheduler.client.view.impl.UserSearchViewImpl;
 import org.dselent.course_load_scheduler.client.view.impl.UserCreateViewImpl;
 import org.dselent.course_load_scheduler.client.view.impl.UserDetailsViewImpl;
+import org.dselent.course_load_scheduler.client.view.impl.AdminCourseViewImpl;
 import org.dselent.course_load_scheduler.client.view.impl.ConfirmScheduleViewImpl;
 import org.dselent.course_load_scheduler.client.view.impl.CreateModifyCourseViewImpl;
 
@@ -63,6 +69,9 @@ public interface Injector extends Ginjector
     public CreateScheduleVisualPresenterImpl getCreateScheduleVisualPresenter();
     public ConfirmSchedulePresenterImpl getConfirmSchedulePresenter();
     public CreateModifyCoursePresenterImpl getCreateModifyCoursePresenter();
+    public AdminCoursePresenterImpl getAdminCoursePresenter();
+    public FacultyCoursePresenterImpl getFacultyCoursePresenter();
+    public RequestCoursePresenterImpl getRequestCoursePresenter();
          
     //views
     public IndexViewImpl getIndexView();
@@ -77,4 +86,8 @@ public interface Injector extends Ginjector
     public CreateScheduleVisualViewImpl getCreateScheduleVisualView();
     public ConfirmScheduleViewImpl getConfirmScheduleView();
     public CreateModifyCourseViewImpl getCreateModifyCourseView();
+    public AdminCourseViewImpl getAdminCourseView();
+    public FacultyCourseViewImpl getFacultyCourseView();
+    public RequestCourseViewImpl getRequestCourseView();
+
 }

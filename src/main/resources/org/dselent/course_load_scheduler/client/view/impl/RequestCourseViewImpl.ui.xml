@@ -4,13 +4,7 @@
 	<ui:style>
 	
 	</ui:style>
-	<g:HTMLPanel>
-		<g:MenuBar>
-			<g:MenuItem text="Account"/>
-			<g:MenuItem text="Schedules"/>
-			<g:MenuItem text="Courses"/>
-			<g:MenuItem text="Users"/>
-		</g:MenuBar>
+	<g:HTMLPanel ui:field="requestCoursePanel">
 		<g:Grid>
 			<g:row/>
 			<g:row>
@@ -18,13 +12,13 @@
 					<g:Label text="Course Name:"/>
 				</g:customCell>
 				<g:customCell>
-					<g:TextBox/>
+					<g:TextBox ui:field="courseNameTextBox"/>
 				</g:customCell>
 				<g:customCell>
 					<g:Label text="Course Number:"/>
 				</g:customCell>
 				<g:customCell>
-					<g:TextBox/>
+					<g:TextBox ui:field="courseNumberTextBox"/>
 				</g:customCell>
 			</g:row>
 			<g:row/>
@@ -37,7 +31,7 @@
 							<g:customCell>
 								<g:VerticalPanel height="22px">
 									<g:Label text="Terms"/>
-									<g:SimpleCheckBox width="28px" height="25px"/>
+									<g:SimpleCheckBox width="28px" height="25px" ui:field="termCheckBox"/>
 								</g:VerticalPanel>
 							</g:customCell>
 						</g:row>
@@ -45,7 +39,7 @@
 				</g:customCell>
 				<g:customCell>
 					<g:FlowPanel width="247px">
-						<p1:CellTable ui:field="cellTable" height="50px" pageSize="1"/>
+						<p1:CellTable ui:field="sectionTable" height="50px" pageSize="1"/>
 					</g:FlowPanel>
 				</g:customCell>
 				<g:customCell>
@@ -55,42 +49,42 @@
 					<g:Grid>
 						<g:row>
 							<g:customCell>
-								<g:CheckBox text="8:00 AM - 9:00 AM"/>
+								<g:CheckBox text="8:00 AM - 9:00 AM" ui:field="eightToNineCB"/>
 							</g:customCell>
 							<g:customCell>
-								<g:CheckBox text="9:00 AM - 10:00 AM"/>
-							</g:customCell>
-						</g:row>
-						<g:row>
-							<g:customCell>
-								<g:CheckBox text="10:00 AM - 11:00 AM"/>
-							</g:customCell>
-							<g:customCell>
-								<g:CheckBox text="11:00 AM - 12:00 PM"/>
+								<g:CheckBox text="9:00 AM - 10:00 AM" ui:field="nineToTenCB"/>
 							</g:customCell>
 						</g:row>
 						<g:row>
 							<g:customCell>
-								<g:CheckBox text="12:00 PM - 1:00 PM"/>
+								<g:CheckBox text="10:00 AM - 11:00 AM" ui:field="tenToElevenCB"/>
 							</g:customCell>
 							<g:customCell>
-								<g:CheckBox text="1:00 PM - 2:00 PM"/>
-							</g:customCell>
-						</g:row>
-						<g:row>
-							<g:customCell>
-								<g:CheckBox text="2:00 PM - 3: 00 PM"/>
-							</g:customCell>
-							<g:customCell>
-								<g:CheckBox text="3:00 PM - 4:00 PM"/>
+								<g:CheckBox text="11:00 AM - 12:00 PM" ui:field="elevenToTwelveCB"/>
 							</g:customCell>
 						</g:row>
 						<g:row>
 							<g:customCell>
-								<g:CheckBox text="4:00 PM - 5:00 PM"/>
+								<g:CheckBox text="12:00 PM - 1:00 PM" ui:field="twelveToOneCB"/>
 							</g:customCell>
 							<g:customCell>
-								<g:CheckBox text="5:00 PM - 6:00 PM"/>
+								<g:CheckBox text="1:00 PM - 2:00 PM" ui:field="oneToTwoCB"/>
+							</g:customCell>
+						</g:row>
+						<g:row>
+							<g:customCell>
+								<g:CheckBox text="2:00 PM - 3: 00 PM" ui:field="twoToThreeCB"/>
+							</g:customCell>
+							<g:customCell>
+								<g:CheckBox text="3:00 PM - 4:00 PM" ui:field="threeToFourCB"/>
+							</g:customCell>
+						</g:row>
+						<g:row>
+							<g:customCell>
+								<g:CheckBox text="4:00 PM - 5:00 PM" ui:field="fourToFiveCB"/>
+							</g:customCell>
+							<g:customCell>
+								<g:CheckBox text="5:00 PM - 6:00 PM" ui:field="fiveToSixCB"/>
 							</g:customCell>
 						</g:row>
 					</g:Grid>
@@ -102,12 +96,12 @@
 			<g:row>
 				<g:customCell>
 					<g:FlowPanel width="558px">
-						<g:Button width="75px">Cancel</g:Button>
+						<g:Button width="75px" ui:field="cancelBtn">Cancel</g:Button>
 					</g:FlowPanel>
 				</g:customCell>
 				<g:customCell>
 					<g:FlowPanel>
-						<g:Button ui:field="button" width="75px">Submit</g:Button>
+						<g:Button ui:field="submitBtn" width="75px">Submit</g:Button>
 					</g:FlowPanel>
 				</g:customCell>
 			</g:row>

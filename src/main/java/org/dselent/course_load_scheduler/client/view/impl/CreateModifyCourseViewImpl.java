@@ -147,8 +147,7 @@ public class CreateModifyCourseViewImpl extends BaseViewImpl<CreateModifyCourseP
 
 	@Override
 	public void setPresenter(CreateModifyCoursePresenter presenter) {
-		// TODO Auto-generated method stub
-		
+		this.presenter = presenter;
 	}
 
 }

@@ -1,30 +1,64 @@
 package org.dselent.course_load_scheduler.client.view.impl;
 
+import org.dselent.course_load_scheduler.client.presenter.FacultyCoursePresenter;
+import org.dselent.course_load_scheduler.client.view.FacultyCourseView;
+
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.uibinder.client.UiBinder;
-import com.google.gwt.user.client.ui.Composite;
 import com.google.gwt.user.client.ui.Widget;
 import com.google.gwt.uibinder.client.UiField;
-import com.google.gwt.user.cellview.client.CellTable;
 import com.google.gwt.user.cellview.client.DataGrid;
+import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.ui.Button;
 import com.google.gwt.uibinder.client.UiHandler;
 import com.google.gwt.event.dom.client.ClickEvent;
+import com.google.gwt.user.client.ui.TextBox;
+import com.google.gwt.user.client.ui.HTMLPanel;
+import com.google.gwt.user.client.ui.HasWidgets;
+import com.google.gwt.user.client.ui.Label;
 
-public class FacultyCourseViewImpl extends Composite {
+public class FacultyCourseViewImpl extends BaseViewImpl<FacultyCoursePresenter> implements FacultyCourseView {
 
-	private static CourseViewImplUiBinder uiBinder = GWT.create(CourseViewImplUiBinder.class);
-	@UiField(provided=true) DataGrid<Object> dataGrid = new DataGrid<Object>();
-	@UiField Button button;
+	private static FacultyCourseViewImplUiBinder uiBinder = GWT.create(FacultyCourseViewImplUiBinder.class);
+	@UiField(provided=true) DataGrid<Object> sectionGrid = new DataGrid<Object>();
+	@UiField Button requestCourseBtn;
+	@UiField TextBox searchCourseTextBox;
+	@UiField HTMLPanel facultyCoursePanel;
+	@UiField Label courseNameLabel;
+	@UiField Label courseNumberLabel;
 
-	interface CourseViewImplUiBinder extends UiBinder<Widget, FacultyCourseViewImpl> {
+	interface FacultyCourseViewImplUiBinder extends UiBinder<Widget, FacultyCourseViewImpl> {
 	}
 
 	public FacultyCourseViewImpl() {
 		initWidget(uiBinder.createAndBindUi(this));
 	}
 
-	@UiHandler("button")
-	void onButtonClick(ClickEvent event) {
+	@UiHandler("requestCourseBtn")
+	void onRequestCourseBtnClick(ClickEvent event) {
 	}
+
+	@Override
+	public void showErrorMessages(String errorMessages)
+	{
+		Window.alert(errorMessages);
+	}
+	
+	@Override
+	public Widget getWidgetContainer()
+	{
+		return this;
+	}
+	
+	@Override
+	public HasWidgets getViewRootPanel()
+	{
+		return facultyCoursePanel;
+	}
+
+	@Override
+	public void setPresenter(FacultyCoursePresenter presenter) {
+		this.presenter = presenter;
+	}
+
 }

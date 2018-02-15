@@ -1,11 +1,14 @@
 package org.dselent.course_load_scheduler.client;
 
 import org.dselent.course_load_scheduler.client.gin.Injector;
+import org.dselent.course_load_scheduler.client.presenter.impl.AdminCoursePresenterImpl;
 import org.dselent.course_load_scheduler.client.presenter.impl.ConfirmSchedulePresenterImpl;
 import org.dselent.course_load_scheduler.client.presenter.impl.CreateScheduleVisualPresenterImpl;
 import org.dselent.course_load_scheduler.client.presenter.impl.FacultyCourseMappingPresenterImpl;
+import org.dselent.course_load_scheduler.client.presenter.impl.FacultyCoursePresenterImpl;
 import org.dselent.course_load_scheduler.client.presenter.impl.IndexPresenterImpl;
 import org.dselent.course_load_scheduler.client.presenter.impl.LoginPresenterImpl;
+import org.dselent.course_load_scheduler.client.presenter.impl.RequestCoursePresenterImpl;
 import org.dselent.course_load_scheduler.client.presenter.impl.ScheduleListPresenterImpl;
 import org.dselent.course_load_scheduler.client.presenter.impl.ScheduleSpecificsPresenterImpl;
 import org.dselent.course_load_scheduler.client.presenter.impl.SearchSchedulePresenterImpl;
@@ -79,13 +82,13 @@ public class CourseLoadScheduler implements EntryPoint
 		
 		indexPresenter.go(root);
 
-		CreateModifyCoursePresenterImpl createModifyCoursePresenter = injector.getCreateModifyCoursePresenter();
-		createModifyCoursePresenter.init();
+		RequestCoursePresenterImpl requestCoursePresenter = injector.getRequestCoursePresenter();
+		requestCoursePresenter.init();
 		// LoginView loginView = loginPresenter.getView();
 
 		// indexPresenter.go(RootPanel.get("indexContainer"));
 		indexPresenter.go(root);
-		createModifyCoursePresenter.go(indexView.getViewRootPanel());
+		requestCoursePresenter.go(indexView.getViewRootPanel());
 
 		/*switch (6) {
 

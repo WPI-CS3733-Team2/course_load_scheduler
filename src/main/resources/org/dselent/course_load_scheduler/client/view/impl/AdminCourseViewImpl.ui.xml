@@ -4,30 +4,24 @@
 	<ui:style>
 	
 	</ui:style>
-	<g:HTMLPanel>
-		<g:MenuBar>
-			<g:MenuItem text="Account"/>
-			<g:MenuItem text="Schedules"/>
-			<g:MenuItem text="Courses"/>
-			<g:MenuItem text="Users"/>
-		</g:MenuBar>
+	<g:HTMLPanel ui:field="adminCoursePanel">
 		<g:Grid>
 			<g:row/>
 			<g:row>
 				<g:customCell>
-					<g:Button text="Add Course"/>
+					<g:Button text="Add Course" ui:field="addCourseBtn"/>
 				</g:customCell>
 				<g:customCell>
 					<g:Label text="Search Course:"/>
 				</g:customCell>
 				<g:customCell>
-					<g:TextBox/>
+					<g:TextBox ui:field="searchCourseTxtBox"/>
 				</g:customCell>
 			</g:row>
 			<g:row/>
 		</g:Grid>
 		<g:FlowPanel height="214px">
-			<g:DecoratorPanel>
+			<g:DecoratorPanel ui:field="coursePanel">
 				<g:Grid>
 					<g:row>
 						<g:customCell>
@@ -44,7 +38,7 @@
 							<p1:DataGrid width="326px" height="106px" ui:field="dataGrid" rowCount="3" pageSize="3"/>
 						</g:customCell>
 						<g:customCell>
-							<g:Button text="Modify" width="72px"/>
+							<g:Button text="Modify" width="72px" ui:field="modifyCourseBtn"/>
 						</g:customCell>
 					</g:row>
 				</g:Grid>
