@@ -1,5 +1,7 @@
 package org.dselent.course_load_scheduler.client.view.impl;
 
+import org.dselent.course_load_scheduler.client.action.InvalidChangePasswordAction;
+import org.dselent.course_load_scheduler.client.event.InvalidChangePasswordEvent;
 import org.dselent.course_load_scheduler.client.gin.Injector;
 import org.dselent.course_load_scheduler.client.presenter.AccountDetailsPresenter;
 import org.dselent.course_load_scheduler.client.presenter.BasePresenter;
@@ -148,6 +150,7 @@ public class IndexViewImpl extends BaseViewImpl<IndexPresenter> implements Index
 				else {
 					coursePresenter = injector.getAdminCoursePresenter();
 				}
+				
 				
 				coursePresenter.go(indexView.getViewRootPanel());
 				
