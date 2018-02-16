@@ -147,25 +147,6 @@
 	</ui:style>
 	<g:HTMLPanel>
 	<g:VerticalPanel ui:field="RequestInboxPanel" addStyleNames="{style.accountDetails-panel},{style.center}" horizontalAlignment="center" width="1028px" height="547px">
-		<g:Grid width="1028px" height="75px" addStyleNames="{style.grid_tab}">
-			<g:row>
-				<g:customCell>
-					<g:Button text="Account" ui:field="AccountButton" addStyleNames="{style.button},{style.button_pos},{style.button_type}" width="92px"></g:Button>
-				</g:customCell>
-				<g:customCell>
-					<g:Button text="Cources" ui:field="CourcesButton" addStyleNames="{style.button},{style.button_pos},{style.button_type}" width="97px"></g:Button>
-				</g:customCell>
-				<g:customCell>
-					<g:Button text="Schedules" ui:field="SchedulesButton" addStyleNames="{style.button},{style.button_pos},{style.button_type}" width="112px"></g:Button>
-				</g:customCell>
-				<g:customCell>
-					<g:Button text="Users" ui:field="UsersButton" addStyleNames="{style.button},{style.button_pos},{style.button_type}" width="78px"></g:Button>
-				</g:customCell>
-				<g:customCell>
-					<g:Button text="Inbox" ui:field="InboxButton" addStyleNames="{style.button},{style.button_pos},{style.button_type}" width="108px"></g:Button>
-				</g:customCell>
-			</g:row>
-		</g:Grid>
 		<g:Grid addStyleNames="{style.grid_inbox_tab}">
 			<g:row>
 				<g:customCell>
