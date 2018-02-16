@@ -15,6 +15,8 @@ import org.dselent.course_load_scheduler.client.presenter.ConfirmSchedulePresent
 import org.dselent.course_load_scheduler.client.view.ConfirmScheduleView;
 import org.dselent.course_load_scheduler.client.view.LoginView;
 import org.dselent.course_load_scheduler.client.model.Schedule;
+
+import com.google.gwt.core.client.GWT;
 //import org.dselent.course_load_scheduler.client.view.TextBox;
 import com.google.gwt.event.shared.HandlerRegistration;
 
@@ -79,13 +81,14 @@ public class ConfirmSchedulePresenterImpl extends BasePresenterImpl implements C
 	//Uses data provided in previous pages
 	@Override
 	public void createSchedule() {
+		GWT.log("in ConfirmSchedulePresenterImpl.createSchedule");
 		//Create schedule
 		//Should use schedule model
 		if(!scheduleCreationInProgress)
 		{
 			scheduleCreationInProgress = true;
 			view.getConfirmScheduleButton().setEnabled(false);
-			parentPresenter.showLoadScreen();
+			//parentPresenter.showLoadScreen();
 			
 			String scheduleName = view.getScheduleNameBox().getText();
 			//String password = view.getPasswordTextBox().getText();
@@ -117,7 +120,7 @@ public class ConfirmSchedulePresenterImpl extends BasePresenterImpl implements C
 			}
 			else
 			{
-				parentPresenter.hideLoadScreen();
+				//parentPresenter.hideLoadScreen();
 				view.getConfirmScheduleButton().setEnabled(true);
 				scheduleCreationInProgress = false;
 				

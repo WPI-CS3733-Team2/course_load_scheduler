@@ -3,3 +3,4 @@
 /.settings
 /war/WEB-INF/deploy
 /.gwt
+.gwt/.gwt-log

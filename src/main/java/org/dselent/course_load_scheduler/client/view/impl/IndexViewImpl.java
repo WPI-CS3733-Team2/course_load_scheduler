@@ -1,10 +1,9 @@
 package org.dselent.course_load_scheduler.client.view.impl;
 
-import org.dselent.course_load_scheduler.client.action.InvalidChangePasswordAction;
-import org.dselent.course_load_scheduler.client.event.InvalidChangePasswordEvent;
 import org.dselent.course_load_scheduler.client.gin.Injector;
 import org.dselent.course_load_scheduler.client.presenter.AccountDetailsPresenter;
 import org.dselent.course_load_scheduler.client.presenter.BasePresenter;
+import org.dselent.course_load_scheduler.client.presenter.CreateSchedulePresenter;
 import org.dselent.course_load_scheduler.client.presenter.IndexPresenter;
 import org.dselent.course_load_scheduler.client.presenter.RequestInboxPresenter;
 import org.dselent.course_load_scheduler.client.presenter.ScheduleListPresenter;
@@ -49,8 +48,6 @@ public class IndexViewImpl extends BaseViewImpl<IndexPresenter> implements Index
 	MenuItem searchScheduleMenuItem;
 	@UiField
 	MenuItem createScheduleMenuItem;
-	@UiField
-	MenuItem modifyScheduleMenuItem;
 	@UiField
 	MenuItem coursesMenuItem;
 	@UiField
@@ -117,23 +114,12 @@ public class IndexViewImpl extends BaseViewImpl<IndexPresenter> implements Index
 				IndexPresenterImpl indexPresenter = injector.getIndexPresenter(); // on-demand injection
 				IndexView indexView = indexPresenter.getView();		
 				
-				// TODO : create schedule first page 
+				CreateSchedulePresenter createSchedulePresenter = injector.getCreateSchedulePresenter();
+				createSchedulePresenter.go(indexView.getViewRootPanel());
 				
 			}
 		});
 		
-		modifyScheduleMenuItem.setScheduledCommand(new Command() {
-			@Override
-			public void execute() {	
-				final Injector injector = Injector.INSTANCE;
-				
-				IndexPresenterImpl indexPresenter = injector.getIndexPresenter(); // on-demand injection
-				IndexView indexView = indexPresenter.getView();		
-				
-				// TODO : modify schedule first page 
-				
-			}
-		});
 		
 		coursesMenuItem.setScheduledCommand(new Command() {
 			@Override

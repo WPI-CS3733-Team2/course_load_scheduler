@@ -1,7 +1,13 @@
 package org.dselent.course_load_scheduler.client.view.impl;
 
+import org.dselent.course_load_scheduler.client.gin.Injector;
+import org.dselent.course_load_scheduler.client.model.Calendar;
 import org.dselent.course_load_scheduler.client.presenter.CreateSchedulePresenter;
+import org.dselent.course_load_scheduler.client.presenter.impl.CreateScheduleVisualPresenterImpl;
+import org.dselent.course_load_scheduler.client.presenter.impl.IndexPresenterImpl;
+import org.dselent.course_load_scheduler.client.presenter.impl.ScheduleSpecificsPresenterImpl;
 import org.dselent.course_load_scheduler.client.view.CreateScheduleView;
+import org.dselent.course_load_scheduler.client.view.IndexView;
 
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.event.dom.client.ClickEvent;
@@ -70,5 +76,13 @@ public class CreateScheduleViewImpl extends BaseViewImpl<CreateSchedulePresenter
 
 	@UiHandler("nextButton")
 	void onButtonClick(ClickEvent event) {
+		final Injector injector = Injector.INSTANCE;
+		
+		IndexPresenterImpl indexPresenter = injector.getIndexPresenter(); // on-demand injection
+		IndexView indexView = indexPresenter.getView();		
+
+
+		CreateScheduleVisualPresenterImpl createScheduleVisualPresenter = injector.getCreateScheduleVisualPresenter();
+		createScheduleVisualPresenter.go(indexView.getViewRootPanel());
 	}
 }

@@ -9,16 +9,10 @@
 			<g:row/>
 			<g:row>
 				<g:customCell>
-					<g:Label text="Course Name:"/>
+					<g:Label text="Course Name" ui:field="courseNameLabel"/>
 				</g:customCell>
 				<g:customCell>
-					<g:TextBox ui:field="courseNameTextBox"/>
-				</g:customCell>
-				<g:customCell>
-					<g:Label text="Course Number:"/>
-				</g:customCell>
-				<g:customCell>
-					<g:TextBox ui:field="courseNumberTextBox"/>
+					<g:Label text="Course Number" ui:field="courseNumberLabel"/>
 				</g:customCell>
 			</g:row>
 			<g:row/>
@@ -26,13 +20,15 @@
 		<g:Grid>
 			<g:row>
 				<g:customCell>
-					<g:Grid>
+					<g:Grid ui:field="checkBoxGrid">
 						<g:row>
 							<g:customCell>
-								<g:VerticalPanel height="22px">
-									<g:Label text="Terms"/>
-									<g:SimpleCheckBox width="28px" height="25px" ui:field="termCheckBox"/>
-								</g:VerticalPanel>
+								<g:Label text="Terms"/>
+							</g:customCell>
+						</g:row>
+						<g:row>
+							<g:customCell>
+								<g:SimpleCheckBox width="28px" height="25px" ui:field="termCheckBox"/>
 							</g:customCell>
 						</g:row>
 					</g:Grid>

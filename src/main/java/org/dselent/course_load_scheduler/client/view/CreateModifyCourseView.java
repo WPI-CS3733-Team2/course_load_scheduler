@@ -1,5 +1,7 @@
 package org.dselent.course_load_scheduler.client.view;
 
+import java.util.List;
+
 import org.dselent.course_load_scheduler.client.model.Section;
 import org.dselent.course_load_scheduler.client.presenter.CreateModifyCoursePresenter;
 
@@ -7,18 +9,19 @@ import com.google.gwt.user.cellview.client.CellTable;
 import com.google.gwt.user.client.ui.FlowPanel;
 import com.google.gwt.user.client.ui.HasWidgets;
 import com.google.gwt.user.client.ui.Widget;
+import com.google.gwt.view.client.SelectionModel;
 import com.google.gwt.user.client.ui.TextBox;
 
 public interface CreateModifyCourseView extends BaseView<CreateModifyCoursePresenter> {
 	
-	public FlowPanel getSectionsGridPanel();
+	public CellTable<Section> getSectionTable();
 
-	public void setSectionsGridPanel(FlowPanel sectionsGridPanel);
+	public void setSectionTable(CellTable<Section> sectionTable);
 	
-	public void addTableToSectionsGridPanel(CellTable<Section> ct);
+	public void addRowsToSectionTable(List<Section> sections);
 	
-	public void clearSectionsGridPanel();
-	
+	public void setSectionTableSelectionModel(SelectionModel<Section> selectionModel);
+		
 	public TextBox getCourseNameTextBox();
 
 	public void setCourseNameTextBox(TextBox courseNameTextBox);

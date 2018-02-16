@@ -2,6 +2,7 @@ package org.dselent.course_load_scheduler.client.view.impl;
 
 import org.dselent.course_load_scheduler.client.gin.Injector;
 import org.dselent.course_load_scheduler.client.presenter.CreateScheduleVisualPresenter;
+import org.dselent.course_load_scheduler.client.presenter.impl.CreateScheduleAddFacultyPresenterImpl;
 import org.dselent.course_load_scheduler.client.presenter.impl.IndexPresenterImpl;
 import org.dselent.course_load_scheduler.client.view.CreateScheduleVisualView;
 import org.dselent.course_load_scheduler.client.view.IndexView;
@@ -15,7 +16,6 @@ import com.google.gwt.uibinder.client.UiHandler;
 import com.google.gwt.user.client.ui.Button;
 import com.google.gwt.user.client.ui.HasWidgets;
 import com.google.gwt.user.client.ui.Widget;
-import com.google.gwt.user.client.ui.ListBox;
 import com.google.gwt.user.client.ui.TabBar;
 import com.google.gwt.user.client.ui.Label;
 import com.google.gwt.user.client.ui.Grid;
@@ -26,7 +26,6 @@ public class CreateScheduleVisualViewImpl extends BaseViewImpl<CreateScheduleVis
 
 	private static CreateScheduleVisualViewImplUiBinder uiBinder = GWT
 			.create(CreateScheduleVisualViewImplUiBinder.class);
-	@UiField ListBox navDropDown;
 	@UiField Label confirmLabel;
 	@UiField Grid scheduleGrid;
 	@UiField Button nextPageButton;
@@ -47,14 +46,6 @@ public class CreateScheduleVisualViewImpl extends BaseViewImpl<CreateScheduleVis
 
 	public void setCalendarTabs(TabBar calendarTabs) {
 		this.calendarTabs = calendarTabs;
-	}
-
-	public ListBox getNavDropDown() {
-		return navDropDown;
-	}
-
-	public void setNavDropDown(ListBox navDropDown) {
-		this.navDropDown = navDropDown;
 	}
 
 	public Label getConfirmLabel() {
@@ -160,8 +151,9 @@ public class CreateScheduleVisualViewImpl extends BaseViewImpl<CreateScheduleVis
 		
 		IndexPresenterImpl indexPresenter = injector.getIndexPresenter(); // on-demand injection
 		IndexView indexView = indexPresenter.getView();		
-		
-		// TODO : link to the choose faculty page
+
+		CreateScheduleAddFacultyPresenterImpl createScheduleAddFacultyPresenter = injector.getCreateScheduleAddFacultyPresenter();
+		createScheduleAddFacultyPresenter.go(indexView.getViewRootPanel());
 	}
 	
 }

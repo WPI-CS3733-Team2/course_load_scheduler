@@ -1,5 +1,7 @@
 package org.dselent.course_load_scheduler.client.view.impl;
 
+import java.util.List;
+
 import org.dselent.course_load_scheduler.client.gin.Injector;
 import org.dselent.course_load_scheduler.client.model.Section;
 import org.dselent.course_load_scheduler.client.presenter.CreateModifyCoursePresenter;
@@ -12,15 +14,16 @@ import com.google.gwt.core.client.GWT;
 import com.google.gwt.uibinder.client.UiBinder;
 import com.google.gwt.user.client.ui.HasWidgets;
 import com.google.gwt.user.client.ui.Widget;
+import com.google.gwt.view.client.SelectionModel;
 import com.google.gwt.uibinder.client.UiField;
 import com.google.gwt.user.cellview.client.CellTable;
+import com.google.gwt.user.cellview.client.TextColumn;
 import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.ui.Button;
 import com.google.gwt.uibinder.client.UiHandler;
 import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.user.client.ui.TextBox;
 import com.google.gwt.user.client.ui.HTMLPanel;
-import com.google.gwt.user.client.ui.FlowPanel;
 
 public class CreateModifyCourseViewImpl extends BaseViewImpl<CreateModifyCoursePresenter>
 		implements CreateModifyCourseView {
@@ -50,22 +53,24 @@ public class CreateModifyCourseViewImpl extends BaseViewImpl<CreateModifyCourseP
 	@UiField
 	HTMLPanel createModifyPanel;
 	@UiField
-	FlowPanel sectionsGridPanel;
+	CellTable<Section> sectionTable;
 
-	public FlowPanel getSectionsGridPanel() {
-		return sectionsGridPanel;
+	public CellTable<Section> getSectionTable() {
+		return sectionTable;
 	}
 
-	public void setSectionsGridPanel(FlowPanel sectionsGridPanel) {
-		this.sectionsGridPanel = sectionsGridPanel;
+	public void setSectionTable(CellTable<Section> sectionTable) {
+		this.sectionTable = sectionTable;
 	}
 	
-	public void addTableToSectionsGridPanel(CellTable<Section> ct) {
-		sectionsGridPanel.add(ct);
+	public void addRowsToSectionTable(List<Section> sections) {
+		int rowCount = sectionTable.getRowCount();
+		sectionTable.setRowCount(rowCount + sections.size(), true);
+		sectionTable.setRowData(rowCount, sections);
 	}
 	
-	public void clearSectionsGridPanel() {
-		sectionsGridPanel.clear();
+	public void setSectionTableSelectionModel(SelectionModel<Section> selectionModel) {
+		sectionTable.setSelectionModel(selectionModel);
 	}
 
 	interface CreateModifyCourseViewImplUiBinder extends UiBinder<Widget, CreateModifyCourseViewImpl> {
@@ -169,19 +174,62 @@ public class CreateModifyCourseViewImpl extends BaseViewImpl<CreateModifyCourseP
 	}
 	
 	public void setFreqTextBoxText(String text) {
-		this.crnTextBox.setText(text);
+		this.freqTextBox.setText(text);
 	}
 
 	public CreateModifyCourseViewImpl() {
 		initWidget(uiBinder.createAndBindUi(this));
+		
+		sectionTable.setRowCount(0);
+		TextColumn<Section> nameColumn = new TextColumn<Section>() {
+			@Override
+			public String getValue(Section object) {
+				return object.getSectionName();
+			}
+		};
+		sectionTable.addColumn(nameColumn, "Name");
+
+		TextColumn<Section> crnColumn = new TextColumn<Section>() {
+			@Override
+			public String getValue(Section object) {
+				return Integer.toString(object.getCrn());
+			}
+		};
+		sectionTable.addColumn(crnColumn, "CRN");
+
+		TextColumn<Section> typeColumn = new TextColumn<Section>() {
+			@Override
+			public String getValue(Section object) {
+				return object.getType();
+			}
+		};
+		sectionTable.addColumn(typeColumn, "Type");
+
+		TextColumn<Section> populationColumn = new TextColumn<Section>() {
+			@Override
+			public String getValue(Section object) {
+				return Integer.toString(object.getExpectedPopulation());
+			}
+		};
+		sectionTable.addColumn(populationColumn, "Population");
+
+		TextColumn<Section> frequencyColumn = new TextColumn<Section>() {
+			@Override
+			public String getValue(Section object) {
+				return Integer.toString(object.getFrequency());
+			}
+		};
+		sectionTable.addColumn(frequencyColumn, "Frequency");
 	}
 
 	@UiHandler("removeSectionBtn")
 	void onRemoveSectionBtnClick(ClickEvent event) {
+		this.presenter.removeSection();
 	}
 
 	@UiHandler("addSectionBtn")
 	void onAddSectionBtnClick(ClickEvent event) {
+		this.presenter.addSection();
 	}
 
 	@UiHandler("closeBtn")
@@ -200,6 +248,8 @@ public class CreateModifyCourseViewImpl extends BaseViewImpl<CreateModifyCourseP
 
 	@UiHandler("submitBtn")
 	void onSubmitBtnClick(ClickEvent event) {
+		this.presenter.createModifyCourseSubmit();
+		
 		this.presenter.clearForm();
 		
 		final Injector injector = Injector.INSTANCE;

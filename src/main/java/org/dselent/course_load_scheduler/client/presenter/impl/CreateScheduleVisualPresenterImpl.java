@@ -27,7 +27,6 @@ public class CreateScheduleVisualPresenterImpl extends BasePresenterImpl impleme
 		this.view = view;
 		this.parentPresenter = parentPresenter;
 		view.setPresenter(this);
-		this.insertDropDown();
 		
 		Calendar calendar1 = new Calendar();
 		calendar1.setId(1);
@@ -57,13 +56,6 @@ public class CreateScheduleVisualPresenterImpl extends BasePresenterImpl impleme
 		calendar3.setEnd_time("10:50");
 		calendars.add(calendar3);
 	
-	}
-	
-	public void insertDropDown() {
-		view.getNavDropDown().insertItem("View Schedule", 1);
-		view.getNavDropDown().insertItem("Search Schedule", 2);
-		view.getNavDropDown().insertItem("Create Schedule", 3);
-		view.getNavDropDown().insertItem("Modify Schedule", 4);
 	}
 	
 	@Override
