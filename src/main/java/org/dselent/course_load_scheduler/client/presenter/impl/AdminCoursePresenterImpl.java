@@ -4,6 +4,10 @@ package org.dselent.course_load_scheduler.client.presenter.impl;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.dselent.course_load_scheduler.client.action.InvalidLoginAction;
+import org.dselent.course_load_scheduler.client.action.ModifyCourseAction;
+import org.dselent.course_load_scheduler.client.event.InvalidLoginEvent;
+import org.dselent.course_load_scheduler.client.event.ModifyCourseEvent;
 import org.dselent.course_load_scheduler.client.gin.Injector;
 import org.dselent.course_load_scheduler.client.model.Course;
 import org.dselent.course_load_scheduler.client.model.Section;
@@ -150,10 +154,15 @@ public class AdminCoursePresenterImpl extends BasePresenterImpl implements Admin
 			courseSections.setWidth("500px");
 
 			Button modifyCourseButton = new Button("Modify");
+			//Course thisCourse = courses.get(i);
+			
 			modifyCourseButton.addClickHandler(new ClickHandler() {
-				
 				@Override
 				public void onClick(ClickEvent event) {
+					ModifyCourseAction mca = new ModifyCourseAction(new Course());
+					ModifyCourseEvent mce = new ModifyCourseEvent(mca);
+					eventBus.fireEvent(mce);
+					
 					final Injector injector = Injector.INSTANCE;
 
 					IndexPresenterImpl indexPresenter = injector.getIndexPresenter(); // on-demand injection

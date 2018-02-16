@@ -1,0 +1,52 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
+	xmlns:g="urn:import:com.google.gwt.user.client.ui">
+	<ui:style>
+	.select_course-label
+	{
+		font-family:Calibri;
+		font-size:20px;
+		color:rgb(0, 0, 0);
+	}
+
+	.search-textbox
+	{
+		position: relative;
+		width:50%;
+		margin-left:5%;
+	}
+
+	.course-checkBox
+	{
+		position: relative;
+		margin-left:5%;
+		margin-bottom:10%;
+	}
+
+	.next-button
+	{
+		position: relative;
+		margin-left:90%;
+	}
+	</ui:style>
+	<g:HTMLPanel>
+		<g:VerticalPanel ui:field="createSchedulePanel">
+		<g:ListBox ui:field="navDropDown" width="740px"/>
+		<g:FlowPanel>
+			<g:Label text="Select Courses:" width="166px" addStyleNames="{style.select_course-label}"/>
+			<g:TextBox ui:field="searchTextBox" addStyleNames="{style.search-textbox}" width="644px" text="Search for courses..."/>
+		</g:FlowPanel>
+			<g:FlowPanel>
+				<g:VerticalPanel width="740px" height="257px">
+					<g:CheckBox text="CS 1101" width="109px" addStyleNames="{style.course-checkBox}"/>
+					<g:CheckBox text="CS 2011" width="109px" addStyleNames="{style.course-checkBox}"/>
+					<g:CheckBox text="CS 3000" width="109px" addStyleNames="{style.course-checkBox}"/>
+					<g:CheckBox text="CS 3700" width="109px" addStyleNames="{style.course-checkBox}"/>
+					<g:CheckBox text="CS 3733" width="109px" addStyleNames="{style.course-checkBox}"/>
+				</g:VerticalPanel>
+			</g:FlowPanel>
+		
+		</g:VerticalPanel>
+		<g:Button addStyleNames="{style.next-button}" ui:field="nextButton">Next</g:Button>
+	</g:HTMLPanel>
+</ui:UiBinder> 

@@ -55,20 +55,22 @@ public class RequestInboxViewImpl extends BaseViewImpl<RequestInboxPresenter> im
 	@UiHandler("ApproveButton")
 	void onApproveButtonClick(ClickEvent event) {
 	}
+	
 	@UiHandler("DenyButton")
 	void onDenyButtonClick(ClickEvent event) {
 	}
+	
 	@UiHandler("DeleteButton")
 	void onDeleteButtonClick(ClickEvent event) {
 	}
+	
 	@UiHandler("request1Button")
-	void onRequest1ButtonClick(ClickEvent event) {
+	void onRequest1ButtonClick(ClickEvent event){
 	}
 
 	@Override
 	public void setPresenter(RequestInboxPresenter presenter) {
-		this.presenter = presenter;
-		
+		this.presenter = presenter;	
 	}
 
 	@Override
