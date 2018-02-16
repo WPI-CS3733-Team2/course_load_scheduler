@@ -54,7 +54,9 @@ public class FacultyCourseViewImpl extends BaseViewImpl<FacultyCoursePresenter> 
 	}
 	
 	public void clearAllCoursesGrid() {
-		allCoursesGrid.clear();
+		while(allCoursesGrid.getRowCount() > 0) {
+			allCoursesGrid.removeRow(0);
+		}
 	}
 	
 	@Override

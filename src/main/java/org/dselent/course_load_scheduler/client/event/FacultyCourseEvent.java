@@ -1,7 +1,7 @@
 package org.dselent.course_load_scheduler.client.event;
 
 import org.dselent.course_load_scheduler.client.action.ViewCourseAction;
-import org.dselent.course_load_scheduler.client.event_handler.AdminCourseEventHandler;
+import org.dselent.course_load_scheduler.client.event_handler.FacultyCourseEventHandler;
 
 import com.google.gwt.event.shared.GwtEvent;
 
@@ -12,13 +12,13 @@ import com.google.gwt.event.shared.GwtEvent;
  * @author dselent
  *
  */
-public class AdminCourseEvent extends GwtEvent<AdminCourseEventHandler>
+public class FacultyCourseEvent extends GwtEvent<FacultyCourseEventHandler>
 {
-	public static Type<AdminCourseEventHandler> TYPE = new Type<AdminCourseEventHandler>();
+	public static Type<FacultyCourseEventHandler> TYPE = new Type<FacultyCourseEventHandler>();
 	
 	private ViewCourseAction action;
 	
-	public AdminCourseEvent(ViewCourseAction action)
+	public FacultyCourseEvent(ViewCourseAction action)
 	{
 		this.action = action;
 	}
@@ -32,7 +32,7 @@ public class AdminCourseEvent extends GwtEvent<AdminCourseEventHandler>
 	 * 
 	 */
 	@Override
-	public Type<AdminCourseEventHandler> getAssociatedType()
+	public Type<FacultyCourseEventHandler> getAssociatedType()
 	{
 		return TYPE;
 	}
@@ -41,8 +41,8 @@ public class AdminCourseEvent extends GwtEvent<AdminCourseEventHandler>
 	 * 
 	 */
 	@Override
-	protected void dispatch(AdminCourseEventHandler handler)
+	protected void dispatch(FacultyCourseEventHandler handler)
 	{
-		handler.onAdminCourse(this);
+		handler.onFacultyCourse(this);
 	}
 }
