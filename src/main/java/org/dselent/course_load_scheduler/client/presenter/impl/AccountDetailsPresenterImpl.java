@@ -7,6 +7,7 @@ import org.dselent.course_load_scheduler.client.action.TriggerChangePasswordWind
 import org.dselent.course_load_scheduler.client.event.TriggerChangePasswordWindowEvent;
 import org.dselent.course_load_scheduler.client.model.User;
 
+import com.google.gwt.event.shared.HandlerRegistration;
 import com.google.gwt.user.client.ui.HasWidgets;
 import com.google.inject.Inject;
 
@@ -36,9 +37,10 @@ public class AccountDetailsPresenterImpl extends BasePresenterImpl implements Ac
 	@Override
 	public void bind()
 	{
-		//HandlerRegistration registration;
-		//registration = eventBus.addHandler(InvalidChangePasswordEvent.TYPE, this);
-		//eventBusRegistration.put(InvalidChangePasswordEvent.TYPE, registration);
+		HandlerRegistration registration;
+		registration = eventBus.addHandler(TriggerChangePasswordWindowEvent.TYPE, this);
+		eventBusRegistration.put(TriggerChangePasswordWindowEvent.TYPE, registration);
+		System.out.println();
 	}
 	
 	@Override
@@ -83,6 +85,7 @@ public class AccountDetailsPresenterImpl extends BasePresenterImpl implements Ac
 			TriggerChangePasswordWindowAction tcpwa = new TriggerChangePasswordWindowAction(userId);
 			TriggerChangePasswordWindowEvent tcpwe = new TriggerChangePasswordWindowEvent(tcpwa);
 			eventBus.fireEvent(tcpwe);
+			view.getChangePasswordButton().setEnabled(true);
 		}
 	}
 	

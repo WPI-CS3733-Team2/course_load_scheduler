@@ -6,7 +6,6 @@ import org.dselent.course_load_scheduler.client.presenter.RequestInboxPresenter;
 
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.uibinder.client.UiBinder;
-import com.google.gwt.user.client.ui.Composite;
 import com.google.gwt.user.client.ui.HasWidgets;
 import com.google.gwt.user.client.ui.VerticalPanel;
 import com.google.gwt.user.client.ui.Widget;
@@ -52,7 +51,20 @@ public class RequestInboxViewImpl extends BaseViewImpl<RequestInboxPresenter> im
 	public Button getDeleteButton() {
 		return DeleteButton;
 	}
-	
+
+	@UiHandler("ApproveButton")
+	void onApproveButtonClick(ClickEvent event) {
+	}
+	@UiHandler("DenyButton")
+	void onDenyButtonClick(ClickEvent event) {
+	}
+	@UiHandler("DeleteButton")
+	void onDeleteButtonClick(ClickEvent event) {
+	}
+	@UiHandler("request1Button")
+	void onRequest1ButtonClick(ClickEvent event) {
+	}
+
 	@Override
 	public void setPresenter(RequestInboxPresenter presenter) {
 		this.presenter = presenter;
