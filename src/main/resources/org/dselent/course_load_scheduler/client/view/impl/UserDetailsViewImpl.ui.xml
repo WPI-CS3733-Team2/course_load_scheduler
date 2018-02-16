@@ -8,6 +8,72 @@
 		<g:Label text="User Details" ui:field="userDetailsLabel" styleName="userSearchLabel" horizontalAlignment="ALIGN_CENTER"/>
 		<g:VerticalPanel ui:field="userDetailsPanel" width="640px">
 			<g:Button ui:field="returnToSearchButton" text="Back to Search"/>
+			<g:Grid ui:field="userInformationGrid">
+				<g:row>
+					<g:customCell>
+						<g:Label text="User ID: " ui:field="userIdLabel" horizontalAlignment="ALIGN_RIGHT" width="303px"/>
+					</g:customCell>
+					<g:customCell>
+						<g:TextBox readOnly="true" ui:field="userIdBox"/>
+					</g:customCell>
+				</g:row>
+				<g:row>
+					<g:customCell>
+						<g:Label text="WPI ID: " ui:field="wpiIdLabel" horizontalAlignment="ALIGN_RIGHT"/>
+					</g:customCell>
+					<g:customCell>
+						<g:TextBox readOnly="true" ui:field="wpiIdBox"/>
+					</g:customCell>
+				</g:row>
+				<g:row>
+					<g:customCell>
+						<g:Label text="Role ID: " ui:field="userRoleLabel" horizontalAlignment="ALIGN_RIGHT"/>
+					</g:customCell>
+					<g:customCell>
+						<g:TextBox ui:field="userRoleBox" readOnly="true"/>
+					</g:customCell>
+				</g:row>
+				<g:row>
+					<g:customCell>
+						<g:Label text="Username: " ui:field="userNameLabel" horizontalAlignment="ALIGN_RIGHT"/>
+					</g:customCell>
+					<g:customCell>
+						<g:TextBox readOnly="true" ui:field="userNameBox"/>
+					</g:customCell>
+				</g:row>
+				<g:row>
+					<g:customCell>
+						<g:Label text="First name: " ui:field="firstNameLabel" horizontalAlignment="ALIGN_RIGHT"/>
+					</g:customCell>
+					<g:customCell>
+						<g:TextBox readOnly="true" ui:field="firstNameBox" alignment="CENTER"/>
+					</g:customCell>
+				</g:row>
+				<g:row>
+					<g:customCell>
+						<g:Label text="Last name: " ui:field="lastNameLabel" horizontalAlignment="ALIGN_RIGHT"/>
+					</g:customCell>
+					<g:customCell>
+						<g:TextBox readOnly="true" ui:field="lastNameBox"/>
+					</g:customCell>
+				</g:row>
+				<g:row>
+					<g:customCell>
+						<g:Label text="Email: " ui:field="emailLabel" horizontalAlignment="ALIGN_RIGHT"/>
+					</g:customCell>
+					<g:customCell>
+						<g:TextBox ui:field="emailBox" readOnly="true"/>
+					</g:customCell>
+				</g:row>
+				<g:row>
+					<g:customCell>
+						<g:Label text="Account State: " ui:field="accountStateLabel" horizontalAlignment="ALIGN_RIGHT"/>
+					</g:customCell>
+					<g:customCell>
+						<g:TextBox readOnly="true" ui:field="accountStateBox"/>
+					</g:customCell>
+				</g:row>
+			</g:Grid>
 			<g:Cell horizontalAlignment="ALIGN_CENTER">
 				<g:Button ui:field="terminateAccountButton" text="Terminate This Account"/>
 			</g:Cell>
