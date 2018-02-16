@@ -73,6 +73,7 @@ public class IndexViewImpl extends BaseViewImpl<IndexPresenter> implements Index
 				
 				AccountDetailsPresenter accountDetailsPresenter = injector.getAccountDetailsPresenter();
 				
+				accountDetailsPresenter.init();
 				accountDetailsPresenter.go(indexView.getViewRootPanel());
 			}
 		});
@@ -87,6 +88,7 @@ public class IndexViewImpl extends BaseViewImpl<IndexPresenter> implements Index
 				
 				ScheduleListPresenter scheduleListPresenter = injector.getScheduleListPresenter();
 				
+				scheduleListPresenter.init();
 				scheduleListPresenter.go(indexView.getViewRootPanel());
 			}
 		});
@@ -101,6 +103,7 @@ public class IndexViewImpl extends BaseViewImpl<IndexPresenter> implements Index
 				
 				SearchSchedulePresenter searchSchedulePresenter = injector.getSearchSchedulePresenter();
 				
+				searchSchedulePresenter.init();
 				searchSchedulePresenter.go(indexView.getViewRootPanel());
 			}
 		});
@@ -139,7 +142,7 @@ public class IndexViewImpl extends BaseViewImpl<IndexPresenter> implements Index
 					coursePresenter = injector.getAdminCoursePresenter();
 				}
 				
-				
+				coursePresenter.init();
 				coursePresenter.go(indexView.getViewRootPanel());
 				
 			}
@@ -155,6 +158,7 @@ public class IndexViewImpl extends BaseViewImpl<IndexPresenter> implements Index
 				
 				UserSearchPresenter userSearchPresenter = injector.getUserSearchPresenter();
 				
+				userSearchPresenter.init();
 				userSearchPresenter.go(indexView.getViewRootPanel());
 			}
 		});
@@ -169,6 +173,7 @@ public class IndexViewImpl extends BaseViewImpl<IndexPresenter> implements Index
 				
 				RequestInboxPresenter requestInboxPresenter = injector.getRequestInboxPresenter();
 				
+				requestInboxPresenter.init();
 				requestInboxPresenter.go(indexView.getViewRootPanel());
 			}
 		});

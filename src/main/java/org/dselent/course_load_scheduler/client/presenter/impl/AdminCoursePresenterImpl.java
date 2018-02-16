@@ -6,17 +6,23 @@ import java.util.List;
 
 import org.dselent.course_load_scheduler.client.action.InvalidLoginAction;
 import org.dselent.course_load_scheduler.client.action.ModifyCourseAction;
+import org.dselent.course_load_scheduler.client.action.SearchCourseAction;
 import org.dselent.course_load_scheduler.client.event.InvalidLoginEvent;
 import org.dselent.course_load_scheduler.client.event.ModifyCourseEvent;
+import org.dselent.course_load_scheduler.client.event.SearchCourseEvent;
+import org.dselent.course_load_scheduler.client.event.SearchUserEvent;
+import org.dselent.course_load_scheduler.client.exceptions.EmptyStringException;
 import org.dselent.course_load_scheduler.client.gin.Injector;
 import org.dselent.course_load_scheduler.client.model.Course;
 import org.dselent.course_load_scheduler.client.model.Section;
 import org.dselent.course_load_scheduler.client.presenter.AdminCoursePresenter;
+import org.dselent.course_load_scheduler.client.presenter.IndexPresenter;
 import org.dselent.course_load_scheduler.client.view.AdminCourseView;
 import org.dselent.course_load_scheduler.client.view.IndexView;
 
 import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.event.dom.client.ClickHandler;
+import com.google.gwt.event.shared.HandlerRegistration;
 import com.google.gwt.user.cellview.client.CellTable;
 import com.google.gwt.user.cellview.client.TextColumn;
 import com.google.gwt.user.client.ui.Button;
@@ -33,12 +39,32 @@ public class AdminCoursePresenterImpl extends BasePresenterImpl implements Admin
 {
 	
 	private AdminCourseView view;
+	private IndexPresenter parentPresenter;
+	boolean searchInProgress;
 
 	@Inject
-	public AdminCoursePresenterImpl(AdminCourseView view)
+	public AdminCoursePresenterImpl(AdminCourseView view, IndexPresenter parentPresenter)
 	{
 			this.view = view;
+			this.parentPresenter = parentPresenter;
 			view.setPresenter(this);
+			this.searchInProgress = false;
+	}
+	
+	@Override
+	public void init()
+	{
+		bind();
+	}
+
+	@Override
+	public void bind()
+	{
+		HandlerRegistration registration;
+		
+		registration = eventBus.addHandler(SearchCourseEvent.TYPE, this);
+		eventBusRegistration.put(SearchCourseEvent.TYPE, registration);
+		
 	}
 
 	@Override
@@ -52,6 +78,18 @@ public class AdminCoursePresenterImpl extends BasePresenterImpl implements Admin
 	@Override
 	public AdminCourseView getView() {
 		return view;
+	}
+	
+	//@Override
+	public IndexPresenter getParentPresenter()
+	{
+		return parentPresenter;
+	}
+
+	//@Override
+	public void setParentPresenter(IndexPresenter parentPresenter)
+	{
+		this.parentPresenter = parentPresenter;
 	}
 	
 	public void onAdminCoursePageLoad() {
@@ -185,6 +223,64 @@ public class AdminCoursePresenterImpl extends BasePresenterImpl implements Admin
 			view.addCourseToGrid(coursePanel);
 		}
 
+	}
+	
+	@Override
+	public void searchCourses() {
+		if(!searchInProgress) {
+			searchInProgress = true;
+			parentPresenter.showLoadScreen();
+			view.getSearchCourseButton().setEnabled(false);
+			
+			String courseQuery = view.getSearchCourseTxtBox().getText();
+			
+			boolean validQuery = true;
+			
+			try 
+			{
+				checkEmptyString(courseQuery);
+			}
+			catch(EmptyStringException e)
+			{
+				validQuery = false;
+			}
+			
+			if(validQuery){
+				//Search for courses
+				searchCourseEventFire(courseQuery);
+			}else {
+				//Invalid query
+				parentPresenter.hideLoadScreen();
+				view.getSearchCourseButton().setEnabled(true);
+				searchInProgress = false;
+				
+				view.showErrorMessages("Query cannot be empty.");
+				
+			}
+		}
+	}
+	
+	private void checkEmptyString(String string) throws EmptyStringException
+	{
+		if(string == null || string.equals(""))
+		{
+			throw new EmptyStringException();
+		}
+	}
+	
+	private void searchCourseEventFire(String query) {
+		SearchCourseAction sca = new SearchCourseAction(query);
+		SearchCourseEvent sce = new SearchCourseEvent(sca);
+		eventBus.fireEvent(sce);
+	}
+	
+	@Override
+	public void onSearchCourse(SearchCourseEvent evt) {
+		parentPresenter.hideLoadScreen();
+		view.getSearchCourseButton().setEnabled(true);
+		searchInProgress = false;
+		
+		view.showErrorMessages("Course search to be implemented.");
 	}
 		
 }

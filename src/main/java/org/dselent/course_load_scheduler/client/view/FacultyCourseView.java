@@ -6,6 +6,7 @@ import com.google.gwt.user.client.ui.DecoratorPanel;
 import com.google.gwt.user.client.ui.Grid;
 import com.google.gwt.user.client.ui.HasWidgets;
 import com.google.gwt.user.client.ui.TextBox;
+import com.google.gwt.user.client.ui.Button;
 import com.google.gwt.user.client.ui.Widget;
 
 public interface FacultyCourseView extends BaseView<FacultyCoursePresenter> {
@@ -21,6 +22,8 @@ public interface FacultyCourseView extends BaseView<FacultyCoursePresenter> {
 	public void addCourseToGrid(DecoratorPanel dp);
 	
 	public void clearAllCoursesGrid();
+	
+	public Button getSearchCourseButton();
 		
 	public void showErrorMessages(String errorMessages);
 
