@@ -5,6 +5,7 @@ import org.dselent.course_load_scheduler.client.event.InvalidChangePasswordEvent
 import org.dselent.course_load_scheduler.client.gin.Injector;
 import org.dselent.course_load_scheduler.client.presenter.AccountDetailsPresenter;
 import org.dselent.course_load_scheduler.client.presenter.BasePresenter;
+import org.dselent.course_load_scheduler.client.presenter.CreateSchedulePresenter;
 import org.dselent.course_load_scheduler.client.presenter.IndexPresenter;
 import org.dselent.course_load_scheduler.client.presenter.RequestInboxPresenter;
 import org.dselent.course_load_scheduler.client.presenter.ScheduleListPresenter;
@@ -112,7 +113,8 @@ public class IndexViewImpl extends BaseViewImpl<IndexPresenter> implements Index
 				IndexPresenterImpl indexPresenter = injector.getIndexPresenter(); // on-demand injection
 				IndexView indexView = indexPresenter.getView();		
 				
-				// TODO : create schedule first page 
+				CreateSchedulePresenter createSchedulePresenter = injector.getCreateSchedulePresenter();
+				createSchedulePresenter.go(indexView.getViewRootPanel());
 				
 			}
 		});

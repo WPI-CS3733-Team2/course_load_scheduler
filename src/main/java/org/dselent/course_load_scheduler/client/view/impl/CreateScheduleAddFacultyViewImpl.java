@@ -3,8 +3,14 @@ package org.dselent.course_load_scheduler.client.view.impl;
 
 import java.util.List;
 
+import org.dselent.course_load_scheduler.client.gin.Injector;
 import org.dselent.course_load_scheduler.client.presenter.CreateScheduleAddFacultyPresenter;
+import org.dselent.course_load_scheduler.client.presenter.impl.ConfirmSchedulePresenterImpl;
+import org.dselent.course_load_scheduler.client.presenter.impl.CreateScheduleAddFacultyPresenterImpl;
+import org.dselent.course_load_scheduler.client.presenter.impl.CreateScheduleVisualPresenterImpl;
+import org.dselent.course_load_scheduler.client.presenter.impl.IndexPresenterImpl;
 import org.dselent.course_load_scheduler.client.view.CreateScheduleAddFacultyView;
+import org.dselent.course_load_scheduler.client.view.IndexView;
 
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.event.dom.client.ClickEvent;
@@ -86,7 +92,19 @@ public class CreateScheduleAddFacultyViewImpl extends BaseViewImpl<CreateSchedul
 	public void addFaculty(List<String> names) {
 		for (String name : names) {
 			RadioButton radioButton = new RadioButton("facultyMember", name);
-			verticalPanel.add(radioButton);
+			int lastItem = verticalPanel.getWidgetCount();
+			verticalPanel.insert(radioButton, lastItem);
 		}
+	}
+	
+	@UiHandler("nextPageButton")
+	void onButtonClick(ClickEvent event) {
+		final Injector injector = Injector.INSTANCE;
+		
+		IndexPresenterImpl indexPresenter = injector.getIndexPresenter(); // on-demand injection
+		IndexView indexView = indexPresenter.getView();		
+
+		ConfirmSchedulePresenterImpl confirmSchedulePresenter = injector.getConfirmSchedulePresenter();
+		confirmSchedulePresenter.go(indexView.getViewRootPanel());
 	}
 }
