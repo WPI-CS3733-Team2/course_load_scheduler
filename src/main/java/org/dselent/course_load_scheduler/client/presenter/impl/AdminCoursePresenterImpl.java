@@ -4,14 +4,11 @@ package org.dselent.course_load_scheduler.client.presenter.impl;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.dselent.course_load_scheduler.client.action.InvalidLoginAction;
 import org.dselent.course_load_scheduler.client.action.ModifyCourseAction;
 import org.dselent.course_load_scheduler.client.action.SearchCourseAction;
 import org.dselent.course_load_scheduler.client.event.AdminCourseEvent;
-import org.dselent.course_load_scheduler.client.event.InvalidLoginEvent;
 import org.dselent.course_load_scheduler.client.event.ModifyCourseEvent;
 import org.dselent.course_load_scheduler.client.event.SearchCourseEvent;
-import org.dselent.course_load_scheduler.client.event.SearchUserEvent;
 import org.dselent.course_load_scheduler.client.exceptions.EmptyStringException;
 import org.dselent.course_load_scheduler.client.gin.Injector;
 import org.dselent.course_load_scheduler.client.model.Course;
@@ -63,12 +60,11 @@ public class AdminCoursePresenterImpl extends BasePresenterImpl implements Admin
 	{
 		HandlerRegistration registration;
 		
-		registration = eventBus.addHandler(SearchCourseEvent.TYPE, this);
-		eventBusRegistration.put(SearchCourseEvent.TYPE, registration);
-		
 		registration = eventBus.addHandler(AdminCourseEvent.TYPE, this);
 		eventBusRegistration.put(AdminCourseEvent.TYPE, registration);
 		
+		registration = eventBus.addHandler(SearchCourseEvent.TYPE, this);
+		eventBusRegistration.put(SearchCourseEvent.TYPE, registration);
 	}
 
 	@Override
@@ -154,7 +150,8 @@ public class AdminCoursePresenterImpl extends BasePresenterImpl implements Admin
 	
 	@Override
 	public void onAdminCourse(AdminCourseEvent evt) {
-view.clearAllCoursesGrid();
+		//this.go(container);
+		view.clearAllCoursesGrid();
 		
 		List<Section> sections = new ArrayList<>();
 		List<Course> courses = new ArrayList<>();

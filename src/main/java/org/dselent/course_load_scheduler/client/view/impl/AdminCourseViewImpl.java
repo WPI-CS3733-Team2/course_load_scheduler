@@ -32,7 +32,8 @@ public class AdminCourseViewImpl extends BaseViewImpl<AdminCoursePresenter> impl
 	HTMLPanel adminCoursePanel;
 	@UiField
 	Grid allCoursesGrid;
-	@UiField Button searchCourseButton;
+	@UiField
+	Button searchCourseButton;
 
 	AdminCoursePresenter presenter;
 	
