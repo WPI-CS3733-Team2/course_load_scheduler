@@ -1,16 +1,12 @@
 package org.dselent.course_load_scheduler.client.presenter.impl;
 
 import org.dselent.course_load_scheduler.client.view.UserSearchView;
-import org.dselent.course_load_scheduler.client.action.NavigateAction;
 import org.dselent.course_load_scheduler.client.action.SearchUserAction;
 
 import com.google.gwt.event.shared.HandlerRegistration;
 import com.google.gwt.user.client.ui.HasWidgets;
 import com.google.inject.Inject;
 
-import org.dselent.course_load_scheduler.client.event.InvalidLoginEvent;
-import org.dselent.course_load_scheduler.client.event.InvalidUserEvent;
-import org.dselent.course_load_scheduler.client.event.NavigateEvent;
 import org.dselent.course_load_scheduler.client.event.SearchUserEvent;
 import org.dselent.course_load_scheduler.client.exceptions.EmptyStringException;
 import org.dselent.course_load_scheduler.client.gin.Injector;
