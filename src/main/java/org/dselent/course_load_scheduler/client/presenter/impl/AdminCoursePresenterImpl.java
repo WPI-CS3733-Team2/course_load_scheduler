@@ -51,6 +51,8 @@ public class AdminCoursePresenterImpl extends BasePresenterImpl implements Admin
 	}
 	
 	public void onAdminCoursePageLoad() {
+		view.clearAllCoursesGrid();
+		
 		List<Section> sections = new ArrayList<>();
 		List<Course> courses = new ArrayList<>();
 

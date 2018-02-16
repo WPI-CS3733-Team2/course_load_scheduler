@@ -19,6 +19,8 @@ public interface FacultyCourseView extends BaseView<FacultyCoursePresenter> {
 	public void setAllCoursesGrid(Grid allCoursesGrid);
 	
 	public void addCourseToGrid(DecoratorPanel dp);
+	
+	public void clearAllCoursesGrid();
 		
 	public void showErrorMessages(String errorMessages);
 

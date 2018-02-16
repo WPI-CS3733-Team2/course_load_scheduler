@@ -62,6 +62,10 @@ public class FacultyCourseViewImpl extends BaseViewImpl<FacultyCoursePresenter> 
 		allCoursesGrid.insertRow(newRow);
 		allCoursesGrid.setWidget(newRow, 0, dp);
 	}
+	
+	public void clearAllCoursesGrid() {
+		allCoursesGrid.clear();
+	}
 
 	interface FacultyCourseViewImplUiBinder extends UiBinder<Widget, FacultyCourseViewImpl> {
 	}

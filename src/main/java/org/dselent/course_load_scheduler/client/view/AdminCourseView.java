@@ -19,6 +19,8 @@ public interface AdminCourseView extends BaseView<AdminCoursePresenter> {
 	
 	public void addCourseToGrid(DecoratorPanel dp);
 	
+	public void clearAllCoursesGrid();
+	
 	public TextBox getSearchCourseTxtBox();
 
 	public void setSearchCourseTxtBox(TextBox searchCourseTxtBox);
