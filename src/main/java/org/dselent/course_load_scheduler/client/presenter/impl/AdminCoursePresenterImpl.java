@@ -7,6 +7,7 @@ import java.util.List;
 import org.dselent.course_load_scheduler.client.action.InvalidLoginAction;
 import org.dselent.course_load_scheduler.client.action.ModifyCourseAction;
 import org.dselent.course_load_scheduler.client.action.SearchCourseAction;
+import org.dselent.course_load_scheduler.client.event.AdminCourseEvent;
 import org.dselent.course_load_scheduler.client.event.InvalidLoginEvent;
 import org.dselent.course_load_scheduler.client.event.ModifyCourseEvent;
 import org.dselent.course_load_scheduler.client.event.SearchCourseEvent;
@@ -65,12 +66,13 @@ public class AdminCoursePresenterImpl extends BasePresenterImpl implements Admin
 		registration = eventBus.addHandler(SearchCourseEvent.TYPE, this);
 		eventBusRegistration.put(SearchCourseEvent.TYPE, registration);
 		
+		registration = eventBus.addHandler(AdminCourseEvent.TYPE, this);
+		eventBusRegistration.put(AdminCourseEvent.TYPE, registration);
+		
 	}
 
 	@Override
 	public void go(HasWidgets container) {
-		this.onAdminCoursePageLoad();
-		
 		container.clear();
 		container.add(view.getWidgetContainer());
 	}
@@ -92,8 +94,67 @@ public class AdminCoursePresenterImpl extends BasePresenterImpl implements Admin
 		this.parentPresenter = parentPresenter;
 	}
 	
-	public void onAdminCoursePageLoad() {
-		view.clearAllCoursesGrid();
+	@Override
+	public void searchCourses() {
+		if(!searchInProgress) {
+			searchInProgress = true;
+			parentPresenter.showLoadScreen();
+			view.getSearchCourseButton().setEnabled(false);
+			
+			String courseQuery = view.getSearchCourseTxtBox().getText();
+			
+			boolean validQuery = true;
+			
+			try 
+			{
+				checkEmptyString(courseQuery);
+			}
+			catch(EmptyStringException e)
+			{
+				validQuery = false;
+			}
+			
+			if(validQuery){
+				//Search for courses
+				searchCourseEventFire(courseQuery);
+			}else {
+				//Invalid query
+				parentPresenter.hideLoadScreen();
+				view.getSearchCourseButton().setEnabled(true);
+				searchInProgress = false;
+				
+				view.showErrorMessages("Query cannot be empty.");
+				
+			}
+		}
+	}
+	
+	private void checkEmptyString(String string) throws EmptyStringException
+	{
+		if(string == null || string.equals(""))
+		{
+			throw new EmptyStringException();
+		}
+	}
+	
+	private void searchCourseEventFire(String query) {
+		SearchCourseAction sca = new SearchCourseAction(query);
+		SearchCourseEvent sce = new SearchCourseEvent(sca);
+		eventBus.fireEvent(sce);
+	}
+	
+	@Override
+	public void onSearchCourse(SearchCourseEvent evt) {
+		parentPresenter.hideLoadScreen();
+		view.getSearchCourseButton().setEnabled(true);
+		searchInProgress = false;
+		
+		view.showErrorMessages("Course search to be implemented.");
+	}
+	
+	@Override
+	public void onAdminCourse(AdminCourseEvent evt) {
+view.clearAllCoursesGrid();
 		
 		List<Section> sections = new ArrayList<>();
 		List<Course> courses = new ArrayList<>();
@@ -223,64 +284,6 @@ public class AdminCoursePresenterImpl extends BasePresenterImpl implements Admin
 			view.addCourseToGrid(coursePanel);
 		}
 
-	}
-	
-	@Override
-	public void searchCourses() {
-		if(!searchInProgress) {
-			searchInProgress = true;
-			parentPresenter.showLoadScreen();
-			view.getSearchCourseButton().setEnabled(false);
-			
-			String courseQuery = view.getSearchCourseTxtBox().getText();
-			
-			boolean validQuery = true;
-			
-			try 
-			{
-				checkEmptyString(courseQuery);
-			}
-			catch(EmptyStringException e)
-			{
-				validQuery = false;
-			}
-			
-			if(validQuery){
-				//Search for courses
-				searchCourseEventFire(courseQuery);
-			}else {
-				//Invalid query
-				parentPresenter.hideLoadScreen();
-				view.getSearchCourseButton().setEnabled(true);
-				searchInProgress = false;
-				
-				view.showErrorMessages("Query cannot be empty.");
-				
-			}
-		}
-	}
-	
-	private void checkEmptyString(String string) throws EmptyStringException
-	{
-		if(string == null || string.equals(""))
-		{
-			throw new EmptyStringException();
-		}
-	}
-	
-	private void searchCourseEventFire(String query) {
-		SearchCourseAction sca = new SearchCourseAction(query);
-		SearchCourseEvent sce = new SearchCourseEvent(sca);
-		eventBus.fireEvent(sce);
-	}
-	
-	@Override
-	public void onSearchCourse(SearchCourseEvent evt) {
-		parentPresenter.hideLoadScreen();
-		view.getSearchCourseButton().setEnabled(true);
-		searchInProgress = false;
-		
-		view.showErrorMessages("Course search to be implemented.");
 	}
 		
 }

@@ -18,7 +18,7 @@
 					<g:TextBox ui:field="searchCourseTxtBox"/>
 				</g:customCell>
 				<g:customCell>
-					<g:Button ui:field="searchCourseButton">Search</g:Button>
+					<g:Button text="Search" ui:field="searchCourseButton"/>
 				</g:customCell>
 			</g:row>
 			<g:row/>

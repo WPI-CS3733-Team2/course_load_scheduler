@@ -9,6 +9,7 @@ import org.dselent.course_load_scheduler.client.event.TerminateAccountEvent;
 import org.dselent.course_load_scheduler.client.event.TriggerChangePasswordWindowEvent;
 import org.dselent.course_load_scheduler.client.event.SearchUserEvent;
 import org.dselent.course_load_scheduler.client.event.CreateUserEvent;
+import org.dselent.course_load_scheduler.client.event.AdminCourseEvent;
 import org.dselent.course_load_scheduler.client.event.CreateScheduleEvent;
 import org.dselent.course_load_scheduler.client.event.SearchCourseEvent;
 
@@ -25,7 +26,7 @@ import org.dselent.course_load_scheduler.client.event.SearchCourseEvent;
 public abstract class EventHandlerAdapter implements InvalidLoginEventHandler, SendLoginEventHandler,
 		SearchUserEventHandler, CreateUserEventHandler, TerminateAccountEventHandler, CreateScheduleEventHandler,
 		InvalidChangePasswordEventHandler, SendChangePasswordEventHandler, TriggerChangePasswordWindowEventHandler,
-		ModifyCourseEventHandler, SearchCourseEventHandler {
+		ModifyCourseEventHandler, SearchCourseEventHandler, AdminCourseEventHandler {
 	@Override
 	public void onInvalidLogin(InvalidLoginEvent evt) {}
 	
@@ -58,5 +59,8 @@ public abstract class EventHandlerAdapter implements InvalidLoginEventHandler, S
 	
 	@Override
 	public void onSearchCourse(SearchCourseEvent evt) {}
+
+	@Override
+	public void onAdminCourse(AdminCourseEvent evt) {}
 	
 }

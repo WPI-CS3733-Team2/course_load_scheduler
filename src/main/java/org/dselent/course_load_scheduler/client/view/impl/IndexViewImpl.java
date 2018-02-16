@@ -1,15 +1,6 @@
 package org.dselent.course_load_scheduler.client.view.impl;
 
-import org.dselent.course_load_scheduler.client.gin.Injector;
-import org.dselent.course_load_scheduler.client.presenter.AccountDetailsPresenter;
-import org.dselent.course_load_scheduler.client.presenter.BasePresenter;
-import org.dselent.course_load_scheduler.client.presenter.CreateSchedulePresenter;
 import org.dselent.course_load_scheduler.client.presenter.IndexPresenter;
-import org.dselent.course_load_scheduler.client.presenter.RequestInboxPresenter;
-import org.dselent.course_load_scheduler.client.presenter.ScheduleListPresenter;
-import org.dselent.course_load_scheduler.client.presenter.SearchSchedulePresenter;
-import org.dselent.course_load_scheduler.client.presenter.UserSearchPresenter;
-import org.dselent.course_load_scheduler.client.presenter.impl.IndexPresenterImpl;
 import org.dselent.course_load_scheduler.client.view.IndexView;
 
 import com.google.gwt.core.client.GWT;
@@ -57,129 +48,105 @@ public class IndexViewImpl extends BaseViewImpl<IndexPresenter> implements Index
 	@UiField 
 	MenuBar navigationMenu;
 	
+	public MenuItem getAccountMenuItem() {
+		return accountMenuItem;
+	}
+
+	public void setAccountMenuItem(MenuItem accountMenuItem) {
+		this.accountMenuItem = accountMenuItem;
+	}
+	
+	public void setAccountCommand(Command cmd) {
+		this.accountMenuItem.setScheduledCommand(cmd);
+	}
+
+	public MenuItem getSchedulesMenuItem() {
+		return schedulesMenuItem;
+	}
+
+	public void setSchedulesMenuItem(MenuItem schedulesMenuItem) {
+		this.schedulesMenuItem = schedulesMenuItem;
+	}
+	
+	public void setSchedulesCommand(Command cmd) {
+		this.schedulesMenuItem.setScheduledCommand(cmd);
+	}
+
+	public MenuItem getViewScheduleMenuItem() {
+		return viewScheduleMenuItem;
+	}
+
+	public void setViewScheduleMenuItem(MenuItem viewScheduleMenuItem) {
+		this.viewScheduleMenuItem = viewScheduleMenuItem;
+	}
+	
+	public void setViewScheduleCommand(Command cmd) {
+		this.viewScheduleMenuItem.setScheduledCommand(cmd);
+	}
+
+	public MenuItem getSearchScheduleMenuItem() {
+		return searchScheduleMenuItem;
+	}
+
+	public void setSearchScheduleMenuItem(MenuItem searchScheduleMenuItem) {
+		this.searchScheduleMenuItem = searchScheduleMenuItem;
+	}
+	
+	public void setSearchScheduleCommand(Command cmd) {
+		this.searchScheduleMenuItem.setScheduledCommand(cmd);
+	}
+
+	public MenuItem getCreateScheduleMenuItem() {
+		return createScheduleMenuItem;
+	}
+
+	public void setCreateScheduleMenuItem(MenuItem createScheduleMenuItem) {
+		this.createScheduleMenuItem = createScheduleMenuItem;
+	}
+	
+	public void setCreateScheduleCommand(Command cmd) {
+		this.createScheduleMenuItem.setScheduledCommand(cmd);
+	}
+
+	public MenuItem getCoursesMenuItem() {
+		return coursesMenuItem;
+	}
+
+	public void setCoursesMenuItem(MenuItem coursesMenuItem) {
+		this.coursesMenuItem = coursesMenuItem;
+	}
+	
+	public void setCoursesCommand(Command cmd) {
+		this.coursesMenuItem.setScheduledCommand(cmd);
+	}
+
+	public MenuItem getUsersMenuItem() {
+		return usersMenuItem;
+	}
+
+	public void setUsersMenuItem(MenuItem usersMenuItem) {
+		this.usersMenuItem = usersMenuItem;
+	}
+	
+	public void setUsersCommand(Command cmd) {
+		this.usersMenuItem.setScheduledCommand(cmd);
+	}
+
+	public MenuItem getRequestsMenuItem() {
+		return requestsMenuItem;
+	}
+
+	public void setRequestsMenuItem(MenuItem requestsMenuItem) {
+		this.requestsMenuItem = requestsMenuItem;
+	}
+	
+	public void setRequestsCommand(Command cmd) {
+		this.requestsMenuItem.setScheduledCommand(cmd);
+	}
+
 	public IndexViewImpl()
 	{
-		initWidget(uiBinder.createAndBindUi(this));
-
-		accountMenuItem.setScheduledCommand(new Command() {
-			@Override
-			public void execute() {	
-				final Injector injector = Injector.INSTANCE;
-				
-				IndexPresenterImpl indexPresenter = injector.getIndexPresenter(); // on-demand injection
-				IndexView indexView = indexPresenter.getView();		
-				
-				AccountDetailsPresenter accountDetailsPresenter = injector.getAccountDetailsPresenter();
-				
-				accountDetailsPresenter.init();
-				accountDetailsPresenter.go(indexView.getViewRootPanel());
-			}
-		});
-		
-		viewScheduleMenuItem.setScheduledCommand(new Command() {
-			@Override
-			public void execute() {	
-				final Injector injector = Injector.INSTANCE;
-				
-				IndexPresenterImpl indexPresenter = injector.getIndexPresenter(); // on-demand injection
-				IndexView indexView = indexPresenter.getView();		
-				
-				ScheduleListPresenter scheduleListPresenter = injector.getScheduleListPresenter();
-				
-				scheduleListPresenter.init();
-				scheduleListPresenter.go(indexView.getViewRootPanel());
-			}
-		});
-		
-		searchScheduleMenuItem.setScheduledCommand(new Command() {
-			@Override
-			public void execute() {	
-				final Injector injector = Injector.INSTANCE;
-				
-				IndexPresenterImpl indexPresenter = injector.getIndexPresenter(); // on-demand injection
-				IndexView indexView = indexPresenter.getView();		
-				
-				SearchSchedulePresenter searchSchedulePresenter = injector.getSearchSchedulePresenter();
-				
-				searchSchedulePresenter.init();
-				searchSchedulePresenter.go(indexView.getViewRootPanel());
-			}
-		});
-		
-		createScheduleMenuItem.setScheduledCommand(new Command() {
-			@Override
-			public void execute() {	
-				final Injector injector = Injector.INSTANCE;
-				
-				IndexPresenterImpl indexPresenter = injector.getIndexPresenter(); // on-demand injection
-				IndexView indexView = indexPresenter.getView();		
-				
-				CreateSchedulePresenter createSchedulePresenter = injector.getCreateSchedulePresenter();
-				createSchedulePresenter.go(indexView.getViewRootPanel());
-				
-			}
-		});
-		
-		
-		coursesMenuItem.setScheduledCommand(new Command() {
-			@Override
-			public void execute() {
-				final Injector injector = Injector.INSTANCE;
-				
-				IndexPresenterImpl indexPresenter = injector.getIndexPresenter(); // on-demand injection
-				IndexView indexView = indexPresenter.getView();		
-				
-				String userRole = injector.getAccountDetailsPresenter().getUserType();
-				
-				BasePresenter coursePresenter;
-				
-				if(userRole.equals("Faculty")) {
-					coursePresenter = injector.getFacultyCoursePresenter();
-					coursePresenter.init();
-					coursePresenter.go(indexView.getViewRootPanel());
-				}
-				else if (userRole.equals("Admin")){
-					coursePresenter = injector.getAdminCoursePresenter();
-					coursePresenter.init();
-					coursePresenter.go(indexView.getViewRootPanel());
-				} else {
-					//TODO exception needed: user role from database doesn't match either "Faculty" or "Admin".
-				}
-			}
-		});
-		
-		usersMenuItem.setScheduledCommand(new Command() {
-			@Override
-			public void execute() {	
-				final Injector injector = Injector.INSTANCE;
-				
-				
-				
-				IndexPresenterImpl indexPresenter = injector.getIndexPresenter(); // on-demand injection
-				IndexView indexView = indexPresenter.getView();		
-				
-				UserSearchPresenter userSearchPresenter = injector.getUserSearchPresenter();
-				
-				userSearchPresenter.init();
-				userSearchPresenter.go(indexView.getViewRootPanel());
-			}
-		});
-		
-		requestsMenuItem.setScheduledCommand(new Command() {
-			@Override
-			public void execute() {	
-				final Injector injector = Injector.INSTANCE;
-				
-				IndexPresenterImpl indexPresenter = injector.getIndexPresenter(); // on-demand injection
-				IndexView indexView = indexPresenter.getView();		
-				
-				RequestInboxPresenter requestInboxPresenter = injector.getRequestInboxPresenter();
-				
-				requestInboxPresenter.init();
-				requestInboxPresenter.go(indexView.getViewRootPanel());
-			}
-		});
-		
+		initWidget(uiBinder.createAndBindUi(this));		
 	}
 
 	@Override
