@@ -74,6 +74,7 @@ public class ChangePasswordPresenterImpl extends BasePresenterImpl implements Ch
 		this.userId = userId;
 	}
 	
+	@Override
 	public void onTriggerChangePasswordWindow1(TriggerChangePasswordWindowEvent evt) {
 		//view.showWindow();
 		view.getChangePasswordPopupPanel().getElement().getStyle().setVisibility(Style.Visibility.VISIBLE);

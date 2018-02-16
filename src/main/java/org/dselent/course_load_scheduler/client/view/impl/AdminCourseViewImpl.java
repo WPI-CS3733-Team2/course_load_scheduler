@@ -25,6 +25,10 @@ import com.google.gwt.event.dom.client.KeyUpEvent;
 public class AdminCourseViewImpl extends BaseViewImpl<AdminCoursePresenter> implements AdminCourseView {
 
 	private static AdminCourseViewImplUiBinder uiBinder = GWT.create(AdminCourseViewImplUiBinder.class);
+	
+	interface AdminCourseViewImplUiBinder extends UiBinder<Widget, AdminCourseViewImpl> {
+	}
+	
 	@UiField
 	Button addCourseBtn;
 	@UiField
@@ -81,9 +85,6 @@ public class AdminCourseViewImpl extends BaseViewImpl<AdminCoursePresenter> impl
 		
 		allCoursesGrid.insertRow(0);
 		allCoursesGrid.resizeColumns(1);
-	}
-
-	interface AdminCourseViewImplUiBinder extends UiBinder<Widget, AdminCourseViewImpl> {
 	}
 
 	@Override

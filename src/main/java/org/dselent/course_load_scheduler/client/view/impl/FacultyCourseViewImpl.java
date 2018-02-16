@@ -35,6 +35,10 @@ import com.google.gwt.uibinder.client.UiHandler;
 public class FacultyCourseViewImpl extends BaseViewImpl<FacultyCoursePresenter> implements FacultyCourseView {
 
 	private static FacultyCourseViewImplUiBinder uiBinder = GWT.create(FacultyCourseViewImplUiBinder.class);
+	
+	interface FacultyCourseViewImplUiBinder extends UiBinder<Widget, FacultyCourseViewImpl> {
+	}
+	
 	@UiField
 	TextBox searchCourseTextBox;
 	@UiField
@@ -67,9 +71,6 @@ public class FacultyCourseViewImpl extends BaseViewImpl<FacultyCoursePresenter> 
 	
 	public void clearAllCoursesGrid() {
 		allCoursesGrid.clear();
-	}
-
-	interface FacultyCourseViewImplUiBinder extends UiBinder<Widget, FacultyCourseViewImpl> {
 	}
 	
 	@Override
