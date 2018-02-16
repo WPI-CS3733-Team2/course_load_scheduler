@@ -4999,33 +4999,33 @@ Rebinding org.dselent.course_load_scheduler.client.view.impl.AdminCourseViewImpl
       Removing invalidated units
 Public resources found in...
 Translatable source found in...
-Found 0 cached/archived units.  Used 0 / 2924 units from cache.
+Found 0 cached/archived units.  Used 0 / 2918 units from cache.
 Compiling...
-   30% complete (ETR: 8 seconds)
-   30% complete (ETR: 8 seconds)
-   30% complete (ETR: 8 seconds)
-   30% complete (ETR: 8 seconds)
-   40% complete (ETR: 8 seconds)
-   50% complete (ETR: 6 seconds)
-   60% complete (ETR: 5 seconds)
-   70% complete (ETR: 3 seconds)
-   80% complete (ETR: 2 seconds)
+   70% complete (ETR: 1 seconds)
+   70% complete (ETR: 1 seconds)
+   70% complete (ETR: 1 seconds)
+   70% complete (ETR: 1 seconds)
+   70% complete (ETR: 1 seconds)
+   70% complete (ETR: 1 seconds)
+   70% complete (ETR: 1 seconds)
+   70% complete (ETR: 1 seconds)
+   80% complete (ETR: 1 seconds)
    90% complete (ETR: 1 seconds)
    100% complete (ETR: 0 seconds)
-   Compilation completed in 12.49 seconds
+   Compilation completed in 7.52 seconds
 Validating units:
-   Errors in 'file:/C:/Users/Tessa/eclipse-workspace_gwt_client/course_load_scheduler/src/main/java/org/dselent/course_load_scheduler/client/model/UserRole.java'
+   Errors in 'file:/C:/Users/darkm/git/course_load_scheduler/src/main/java/org/dselent/course_load_scheduler/client/model/UserRole.java'
       Line 12: No source code is available for type java.time.Instant; did you forget to inherit a required module?
       Line 52: The method toInstant() is undefined for the type Timestamp
       Line 70: The method toInstant() is undefined for the type Timestamp
-   Errors in 'file:/C:/Users/Tessa/eclipse-workspace_gwt_client/course_load_scheduler/src/main/java/org/dselent/course_load_scheduler/client/model/UserState.java'
+   Errors in 'file:/C:/Users/darkm/git/course_load_scheduler/src/main/java/org/dselent/course_load_scheduler/client/model/UserState.java'
       Line 13: No source code is available for type java.time.Instant; did you forget to inherit a required module?
       Line 53: The method toInstant() is undefined for the type Timestamp
       Line 71: The method toInstant() is undefined for the type Timestamp
-   Errors in 'file:/C:/Users/Tessa/eclipse-workspace_gwt_client/course_load_scheduler/src/main/java/org/dselent/course_load_scheduler/client/model/UsersHistory.java'
+   Errors in 'file:/C:/Users/darkm/git/course_load_scheduler/src/main/java/org/dselent/course_load_scheduler/client/model/UsersHistory.java'
       Line 19: No source code is available for type java.time.Instant; did you forget to inherit a required module?
       Line 128: The method toInstant() is undefined for the type Timestamp
-   Errors in 'file:/C:/Users/Tessa/eclipse-workspace_gwt_client/course_load_scheduler/src/main/java/org/dselent/course_load_scheduler/client/model/UsersRolesLink.java'
+   Errors in 'file:/C:/Users/darkm/git/course_load_scheduler/src/main/java/org/dselent/course_load_scheduler/client/model/UsersRolesLink.java'
       Line 14: No source code is available for type java.time.Instant; did you forget to inherit a required module?
       Line 63: The method toInstant() is undefined for the type Timestamp
 Removing invalidated units
@@ -5054,40 +5054,232 @@ Rebinding com.google.gwt.i18n.client.impl.LocaleInfoImpl
          Generating method body for zeroDigit()
    Adding '3' new generated units
       Compiling...
+         Compilation completed in 0.01 seconds
+      Removing invalidated units
+Rebinding org.dselent.course_load_scheduler.client.view.impl.FacultyCourseViewImpl.FacultyCourseViewImplUiBinder
+   Adding '3' new generated units
+      Compiling...
+         Compilation completed in 0.03 seconds
+      Removing invalidated units
+Rebinding org.dselent.course_load_scheduler.client.view.impl.FacultyCourseViewImpl_FacultyCourseViewImplUiBinderImpl_designTime1518762745381.Template
+   Invoking generator com.google.gwt.safehtml.rebind.SafeHtmlTemplatesGenerator
+      Constructing interface org.dselent.course_load_scheduler.client.view.impl.FacultyCourseViewImpl_FacultyCourseViewImplUiBinderImpl_designTime1518762745381.Template
+         Generating method body for html1()
+   Adding '1' new generated units
+      Compiling...
+         Compilation completed in 0.01 seconds
+      Removing invalidated units
+Rebinding org.dselent.course_load_scheduler.client.view.impl.FacultyCourseViewImpl_FacultyCourseViewImplUiBinderImpl_designTime1518762745381_GenBundle
+   Adding '1' new generated units
+      Compiling...
+         Compilation completed in 0.01 seconds
+      Removing invalidated units
+Rebinding com.google.gwt.user.cellview.client.DataGrid.Resources
+   Invoking generator com.google.gwt.resources.rebind.context.InlineClientBundleGenerator
+      Preparing method dataGridLoading
+         Adding image 'com.google.gwt.user.cellview.client.DataGrid.Resources.dataGridLoading'
+      Preparing method dataGridSortAscending
+         Adding image 'com.google.gwt.user.cellview.client.DataGrid.Resources.dataGridSortAscending'
+      Preparing method dataGridSortDescending
+         Adding image 'com.google.gwt.user.cellview.client.DataGrid.Resources.dataGridSortDescending'
+   Adding '1' new generated units
+      Compiling...
          Compilation completed in 0.02 seconds
       Removing invalidated units
-Rebinding org.dselent.course_load_scheduler.client.view.impl.UserDetailsViewImpl.UserDetailsViewImplUiBinder
+Rebinding com.google.gwt.user.cellview.client.AbstractCellTable.Template
+   Invoking generator com.google.gwt.safehtml.rebind.SafeHtmlTemplatesGenerator
+      Constructing interface com.google.gwt.user.cellview.client.AbstractCellTable.Template
+         Generating method body for div()
+         Generating method body for tbody()
+         Generating method body for td()
+         Generating method body for tdBothAlign()
+         Generating method body for tdHorizontalAlign()
+         Generating method body for tdVerticalAlign()
+         Generating method body for tfoot()
+         Generating method body for thead()
+         Generating method body for tr()
+   Adding '1' new generated units
+      Compiling...
+         Compilation completed in 0.01 seconds
+      Removing invalidated units
+Rebinding com.google.gwt.user.client.ui.CustomScrollPanel.Resources
+   Adding '1' new generated units
+      Compiling...
+         Compilation completed in 0.02 seconds
+      Removing invalidated units
+Rebinding com.google.gwt.resources.client.CommonResources.Bundle
+   Adding '1' new generated units
+      Compiling...
+         Compilation completed in 0.01 seconds
+      Removing invalidated units
+Rebinding com.google.gwt.user.client.ui.NativeHorizontalScrollbar.ResourcesTransparant
+   Adding '1' new generated units
+      Compiling...
+         Compilation completed in 0.03 seconds
+      Removing invalidated units
+Rebinding com.google.gwt.user.client.ui.NativeHorizontalScrollbar.NativeHorizontalScrollbarUiBinder
+   Adding '3' new generated units
+      Compiling...
+         Compilation completed in 0.02 seconds
+      Removing invalidated units
+Rebinding com.google.gwt.user.client.ui.NativeHorizontalScrollbar_NativeHorizontalScrollbarUiBinderImpl.Template
+   Invoking generator com.google.gwt.safehtml.rebind.SafeHtmlTemplatesGenerator
+      Constructing interface com.google.gwt.user.client.ui.NativeHorizontalScrollbar_NativeHorizontalScrollbarUiBinderImpl.Template
+         Generating method body for html1()
+   Adding '1' new generated units
+      Compiling...
+         Compilation completed in 0.01 seconds
+      Removing invalidated units
+Rebinding com.google.gwt.user.client.ui.NativeHorizontalScrollbar_NativeHorizontalScrollbarUiBinderImpl_GenBundle
+   Adding '1' new generated units
+      Compiling...
+         Compilation completed in 0.11 seconds
+      Removing invalidated units
+Rebinding com.google.gwt.user.client.ui.NativeVerticalScrollbar.ResourcesTransparant
+   Adding '1' new generated units
+      Compiling...
+         Compilation completed in 0.01 seconds
+      Removing invalidated units
+Rebinding com.google.gwt.user.client.ui.NativeVerticalScrollbar.NativeVerticalScrollbarUiBinder
+   Adding '3' new generated units
+      Compiling...
+         Compilation completed in 0.01 seconds
+      Removing invalidated units
+Rebinding com.google.gwt.user.client.ui.NativeVerticalScrollbar_NativeVerticalScrollbarUiBinderImpl.Template
+   Invoking generator com.google.gwt.safehtml.rebind.SafeHtmlTemplatesGenerator
+      Constructing interface com.google.gwt.user.client.ui.NativeVerticalScrollbar_NativeVerticalScrollbarUiBinderImpl.Template
+         Generating method body for html1()
+   Adding '1' new generated units
+      Compiling...
+         Compilation completed in 0.01 seconds
+      Removing invalidated units
+Rebinding com.google.gwt.user.client.ui.NativeVerticalScrollbar_NativeVerticalScrollbarUiBinderImpl_GenBundle
+   Adding '1' new generated units
+      Compiling...
+         Compilation completed in 0.01 seconds
+      Removing invalidated units
+Rebinding org.dselent.course_load_scheduler.client.view.impl.FacultyCourseViewImpl.FacultyCourseViewImplUiBinder
    Adding '3' new generated units
       Compiling...
          Compilation completed in 0.04 seconds
       Removing invalidated units
-Rebinding org.dselent.course_load_scheduler.client.view.impl.UserDetailsViewImpl_UserDetailsViewImplUiBinderImpl_designTime1518798471336.Template
+Rebinding org.dselent.course_load_scheduler.client.view.impl.FacultyCourseViewImpl_FacultyCourseViewImplUiBinderImpl_designTime1518762746643.Template
    Invoking generator com.google.gwt.safehtml.rebind.SafeHtmlTemplatesGenerator
-      Constructing interface org.dselent.course_load_scheduler.client.view.impl.UserDetailsViewImpl_UserDetailsViewImplUiBinderImpl_designTime1518798471336.Template
+      Constructing interface org.dselent.course_load_scheduler.client.view.impl.FacultyCourseViewImpl_FacultyCourseViewImplUiBinderImpl_designTime1518762746643.Template
          Generating method body for html1()
    Adding '1' new generated units
       Compiling...
          Compilation completed in 0.01 seconds
       Removing invalidated units
-Rebinding org.dselent.course_load_scheduler.client.view.impl.UserDetailsViewImpl_UserDetailsViewImplUiBinderImpl_designTime1518798471336_GenBundle
+Rebinding org.dselent.course_load_scheduler.client.view.impl.FacultyCourseViewImpl_FacultyCourseViewImplUiBinderImpl_designTime1518762746643_GenBundle
    Adding '1' new generated units
       Compiling...
-         Compilation completed in 0.18 seconds
+         Compilation completed in 0.01 seconds
       Removing invalidated units
-Rebinding org.dselent.course_load_scheduler.client.view.impl.UserDetailsViewImpl.UserDetailsViewImplUiBinder
+Rebinding org.dselent.course_load_scheduler.client.view.impl.FacultyCourseViewImpl.FacultyCourseViewImplUiBinder
    Adding '3' new generated units
       Compiling...
-         Compilation completed in 0.02 seconds
+         Compilation completed in 0.01 seconds
       Removing invalidated units
-Rebinding org.dselent.course_load_scheduler.client.view.impl.UserDetailsViewImpl_UserDetailsViewImplUiBinderImpl_designTime1518798472672.Template
+Rebinding org.dselent.course_load_scheduler.client.view.impl.FacultyCourseViewImpl_FacultyCourseViewImplUiBinderImpl_designTime1518762780632.Template
    Invoking generator com.google.gwt.safehtml.rebind.SafeHtmlTemplatesGenerator
-      Constructing interface org.dselent.course_load_scheduler.client.view.impl.UserDetailsViewImpl_UserDetailsViewImplUiBinderImpl_designTime1518798472672.Template
+      Constructing interface org.dselent.course_load_scheduler.client.view.impl.FacultyCourseViewImpl_FacultyCourseViewImplUiBinderImpl_designTime1518762780632.Template
          Generating method body for html1()
    Adding '1' new generated units
       Compiling...
          Compilation completed in 0.01 seconds
       Removing invalidated units
-Rebinding org.dselent.course_load_scheduler.client.view.impl.UserDetailsViewImpl_UserDetailsViewImplUiBinderImpl_designTime1518798472672_GenBundle
+Rebinding org.dselent.course_load_scheduler.client.view.impl.FacultyCourseViewImpl_FacultyCourseViewImplUiBinderImpl_designTime1518762780632_GenBundle
+   Adding '1' new generated units
+      Compiling...
+         Compilation completed in 0.01 seconds
+      Removing invalidated units
+Rebinding org.dselent.course_load_scheduler.client.view.impl.FacultyCourseViewImpl.FacultyCourseViewImplUiBinder
+   Adding '3' new generated units
+      Compiling...
+         Compilation completed in 0.01 seconds
+      Removing invalidated units
+Rebinding org.dselent.course_load_scheduler.client.view.impl.FacultyCourseViewImpl_FacultyCourseViewImplUiBinderImpl_designTime1518762786946.Template
+   Invoking generator com.google.gwt.safehtml.rebind.SafeHtmlTemplatesGenerator
+      Constructing interface org.dselent.course_load_scheduler.client.view.impl.FacultyCourseViewImpl_FacultyCourseViewImplUiBinderImpl_designTime1518762786946.Template
+         Generating method body for html1()
+   Adding '1' new generated units
+      Compiling...
+         Compilation completed in 0.01 seconds
+      Removing invalidated units
+Rebinding org.dselent.course_load_scheduler.client.view.impl.FacultyCourseViewImpl_FacultyCourseViewImplUiBinderImpl_designTime1518762786946_GenBundle
+   Adding '1' new generated units
+      Compiling...
+         Compilation completed in 0.01 seconds
+      Removing invalidated units
+Rebinding org.dselent.course_load_scheduler.client.view.impl.FacultyCourseViewImpl.FacultyCourseViewImplUiBinder
+   Adding '3' new generated units
+      Compiling...
+         Compilation completed in 0.03 seconds
+      Removing invalidated units
+Rebinding org.dselent.course_load_scheduler.client.view.impl.FacultyCourseViewImpl_FacultyCourseViewImplUiBinderImpl_designTime1518762794802.Template
+   Invoking generator com.google.gwt.safehtml.rebind.SafeHtmlTemplatesGenerator
+      Constructing interface org.dselent.course_load_scheduler.client.view.impl.FacultyCourseViewImpl_FacultyCourseViewImplUiBinderImpl_designTime1518762794802.Template
+         Generating method body for html1()
+   Adding '1' new generated units
+      Compiling...
+         Compilation completed in 0.01 seconds
+      Removing invalidated units
+Rebinding org.dselent.course_load_scheduler.client.view.impl.FacultyCourseViewImpl_FacultyCourseViewImplUiBinderImpl_designTime1518762794802_GenBundle
+   Adding '1' new generated units
+      Compiling...
+         Compilation completed in 0.01 seconds
+      Removing invalidated units
+Rebinding org.dselent.course_load_scheduler.client.view.impl.FacultyCourseViewImpl.FacultyCourseViewImplUiBinder
+   Adding '3' new generated units
+      Compiling...
+         Compilation completed in 0.01 seconds
+      Removing invalidated units
+Rebinding org.dselent.course_load_scheduler.client.view.impl.FacultyCourseViewImpl_FacultyCourseViewImplUiBinderImpl_designTime1518762802675.Template
+   Invoking generator com.google.gwt.safehtml.rebind.SafeHtmlTemplatesGenerator
+      Constructing interface org.dselent.course_load_scheduler.client.view.impl.FacultyCourseViewImpl_FacultyCourseViewImplUiBinderImpl_designTime1518762802675.Template
+         Generating method body for html1()
+   Adding '1' new generated units
+      Compiling...
+         Compilation completed in 0.00 seconds
+      Removing invalidated units
+Rebinding org.dselent.course_load_scheduler.client.view.impl.FacultyCourseViewImpl_FacultyCourseViewImplUiBinderImpl_designTime1518762802675_GenBundle
+   Adding '1' new generated units
+      Compiling...
+         Compilation completed in 0.01 seconds
+      Removing invalidated units
+Rebinding org.dselent.course_load_scheduler.client.view.impl.FacultyCourseViewImpl.FacultyCourseViewImplUiBinder
+   Adding '3' new generated units
+      Compiling...
+         Compilation completed in 0.01 seconds
+      Removing invalidated units
+Rebinding org.dselent.course_load_scheduler.client.view.impl.FacultyCourseViewImpl_FacultyCourseViewImplUiBinderImpl_designTime1518762815687.Template
+   Invoking generator com.google.gwt.safehtml.rebind.SafeHtmlTemplatesGenerator
+      Constructing interface org.dselent.course_load_scheduler.client.view.impl.FacultyCourseViewImpl_FacultyCourseViewImplUiBinderImpl_designTime1518762815687.Template
+         Generating method body for html1()
+   Adding '1' new generated units
+      Compiling...
+         Compilation completed in 0.00 seconds
+      Removing invalidated units
+Rebinding org.dselent.course_load_scheduler.client.view.impl.FacultyCourseViewImpl_FacultyCourseViewImplUiBinderImpl_designTime1518762815687_GenBundle
+   Adding '1' new generated units
+      Compiling...
+         Compilation completed in 0.00 seconds
+      Removing invalidated units
+Rebinding org.dselent.course_load_scheduler.client.view.impl.FacultyCourseViewImpl.FacultyCourseViewImplUiBinder
+   Adding '3' new generated units
+      Compiling...
+         Compilation completed in 0.01 seconds
+      Removing invalidated units
+Rebinding org.dselent.course_load_scheduler.client.view.impl.FacultyCourseViewImpl_FacultyCourseViewImplUiBinderImpl_designTime1518762828526.Template
+   Invoking generator com.google.gwt.safehtml.rebind.SafeHtmlTemplatesGenerator
+      Constructing interface org.dselent.course_load_scheduler.client.view.impl.FacultyCourseViewImpl_FacultyCourseViewImplUiBinderImpl_designTime1518762828526.Template
+         Generating method body for html1()
+   Adding '1' new generated units
+      Compiling...
+         Compilation completed in 0.01 seconds
+      Removing invalidated units
+Rebinding org.dselent.course_load_scheduler.client.view.impl.FacultyCourseViewImpl_FacultyCourseViewImplUiBinderImpl_designTime1518762828526_GenBundle
    Adding '1' new generated units
       Compiling...
          Compilation completed in 0.01 seconds
@@ -5140,1688 +5332,38 @@ Rebinding com.google.gwt.i18n.client.impl.LocaleInfoImpl
       Compiling...
          Compilation completed in 0.00 seconds
       Removing invalidated units
-Rebinding org.dselent.course_load_scheduler.client.view.impl.UserCreateViewImpl.UserCreateViewImplUiBinder
-   Adding '3' new generated units
-      Compiling...
-         Compilation completed in 0.03 seconds
-      Removing invalidated units
-Rebinding org.dselent.course_load_scheduler.client.view.impl.UserCreateViewImpl_UserCreateViewImplUiBinderImpl_designTime1518798533815.Template
-   Invoking generator com.google.gwt.safehtml.rebind.SafeHtmlTemplatesGenerator
-      Constructing interface org.dselent.course_load_scheduler.client.view.impl.UserCreateViewImpl_UserCreateViewImplUiBinderImpl_designTime1518798533815.Template
-         Generating method body for html1()
-   Adding '1' new generated units
-      Compiling...
-         Compilation completed in 0.01 seconds
-      Removing invalidated units
-Rebinding org.dselent.course_load_scheduler.client.view.impl.UserCreateViewImpl_UserCreateViewImplUiBinderImpl_designTime1518798533815_GenBundle
-   Adding '1' new generated units
-      Compiling...
-         Compilation completed in 0.01 seconds
-      Removing invalidated units
-Rebinding org.dselent.course_load_scheduler.client.view.impl.UserCreateViewImpl.UserCreateViewImplUiBinder
+Rebinding org.dselent.course_load_scheduler.client.view.impl.FacultyCourseViewImpl.FacultyCourseViewImplUiBinder
    Adding '3' new generated units
       Compiling...
          Compilation completed in 0.02 seconds
       Removing invalidated units
-Rebinding org.dselent.course_load_scheduler.client.view.impl.UserCreateViewImpl_UserCreateViewImplUiBinderImpl_designTime1518798534443.Template
+Rebinding org.dselent.course_load_scheduler.client.view.impl.FacultyCourseViewImpl_FacultyCourseViewImplUiBinderImpl_designTime1518800008718.Template
    Invoking generator com.google.gwt.safehtml.rebind.SafeHtmlTemplatesGenerator
-      Constructing interface org.dselent.course_load_scheduler.client.view.impl.UserCreateViewImpl_UserCreateViewImplUiBinderImpl_designTime1518798534443.Template
+      Constructing interface org.dselent.course_load_scheduler.client.view.impl.FacultyCourseViewImpl_FacultyCourseViewImplUiBinderImpl_designTime1518800008718.Template
          Generating method body for html1()
    Adding '1' new generated units
       Compiling...
          Compilation completed in 0.01 seconds
       Removing invalidated units
-Rebinding org.dselent.course_load_scheduler.client.view.impl.UserCreateViewImpl_UserCreateViewImplUiBinderImpl_designTime1518798534443_GenBundle
+Rebinding org.dselent.course_load_scheduler.client.view.impl.FacultyCourseViewImpl_FacultyCourseViewImplUiBinderImpl_designTime1518800008718_GenBundle
    Adding '1' new generated units
       Compiling...
          Compilation completed in 0.01 seconds
       Removing invalidated units
-Public resources found in...
-Translatable source found in...
-Found 2924 cached/archived units.  Used 2924 / 2924 units from cache.
-Compiling...
-   Compilation completed in 0.00 seconds
-Validating units:
-   Errors in 'file:/C:/Users/Tessa/eclipse-workspace_gwt_client/course_load_scheduler/src/main/java/org/dselent/course_load_scheduler/client/model/UserRole.java'
-      Line 12: No source code is available for type java.time.Instant; did you forget to inherit a required module?
-      Line 52: The method toInstant() is undefined for the type Timestamp
-      Line 70: The method toInstant() is undefined for the type Timestamp
-   Errors in 'file:/C:/Users/Tessa/eclipse-workspace_gwt_client/course_load_scheduler/src/main/java/org/dselent/course_load_scheduler/client/model/UserState.java'
-      Line 13: No source code is available for type java.time.Instant; did you forget to inherit a required module?
-      Line 53: The method toInstant() is undefined for the type Timestamp
-      Line 71: The method toInstant() is undefined for the type Timestamp
-   Errors in 'file:/C:/Users/Tessa/eclipse-workspace_gwt_client/course_load_scheduler/src/main/java/org/dselent/course_load_scheduler/client/model/UsersHistory.java'
-      Line 19: No source code is available for type java.time.Instant; did you forget to inherit a required module?
-      Line 128: The method toInstant() is undefined for the type Timestamp
-   Errors in 'file:/C:/Users/Tessa/eclipse-workspace_gwt_client/course_load_scheduler/src/main/java/org/dselent/course_load_scheduler/client/model/UsersRolesLink.java'
-      Line 14: No source code is available for type java.time.Instant; did you forget to inherit a required module?
-      Line 63: The method toInstant() is undefined for the type Timestamp
-Removing invalidated units
-Finding entry point classes
-Rebinding com.google.gwt.i18n.client.impl.LocaleInfoImpl
-   Invoking generator com.google.gwt.i18n.rebind.LocaleInfoGenerator
-      Processing interface com.google.gwt.i18n.client.constants.NumberConstantsImpl
-         Generating method body for notANumber()
-         Generating method body for currencyPattern()
-         Generating method body for decimalPattern()
-         Generating method body for decimalSeparator()
-         Generating method body for defCurrencyCode()
-         Generating method body for exponentialSymbol()
-         Generating method body for globalCurrencyPattern()
-         Generating method body for groupingSeparator()
-         Generating method body for infinity()
-         Generating method body for minusSign()
-         Generating method body for monetaryGroupingSeparator()
-         Generating method body for monetarySeparator()
-         Generating method body for percent()
-         Generating method body for percentPattern()
-         Generating method body for perMill()
-         Generating method body for plusSign()
-         Generating method body for scientificPattern()
-         Generating method body for simpleCurrencyPattern()
-         Generating method body for zeroDigit()
-   Adding '3' new generated units
-      Compiling...
-         Compilation completed in 0.00 seconds
-      Removing invalidated units
-Rebinding org.dselent.course_load_scheduler.client.view.impl.UserSearchViewImpl.UserSearchViewUiBinder
+Rebinding org.dselent.course_load_scheduler.client.view.impl.FacultyCourseViewImpl.FacultyCourseViewImplUiBinder
    Adding '3' new generated units
       Compiling...
          Compilation completed in 0.02 seconds
       Removing invalidated units
-Rebinding org.dselent.course_load_scheduler.client.view.impl.UserSearchViewImpl_UserSearchViewUiBinderImpl_designTime1518798561302.Template
+Rebinding org.dselent.course_load_scheduler.client.view.impl.FacultyCourseViewImpl_FacultyCourseViewImplUiBinderImpl_designTime1518800009184.Template
    Invoking generator com.google.gwt.safehtml.rebind.SafeHtmlTemplatesGenerator
-      Constructing interface org.dselent.course_load_scheduler.client.view.impl.UserSearchViewImpl_UserSearchViewUiBinderImpl_designTime1518798561302.Template
+      Constructing interface org.dselent.course_load_scheduler.client.view.impl.FacultyCourseViewImpl_FacultyCourseViewImplUiBinderImpl_designTime1518800009184.Template
          Generating method body for html1()
    Adding '1' new generated units
       Compiling...
          Compilation completed in 0.01 seconds
       Removing invalidated units
-Rebinding org.dselent.course_load_scheduler.client.view.impl.UserSearchViewImpl_UserSearchViewUiBinderImpl_designTime1518798561302_GenBundle
-   Adding '1' new generated units
-      Compiling...
-         Compilation completed in 0.01 seconds
-      Removing invalidated units
-Rebinding org.dselent.course_load_scheduler.client.view.impl.UserSearchViewImpl.UserSearchViewUiBinder
-   Adding '3' new generated units
-      Compiling...
-         Compilation completed in 0.01 seconds
-      Removing invalidated units
-Rebinding org.dselent.course_load_scheduler.client.view.impl.UserSearchViewImpl_UserSearchViewUiBinderImpl_designTime1518798561819.Template
-   Invoking generator com.google.gwt.safehtml.rebind.SafeHtmlTemplatesGenerator
-      Constructing interface org.dselent.course_load_scheduler.client.view.impl.UserSearchViewImpl_UserSearchViewUiBinderImpl_designTime1518798561819.Template
-         Generating method body for html1()
-   Adding '1' new generated units
-      Compiling...
-         Compilation completed in 0.01 seconds
-      Removing invalidated units
-Rebinding org.dselent.course_load_scheduler.client.view.impl.UserSearchViewImpl_UserSearchViewUiBinderImpl_designTime1518798561819_GenBundle
-   Adding '1' new generated units
-      Compiling...
-         Compilation completed in 0.01 seconds
-      Removing invalidated units
-Rebinding org.dselent.course_load_scheduler.client.view.impl.UserDetailsViewImpl.UserDetailsViewImplUiBinder
-   Adding '3' new generated units
-      Compiling...
-         Compilation completed in 0.01 seconds
-      Removing invalidated units
-Rebinding org.dselent.course_load_scheduler.client.view.impl.UserDetailsViewImpl_UserDetailsViewImplUiBinderImpl_designTime1518798573187.Template
-   Invoking generator com.google.gwt.safehtml.rebind.SafeHtmlTemplatesGenerator
-      Constructing interface org.dselent.course_load_scheduler.client.view.impl.UserDetailsViewImpl_UserDetailsViewImplUiBinderImpl_designTime1518798573187.Template
-         Generating method body for html1()
-   Adding '1' new generated units
-      Compiling...
-         Compilation completed in 0.01 seconds
-      Removing invalidated units
-Rebinding org.dselent.course_load_scheduler.client.view.impl.UserDetailsViewImpl_UserDetailsViewImplUiBinderImpl_designTime1518798573187_GenBundle
-   Adding '1' new generated units
-      Compiling...
-         Compilation completed in 0.00 seconds
-      Removing invalidated units
-Rebinding org.dselent.course_load_scheduler.client.view.impl.UserDetailsViewImpl.UserDetailsViewImplUiBinder
-   Adding '3' new generated units
-      Compiling...
-         Compilation completed in 0.03 seconds
-      Removing invalidated units
-Rebinding org.dselent.course_load_scheduler.client.view.impl.UserDetailsViewImpl_UserDetailsViewImplUiBinderImpl_designTime1518798706201.Template
-   Invoking generator com.google.gwt.safehtml.rebind.SafeHtmlTemplatesGenerator
-      Constructing interface org.dselent.course_load_scheduler.client.view.impl.UserDetailsViewImpl_UserDetailsViewImplUiBinderImpl_designTime1518798706201.Template
-         Generating method body for html1()
-   Adding '1' new generated units
-      Compiling...
-         Compilation completed in 0.01 seconds
-      Removing invalidated units
-Rebinding org.dselent.course_load_scheduler.client.view.impl.UserDetailsViewImpl_UserDetailsViewImplUiBinderImpl_designTime1518798706201_GenBundle
-   Adding '1' new generated units
-      Compiling...
-         Compilation completed in 0.01 seconds
-      Removing invalidated units
-Rebinding org.dselent.course_load_scheduler.client.view.impl.UserDetailsViewImpl.UserDetailsViewImplUiBinder
-   Adding '3' new generated units
-      Compiling...
-         Compilation completed in 0.01 seconds
-      Removing invalidated units
-Rebinding org.dselent.course_load_scheduler.client.view.impl.UserDetailsViewImpl_UserDetailsViewImplUiBinderImpl_designTime1518798724688.Template
-   Invoking generator com.google.gwt.safehtml.rebind.SafeHtmlTemplatesGenerator
-      Constructing interface org.dselent.course_load_scheduler.client.view.impl.UserDetailsViewImpl_UserDetailsViewImplUiBinderImpl_designTime1518798724688.Template
-         Generating method body for html1()
-   Adding '1' new generated units
-      Compiling...
-         Compilation completed in 0.00 seconds
-      Removing invalidated units
-Rebinding org.dselent.course_load_scheduler.client.view.impl.UserDetailsViewImpl_UserDetailsViewImplUiBinderImpl_designTime1518798724688_GenBundle
-   Adding '1' new generated units
-      Compiling...
-         Compilation completed in 0.01 seconds
-      Removing invalidated units
-Rebinding org.dselent.course_load_scheduler.client.view.impl.UserDetailsViewImpl.UserDetailsViewImplUiBinder
-   Adding '3' new generated units
-      Compiling...
-         Compilation completed in 0.01 seconds
-      Removing invalidated units
-Rebinding org.dselent.course_load_scheduler.client.view.impl.UserDetailsViewImpl_UserDetailsViewImplUiBinderImpl_designTime1518798725738.Template
-   Invoking generator com.google.gwt.safehtml.rebind.SafeHtmlTemplatesGenerator
-      Constructing interface org.dselent.course_load_scheduler.client.view.impl.UserDetailsViewImpl_UserDetailsViewImplUiBinderImpl_designTime1518798725738.Template
-         Generating method body for html1()
-   Adding '1' new generated units
-      Compiling...
-         Compilation completed in 0.01 seconds
-      Removing invalidated units
-Rebinding org.dselent.course_load_scheduler.client.view.impl.UserDetailsViewImpl_UserDetailsViewImplUiBinderImpl_designTime1518798725738_GenBundle
-   Adding '1' new generated units
-      Compiling...
-         Compilation completed in 0.01 seconds
-      Removing invalidated units
-Rebinding org.dselent.course_load_scheduler.client.view.impl.UserDetailsViewImpl.UserDetailsViewImplUiBinder
-   Adding '3' new generated units
-      Compiling...
-         Compilation completed in 0.01 seconds
-      Removing invalidated units
-Rebinding org.dselent.course_load_scheduler.client.view.impl.UserDetailsViewImpl_UserDetailsViewImplUiBinderImpl_designTime1518798736075.Template
-   Invoking generator com.google.gwt.safehtml.rebind.SafeHtmlTemplatesGenerator
-      Constructing interface org.dselent.course_load_scheduler.client.view.impl.UserDetailsViewImpl_UserDetailsViewImplUiBinderImpl_designTime1518798736075.Template
-         Generating method body for html1()
-   Adding '1' new generated units
-      Compiling...
-         Compilation completed in 0.01 seconds
-      Removing invalidated units
-Rebinding org.dselent.course_load_scheduler.client.view.impl.UserDetailsViewImpl_UserDetailsViewImplUiBinderImpl_designTime1518798736075_GenBundle
-   Adding '1' new generated units
-      Compiling...
-         Compilation completed in 0.01 seconds
-      Removing invalidated units
-Rebinding org.dselent.course_load_scheduler.client.view.impl.UserDetailsViewImpl.UserDetailsViewImplUiBinder
-   Adding '3' new generated units
-      Compiling...
-         Compilation completed in 0.01 seconds
-      Removing invalidated units
-Rebinding org.dselent.course_load_scheduler.client.view.impl.UserDetailsViewImpl_UserDetailsViewImplUiBinderImpl_designTime1518798736441.Template
-   Invoking generator com.google.gwt.safehtml.rebind.SafeHtmlTemplatesGenerator
-      Constructing interface org.dselent.course_load_scheduler.client.view.impl.UserDetailsViewImpl_UserDetailsViewImplUiBinderImpl_designTime1518798736441.Template
-         Generating method body for html1()
-   Adding '1' new generated units
-      Compiling...
-         Compilation completed in 0.02 seconds
-      Removing invalidated units
-Rebinding org.dselent.course_load_scheduler.client.view.impl.UserDetailsViewImpl_UserDetailsViewImplUiBinderImpl_designTime1518798736441_GenBundle
-   Adding '1' new generated units
-      Compiling...
-         Compilation completed in 0.01 seconds
-      Removing invalidated units
-Rebinding org.dselent.course_load_scheduler.client.view.impl.UserDetailsViewImpl.UserDetailsViewImplUiBinder
-   Adding '3' new generated units
-      Compiling...
-         Compilation completed in 0.01 seconds
-      Removing invalidated units
-Rebinding org.dselent.course_load_scheduler.client.view.impl.UserDetailsViewImpl_UserDetailsViewImplUiBinderImpl_designTime1518798738253.Template
-   Invoking generator com.google.gwt.safehtml.rebind.SafeHtmlTemplatesGenerator
-      Constructing interface org.dselent.course_load_scheduler.client.view.impl.UserDetailsViewImpl_UserDetailsViewImplUiBinderImpl_designTime1518798738253.Template
-         Generating method body for html1()
-   Adding '1' new generated units
-      Compiling...
-         Compilation completed in 0.01 seconds
-      Removing invalidated units
-Rebinding org.dselent.course_load_scheduler.client.view.impl.UserDetailsViewImpl_UserDetailsViewImplUiBinderImpl_designTime1518798738253_GenBundle
-   Adding '1' new generated units
-      Compiling...
-         Compilation completed in 0.04 seconds
-      Removing invalidated units
-Rebinding org.dselent.course_load_scheduler.client.view.impl.UserDetailsViewImpl.UserDetailsViewImplUiBinder
-   Adding '3' new generated units
-      Compiling...
-         Compilation completed in 0.02 seconds
-      Removing invalidated units
-Rebinding org.dselent.course_load_scheduler.client.view.impl.UserDetailsViewImpl_UserDetailsViewImplUiBinderImpl_designTime1518798745701.Template
-   Invoking generator com.google.gwt.safehtml.rebind.SafeHtmlTemplatesGenerator
-      Constructing interface org.dselent.course_load_scheduler.client.view.impl.UserDetailsViewImpl_UserDetailsViewImplUiBinderImpl_designTime1518798745701.Template
-         Generating method body for html1()
-   Adding '1' new generated units
-      Compiling...
-         Compilation completed in 0.01 seconds
-      Removing invalidated units
-Rebinding org.dselent.course_load_scheduler.client.view.impl.UserDetailsViewImpl_UserDetailsViewImplUiBinderImpl_designTime1518798745701_GenBundle
-   Adding '1' new generated units
-      Compiling...
-         Compilation completed in 0.01 seconds
-      Removing invalidated units
-Rebinding org.dselent.course_load_scheduler.client.view.impl.UserDetailsViewImpl.UserDetailsViewImplUiBinder
-   Adding '3' new generated units
-      Compiling...
-         Compilation completed in 0.01 seconds
-      Removing invalidated units
-Rebinding org.dselent.course_load_scheduler.client.view.impl.UserDetailsViewImpl_UserDetailsViewImplUiBinderImpl_designTime1518798750590.Template
-   Invoking generator com.google.gwt.safehtml.rebind.SafeHtmlTemplatesGenerator
-      Constructing interface org.dselent.course_load_scheduler.client.view.impl.UserDetailsViewImpl_UserDetailsViewImplUiBinderImpl_designTime1518798750590.Template
-         Generating method body for html1()
-   Adding '1' new generated units
-      Compiling...
-         Compilation completed in 0.01 seconds
-      Removing invalidated units
-Rebinding org.dselent.course_load_scheduler.client.view.impl.UserDetailsViewImpl_UserDetailsViewImplUiBinderImpl_designTime1518798750590_GenBundle
-   Adding '1' new generated units
-      Compiling...
-         Compilation completed in 0.01 seconds
-      Removing invalidated units
-Rebinding org.dselent.course_load_scheduler.client.view.impl.UserDetailsViewImpl.UserDetailsViewImplUiBinder
-   Adding '3' new generated units
-      Compiling...
-         Compilation completed in 0.01 seconds
-      Removing invalidated units
-Rebinding org.dselent.course_load_scheduler.client.view.impl.UserDetailsViewImpl_UserDetailsViewImplUiBinderImpl_designTime1518798761912.Template
-   Invoking generator com.google.gwt.safehtml.rebind.SafeHtmlTemplatesGenerator
-      Constructing interface org.dselent.course_load_scheduler.client.view.impl.UserDetailsViewImpl_UserDetailsViewImplUiBinderImpl_designTime1518798761912.Template
-         Generating method body for html1()
-   Adding '1' new generated units
-      Compiling...
-         Compilation completed in 0.01 seconds
-      Removing invalidated units
-Rebinding org.dselent.course_load_scheduler.client.view.impl.UserDetailsViewImpl_UserDetailsViewImplUiBinderImpl_designTime1518798761912_GenBundle
-   Adding '1' new generated units
-      Compiling...
-         Compilation completed in 0.01 seconds
-      Removing invalidated units
-Rebinding org.dselent.course_load_scheduler.client.view.impl.UserDetailsViewImpl.UserDetailsViewImplUiBinder
-   Adding '3' new generated units
-      Compiling...
-         Compilation completed in 0.02 seconds
-      Removing invalidated units
-Rebinding org.dselent.course_load_scheduler.client.view.impl.UserDetailsViewImpl_UserDetailsViewImplUiBinderImpl_designTime1518798764958.Template
-   Invoking generator com.google.gwt.safehtml.rebind.SafeHtmlTemplatesGenerator
-      Constructing interface org.dselent.course_load_scheduler.client.view.impl.UserDetailsViewImpl_UserDetailsViewImplUiBinderImpl_designTime1518798764958.Template
-         Generating method body for html1()
-   Adding '1' new generated units
-      Compiling...
-         Compilation completed in 0.01 seconds
-      Removing invalidated units
-Rebinding org.dselent.course_load_scheduler.client.view.impl.UserDetailsViewImpl_UserDetailsViewImplUiBinderImpl_designTime1518798764958_GenBundle
-   Adding '1' new generated units
-      Compiling...
-         Compilation completed in 0.01 seconds
-      Removing invalidated units
-Rebinding org.dselent.course_load_scheduler.client.view.impl.UserDetailsViewImpl.UserDetailsViewImplUiBinder
-   Adding '3' new generated units
-      Compiling...
-         Compilation completed in 0.01 seconds
-      Removing invalidated units
-Rebinding org.dselent.course_load_scheduler.client.view.impl.UserDetailsViewImpl_UserDetailsViewImplUiBinderImpl_designTime1518798765133.Template
-   Invoking generator com.google.gwt.safehtml.rebind.SafeHtmlTemplatesGenerator
-      Constructing interface org.dselent.course_load_scheduler.client.view.impl.UserDetailsViewImpl_UserDetailsViewImplUiBinderImpl_designTime1518798765133.Template
-         Generating method body for html1()
-   Adding '1' new generated units
-      Compiling...
-         Compilation completed in 0.00 seconds
-      Removing invalidated units
-Rebinding org.dselent.course_load_scheduler.client.view.impl.UserDetailsViewImpl_UserDetailsViewImplUiBinderImpl_designTime1518798765133_GenBundle
-   Adding '1' new generated units
-      Compiling...
-         Compilation completed in 0.01 seconds
-      Removing invalidated units
-Rebinding org.dselent.course_load_scheduler.client.view.impl.UserDetailsViewImpl.UserDetailsViewImplUiBinder
-   Adding '3' new generated units
-      Compiling...
-         Compilation completed in 0.01 seconds
-      Removing invalidated units
-Rebinding org.dselent.course_load_scheduler.client.view.impl.UserDetailsViewImpl_UserDetailsViewImplUiBinderImpl_designTime1518798774542.Template
-   Invoking generator com.google.gwt.safehtml.rebind.SafeHtmlTemplatesGenerator
-      Constructing interface org.dselent.course_load_scheduler.client.view.impl.UserDetailsViewImpl_UserDetailsViewImplUiBinderImpl_designTime1518798774542.Template
-         Generating method body for html1()
-   Adding '1' new generated units
-      Compiling...
-         Compilation completed in 0.01 seconds
-      Removing invalidated units
-Rebinding org.dselent.course_load_scheduler.client.view.impl.UserDetailsViewImpl_UserDetailsViewImplUiBinderImpl_designTime1518798774542_GenBundle
-   Adding '1' new generated units
-      Compiling...
-         Compilation completed in 0.01 seconds
-      Removing invalidated units
-Rebinding org.dselent.course_load_scheduler.client.view.impl.UserDetailsViewImpl.UserDetailsViewImplUiBinder
-   Adding '3' new generated units
-      Compiling...
-         Compilation completed in 0.01 seconds
-      Removing invalidated units
-Rebinding org.dselent.course_load_scheduler.client.view.impl.UserDetailsViewImpl_UserDetailsViewImplUiBinderImpl_designTime1518798784998.Template
-   Invoking generator com.google.gwt.safehtml.rebind.SafeHtmlTemplatesGenerator
-      Constructing interface org.dselent.course_load_scheduler.client.view.impl.UserDetailsViewImpl_UserDetailsViewImplUiBinderImpl_designTime1518798784998.Template
-         Generating method body for html1()
-   Adding '1' new generated units
-      Compiling...
-         Compilation completed in 0.01 seconds
-      Removing invalidated units
-Rebinding org.dselent.course_load_scheduler.client.view.impl.UserDetailsViewImpl_UserDetailsViewImplUiBinderImpl_designTime1518798784998_GenBundle
-   Adding '1' new generated units
-      Compiling...
-         Compilation completed in 0.01 seconds
-      Removing invalidated units
-Rebinding org.dselent.course_load_scheduler.client.view.impl.UserDetailsViewImpl.UserDetailsViewImplUiBinder
-   Adding '3' new generated units
-      Compiling...
-         Compilation completed in 0.01 seconds
-      Removing invalidated units
-Rebinding org.dselent.course_load_scheduler.client.view.impl.UserDetailsViewImpl_UserDetailsViewImplUiBinderImpl_designTime1518798786423.Template
-   Invoking generator com.google.gwt.safehtml.rebind.SafeHtmlTemplatesGenerator
-      Constructing interface org.dselent.course_load_scheduler.client.view.impl.UserDetailsViewImpl_UserDetailsViewImplUiBinderImpl_designTime1518798786423.Template
-         Generating method body for html1()
-   Adding '1' new generated units
-      Compiling...
-         Compilation completed in 0.00 seconds
-      Removing invalidated units
-Rebinding org.dselent.course_load_scheduler.client.view.impl.UserDetailsViewImpl_UserDetailsViewImplUiBinderImpl_designTime1518798786423_GenBundle
-   Adding '1' new generated units
-      Compiling...
-         Compilation completed in 0.01 seconds
-      Removing invalidated units
-Rebinding org.dselent.course_load_scheduler.client.view.impl.UserDetailsViewImpl.UserDetailsViewImplUiBinder
-   Adding '3' new generated units
-      Compiling...
-         Compilation completed in 0.01 seconds
-      Removing invalidated units
-Rebinding org.dselent.course_load_scheduler.client.view.impl.UserDetailsViewImpl_UserDetailsViewImplUiBinderImpl_designTime1518798796057.Template
-   Invoking generator com.google.gwt.safehtml.rebind.SafeHtmlTemplatesGenerator
-      Constructing interface org.dselent.course_load_scheduler.client.view.impl.UserDetailsViewImpl_UserDetailsViewImplUiBinderImpl_designTime1518798796057.Template
-         Generating method body for html1()
-   Adding '1' new generated units
-      Compiling...
-         Compilation completed in 0.01 seconds
-      Removing invalidated units
-Rebinding org.dselent.course_load_scheduler.client.view.impl.UserDetailsViewImpl_UserDetailsViewImplUiBinderImpl_designTime1518798796057_GenBundle
-   Adding '1' new generated units
-      Compiling...
-         Compilation completed in 0.01 seconds
-      Removing invalidated units
-Rebinding org.dselent.course_load_scheduler.client.view.impl.UserDetailsViewImpl.UserDetailsViewImplUiBinder
-   Adding '3' new generated units
-      Compiling...
-         Compilation completed in 0.02 seconds
-      Removing invalidated units
-Rebinding org.dselent.course_load_scheduler.client.view.impl.UserDetailsViewImpl_UserDetailsViewImplUiBinderImpl_designTime1518798796278.Template
-   Invoking generator com.google.gwt.safehtml.rebind.SafeHtmlTemplatesGenerator
-      Constructing interface org.dselent.course_load_scheduler.client.view.impl.UserDetailsViewImpl_UserDetailsViewImplUiBinderImpl_designTime1518798796278.Template
-         Generating method body for html1()
-   Adding '1' new generated units
-      Compiling...
-         Compilation completed in 0.06 seconds
-      Removing invalidated units
-Rebinding org.dselent.course_load_scheduler.client.view.impl.UserDetailsViewImpl_UserDetailsViewImplUiBinderImpl_designTime1518798796278_GenBundle
-   Adding '1' new generated units
-      Compiling...
-         Compilation completed in 0.01 seconds
-      Removing invalidated units
-Rebinding org.dselent.course_load_scheduler.client.view.impl.UserDetailsViewImpl.UserDetailsViewImplUiBinder
-   Adding '3' new generated units
-      Compiling...
-         Compilation completed in 0.01 seconds
-      Removing invalidated units
-Rebinding org.dselent.course_load_scheduler.client.view.impl.UserDetailsViewImpl_UserDetailsViewImplUiBinderImpl_designTime1518798797976.Template
-   Invoking generator com.google.gwt.safehtml.rebind.SafeHtmlTemplatesGenerator
-      Constructing interface org.dselent.course_load_scheduler.client.view.impl.UserDetailsViewImpl_UserDetailsViewImplUiBinderImpl_designTime1518798797976.Template
-         Generating method body for html1()
-   Adding '1' new generated units
-      Compiling...
-         Compilation completed in 0.01 seconds
-      Removing invalidated units
-Rebinding org.dselent.course_load_scheduler.client.view.impl.UserDetailsViewImpl_UserDetailsViewImplUiBinderImpl_designTime1518798797976_GenBundle
-   Adding '1' new generated units
-      Compiling...
-         Compilation completed in 0.01 seconds
-      Removing invalidated units
-Rebinding org.dselent.course_load_scheduler.client.view.impl.UserDetailsViewImpl.UserDetailsViewImplUiBinder
-   Adding '3' new generated units
-      Compiling...
-         Compilation completed in 0.02 seconds
-      Removing invalidated units
-Rebinding org.dselent.course_load_scheduler.client.view.impl.UserDetailsViewImpl_UserDetailsViewImplUiBinderImpl_designTime1518798801390.Template
-   Invoking generator com.google.gwt.safehtml.rebind.SafeHtmlTemplatesGenerator
-      Constructing interface org.dselent.course_load_scheduler.client.view.impl.UserDetailsViewImpl_UserDetailsViewImplUiBinderImpl_designTime1518798801390.Template
-         Generating method body for html1()
-   Adding '1' new generated units
-      Compiling...
-         Compilation completed in 0.01 seconds
-      Removing invalidated units
-Rebinding org.dselent.course_load_scheduler.client.view.impl.UserDetailsViewImpl_UserDetailsViewImplUiBinderImpl_designTime1518798801390_GenBundle
-   Adding '1' new generated units
-      Compiling...
-         Compilation completed in 0.01 seconds
-      Removing invalidated units
-Rebinding org.dselent.course_load_scheduler.client.view.impl.UserDetailsViewImpl.UserDetailsViewImplUiBinder
-   Adding '3' new generated units
-      Compiling...
-         Compilation completed in 0.01 seconds
-      Removing invalidated units
-Rebinding org.dselent.course_load_scheduler.client.view.impl.UserDetailsViewImpl_UserDetailsViewImplUiBinderImpl_designTime1518798842197.Template
-   Invoking generator com.google.gwt.safehtml.rebind.SafeHtmlTemplatesGenerator
-      Constructing interface org.dselent.course_load_scheduler.client.view.impl.UserDetailsViewImpl_UserDetailsViewImplUiBinderImpl_designTime1518798842197.Template
-         Generating method body for html1()
-   Adding '1' new generated units
-      Compiling...
-         Compilation completed in 0.00 seconds
-      Removing invalidated units
-Rebinding org.dselent.course_load_scheduler.client.view.impl.UserDetailsViewImpl_UserDetailsViewImplUiBinderImpl_designTime1518798842197_GenBundle
-   Adding '1' new generated units
-      Compiling...
-         Compilation completed in 0.00 seconds
-      Removing invalidated units
-Rebinding org.dselent.course_load_scheduler.client.view.impl.UserDetailsViewImpl.UserDetailsViewImplUiBinder
-   Adding '3' new generated units
-      Compiling...
-         Compilation completed in 0.01 seconds
-      Removing invalidated units
-Rebinding org.dselent.course_load_scheduler.client.view.impl.UserDetailsViewImpl_UserDetailsViewImplUiBinderImpl_designTime1518798853678.Template
-   Invoking generator com.google.gwt.safehtml.rebind.SafeHtmlTemplatesGenerator
-      Constructing interface org.dselent.course_load_scheduler.client.view.impl.UserDetailsViewImpl_UserDetailsViewImplUiBinderImpl_designTime1518798853678.Template
-         Generating method body for html1()
-   Adding '1' new generated units
-      Compiling...
-         Compilation completed in 0.01 seconds
-      Removing invalidated units
-Rebinding org.dselent.course_load_scheduler.client.view.impl.UserDetailsViewImpl_UserDetailsViewImplUiBinderImpl_designTime1518798853678_GenBundle
-   Adding '1' new generated units
-      Compiling...
-         Compilation completed in 0.01 seconds
-      Removing invalidated units
-Rebinding org.dselent.course_load_scheduler.client.view.impl.UserDetailsViewImpl.UserDetailsViewImplUiBinder
-   Adding '3' new generated units
-      Compiling...
-         Compilation completed in 0.02 seconds
-      Removing invalidated units
-Rebinding org.dselent.course_load_scheduler.client.view.impl.UserDetailsViewImpl_UserDetailsViewImplUiBinderImpl_designTime1518798855013.Template
-   Invoking generator com.google.gwt.safehtml.rebind.SafeHtmlTemplatesGenerator
-      Constructing interface org.dselent.course_load_scheduler.client.view.impl.UserDetailsViewImpl_UserDetailsViewImplUiBinderImpl_designTime1518798855013.Template
-         Generating method body for html1()
-   Adding '1' new generated units
-      Compiling...
-         Compilation completed in 0.01 seconds
-      Removing invalidated units
-Rebinding org.dselent.course_load_scheduler.client.view.impl.UserDetailsViewImpl_UserDetailsViewImplUiBinderImpl_designTime1518798855013_GenBundle
-   Adding '1' new generated units
-      Compiling...
-         Compilation completed in 0.01 seconds
-      Removing invalidated units
-Rebinding org.dselent.course_load_scheduler.client.view.impl.UserDetailsViewImpl.UserDetailsViewImplUiBinder
-   Adding '3' new generated units
-      Compiling...
-         Compilation completed in 0.01 seconds
-      Removing invalidated units
-Rebinding org.dselent.course_load_scheduler.client.view.impl.UserDetailsViewImpl_UserDetailsViewImplUiBinderImpl_designTime1518798855156.Template
-   Invoking generator com.google.gwt.safehtml.rebind.SafeHtmlTemplatesGenerator
-      Constructing interface org.dselent.course_load_scheduler.client.view.impl.UserDetailsViewImpl_UserDetailsViewImplUiBinderImpl_designTime1518798855156.Template
-         Generating method body for html1()
-   Adding '1' new generated units
-      Compiling...
-         Compilation completed in 0.00 seconds
-      Removing invalidated units
-Rebinding org.dselent.course_load_scheduler.client.view.impl.UserDetailsViewImpl_UserDetailsViewImplUiBinderImpl_designTime1518798855156_GenBundle
-   Adding '1' new generated units
-      Compiling...
-         Compilation completed in 0.00 seconds
-      Removing invalidated units
-Rebinding org.dselent.course_load_scheduler.client.view.impl.UserDetailsViewImpl.UserDetailsViewImplUiBinder
-   Adding '3' new generated units
-      Compiling...
-         Compilation completed in 0.01 seconds
-      Removing invalidated units
-Rebinding org.dselent.course_load_scheduler.client.view.impl.UserDetailsViewImpl_UserDetailsViewImplUiBinderImpl_designTime1518798863237.Template
-   Invoking generator com.google.gwt.safehtml.rebind.SafeHtmlTemplatesGenerator
-      Constructing interface org.dselent.course_load_scheduler.client.view.impl.UserDetailsViewImpl_UserDetailsViewImplUiBinderImpl_designTime1518798863237.Template
-         Generating method body for html1()
-   Adding '1' new generated units
-      Compiling...
-         Compilation completed in 0.00 seconds
-      Removing invalidated units
-Rebinding org.dselent.course_load_scheduler.client.view.impl.UserDetailsViewImpl_UserDetailsViewImplUiBinderImpl_designTime1518798863237_GenBundle
-   Adding '1' new generated units
-      Compiling...
-         Compilation completed in 0.00 seconds
-      Removing invalidated units
-Rebinding org.dselent.course_load_scheduler.client.view.impl.UserDetailsViewImpl.UserDetailsViewImplUiBinder
-   Adding '3' new generated units
-      Compiling...
-         Compilation completed in 0.01 seconds
-      Removing invalidated units
-Rebinding org.dselent.course_load_scheduler.client.view.impl.UserDetailsViewImpl_UserDetailsViewImplUiBinderImpl_designTime1518798869689.Template
-   Invoking generator com.google.gwt.safehtml.rebind.SafeHtmlTemplatesGenerator
-      Constructing interface org.dselent.course_load_scheduler.client.view.impl.UserDetailsViewImpl_UserDetailsViewImplUiBinderImpl_designTime1518798869689.Template
-         Generating method body for html1()
-   Adding '1' new generated units
-      Compiling...
-         Compilation completed in 0.00 seconds
-      Removing invalidated units
-Rebinding org.dselent.course_load_scheduler.client.view.impl.UserDetailsViewImpl_UserDetailsViewImplUiBinderImpl_designTime1518798869689_GenBundle
-   Adding '1' new generated units
-      Compiling...
-         Compilation completed in 0.00 seconds
-      Removing invalidated units
-Rebinding org.dselent.course_load_scheduler.client.view.impl.UserDetailsViewImpl.UserDetailsViewImplUiBinder
-   Adding '3' new generated units
-      Compiling...
-         Compilation completed in 0.01 seconds
-      Removing invalidated units
-Rebinding org.dselent.course_load_scheduler.client.view.impl.UserDetailsViewImpl_UserDetailsViewImplUiBinderImpl_designTime1518798871266.Template
-   Invoking generator com.google.gwt.safehtml.rebind.SafeHtmlTemplatesGenerator
-      Constructing interface org.dselent.course_load_scheduler.client.view.impl.UserDetailsViewImpl_UserDetailsViewImplUiBinderImpl_designTime1518798871266.Template
-         Generating method body for html1()
-   Adding '1' new generated units
-      Compiling...
-         Compilation completed in 0.01 seconds
-      Removing invalidated units
-Rebinding org.dselent.course_load_scheduler.client.view.impl.UserDetailsViewImpl_UserDetailsViewImplUiBinderImpl_designTime1518798871266_GenBundle
-   Adding '1' new generated units
-      Compiling...
-         Compilation completed in 0.01 seconds
-      Removing invalidated units
-Rebinding org.dselent.course_load_scheduler.client.view.impl.UserDetailsViewImpl.UserDetailsViewImplUiBinder
-   Adding '3' new generated units
-      Compiling...
-         Compilation completed in 0.01 seconds
-      Removing invalidated units
-Rebinding org.dselent.course_load_scheduler.client.view.impl.UserDetailsViewImpl_UserDetailsViewImplUiBinderImpl_designTime1518798887939.Template
-   Invoking generator com.google.gwt.safehtml.rebind.SafeHtmlTemplatesGenerator
-      Constructing interface org.dselent.course_load_scheduler.client.view.impl.UserDetailsViewImpl_UserDetailsViewImplUiBinderImpl_designTime1518798887939.Template
-         Generating method body for html1()
-   Adding '1' new generated units
-      Compiling...
-         Compilation completed in 0.01 seconds
-      Removing invalidated units
-Rebinding org.dselent.course_load_scheduler.client.view.impl.UserDetailsViewImpl_UserDetailsViewImplUiBinderImpl_designTime1518798887939_GenBundle
-   Adding '1' new generated units
-      Compiling...
-         Compilation completed in 0.01 seconds
-      Removing invalidated units
-Rebinding org.dselent.course_load_scheduler.client.view.impl.UserDetailsViewImpl.UserDetailsViewImplUiBinder
-   Adding '3' new generated units
-      Compiling...
-         Compilation completed in 0.01 seconds
-      Removing invalidated units
-Rebinding org.dselent.course_load_scheduler.client.view.impl.UserDetailsViewImpl_UserDetailsViewImplUiBinderImpl_designTime1518798901611.Template
-   Invoking generator com.google.gwt.safehtml.rebind.SafeHtmlTemplatesGenerator
-      Constructing interface org.dselent.course_load_scheduler.client.view.impl.UserDetailsViewImpl_UserDetailsViewImplUiBinderImpl_designTime1518798901611.Template
-         Generating method body for html1()
-   Adding '1' new generated units
-      Compiling...
-         Compilation completed in 0.01 seconds
-      Removing invalidated units
-Rebinding org.dselent.course_load_scheduler.client.view.impl.UserDetailsViewImpl_UserDetailsViewImplUiBinderImpl_designTime1518798901611_GenBundle
-   Adding '1' new generated units
-      Compiling...
-         Compilation completed in 0.00 seconds
-      Removing invalidated units
-Rebinding org.dselent.course_load_scheduler.client.view.impl.UserDetailsViewImpl.UserDetailsViewImplUiBinder
-   Adding '3' new generated units
-      Compiling...
-         Compilation completed in 0.02 seconds
-      Removing invalidated units
-Rebinding org.dselent.course_load_scheduler.client.view.impl.UserDetailsViewImpl_UserDetailsViewImplUiBinderImpl_designTime1518798901848.Template
-   Invoking generator com.google.gwt.safehtml.rebind.SafeHtmlTemplatesGenerator
-      Constructing interface org.dselent.course_load_scheduler.client.view.impl.UserDetailsViewImpl_UserDetailsViewImplUiBinderImpl_designTime1518798901848.Template
-         Generating method body for html1()
-   Adding '1' new generated units
-      Compiling...
-         Compilation completed in 0.01 seconds
-      Removing invalidated units
-Rebinding org.dselent.course_load_scheduler.client.view.impl.UserDetailsViewImpl_UserDetailsViewImplUiBinderImpl_designTime1518798901848_GenBundle
-   Adding '1' new generated units
-      Compiling...
-         Compilation completed in 0.01 seconds
-      Removing invalidated units
-Rebinding org.dselent.course_load_scheduler.client.view.impl.UserDetailsViewImpl.UserDetailsViewImplUiBinder
-   Adding '3' new generated units
-      Compiling...
-         Compilation completed in 0.01 seconds
-      Removing invalidated units
-Rebinding org.dselent.course_load_scheduler.client.view.impl.UserDetailsViewImpl_UserDetailsViewImplUiBinderImpl_designTime1518798905380.Template
-   Invoking generator com.google.gwt.safehtml.rebind.SafeHtmlTemplatesGenerator
-      Constructing interface org.dselent.course_load_scheduler.client.view.impl.UserDetailsViewImpl_UserDetailsViewImplUiBinderImpl_designTime1518798905380.Template
-         Generating method body for html1()
-   Adding '1' new generated units
-      Compiling...
-         Compilation completed in 0.00 seconds
-      Removing invalidated units
-Rebinding org.dselent.course_load_scheduler.client.view.impl.UserDetailsViewImpl_UserDetailsViewImplUiBinderImpl_designTime1518798905380_GenBundle
-   Adding '1' new generated units
-      Compiling...
-         Compilation completed in 0.01 seconds
-      Removing invalidated units
-Rebinding org.dselent.course_load_scheduler.client.view.impl.UserDetailsViewImpl.UserDetailsViewImplUiBinder
-   Adding '3' new generated units
-      Compiling...
-         Compilation completed in 0.01 seconds
-      Removing invalidated units
-Rebinding org.dselent.course_load_scheduler.client.view.impl.UserDetailsViewImpl_UserDetailsViewImplUiBinderImpl_designTime1518798907991.Template
-   Invoking generator com.google.gwt.safehtml.rebind.SafeHtmlTemplatesGenerator
-      Constructing interface org.dselent.course_load_scheduler.client.view.impl.UserDetailsViewImpl_UserDetailsViewImplUiBinderImpl_designTime1518798907991.Template
-         Generating method body for html1()
-   Adding '1' new generated units
-      Compiling...
-         Compilation completed in 0.01 seconds
-      Removing invalidated units
-Rebinding org.dselent.course_load_scheduler.client.view.impl.UserDetailsViewImpl_UserDetailsViewImplUiBinderImpl_designTime1518798907991_GenBundle
-   Adding '1' new generated units
-      Compiling...
-         Compilation completed in 0.01 seconds
-      Removing invalidated units
-Rebinding org.dselent.course_load_scheduler.client.view.impl.UserDetailsViewImpl.UserDetailsViewImplUiBinder
-   Adding '3' new generated units
-      Compiling...
-         Compilation completed in 0.02 seconds
-      Removing invalidated units
-Rebinding org.dselent.course_load_scheduler.client.view.impl.UserDetailsViewImpl_UserDetailsViewImplUiBinderImpl_designTime1518798913004.Template
-   Invoking generator com.google.gwt.safehtml.rebind.SafeHtmlTemplatesGenerator
-      Constructing interface org.dselent.course_load_scheduler.client.view.impl.UserDetailsViewImpl_UserDetailsViewImplUiBinderImpl_designTime1518798913004.Template
-         Generating method body for html1()
-   Adding '1' new generated units
-      Compiling...
-         Compilation completed in 0.00 seconds
-      Removing invalidated units
-Rebinding org.dselent.course_load_scheduler.client.view.impl.UserDetailsViewImpl_UserDetailsViewImplUiBinderImpl_designTime1518798913004_GenBundle
-   Adding '1' new generated units
-      Compiling...
-         Compilation completed in 0.01 seconds
-      Removing invalidated units
-Rebinding org.dselent.course_load_scheduler.client.view.impl.UserDetailsViewImpl.UserDetailsViewImplUiBinder
-   Adding '3' new generated units
-      Compiling...
-         Compilation completed in 0.01 seconds
-      Removing invalidated units
-Rebinding org.dselent.course_load_scheduler.client.view.impl.UserDetailsViewImpl_UserDetailsViewImplUiBinderImpl_designTime1518798917741.Template
-   Invoking generator com.google.gwt.safehtml.rebind.SafeHtmlTemplatesGenerator
-      Constructing interface org.dselent.course_load_scheduler.client.view.impl.UserDetailsViewImpl_UserDetailsViewImplUiBinderImpl_designTime1518798917741.Template
-         Generating method body for html1()
-   Adding '1' new generated units
-      Compiling...
-         Compilation completed in 0.00 seconds
-      Removing invalidated units
-Rebinding org.dselent.course_load_scheduler.client.view.impl.UserDetailsViewImpl_UserDetailsViewImplUiBinderImpl_designTime1518798917741_GenBundle
-   Adding '1' new generated units
-      Compiling...
-         Compilation completed in 0.01 seconds
-      Removing invalidated units
-Rebinding org.dselent.course_load_scheduler.client.view.impl.UserDetailsViewImpl.UserDetailsViewImplUiBinder
-   Adding '3' new generated units
-      Compiling...
-         Compilation completed in 0.02 seconds
-      Removing invalidated units
-Rebinding org.dselent.course_load_scheduler.client.view.impl.UserDetailsViewImpl_UserDetailsViewImplUiBinderImpl_designTime1518798920051.Template
-   Invoking generator com.google.gwt.safehtml.rebind.SafeHtmlTemplatesGenerator
-      Constructing interface org.dselent.course_load_scheduler.client.view.impl.UserDetailsViewImpl_UserDetailsViewImplUiBinderImpl_designTime1518798920051.Template
-         Generating method body for html1()
-   Adding '1' new generated units
-      Compiling...
-         Compilation completed in 0.00 seconds
-      Removing invalidated units
-Rebinding org.dselent.course_load_scheduler.client.view.impl.UserDetailsViewImpl_UserDetailsViewImplUiBinderImpl_designTime1518798920051_GenBundle
-   Adding '1' new generated units
-      Compiling...
-         Compilation completed in 0.00 seconds
-      Removing invalidated units
-Rebinding org.dselent.course_load_scheduler.client.view.impl.UserDetailsViewImpl.UserDetailsViewImplUiBinder
-   Adding '3' new generated units
-      Compiling...
-         Compilation completed in 0.01 seconds
-      Removing invalidated units
-Rebinding org.dselent.course_load_scheduler.client.view.impl.UserDetailsViewImpl_UserDetailsViewImplUiBinderImpl_designTime1518798920213.Template
-   Invoking generator com.google.gwt.safehtml.rebind.SafeHtmlTemplatesGenerator
-      Constructing interface org.dselent.course_load_scheduler.client.view.impl.UserDetailsViewImpl_UserDetailsViewImplUiBinderImpl_designTime1518798920213.Template
-         Generating method body for html1()
-   Adding '1' new generated units
-      Compiling...
-         Compilation completed in 0.00 seconds
-      Removing invalidated units
-Rebinding org.dselent.course_load_scheduler.client.view.impl.UserDetailsViewImpl_UserDetailsViewImplUiBinderImpl_designTime1518798920213_GenBundle
-   Adding '1' new generated units
-      Compiling...
-         Compilation completed in 0.00 seconds
-      Removing invalidated units
-Rebinding org.dselent.course_load_scheduler.client.view.impl.UserDetailsViewImpl.UserDetailsViewImplUiBinder
-   Adding '3' new generated units
-      Compiling...
-         Compilation completed in 0.01 seconds
-      Removing invalidated units
-Rebinding org.dselent.course_load_scheduler.client.view.impl.UserDetailsViewImpl_UserDetailsViewImplUiBinderImpl_designTime1518798925359.Template
-   Invoking generator com.google.gwt.safehtml.rebind.SafeHtmlTemplatesGenerator
-      Constructing interface org.dselent.course_load_scheduler.client.view.impl.UserDetailsViewImpl_UserDetailsViewImplUiBinderImpl_designTime1518798925359.Template
-         Generating method body for html1()
-   Adding '1' new generated units
-      Compiling...
-         Compilation completed in 0.01 seconds
-      Removing invalidated units
-Rebinding org.dselent.course_load_scheduler.client.view.impl.UserDetailsViewImpl_UserDetailsViewImplUiBinderImpl_designTime1518798925359_GenBundle
-   Adding '1' new generated units
-      Compiling...
-         Compilation completed in 0.01 seconds
-      Removing invalidated units
-Rebinding org.dselent.course_load_scheduler.client.view.impl.UserDetailsViewImpl.UserDetailsViewImplUiBinder
-   Adding '3' new generated units
-      Compiling...
-         Compilation completed in 0.01 seconds
-      Removing invalidated units
-Rebinding org.dselent.course_load_scheduler.client.view.impl.UserDetailsViewImpl_UserDetailsViewImplUiBinderImpl_designTime1518798939224.Template
-   Invoking generator com.google.gwt.safehtml.rebind.SafeHtmlTemplatesGenerator
-      Constructing interface org.dselent.course_load_scheduler.client.view.impl.UserDetailsViewImpl_UserDetailsViewImplUiBinderImpl_designTime1518798939224.Template
-         Generating method body for html1()
-   Adding '1' new generated units
-      Compiling...
-         Compilation completed in 0.00 seconds
-      Removing invalidated units
-Rebinding org.dselent.course_load_scheduler.client.view.impl.UserDetailsViewImpl_UserDetailsViewImplUiBinderImpl_designTime1518798939224_GenBundle
-   Adding '1' new generated units
-      Compiling...
-         Compilation completed in 0.00 seconds
-      Removing invalidated units
-Rebinding org.dselent.course_load_scheduler.client.view.impl.UserDetailsViewImpl.UserDetailsViewImplUiBinder
-   Adding '3' new generated units
-      Compiling...
-         Compilation completed in 0.03 seconds
-      Removing invalidated units
-Rebinding org.dselent.course_load_scheduler.client.view.impl.UserDetailsViewImpl_UserDetailsViewImplUiBinderImpl_designTime1518798940509.Template
-   Invoking generator com.google.gwt.safehtml.rebind.SafeHtmlTemplatesGenerator
-      Constructing interface org.dselent.course_load_scheduler.client.view.impl.UserDetailsViewImpl_UserDetailsViewImplUiBinderImpl_designTime1518798940509.Template
-         Generating method body for html1()
-   Adding '1' new generated units
-      Compiling...
-         Compilation completed in 0.00 seconds
-      Removing invalidated units
-Rebinding org.dselent.course_load_scheduler.client.view.impl.UserDetailsViewImpl_UserDetailsViewImplUiBinderImpl_designTime1518798940509_GenBundle
-   Adding '1' new generated units
-      Compiling...
-         Compilation completed in 0.01 seconds
-      Removing invalidated units
-Rebinding org.dselent.course_load_scheduler.client.view.impl.UserDetailsViewImpl.UserDetailsViewImplUiBinder
-   Adding '3' new generated units
-      Compiling...
-         Compilation completed in 0.01 seconds
-      Removing invalidated units
-Rebinding org.dselent.course_load_scheduler.client.view.impl.UserDetailsViewImpl_UserDetailsViewImplUiBinderImpl_designTime1518798947702.Template
-   Invoking generator com.google.gwt.safehtml.rebind.SafeHtmlTemplatesGenerator
-      Constructing interface org.dselent.course_load_scheduler.client.view.impl.UserDetailsViewImpl_UserDetailsViewImplUiBinderImpl_designTime1518798947702.Template
-         Generating method body for html1()
-   Adding '1' new generated units
-      Compiling...
-         Compilation completed in 0.01 seconds
-      Removing invalidated units
-Rebinding org.dselent.course_load_scheduler.client.view.impl.UserDetailsViewImpl_UserDetailsViewImplUiBinderImpl_designTime1518798947702_GenBundle
-   Adding '1' new generated units
-      Compiling...
-         Compilation completed in 0.00 seconds
-      Removing invalidated units
-Rebinding org.dselent.course_load_scheduler.client.view.impl.UserDetailsViewImpl.UserDetailsViewImplUiBinder
-   Adding '3' new generated units
-      Compiling...
-         Compilation completed in 0.03 seconds
-      Removing invalidated units
-Rebinding org.dselent.course_load_scheduler.client.view.impl.UserDetailsViewImpl_UserDetailsViewImplUiBinderImpl_designTime1518798947961.Template
-   Invoking generator com.google.gwt.safehtml.rebind.SafeHtmlTemplatesGenerator
-      Constructing interface org.dselent.course_load_scheduler.client.view.impl.UserDetailsViewImpl_UserDetailsViewImplUiBinderImpl_designTime1518798947961.Template
-         Generating method body for html1()
-   Adding '1' new generated units
-      Compiling...
-         Compilation completed in 0.01 seconds
-      Removing invalidated units
-Rebinding org.dselent.course_load_scheduler.client.view.impl.UserDetailsViewImpl_UserDetailsViewImplUiBinderImpl_designTime1518798947961_GenBundle
-   Adding '1' new generated units
-      Compiling...
-         Compilation completed in 0.01 seconds
-      Removing invalidated units
-Rebinding org.dselent.course_load_scheduler.client.view.impl.UserDetailsViewImpl.UserDetailsViewImplUiBinder
-   Adding '3' new generated units
-      Compiling...
-         Compilation completed in 0.01 seconds
-      Removing invalidated units
-Rebinding org.dselent.course_load_scheduler.client.view.impl.UserDetailsViewImpl_UserDetailsViewImplUiBinderImpl_designTime1518798949850.Template
-   Invoking generator com.google.gwt.safehtml.rebind.SafeHtmlTemplatesGenerator
-      Constructing interface org.dselent.course_load_scheduler.client.view.impl.UserDetailsViewImpl_UserDetailsViewImplUiBinderImpl_designTime1518798949850.Template
-         Generating method body for html1()
-   Adding '1' new generated units
-      Compiling...
-         Compilation completed in 0.01 seconds
-      Removing invalidated units
-Rebinding org.dselent.course_load_scheduler.client.view.impl.UserDetailsViewImpl_UserDetailsViewImplUiBinderImpl_designTime1518798949850_GenBundle
-   Adding '1' new generated units
-      Compiling...
-         Compilation completed in 0.00 seconds
-      Removing invalidated units
-Rebinding org.dselent.course_load_scheduler.client.view.impl.UserDetailsViewImpl.UserDetailsViewImplUiBinder
-   Adding '3' new generated units
-      Compiling...
-         Compilation completed in 0.02 seconds
-      Removing invalidated units
-Rebinding org.dselent.course_load_scheduler.client.view.impl.UserDetailsViewImpl_UserDetailsViewImplUiBinderImpl_designTime1518798956298.Template
-   Invoking generator com.google.gwt.safehtml.rebind.SafeHtmlTemplatesGenerator
-      Constructing interface org.dselent.course_load_scheduler.client.view.impl.UserDetailsViewImpl_UserDetailsViewImplUiBinderImpl_designTime1518798956298.Template
-         Generating method body for html1()
-   Adding '1' new generated units
-      Compiling...
-         Compilation completed in 0.00 seconds
-      Removing invalidated units
-Rebinding org.dselent.course_load_scheduler.client.view.impl.UserDetailsViewImpl_UserDetailsViewImplUiBinderImpl_designTime1518798956298_GenBundle
-   Adding '1' new generated units
-      Compiling...
-         Compilation completed in 0.01 seconds
-      Removing invalidated units
-Rebinding org.dselent.course_load_scheduler.client.view.impl.UserDetailsViewImpl.UserDetailsViewImplUiBinder
-   Adding '3' new generated units
-      Compiling...
-         Compilation completed in 0.01 seconds
-      Removing invalidated units
-Rebinding org.dselent.course_load_scheduler.client.view.impl.UserDetailsViewImpl_UserDetailsViewImplUiBinderImpl_designTime1518798959610.Template
-   Invoking generator com.google.gwt.safehtml.rebind.SafeHtmlTemplatesGenerator
-      Constructing interface org.dselent.course_load_scheduler.client.view.impl.UserDetailsViewImpl_UserDetailsViewImplUiBinderImpl_designTime1518798959610.Template
-         Generating method body for html1()
-   Adding '1' new generated units
-      Compiling...
-         Compilation completed in 0.00 seconds
-      Removing invalidated units
-Rebinding org.dselent.course_load_scheduler.client.view.impl.UserDetailsViewImpl_UserDetailsViewImplUiBinderImpl_designTime1518798959610_GenBundle
-   Adding '1' new generated units
-      Compiling...
-         Compilation completed in 0.00 seconds
-      Removing invalidated units
-Rebinding org.dselent.course_load_scheduler.client.view.impl.UserDetailsViewImpl.UserDetailsViewImplUiBinder
-   Adding '3' new generated units
-      Compiling...
-         Compilation completed in 0.02 seconds
-      Removing invalidated units
-Rebinding org.dselent.course_load_scheduler.client.view.impl.UserDetailsViewImpl_UserDetailsViewImplUiBinderImpl_designTime1518798961271.Template
-   Invoking generator com.google.gwt.safehtml.rebind.SafeHtmlTemplatesGenerator
-      Constructing interface org.dselent.course_load_scheduler.client.view.impl.UserDetailsViewImpl_UserDetailsViewImplUiBinderImpl_designTime1518798961271.Template
-         Generating method body for html1()
-   Adding '1' new generated units
-      Compiling...
-         Compilation completed in 0.01 seconds
-      Removing invalidated units
-Rebinding org.dselent.course_load_scheduler.client.view.impl.UserDetailsViewImpl_UserDetailsViewImplUiBinderImpl_designTime1518798961271_GenBundle
-   Adding '1' new generated units
-      Compiling...
-         Compilation completed in 0.01 seconds
-      Removing invalidated units
-Rebinding org.dselent.course_load_scheduler.client.view.impl.UserDetailsViewImpl.UserDetailsViewImplUiBinder
-   Adding '3' new generated units
-      Compiling...
-         Compilation completed in 0.01 seconds
-      Removing invalidated units
-Rebinding org.dselent.course_load_scheduler.client.view.impl.UserDetailsViewImpl_UserDetailsViewImplUiBinderImpl_designTime1518798961469.Template
-   Invoking generator com.google.gwt.safehtml.rebind.SafeHtmlTemplatesGenerator
-      Constructing interface org.dselent.course_load_scheduler.client.view.impl.UserDetailsViewImpl_UserDetailsViewImplUiBinderImpl_designTime1518798961469.Template
-         Generating method body for html1()
-   Adding '1' new generated units
-      Compiling...
-         Compilation completed in 0.00 seconds
-      Removing invalidated units
-Rebinding org.dselent.course_load_scheduler.client.view.impl.UserDetailsViewImpl_UserDetailsViewImplUiBinderImpl_designTime1518798961469_GenBundle
-   Adding '1' new generated units
-      Compiling...
-         Compilation completed in 0.00 seconds
-      Removing invalidated units
-Rebinding org.dselent.course_load_scheduler.client.view.impl.UserDetailsViewImpl.UserDetailsViewImplUiBinder
-   Adding '3' new generated units
-      Compiling...
-         Compilation completed in 0.04 seconds
-      Removing invalidated units
-Rebinding org.dselent.course_load_scheduler.client.view.impl.UserDetailsViewImpl_UserDetailsViewImplUiBinderImpl_designTime1518798974672.Template
-   Invoking generator com.google.gwt.safehtml.rebind.SafeHtmlTemplatesGenerator
-      Constructing interface org.dselent.course_load_scheduler.client.view.impl.UserDetailsViewImpl_UserDetailsViewImplUiBinderImpl_designTime1518798974672.Template
-         Generating method body for html1()
-   Adding '1' new generated units
-      Compiling...
-         Compilation completed in 0.01 seconds
-      Removing invalidated units
-Rebinding org.dselent.course_load_scheduler.client.view.impl.UserDetailsViewImpl_UserDetailsViewImplUiBinderImpl_designTime1518798974672_GenBundle
-   Adding '1' new generated units
-      Compiling...
-         Compilation completed in 0.01 seconds
-      Removing invalidated units
-Rebinding org.dselent.course_load_scheduler.client.view.impl.UserDetailsViewImpl.UserDetailsViewImplUiBinder
-   Adding '3' new generated units
-      Compiling...
-         Compilation completed in 0.02 seconds
-      Removing invalidated units
-Rebinding org.dselent.course_load_scheduler.client.view.impl.UserDetailsViewImpl_UserDetailsViewImplUiBinderImpl_designTime1518798975042.Template
-   Invoking generator com.google.gwt.safehtml.rebind.SafeHtmlTemplatesGenerator
-      Constructing interface org.dselent.course_load_scheduler.client.view.impl.UserDetailsViewImpl_UserDetailsViewImplUiBinderImpl_designTime1518798975042.Template
-         Generating method body for html1()
-   Adding '1' new generated units
-      Compiling...
-         Compilation completed in 0.00 seconds
-      Removing invalidated units
-Rebinding org.dselent.course_load_scheduler.client.view.impl.UserDetailsViewImpl_UserDetailsViewImplUiBinderImpl_designTime1518798975042_GenBundle
-   Adding '1' new generated units
-      Compiling...
-         Compilation completed in 0.01 seconds
-      Removing invalidated units
-Rebinding org.dselent.course_load_scheduler.client.view.impl.UserDetailsViewImpl.UserDetailsViewImplUiBinder
-   Adding '3' new generated units
-      Compiling...
-         Compilation completed in 0.01 seconds
-      Removing invalidated units
-Rebinding org.dselent.course_load_scheduler.client.view.impl.UserDetailsViewImpl_UserDetailsViewImplUiBinderImpl_designTime1518798985168.Template
-   Invoking generator com.google.gwt.safehtml.rebind.SafeHtmlTemplatesGenerator
-      Constructing interface org.dselent.course_load_scheduler.client.view.impl.UserDetailsViewImpl_UserDetailsViewImplUiBinderImpl_designTime1518798985168.Template
-         Generating method body for html1()
-   Adding '1' new generated units
-      Compiling...
-         Compilation completed in 0.01 seconds
-      Removing invalidated units
-Rebinding org.dselent.course_load_scheduler.client.view.impl.UserDetailsViewImpl_UserDetailsViewImplUiBinderImpl_designTime1518798985168_GenBundle
-   Adding '1' new generated units
-      Compiling...
-         Compilation completed in 0.01 seconds
-      Removing invalidated units
-Rebinding org.dselent.course_load_scheduler.client.view.impl.UserDetailsViewImpl.UserDetailsViewImplUiBinder
-   Adding '3' new generated units
-      Compiling...
-         Compilation completed in 0.01 seconds
-      Removing invalidated units
-Rebinding org.dselent.course_load_scheduler.client.view.impl.UserDetailsViewImpl_UserDetailsViewImplUiBinderImpl_designTime1518798986300.Template
-   Invoking generator com.google.gwt.safehtml.rebind.SafeHtmlTemplatesGenerator
-      Constructing interface org.dselent.course_load_scheduler.client.view.impl.UserDetailsViewImpl_UserDetailsViewImplUiBinderImpl_designTime1518798986300.Template
-         Generating method body for html1()
-   Adding '1' new generated units
-      Compiling...
-         Compilation completed in 0.00 seconds
-      Removing invalidated units
-Rebinding org.dselent.course_load_scheduler.client.view.impl.UserDetailsViewImpl_UserDetailsViewImplUiBinderImpl_designTime1518798986300_GenBundle
-   Adding '1' new generated units
-      Compiling...
-         Compilation completed in 0.00 seconds
-      Removing invalidated units
-Rebinding org.dselent.course_load_scheduler.client.view.impl.UserDetailsViewImpl.UserDetailsViewImplUiBinder
-   Adding '3' new generated units
-      Compiling...
-         Compilation completed in 0.01 seconds
-      Removing invalidated units
-Rebinding org.dselent.course_load_scheduler.client.view.impl.UserDetailsViewImpl_UserDetailsViewImplUiBinderImpl_designTime1518798992690.Template
-   Invoking generator com.google.gwt.safehtml.rebind.SafeHtmlTemplatesGenerator
-      Constructing interface org.dselent.course_load_scheduler.client.view.impl.UserDetailsViewImpl_UserDetailsViewImplUiBinderImpl_designTime1518798992690.Template
-         Generating method body for html1()
-   Adding '1' new generated units
-      Compiling...
-         Compilation completed in 0.00 seconds
-      Removing invalidated units
-Rebinding org.dselent.course_load_scheduler.client.view.impl.UserDetailsViewImpl_UserDetailsViewImplUiBinderImpl_designTime1518798992690_GenBundle
-   Adding '1' new generated units
-      Compiling...
-         Compilation completed in 0.01 seconds
-      Removing invalidated units
-Rebinding org.dselent.course_load_scheduler.client.view.impl.UserDetailsViewImpl.UserDetailsViewImplUiBinder
-   Adding '3' new generated units
-      Compiling...
-         Compilation completed in 0.01 seconds
-      Removing invalidated units
-Rebinding org.dselent.course_load_scheduler.client.view.impl.UserDetailsViewImpl_UserDetailsViewImplUiBinderImpl_designTime1518798998728.Template
-   Invoking generator com.google.gwt.safehtml.rebind.SafeHtmlTemplatesGenerator
-      Constructing interface org.dselent.course_load_scheduler.client.view.impl.UserDetailsViewImpl_UserDetailsViewImplUiBinderImpl_designTime1518798998728.Template
-         Generating method body for html1()
-   Adding '1' new generated units
-      Compiling...
-         Compilation completed in 0.01 seconds
-      Removing invalidated units
-Rebinding org.dselent.course_load_scheduler.client.view.impl.UserDetailsViewImpl_UserDetailsViewImplUiBinderImpl_designTime1518798998728_GenBundle
-   Adding '1' new generated units
-      Compiling...
-         Compilation completed in 0.01 seconds
-      Removing invalidated units
-Rebinding org.dselent.course_load_scheduler.client.view.impl.UserDetailsViewImpl.UserDetailsViewImplUiBinder
-   Adding '3' new generated units
-      Compiling...
-         Compilation completed in 0.02 seconds
-      Removing invalidated units
-Rebinding org.dselent.course_load_scheduler.client.view.impl.UserDetailsViewImpl_UserDetailsViewImplUiBinderImpl_designTime1518798999218.Template
-   Invoking generator com.google.gwt.safehtml.rebind.SafeHtmlTemplatesGenerator
-      Constructing interface org.dselent.course_load_scheduler.client.view.impl.UserDetailsViewImpl_UserDetailsViewImplUiBinderImpl_designTime1518798999218.Template
-         Generating method body for html1()
-   Adding '1' new generated units
-      Compiling...
-         Compilation completed in 0.01 seconds
-      Removing invalidated units
-Rebinding org.dselent.course_load_scheduler.client.view.impl.UserDetailsViewImpl_UserDetailsViewImplUiBinderImpl_designTime1518798999218_GenBundle
-   Adding '1' new generated units
-      Compiling...
-         Compilation completed in 0.01 seconds
-      Removing invalidated units
-Rebinding org.dselent.course_load_scheduler.client.view.impl.UserDetailsViewImpl.UserDetailsViewImplUiBinder
-   Adding '3' new generated units
-      Compiling...
-         Compilation completed in 0.01 seconds
-      Removing invalidated units
-Rebinding org.dselent.course_load_scheduler.client.view.impl.UserDetailsViewImpl_UserDetailsViewImplUiBinderImpl_designTime1518799000776.Template
-   Invoking generator com.google.gwt.safehtml.rebind.SafeHtmlTemplatesGenerator
-      Constructing interface org.dselent.course_load_scheduler.client.view.impl.UserDetailsViewImpl_UserDetailsViewImplUiBinderImpl_designTime1518799000776.Template
-         Generating method body for html1()
-   Adding '1' new generated units
-      Compiling...
-         Compilation completed in 0.00 seconds
-      Removing invalidated units
-Rebinding org.dselent.course_load_scheduler.client.view.impl.UserDetailsViewImpl_UserDetailsViewImplUiBinderImpl_designTime1518799000776_GenBundle
-   Adding '1' new generated units
-      Compiling...
-         Compilation completed in 0.01 seconds
-      Removing invalidated units
-Rebinding org.dselent.course_load_scheduler.client.view.impl.UserDetailsViewImpl.UserDetailsViewImplUiBinder
-   Adding '3' new generated units
-      Compiling...
-         Compilation completed in 0.01 seconds
-      Removing invalidated units
-Rebinding org.dselent.course_load_scheduler.client.view.impl.UserDetailsViewImpl_UserDetailsViewImplUiBinderImpl_designTime1518799007385.Template
-   Invoking generator com.google.gwt.safehtml.rebind.SafeHtmlTemplatesGenerator
-      Constructing interface org.dselent.course_load_scheduler.client.view.impl.UserDetailsViewImpl_UserDetailsViewImplUiBinderImpl_designTime1518799007385.Template
-         Generating method body for html1()
-   Adding '1' new generated units
-      Compiling...
-         Compilation completed in 0.00 seconds
-      Removing invalidated units
-Rebinding org.dselent.course_load_scheduler.client.view.impl.UserDetailsViewImpl_UserDetailsViewImplUiBinderImpl_designTime1518799007385_GenBundle
-   Adding '1' new generated units
-      Compiling...
-         Compilation completed in 0.01 seconds
-      Removing invalidated units
-Rebinding org.dselent.course_load_scheduler.client.view.impl.UserDetailsViewImpl.UserDetailsViewImplUiBinder
-   Adding '3' new generated units
-      Compiling...
-         Compilation completed in 0.01 seconds
-      Removing invalidated units
-Rebinding org.dselent.course_load_scheduler.client.view.impl.UserDetailsViewImpl_UserDetailsViewImplUiBinderImpl_designTime1518799007572.Template
-   Invoking generator com.google.gwt.safehtml.rebind.SafeHtmlTemplatesGenerator
-      Constructing interface org.dselent.course_load_scheduler.client.view.impl.UserDetailsViewImpl_UserDetailsViewImplUiBinderImpl_designTime1518799007572.Template
-         Generating method body for html1()
-   Adding '1' new generated units
-      Compiling...
-         Compilation completed in 0.00 seconds
-      Removing invalidated units
-Rebinding org.dselent.course_load_scheduler.client.view.impl.UserDetailsViewImpl_UserDetailsViewImplUiBinderImpl_designTime1518799007572_GenBundle
-   Adding '1' new generated units
-      Compiling...
-         Compilation completed in 0.00 seconds
-      Removing invalidated units
-Rebinding org.dselent.course_load_scheduler.client.view.impl.UserDetailsViewImpl.UserDetailsViewImplUiBinder
-   Adding '3' new generated units
-      Compiling...
-         Compilation completed in 0.02 seconds
-      Removing invalidated units
-Rebinding org.dselent.course_load_scheduler.client.view.impl.UserDetailsViewImpl_UserDetailsViewImplUiBinderImpl_designTime1518799009167.Template
-   Invoking generator com.google.gwt.safehtml.rebind.SafeHtmlTemplatesGenerator
-      Constructing interface org.dselent.course_load_scheduler.client.view.impl.UserDetailsViewImpl_UserDetailsViewImplUiBinderImpl_designTime1518799009167.Template
-         Generating method body for html1()
-   Adding '1' new generated units
-      Compiling...
-         Compilation completed in 0.01 seconds
-      Removing invalidated units
-Rebinding org.dselent.course_load_scheduler.client.view.impl.UserDetailsViewImpl_UserDetailsViewImplUiBinderImpl_designTime1518799009167_GenBundle
-   Adding '1' new generated units
-      Compiling...
-         Compilation completed in 0.01 seconds
-      Removing invalidated units
-Rebinding org.dselent.course_load_scheduler.client.view.impl.UserDetailsViewImpl.UserDetailsViewImplUiBinder
-   Adding '3' new generated units
-      Compiling...
-         Compilation completed in 0.01 seconds
-      Removing invalidated units
-Rebinding org.dselent.course_load_scheduler.client.view.impl.UserDetailsViewImpl_UserDetailsViewImplUiBinderImpl_designTime1518799009368.Template
-   Invoking generator com.google.gwt.safehtml.rebind.SafeHtmlTemplatesGenerator
-      Constructing interface org.dselent.course_load_scheduler.client.view.impl.UserDetailsViewImpl_UserDetailsViewImplUiBinderImpl_designTime1518799009368.Template
-         Generating method body for html1()
-   Adding '1' new generated units
-      Compiling...
-         Compilation completed in 0.00 seconds
-      Removing invalidated units
-Rebinding org.dselent.course_load_scheduler.client.view.impl.UserDetailsViewImpl_UserDetailsViewImplUiBinderImpl_designTime1518799009368_GenBundle
-   Adding '1' new generated units
-      Compiling...
-         Compilation completed in 0.00 seconds
-      Removing invalidated units
-Rebinding org.dselent.course_load_scheduler.client.view.impl.UserDetailsViewImpl.UserDetailsViewImplUiBinder
-   Adding '3' new generated units
-      Compiling...
-         Compilation completed in 0.02 seconds
-      Removing invalidated units
-Rebinding org.dselent.course_load_scheduler.client.view.impl.UserDetailsViewImpl_UserDetailsViewImplUiBinderImpl_designTime1518799015095.Template
-   Invoking generator com.google.gwt.safehtml.rebind.SafeHtmlTemplatesGenerator
-      Constructing interface org.dselent.course_load_scheduler.client.view.impl.UserDetailsViewImpl_UserDetailsViewImplUiBinderImpl_designTime1518799015095.Template
-         Generating method body for html1()
-   Adding '1' new generated units
-      Compiling...
-         Compilation completed in 0.01 seconds
-      Removing invalidated units
-Rebinding org.dselent.course_load_scheduler.client.view.impl.UserDetailsViewImpl_UserDetailsViewImplUiBinderImpl_designTime1518799015095_GenBundle
-   Adding '1' new generated units
-      Compiling...
-         Compilation completed in 0.01 seconds
-      Removing invalidated units
-Rebinding org.dselent.course_load_scheduler.client.view.impl.UserDetailsViewImpl.UserDetailsViewImplUiBinder
-   Adding '3' new generated units
-      Compiling...
-         Compilation completed in 0.01 seconds
-      Removing invalidated units
-Rebinding org.dselent.course_load_scheduler.client.view.impl.UserDetailsViewImpl_UserDetailsViewImplUiBinderImpl_designTime1518799028727.Template
-   Invoking generator com.google.gwt.safehtml.rebind.SafeHtmlTemplatesGenerator
-      Constructing interface org.dselent.course_load_scheduler.client.view.impl.UserDetailsViewImpl_UserDetailsViewImplUiBinderImpl_designTime1518799028727.Template
-         Generating method body for html1()
-   Adding '1' new generated units
-      Compiling...
-         Compilation completed in 0.01 seconds
-      Removing invalidated units
-Rebinding org.dselent.course_load_scheduler.client.view.impl.UserDetailsViewImpl_UserDetailsViewImplUiBinderImpl_designTime1518799028727_GenBundle
-   Adding '1' new generated units
-      Compiling...
-         Compilation completed in 0.01 seconds
-      Removing invalidated units
-Rebinding org.dselent.course_load_scheduler.client.view.impl.UserDetailsViewImpl.UserDetailsViewImplUiBinder
-   Adding '3' new generated units
-      Compiling...
-         Compilation completed in 0.02 seconds
-      Removing invalidated units
-Rebinding org.dselent.course_load_scheduler.client.view.impl.UserDetailsViewImpl_UserDetailsViewImplUiBinderImpl_designTime1518799030459.Template
-   Invoking generator com.google.gwt.safehtml.rebind.SafeHtmlTemplatesGenerator
-      Constructing interface org.dselent.course_load_scheduler.client.view.impl.UserDetailsViewImpl_UserDetailsViewImplUiBinderImpl_designTime1518799030459.Template
-         Generating method body for html1()
-   Adding '1' new generated units
-      Compiling...
-         Compilation completed in 0.01 seconds
-      Removing invalidated units
-Rebinding org.dselent.course_load_scheduler.client.view.impl.UserDetailsViewImpl_UserDetailsViewImplUiBinderImpl_designTime1518799030459_GenBundle
-   Adding '1' new generated units
-      Compiling...
-         Compilation completed in 0.00 seconds
-      Removing invalidated units
-Rebinding org.dselent.course_load_scheduler.client.view.impl.UserDetailsViewImpl.UserDetailsViewImplUiBinder
-   Adding '3' new generated units
-      Compiling...
-         Compilation completed in 0.01 seconds
-      Removing invalidated units
-Rebinding org.dselent.course_load_scheduler.client.view.impl.UserDetailsViewImpl_UserDetailsViewImplUiBinderImpl_designTime1518799035563.Template
-   Invoking generator com.google.gwt.safehtml.rebind.SafeHtmlTemplatesGenerator
-      Constructing interface org.dselent.course_load_scheduler.client.view.impl.UserDetailsViewImpl_UserDetailsViewImplUiBinderImpl_designTime1518799035563.Template
-         Generating method body for html1()
-   Adding '1' new generated units
-      Compiling...
-         Compilation completed in 0.00 seconds
-      Removing invalidated units
-Rebinding org.dselent.course_load_scheduler.client.view.impl.UserDetailsViewImpl_UserDetailsViewImplUiBinderImpl_designTime1518799035563_GenBundle
-   Adding '1' new generated units
-      Compiling...
-         Compilation completed in 0.01 seconds
-      Removing invalidated units
-Rebinding org.dselent.course_load_scheduler.client.view.impl.UserDetailsViewImpl.UserDetailsViewImplUiBinder
-   Adding '3' new generated units
-      Compiling...
-         Compilation completed in 0.01 seconds
-      Removing invalidated units
-Rebinding org.dselent.course_load_scheduler.client.view.impl.UserDetailsViewImpl_UserDetailsViewImplUiBinderImpl_designTime1518799036581.Template
-   Invoking generator com.google.gwt.safehtml.rebind.SafeHtmlTemplatesGenerator
-      Constructing interface org.dselent.course_load_scheduler.client.view.impl.UserDetailsViewImpl_UserDetailsViewImplUiBinderImpl_designTime1518799036581.Template
-         Generating method body for html1()
-   Adding '1' new generated units
-      Compiling...
-         Compilation completed in 0.00 seconds
-      Removing invalidated units
-Rebinding org.dselent.course_load_scheduler.client.view.impl.UserDetailsViewImpl_UserDetailsViewImplUiBinderImpl_designTime1518799036581_GenBundle
-   Adding '1' new generated units
-      Compiling...
-         Compilation completed in 0.01 seconds
-      Removing invalidated units
-Rebinding org.dselent.course_load_scheduler.client.view.impl.UserDetailsViewImpl.UserDetailsViewImplUiBinder
-   Adding '3' new generated units
-      Compiling...
-         Compilation completed in 0.02 seconds
-      Removing invalidated units
-Rebinding org.dselent.course_load_scheduler.client.view.impl.UserDetailsViewImpl_UserDetailsViewImplUiBinderImpl_designTime1518799041315.Template
-   Invoking generator com.google.gwt.safehtml.rebind.SafeHtmlTemplatesGenerator
-      Constructing interface org.dselent.course_load_scheduler.client.view.impl.UserDetailsViewImpl_UserDetailsViewImplUiBinderImpl_designTime1518799041315.Template
-         Generating method body for html1()
-   Adding '1' new generated units
-      Compiling...
-         Compilation completed in 0.00 seconds
-      Removing invalidated units
-Rebinding org.dselent.course_load_scheduler.client.view.impl.UserDetailsViewImpl_UserDetailsViewImplUiBinderImpl_designTime1518799041315_GenBundle
-   Adding '1' new generated units
-      Compiling...
-         Compilation completed in 0.00 seconds
-      Removing invalidated units
-Rebinding org.dselent.course_load_scheduler.client.view.impl.UserDetailsViewImpl.UserDetailsViewImplUiBinder
-   Adding '3' new generated units
-      Compiling...
-         Compilation completed in 0.02 seconds
-      Removing invalidated units
-Rebinding org.dselent.course_load_scheduler.client.view.impl.UserDetailsViewImpl_UserDetailsViewImplUiBinderImpl_designTime1518799046425.Template
-   Invoking generator com.google.gwt.safehtml.rebind.SafeHtmlTemplatesGenerator
-      Constructing interface org.dselent.course_load_scheduler.client.view.impl.UserDetailsViewImpl_UserDetailsViewImplUiBinderImpl_designTime1518799046425.Template
-         Generating method body for html1()
-   Adding '1' new generated units
-      Compiling...
-         Compilation completed in 0.01 seconds
-      Removing invalidated units
-Rebinding org.dselent.course_load_scheduler.client.view.impl.UserDetailsViewImpl_UserDetailsViewImplUiBinderImpl_designTime1518799046425_GenBundle
-   Adding '1' new generated units
-      Compiling...
-         Compilation completed in 0.01 seconds
-      Removing invalidated units
-Rebinding org.dselent.course_load_scheduler.client.view.impl.UserDetailsViewImpl.UserDetailsViewImplUiBinder
-   Adding '3' new generated units
-      Compiling...
-         Compilation completed in 0.02 seconds
-      Removing invalidated units
-Rebinding org.dselent.course_load_scheduler.client.view.impl.UserDetailsViewImpl_UserDetailsViewImplUiBinderImpl_designTime1518799047536.Template
-   Invoking generator com.google.gwt.safehtml.rebind.SafeHtmlTemplatesGenerator
-      Constructing interface org.dselent.course_load_scheduler.client.view.impl.UserDetailsViewImpl_UserDetailsViewImplUiBinderImpl_designTime1518799047536.Template
-         Generating method body for html1()
-   Adding '1' new generated units
-      Compiling...
-         Compilation completed in 0.00 seconds
-      Removing invalidated units
-Rebinding org.dselent.course_load_scheduler.client.view.impl.UserDetailsViewImpl_UserDetailsViewImplUiBinderImpl_designTime1518799047536_GenBundle
-   Adding '1' new generated units
-      Compiling...
-         Compilation completed in 0.00 seconds
-      Removing invalidated units
-Rebinding org.dselent.course_load_scheduler.client.view.impl.UserDetailsViewImpl.UserDetailsViewImplUiBinder
-   Adding '3' new generated units
-      Compiling...
-         Compilation completed in 0.02 seconds
-      Removing invalidated units
-Rebinding org.dselent.course_load_scheduler.client.view.impl.UserDetailsViewImpl_UserDetailsViewImplUiBinderImpl_designTime1518799051244.Template
-   Invoking generator com.google.gwt.safehtml.rebind.SafeHtmlTemplatesGenerator
-      Constructing interface org.dselent.course_load_scheduler.client.view.impl.UserDetailsViewImpl_UserDetailsViewImplUiBinderImpl_designTime1518799051244.Template
-         Generating method body for html1()
-   Adding '1' new generated units
-      Compiling...
-         Compilation completed in 0.01 seconds
-      Removing invalidated units
-Rebinding org.dselent.course_load_scheduler.client.view.impl.UserDetailsViewImpl_UserDetailsViewImplUiBinderImpl_designTime1518799051244_GenBundle
-   Adding '1' new generated units
-      Compiling...
-         Compilation completed in 0.01 seconds
-      Removing invalidated units
-Rebinding org.dselent.course_load_scheduler.client.view.impl.UserDetailsViewImpl.UserDetailsViewImplUiBinder
-   Adding '3' new generated units
-      Compiling...
-         Compilation completed in 0.02 seconds
-      Removing invalidated units
-Rebinding org.dselent.course_load_scheduler.client.view.impl.UserDetailsViewImpl_UserDetailsViewImplUiBinderImpl_designTime1518799053489.Template
-   Invoking generator com.google.gwt.safehtml.rebind.SafeHtmlTemplatesGenerator
-      Constructing interface org.dselent.course_load_scheduler.client.view.impl.UserDetailsViewImpl_UserDetailsViewImplUiBinderImpl_designTime1518799053489.Template
-         Generating method body for html1()
-   Adding '1' new generated units
-      Compiling...
-         Compilation completed in 0.00 seconds
-      Removing invalidated units
-Rebinding org.dselent.course_load_scheduler.client.view.impl.UserDetailsViewImpl_UserDetailsViewImplUiBinderImpl_designTime1518799053489_GenBundle
-   Adding '1' new generated units
-      Compiling...
-         Compilation completed in 0.00 seconds
-      Removing invalidated units
-Rebinding org.dselent.course_load_scheduler.client.view.impl.UserDetailsViewImpl.UserDetailsViewImplUiBinder
-   Adding '3' new generated units
-      Compiling...
-         Compilation completed in 0.01 seconds
-      Removing invalidated units
-Rebinding org.dselent.course_load_scheduler.client.view.impl.UserDetailsViewImpl_UserDetailsViewImplUiBinderImpl_designTime1518799067747.Template
-   Invoking generator com.google.gwt.safehtml.rebind.SafeHtmlTemplatesGenerator
-      Constructing interface org.dselent.course_load_scheduler.client.view.impl.UserDetailsViewImpl_UserDetailsViewImplUiBinderImpl_designTime1518799067747.Template
-         Generating method body for html1()
-   Adding '1' new generated units
-      Compiling...
-         Compilation completed in 0.01 seconds
-      Removing invalidated units
-Rebinding org.dselent.course_load_scheduler.client.view.impl.UserDetailsViewImpl_UserDetailsViewImplUiBinderImpl_designTime1518799067747_GenBundle
-   Adding '1' new generated units
-      Compiling...
-         Compilation completed in 0.01 seconds
-      Removing invalidated units
-Rebinding org.dselent.course_load_scheduler.client.view.impl.UserDetailsViewImpl.UserDetailsViewImplUiBinder
-   Adding '3' new generated units
-      Compiling...
-         Compilation completed in 0.01 seconds
-      Removing invalidated units
-Rebinding org.dselent.course_load_scheduler.client.view.impl.UserDetailsViewImpl_UserDetailsViewImplUiBinderImpl_designTime1518799068610.Template
-   Invoking generator com.google.gwt.safehtml.rebind.SafeHtmlTemplatesGenerator
-      Constructing interface org.dselent.course_load_scheduler.client.view.impl.UserDetailsViewImpl_UserDetailsViewImplUiBinderImpl_designTime1518799068610.Template
-         Generating method body for html1()
-   Adding '1' new generated units
-      Compiling...
-         Compilation completed in 0.00 seconds
-      Removing invalidated units
-Rebinding org.dselent.course_load_scheduler.client.view.impl.UserDetailsViewImpl_UserDetailsViewImplUiBinderImpl_designTime1518799068610_GenBundle
-   Adding '1' new generated units
-      Compiling...
-         Compilation completed in 0.00 seconds
-      Removing invalidated units
-Rebinding org.dselent.course_load_scheduler.client.view.impl.UserDetailsViewImpl.UserDetailsViewImplUiBinder
-   Adding '3' new generated units
-      Compiling...
-         Compilation completed in 0.01 seconds
-      Removing invalidated units
-Rebinding org.dselent.course_load_scheduler.client.view.impl.UserDetailsViewImpl_UserDetailsViewImplUiBinderImpl_designTime1518799075425.Template
-   Invoking generator com.google.gwt.safehtml.rebind.SafeHtmlTemplatesGenerator
-      Constructing interface org.dselent.course_load_scheduler.client.view.impl.UserDetailsViewImpl_UserDetailsViewImplUiBinderImpl_designTime1518799075425.Template
-         Generating method body for html1()
-   Adding '1' new generated units
-      Compiling...
-         Compilation completed in 0.00 seconds
-      Removing invalidated units
-Rebinding org.dselent.course_load_scheduler.client.view.impl.UserDetailsViewImpl_UserDetailsViewImplUiBinderImpl_designTime1518799075425_GenBundle
-   Adding '1' new generated units
-      Compiling...
-         Compilation completed in 0.00 seconds
-      Removing invalidated units
-Rebinding org.dselent.course_load_scheduler.client.view.impl.UserDetailsViewImpl.UserDetailsViewImplUiBinder
-   Adding '3' new generated units
-      Compiling...
-         Compilation completed in 0.01 seconds
-      Removing invalidated units
-Rebinding org.dselent.course_load_scheduler.client.view.impl.UserDetailsViewImpl_UserDetailsViewImplUiBinderImpl_designTime1518799077701.Template
-   Invoking generator com.google.gwt.safehtml.rebind.SafeHtmlTemplatesGenerator
-      Constructing interface org.dselent.course_load_scheduler.client.view.impl.UserDetailsViewImpl_UserDetailsViewImplUiBinderImpl_designTime1518799077701.Template
-         Generating method body for html1()
-   Adding '1' new generated units
-      Compiling...
-         Compilation completed in 0.01 seconds
-      Removing invalidated units
-Rebinding org.dselent.course_load_scheduler.client.view.impl.UserDetailsViewImpl_UserDetailsViewImplUiBinderImpl_designTime1518799077701_GenBundle
-   Adding '1' new generated units
-      Compiling...
-         Compilation completed in 0.00 seconds
-      Removing invalidated units
-Rebinding org.dselent.course_load_scheduler.client.view.impl.UserDetailsViewImpl.UserDetailsViewImplUiBinder
-   Adding '3' new generated units
-      Compiling...
-         Compilation completed in 0.02 seconds
-      Removing invalidated units
-Rebinding org.dselent.course_load_scheduler.client.view.impl.UserDetailsViewImpl_UserDetailsViewImplUiBinderImpl_designTime1518799085711.Template
-   Invoking generator com.google.gwt.safehtml.rebind.SafeHtmlTemplatesGenerator
-      Constructing interface org.dselent.course_load_scheduler.client.view.impl.UserDetailsViewImpl_UserDetailsViewImplUiBinderImpl_designTime1518799085711.Template
-         Generating method body for html1()
-   Adding '1' new generated units
-      Compiling...
-         Compilation completed in 0.01 seconds
-      Removing invalidated units
-Rebinding org.dselent.course_load_scheduler.client.view.impl.UserDetailsViewImpl_UserDetailsViewImplUiBinderImpl_designTime1518799085711_GenBundle
-   Adding '1' new generated units
-      Compiling...
-         Compilation completed in 0.01 seconds
-      Removing invalidated units
-Rebinding org.dselent.course_load_scheduler.client.view.impl.UserDetailsViewImpl.UserDetailsViewImplUiBinder
-   Adding '3' new generated units
-      Compiling...
-         Compilation completed in 0.01 seconds
-      Removing invalidated units
-Rebinding org.dselent.course_load_scheduler.client.view.impl.UserDetailsViewImpl_UserDetailsViewImplUiBinderImpl_designTime1518799087891.Template
-   Invoking generator com.google.gwt.safehtml.rebind.SafeHtmlTemplatesGenerator
-      Constructing interface org.dselent.course_load_scheduler.client.view.impl.UserDetailsViewImpl_UserDetailsViewImplUiBinderImpl_designTime1518799087891.Template
-         Generating method body for html1()
-   Adding '1' new generated units
-      Compiling...
-         Compilation completed in 0.01 seconds
-      Removing invalidated units
-Rebinding org.dselent.course_load_scheduler.client.view.impl.UserDetailsViewImpl_UserDetailsViewImplUiBinderImpl_designTime1518799087891_GenBundle
-   Adding '1' new generated units
-      Compiling...
-         Compilation completed in 0.01 seconds
-      Removing invalidated units
-Rebinding org.dselent.course_load_scheduler.client.view.impl.UserDetailsViewImpl.UserDetailsViewImplUiBinder
-   Adding '3' new generated units
-      Compiling...
-         Compilation completed in 0.02 seconds
-      Removing invalidated units
-Rebinding org.dselent.course_load_scheduler.client.view.impl.UserDetailsViewImpl_UserDetailsViewImplUiBinderImpl_designTime1518799089311.Template
-   Invoking generator com.google.gwt.safehtml.rebind.SafeHtmlTemplatesGenerator
-      Constructing interface org.dselent.course_load_scheduler.client.view.impl.UserDetailsViewImpl_UserDetailsViewImplUiBinderImpl_designTime1518799089311.Template
-         Generating method body for html1()
-   Adding '1' new generated units
-      Compiling...
-         Compilation completed in 0.01 seconds
-      Removing invalidated units
-Rebinding org.dselent.course_load_scheduler.client.view.impl.UserDetailsViewImpl_UserDetailsViewImplUiBinderImpl_designTime1518799089311_GenBundle
-   Adding '1' new generated units
-      Compiling...
-         Compilation completed in 0.01 seconds
-      Removing invalidated units
-Rebinding org.dselent.course_load_scheduler.client.view.impl.UserDetailsViewImpl.UserDetailsViewImplUiBinder
-   Adding '3' new generated units
-      Compiling...
-         Compilation completed in 0.01 seconds
-      Removing invalidated units
-Rebinding org.dselent.course_load_scheduler.client.view.impl.UserDetailsViewImpl_UserDetailsViewImplUiBinderImpl_designTime1518799089535.Template
-   Invoking generator com.google.gwt.safehtml.rebind.SafeHtmlTemplatesGenerator
-      Constructing interface org.dselent.course_load_scheduler.client.view.impl.UserDetailsViewImpl_UserDetailsViewImplUiBinderImpl_designTime1518799089535.Template
-         Generating method body for html1()
-   Adding '1' new generated units
-      Compiling...
-         Compilation completed in 0.00 seconds
-      Removing invalidated units
-Rebinding org.dselent.course_load_scheduler.client.view.impl.UserDetailsViewImpl_UserDetailsViewImplUiBinderImpl_designTime1518799089535_GenBundle
-   Adding '1' new generated units
-      Compiling...
-         Compilation completed in 0.00 seconds
-      Removing invalidated units
-Rebinding org.dselent.course_load_scheduler.client.view.impl.UserDetailsViewImpl.UserDetailsViewImplUiBinder
-   Adding '3' new generated units
-      Compiling...
-         Compilation completed in 0.01 seconds
-      Removing invalidated units
-Rebinding org.dselent.course_load_scheduler.client.view.impl.UserDetailsViewImpl_UserDetailsViewImplUiBinderImpl_designTime1518799094235.Template
-   Invoking generator com.google.gwt.safehtml.rebind.SafeHtmlTemplatesGenerator
-      Constructing interface org.dselent.course_load_scheduler.client.view.impl.UserDetailsViewImpl_UserDetailsViewImplUiBinderImpl_designTime1518799094235.Template
-         Generating method body for html1()
-   Adding '1' new generated units
-      Compiling...
-         Compilation completed in 0.01 seconds
-      Removing invalidated units
-Rebinding org.dselent.course_load_scheduler.client.view.impl.UserDetailsViewImpl_UserDetailsViewImplUiBinderImpl_designTime1518799094235_GenBundle
-   Adding '1' new generated units
-      Compiling...
-         Compilation completed in 0.00 seconds
-      Removing invalidated units
-Rebinding org.dselent.course_load_scheduler.client.view.impl.UserDetailsViewImpl.UserDetailsViewImplUiBinder
-   Adding '3' new generated units
-      Compiling...
-         Compilation completed in 0.01 seconds
-      Removing invalidated units
-Rebinding org.dselent.course_load_scheduler.client.view.impl.UserDetailsViewImpl_UserDetailsViewImplUiBinderImpl_designTime1518799123725.Template
-   Invoking generator com.google.gwt.safehtml.rebind.SafeHtmlTemplatesGenerator
-      Constructing interface org.dselent.course_load_scheduler.client.view.impl.UserDetailsViewImpl_UserDetailsViewImplUiBinderImpl_designTime1518799123725.Template
-         Generating method body for html1()
-   Adding '1' new generated units
-      Compiling...
-         Compilation completed in 0.00 seconds
-      Removing invalidated units
-Rebinding org.dselent.course_load_scheduler.client.view.impl.UserDetailsViewImpl_UserDetailsViewImplUiBinderImpl_designTime1518799123725_GenBundle
-   Adding '1' new generated units
-      Compiling...
-         Compilation completed in 0.01 seconds
-      Removing invalidated units
-Rebinding org.dselent.course_load_scheduler.client.view.impl.UserDetailsViewImpl.UserDetailsViewImplUiBinder
-   Adding '3' new generated units
-      Compiling...
-         Compilation completed in 0.02 seconds
-      Removing invalidated units
-Rebinding org.dselent.course_load_scheduler.client.view.impl.UserDetailsViewImpl_UserDetailsViewImplUiBinderImpl_designTime1518799124971.Template
-   Invoking generator com.google.gwt.safehtml.rebind.SafeHtmlTemplatesGenerator
-      Constructing interface org.dselent.course_load_scheduler.client.view.impl.UserDetailsViewImpl_UserDetailsViewImplUiBinderImpl_designTime1518799124971.Template
-         Generating method body for html1()
-   Adding '1' new generated units
-      Compiling...
-         Compilation completed in 0.00 seconds
-      Removing invalidated units
-Rebinding org.dselent.course_load_scheduler.client.view.impl.UserDetailsViewImpl_UserDetailsViewImplUiBinderImpl_designTime1518799124971_GenBundle
-   Adding '1' new generated units
-      Compiling...
-         Compilation completed in 0.00 seconds
-      Removing invalidated units
-Rebinding org.dselent.course_load_scheduler.client.view.impl.UserDetailsViewImpl.UserDetailsViewImplUiBinder
-   Adding '3' new generated units
-      Compiling...
-         Compilation completed in 0.01 seconds
-      Removing invalidated units
-Rebinding org.dselent.course_load_scheduler.client.view.impl.UserDetailsViewImpl_UserDetailsViewImplUiBinderImpl_designTime1518799129120.Template
-   Invoking generator com.google.gwt.safehtml.rebind.SafeHtmlTemplatesGenerator
-      Constructing interface org.dselent.course_load_scheduler.client.view.impl.UserDetailsViewImpl_UserDetailsViewImplUiBinderImpl_designTime1518799129120.Template
-         Generating method body for html1()
-   Adding '1' new generated units
-      Compiling...
-         Compilation completed in 0.00 seconds
-      Removing invalidated units
-Rebinding org.dselent.course_load_scheduler.client.view.impl.UserDetailsViewImpl_UserDetailsViewImplUiBinderImpl_designTime1518799129120_GenBundle
-   Adding '1' new generated units
-      Compiling...
-         Compilation completed in 0.00 seconds
-      Removing invalidated units
-Rebinding org.dselent.course_load_scheduler.client.view.impl.UserDetailsViewImpl.UserDetailsViewImplUiBinder
-   Adding '3' new generated units
-      Compiling...
-         Compilation completed in 0.02 seconds
-      Removing invalidated units
-Rebinding org.dselent.course_load_scheduler.client.view.impl.UserDetailsViewImpl_UserDetailsViewImplUiBinderImpl_designTime1518799133853.Template
-   Invoking generator com.google.gwt.safehtml.rebind.SafeHtmlTemplatesGenerator
-      Constructing interface org.dselent.course_load_scheduler.client.view.impl.UserDetailsViewImpl_UserDetailsViewImplUiBinderImpl_designTime1518799133853.Template
-         Generating method body for html1()
-   Adding '1' new generated units
-      Compiling...
-         Compilation completed in 0.01 seconds
-      Removing invalidated units
-Rebinding org.dselent.course_load_scheduler.client.view.impl.UserDetailsViewImpl_UserDetailsViewImplUiBinderImpl_designTime1518799133853_GenBundle
-   Adding '1' new generated units
-      Compiling...
-         Compilation completed in 0.01 seconds
-      Removing invalidated units
-Rebinding org.dselent.course_load_scheduler.client.view.impl.UserDetailsViewImpl.UserDetailsViewImplUiBinder
-   Adding '3' new generated units
-      Compiling...
-         Compilation completed in 0.01 seconds
-      Removing invalidated units
-Rebinding org.dselent.course_load_scheduler.client.view.impl.UserDetailsViewImpl_UserDetailsViewImplUiBinderImpl_designTime1518799135347.Template
-   Invoking generator com.google.gwt.safehtml.rebind.SafeHtmlTemplatesGenerator
-      Constructing interface org.dselent.course_load_scheduler.client.view.impl.UserDetailsViewImpl_UserDetailsViewImplUiBinderImpl_designTime1518799135347.Template
-         Generating method body for html1()
-   Adding '1' new generated units
-      Compiling...
-         Compilation completed in 0.01 seconds
-      Removing invalidated units
-Rebinding org.dselent.course_load_scheduler.client.view.impl.UserDetailsViewImpl_UserDetailsViewImplUiBinderImpl_designTime1518799135347_GenBundle
-   Adding '1' new generated units
-      Compiling...
-         Compilation completed in 0.01 seconds
-      Removing invalidated units
-Rebinding org.dselent.course_load_scheduler.client.view.impl.UserDetailsViewImpl.UserDetailsViewImplUiBinder
-   Adding '3' new generated units
-      Compiling...
-         Compilation completed in 0.01 seconds
-      Removing invalidated units
-Rebinding org.dselent.course_load_scheduler.client.view.impl.UserDetailsViewImpl_UserDetailsViewImplUiBinderImpl_designTime1518799137622.Template
-   Invoking generator com.google.gwt.safehtml.rebind.SafeHtmlTemplatesGenerator
-      Constructing interface org.dselent.course_load_scheduler.client.view.impl.UserDetailsViewImpl_UserDetailsViewImplUiBinderImpl_designTime1518799137622.Template
-         Generating method body for html1()
-   Adding '1' new generated units
-      Compiling...
-         Compilation completed in 0.00 seconds
-      Removing invalidated units
-Rebinding org.dselent.course_load_scheduler.client.view.impl.UserDetailsViewImpl_UserDetailsViewImplUiBinderImpl_designTime1518799137622_GenBundle
-   Adding '1' new generated units
-      Compiling...
-         Compilation completed in 0.00 seconds
-      Removing invalidated units
-Rebinding org.dselent.course_load_scheduler.client.view.impl.UserDetailsViewImpl.UserDetailsViewImplUiBinder
-   Adding '3' new generated units
-      Compiling...
-         Compilation completed in 0.02 seconds
-      Removing invalidated units
-Rebinding org.dselent.course_load_scheduler.client.view.impl.UserDetailsViewImpl_UserDetailsViewImplUiBinderImpl_designTime1518799138958.Template
-   Invoking generator com.google.gwt.safehtml.rebind.SafeHtmlTemplatesGenerator
-      Constructing interface org.dselent.course_load_scheduler.client.view.impl.UserDetailsViewImpl_UserDetailsViewImplUiBinderImpl_designTime1518799138958.Template
-         Generating method body for html1()
-   Adding '1' new generated units
-      Compiling...
-         Compilation completed in 0.00 seconds
-      Removing invalidated units
-Rebinding org.dselent.course_load_scheduler.client.view.impl.UserDetailsViewImpl_UserDetailsViewImplUiBinderImpl_designTime1518799138958_GenBundle
-   Adding '1' new generated units
-      Compiling...
-         Compilation completed in 0.00 seconds
-      Removing invalidated units
-Rebinding org.dselent.course_load_scheduler.client.view.impl.UserDetailsViewImpl.UserDetailsViewImplUiBinder
-   Adding '3' new generated units
-      Compiling...
-         Compilation completed in 0.02 seconds
-      Removing invalidated units
-Rebinding org.dselent.course_load_scheduler.client.view.impl.UserDetailsViewImpl_UserDetailsViewImplUiBinderImpl_designTime1518799144590.Template
-   Invoking generator com.google.gwt.safehtml.rebind.SafeHtmlTemplatesGenerator
-      Constructing interface org.dselent.course_load_scheduler.client.view.impl.UserDetailsViewImpl_UserDetailsViewImplUiBinderImpl_designTime1518799144590.Template
-         Generating method body for html1()
-   Adding '1' new generated units
-      Compiling...
-         Compilation completed in 0.01 seconds
-      Removing invalidated units
-Rebinding org.dselent.course_load_scheduler.client.view.impl.UserDetailsViewImpl_UserDetailsViewImplUiBinderImpl_designTime1518799144590_GenBundle
-   Adding '1' new generated units
-      Compiling...
-         Compilation completed in 0.01 seconds
-      Removing invalidated units
-Rebinding org.dselent.course_load_scheduler.client.view.impl.UserDetailsViewImpl.UserDetailsViewImplUiBinder
-   Adding '3' new generated units
-      Compiling...
-         Compilation completed in 0.01 seconds
-      Removing invalidated units
-Rebinding org.dselent.course_load_scheduler.client.view.impl.UserDetailsViewImpl_UserDetailsViewImplUiBinderImpl_designTime1518799145046.Template
-   Invoking generator com.google.gwt.safehtml.rebind.SafeHtmlTemplatesGenerator
-      Constructing interface org.dselent.course_load_scheduler.client.view.impl.UserDetailsViewImpl_UserDetailsViewImplUiBinderImpl_designTime1518799145046.Template
-         Generating method body for html1()
-   Adding '1' new generated units
-      Compiling...
-         Compilation completed in 0.00 seconds
-      Removing invalidated units
-Rebinding org.dselent.course_load_scheduler.client.view.impl.UserDetailsViewImpl_UserDetailsViewImplUiBinderImpl_designTime1518799145046_GenBundle
-   Adding '1' new generated units
-      Compiling...
-         Compilation completed in 0.00 seconds
-      Removing invalidated units
-Rebinding org.dselent.course_load_scheduler.client.view.impl.UserDetailsViewImpl.UserDetailsViewImplUiBinder
-   Adding '3' new generated units
-      Compiling...
-         Compilation completed in 0.01 seconds
-      Removing invalidated units
-Rebinding org.dselent.course_load_scheduler.client.view.impl.UserDetailsViewImpl_UserDetailsViewImplUiBinderImpl_designTime1518799145255.Template
-   Invoking generator com.google.gwt.safehtml.rebind.SafeHtmlTemplatesGenerator
-      Constructing interface org.dselent.course_load_scheduler.client.view.impl.UserDetailsViewImpl_UserDetailsViewImplUiBinderImpl_designTime1518799145255.Template
-         Generating method body for html1()
-   Adding '1' new generated units
-      Compiling...
-         Compilation completed in 0.00 seconds
-      Removing invalidated units
-Rebinding org.dselent.course_load_scheduler.client.view.impl.UserDetailsViewImpl_UserDetailsViewImplUiBinderImpl_designTime1518799145255_GenBundle
-   Adding '1' new generated units
-      Compiling...
-         Compilation completed in 0.00 seconds
-      Removing invalidated units
-Rebinding org.dselent.course_load_scheduler.client.view.impl.UserDetailsViewImpl.UserDetailsViewImplUiBinder
-   Adding '3' new generated units
-      Compiling...
-         Compilation completed in 0.02 seconds
-      Removing invalidated units
-Rebinding org.dselent.course_load_scheduler.client.view.impl.UserDetailsViewImpl_UserDetailsViewImplUiBinderImpl_designTime1518799146052.Template
-   Invoking generator com.google.gwt.safehtml.rebind.SafeHtmlTemplatesGenerator
-      Constructing interface org.dselent.course_load_scheduler.client.view.impl.UserDetailsViewImpl_UserDetailsViewImplUiBinderImpl_designTime1518799146052.Template
-         Generating method body for html1()
-   Adding '1' new generated units
-      Compiling...
-         Compilation completed in 0.00 seconds
-      Removing invalidated units
-Rebinding org.dselent.course_load_scheduler.client.view.impl.UserDetailsViewImpl_UserDetailsViewImplUiBinderImpl_designTime1518799146052_GenBundle
+Rebinding org.dselent.course_load_scheduler.client.view.impl.FacultyCourseViewImpl_FacultyCourseViewImplUiBinderImpl_designTime1518800009184_GenBundle
    Adding '1' new generated units
       Compiling...
          Compilation completed in 0.01 seconds

@@ -52,4 +52,5 @@ public abstract class EventHandlerAdapter implements InvalidLoginEventHandler, S
 	
 	@Override
 	public void onInvalidChangePassword(InvalidChangePasswordEvent evt) {}
+	
 }

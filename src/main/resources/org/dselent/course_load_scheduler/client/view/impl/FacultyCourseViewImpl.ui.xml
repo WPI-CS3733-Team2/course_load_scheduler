@@ -17,29 +17,6 @@
 			</g:row>
 			<g:row/>
 		</g:Grid>
-		<g:FlowPanel height="214px">
-			<g:DecoratorPanel>
-				<g:Grid>
-					<g:row>
-						<g:customCell>
-							<g:VerticalPanel>
-								<g:VerticalPanel>
-									<g:Label text="Course Name" height="28px" ui:field="courseNameLabel"/>
-									<g:VerticalPanel>
-										<g:Label text="Course Number" ui:field="courseNumberLabel"/>
-									</g:VerticalPanel>
-								</g:VerticalPanel>
-							</g:VerticalPanel>
-						</g:customCell>
-						<g:customCell>
-							<p1:DataGrid width="326px" height="106px" ui:field="sectionGrid" rowCount="3" pageSize="3"/>
-						</g:customCell>
-						<g:customCell>
-							<g:Button text="Request" width="72px" ui:field="requestCourseBtn"/>
-						</g:customCell>
-					</g:row>
-				</g:Grid>
-			</g:DecoratorPanel>
-		</g:FlowPanel>
+		<g:Grid width="700px" ui:field="allCoursesGrid"/>
 	</g:HTMLPanel>
 </ui:UiBinder> 
