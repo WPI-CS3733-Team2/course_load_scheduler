@@ -9,8 +9,8 @@ public class UserRole extends Model
 	
 	private Integer id;
 	private String roleName;
-	private Instant createdAt;
-	private Instant updatedAt;
+	//private Instant createdAt;
+	//private Instant updatedAt;
 	private Boolean deleted;
 
 	// methods
@@ -34,7 +34,7 @@ public class UserRole extends Model
 	{
 		this.roleName = roleName;
 	}
-
+	/*
 	public Instant getCreatedAt()
 	{
 		return createdAt;
@@ -70,7 +70,7 @@ public class UserRole extends Model
 			this.updatedAt = updatedAt.toInstant();
 		}
 	}
-	
+	*/
 	public Boolean isDeleted()
 	{
 		return deleted;
@@ -86,11 +86,11 @@ public class UserRole extends Model
 	{
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + ((createdAt == null) ? 0 : createdAt.hashCode());
+		// result = prime * result + ((createdAt == null) ? 0 : createdAt.hashCode());
 		result = prime * result + ((deleted == null) ? 0 : deleted.hashCode());
 		result = prime * result + ((id == null) ? 0 : id.hashCode());
 		result = prime * result + ((roleName == null) ? 0 : roleName.hashCode());
-		result = prime * result + ((updatedAt == null) ? 0 : updatedAt.hashCode());
+		// result = prime * result + ((updatedAt == null) ? 0 : updatedAt.hashCode());
 		return result;
 	}
 
@@ -110,6 +110,7 @@ public class UserRole extends Model
 			return false;
 		}
 		UserRole other = (UserRole) obj;
+		/*
 		if (createdAt == null)
 		{
 			if (other.createdAt != null)
@@ -121,6 +122,7 @@ public class UserRole extends Model
 		{
 			return false;
 		}
+		*/
 		if (deleted == null)
 		{
 			if (other.deleted != null)
@@ -154,6 +156,7 @@ public class UserRole extends Model
 		{
 			return false;
 		}
+		/*
 		if (updatedAt == null)
 		{
 			if (other.updatedAt != null)
@@ -165,6 +168,7 @@ public class UserRole extends Model
 		{
 			return false;
 		}
+		*/
 		return true;
 	}
 
@@ -176,10 +180,12 @@ public class UserRole extends Model
 		builder.append(id);
 		builder.append(", roleName=");
 		builder.append(roleName);
+		/*
 		builder.append(", createdAt=");
 		builder.append(createdAt);
 		builder.append(", updatedAt=");
 		builder.append(updatedAt);
+		*/
 		builder.append(", deleted=");
 		builder.append(deleted);
 		builder.append("]");

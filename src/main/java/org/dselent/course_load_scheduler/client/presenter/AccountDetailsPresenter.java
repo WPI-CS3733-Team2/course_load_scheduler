@@ -6,4 +6,5 @@ public interface AccountDetailsPresenter extends BasePresenter{
 	IndexPresenter getParentPresenter();
 	void setParentPresenter(IndexPresenter parentPresenter);
 	void toChangePassword();
+	String getUserType();
 }

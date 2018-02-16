@@ -9,4 +9,18 @@ public interface AccountDetailsView extends BaseView<AccountDetailsPresenter>{
 	Button getChangePasswordButton();
 
 	void showErrorMessage(String msg);
+
+	void setUserName(String username);
+
+	void setWpiIdInChar(String wpiIdNumber);
+
+	void setFirstName(String firstName);
+
+	void setLastName(String lastName);
+
+	void setAccountState(int acctStateInt);
+	
+	void setAccountType(String acctType);
+
+	void setEmail(String email);
 }

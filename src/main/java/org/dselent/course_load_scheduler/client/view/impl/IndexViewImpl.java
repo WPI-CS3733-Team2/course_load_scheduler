@@ -142,21 +142,23 @@ public class IndexViewImpl extends BaseViewImpl<IndexPresenter> implements Index
 				
 				IndexPresenterImpl indexPresenter = injector.getIndexPresenter(); // on-demand injection
 				IndexView indexView = indexPresenter.getView();		
-
-				boolean faculty = true;
+				
+				String userRole = injector.getAccountDetailsPresenter().getUserType();
 				
 				BasePresenter coursePresenter;
 				
-				if(faculty) {
+				if(userRole.equals("Faculty")) {
 					coursePresenter = injector.getFacultyCoursePresenter();
+					coursePresenter.init();
+					coursePresenter.go(indexView.getViewRootPanel());
 				}
-				else {
+				else if (userRole.equals("Admin")){
 					coursePresenter = injector.getAdminCoursePresenter();
+					coursePresenter.init();
+					coursePresenter.go(indexView.getViewRootPanel());
+				} else {
+					//TODO exception needed: user role from database doesn't match either "Faculty" or "Admin".
 				}
-				
-				coursePresenter.init();
-				coursePresenter.go(indexView.getViewRootPanel());
-				
 			}
 		});
 		
@@ -164,6 +166,8 @@ public class IndexViewImpl extends BaseViewImpl<IndexPresenter> implements Index
 			@Override
 			public void execute() {	
 				final Injector injector = Injector.INSTANCE;
+				
+				
 				
 				IndexPresenterImpl indexPresenter = injector.getIndexPresenter(); // on-demand injection
 				IndexView indexView = indexPresenter.getView();		
