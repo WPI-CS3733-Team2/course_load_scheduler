@@ -20,7 +20,6 @@ import com.google.gwt.uibinder.client.UiHandler;
 import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.user.client.ui.HTMLPanel;
 import com.google.gwt.user.client.ui.Grid;
-import com.google.gwt.event.dom.client.KeyUpEvent;
 
 public class AdminCourseViewImpl extends BaseViewImpl<AdminCoursePresenter> implements AdminCourseView {
 
