@@ -17,6 +17,20 @@ public class Calendar extends Model
 	private String end_time;
 	
 	//methods
+	public Calendar() {
+		super();
+	}
+	
+	public Calendar(Integer id, Integer year, String semester, String days, String start_time, String end_time) {
+		super();
+		this.id = id;
+		this.year = year;
+		this.semester = semester;
+		this.days = days;
+		this.start_time = start_time;
+		this.end_time = end_time;
+	}
+
 	
 	public Integer getId() {
 		return id;

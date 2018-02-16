@@ -1,7 +1,10 @@
 package org.dselent.course_load_scheduler.client.view.impl;
 
+import org.dselent.course_load_scheduler.client.gin.Injector;
 import org.dselent.course_load_scheduler.client.presenter.CreateScheduleVisualPresenter;
+import org.dselent.course_load_scheduler.client.presenter.impl.IndexPresenterImpl;
 import org.dselent.course_load_scheduler.client.view.CreateScheduleVisualView;
+import org.dselent.course_load_scheduler.client.view.IndexView;
 
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.event.dom.client.ClickEvent;
@@ -149,6 +152,16 @@ public class CreateScheduleVisualViewImpl extends BaseViewImpl<CreateScheduleVis
 	void onTabSelected(SelectionEvent<Integer> evt)
 	{
 		presenter.updateGrid();
+	}
+	
+	@UiHandler("nextPageButton")
+	void onSubmitBtnClick(ClickEvent event) {
+		final Injector injector = Injector.INSTANCE;
+		
+		IndexPresenterImpl indexPresenter = injector.getIndexPresenter(); // on-demand injection
+		IndexView indexView = indexPresenter.getView();		
+		
+		// TODO : link to the choose faculty page
 	}
 	
 }

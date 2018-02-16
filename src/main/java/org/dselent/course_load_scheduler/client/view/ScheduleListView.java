@@ -8,8 +8,6 @@ import com.google.gwt.user.client.ui.ListBox;
 
 public interface ScheduleListView extends BaseView<ScheduleListPresenter>
 {
-	ListBox getNavDropDown();
-	void setNavDropDown(ListBox navDropDown);
 	CellTable<Schedule> getScheduleTable();
 	void setScheduleTable(CellTable<Schedule> scheduleTable);
 	void initColumns();

@@ -23,7 +23,6 @@ import com.google.gwt.user.client.ui.TabBar;
 	private static ScheduleSpecificsViewImplUiBinder uiBinder = GWT.create(ScheduleSpecificsViewImplUiBinder.class);
 	@UiField TextBox report;
 	@UiField VerticalPanel verticalPanel;
-	@UiField ListBox navDropDown;
 	@UiField Grid calendarGrid;
 	@UiField TabBar calendarTabs;
 
@@ -51,20 +50,6 @@ import com.google.gwt.user.client.ui.TabBar;
 	public void setVerticalPanel(VerticalPanel verticalPanel) {
 		this.verticalPanel = verticalPanel;
 	}
-
-
-
-	public ListBox getNavDropDown() {
-		return navDropDown;
-	}
-
-
-
-	public void setNavDropDown(ListBox navDropDown) {
-		this.navDropDown = navDropDown;
-	}
-
-
 
 	public TextBox getReport() {
 		return report;
