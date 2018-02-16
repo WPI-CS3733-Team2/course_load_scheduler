@@ -106,19 +106,6 @@ public class AdminCourseViewImpl extends BaseViewImpl<AdminCoursePresenter> impl
 		this.presenter = presenter;
 	}
 
-	/*
-	 * @UiHandler("modifyCourseBtn") void onModifyCourseBtnClick(ClickEvent event) {
-	 * final Injector injector = Injector.INSTANCE;
-	 * 
-	 * IndexPresenterImpl indexPresenter = injector.getIndexPresenter(); //
-	 * on-demand injection IndexView indexView = indexPresenter.getView();
-	 * 
-	 * CreateModifyCoursePresenterImpl createModifyCoursePresenter =
-	 * injector.getCreateModifyCoursePresenter();
-	 * 
-	 * createModifyCoursePresenter.go(indexView.getViewRootPanel()); }
-	 */
-
 	@UiHandler("addCourseBtn")
 	void onAddCourseBtnClick(ClickEvent event) {
 		final Injector injector = Injector.INSTANCE;

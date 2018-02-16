@@ -3,7 +3,6 @@ package org.dselent.course_load_scheduler.client.view.impl;
 import org.dselent.course_load_scheduler.client.gin.Injector;
 import org.dselent.course_load_scheduler.client.presenter.AccountDetailsPresenter;
 import org.dselent.course_load_scheduler.client.presenter.BasePresenter;
-import org.dselent.course_load_scheduler.client.presenter.CreateSchedulePresenter;
 import org.dselent.course_load_scheduler.client.presenter.IndexPresenter;
 import org.dselent.course_load_scheduler.client.presenter.RequestInboxPresenter;
 import org.dselent.course_load_scheduler.client.presenter.ScheduleListPresenter;
@@ -49,6 +48,8 @@ public class IndexViewImpl extends BaseViewImpl<IndexPresenter> implements Index
 	@UiField
 	MenuItem createScheduleMenuItem;
 	@UiField
+	MenuItem modifyScheduleMenuItem;
+	@UiField
 	MenuItem coursesMenuItem;
 	@UiField
 	MenuItem usersMenuItem;
@@ -71,7 +72,6 @@ public class IndexViewImpl extends BaseViewImpl<IndexPresenter> implements Index
 				
 				AccountDetailsPresenter accountDetailsPresenter = injector.getAccountDetailsPresenter();
 				
-				accountDetailsPresenter.init();
 				accountDetailsPresenter.go(indexView.getViewRootPanel());
 			}
 		});
@@ -86,7 +86,6 @@ public class IndexViewImpl extends BaseViewImpl<IndexPresenter> implements Index
 				
 				ScheduleListPresenter scheduleListPresenter = injector.getScheduleListPresenter();
 				
-				scheduleListPresenter.init();
 				scheduleListPresenter.go(indexView.getViewRootPanel());
 			}
 		});
@@ -101,7 +100,6 @@ public class IndexViewImpl extends BaseViewImpl<IndexPresenter> implements Index
 				
 				SearchSchedulePresenter searchSchedulePresenter = injector.getSearchSchedulePresenter();
 				
-				searchSchedulePresenter.init();
 				searchSchedulePresenter.go(indexView.getViewRootPanel());
 			}
 		});
@@ -114,12 +112,23 @@ public class IndexViewImpl extends BaseViewImpl<IndexPresenter> implements Index
 				IndexPresenterImpl indexPresenter = injector.getIndexPresenter(); // on-demand injection
 				IndexView indexView = indexPresenter.getView();		
 				
-				CreateSchedulePresenter createSchedulePresenter = injector.getCreateSchedulePresenter();
-				createSchedulePresenter.go(indexView.getViewRootPanel());
+				// TODO : create schedule first page 
 				
 			}
 		});
 		
+		modifyScheduleMenuItem.setScheduledCommand(new Command() {
+			@Override
+			public void execute() {	
+				final Injector injector = Injector.INSTANCE;
+				
+				IndexPresenterImpl indexPresenter = injector.getIndexPresenter(); // on-demand injection
+				IndexView indexView = indexPresenter.getView();		
+				
+				// TODO : modify schedule first page 
+				
+			}
+		});
 		
 		coursesMenuItem.setScheduledCommand(new Command() {
 			@Override
@@ -140,7 +149,7 @@ public class IndexViewImpl extends BaseViewImpl<IndexPresenter> implements Index
 					coursePresenter = injector.getAdminCoursePresenter();
 				}
 				
-				coursePresenter.init();
+				
 				coursePresenter.go(indexView.getViewRootPanel());
 				
 			}
@@ -156,7 +165,6 @@ public class IndexViewImpl extends BaseViewImpl<IndexPresenter> implements Index
 				
 				UserSearchPresenter userSearchPresenter = injector.getUserSearchPresenter();
 				
-				userSearchPresenter.init();
 				userSearchPresenter.go(indexView.getViewRootPanel());
 			}
 		});
@@ -171,7 +179,6 @@ public class IndexViewImpl extends BaseViewImpl<IndexPresenter> implements Index
 				
 				RequestInboxPresenter requestInboxPresenter = injector.getRequestInboxPresenter();
 				
-				requestInboxPresenter.init();
 				requestInboxPresenter.go(indexView.getViewRootPanel());
 			}
 		});
