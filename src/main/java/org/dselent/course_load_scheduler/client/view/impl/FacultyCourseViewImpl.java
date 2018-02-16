@@ -30,6 +30,7 @@ import com.google.gwt.user.client.ui.VerticalPanel;
 import com.google.gwt.user.client.ui.HTMLPanel;
 import com.google.gwt.user.client.ui.HasWidgets;
 import com.google.gwt.user.client.ui.Label;
+import com.google.gwt.uibinder.client.UiHandler;
 
 public class FacultyCourseViewImpl extends BaseViewImpl<FacultyCoursePresenter> implements FacultyCourseView {
 
@@ -40,6 +41,7 @@ public class FacultyCourseViewImpl extends BaseViewImpl<FacultyCoursePresenter> 
 	HTMLPanel facultyCoursePanel;
 	@UiField
 	Grid allCoursesGrid;
+	@UiField Button searchCourseButton;
 
 	public TextBox getSearchCourseTextBox() {
 		return searchCourseTextBox;
@@ -69,6 +71,11 @@ public class FacultyCourseViewImpl extends BaseViewImpl<FacultyCoursePresenter> 
 
 	interface FacultyCourseViewImplUiBinder extends UiBinder<Widget, FacultyCourseViewImpl> {
 	}
+	
+	@Override
+	public Button getSearchCourseButton() {
+		return searchCourseButton;
+	}
 
 	public FacultyCourseViewImpl() {
 		initWidget(uiBinder.createAndBindUi(this));
@@ -97,4 +104,8 @@ public class FacultyCourseViewImpl extends BaseViewImpl<FacultyCoursePresenter> 
 		this.presenter = presenter;
 	}
 
+	@UiHandler("searchCourseButton")
+	void onSearchCourseButtonClick(ClickEvent event) {
+		presenter.searchCourses();
+	}
 }

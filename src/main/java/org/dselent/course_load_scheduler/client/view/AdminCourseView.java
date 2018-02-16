@@ -9,6 +9,7 @@ import com.google.gwt.user.client.ui.HTMLPanel;
 import com.google.gwt.user.client.ui.HasWidgets;
 import com.google.gwt.user.client.ui.Widget;
 import com.google.gwt.user.client.ui.TextBox;
+import com.google.gwt.user.client.ui.Button;
 
 public interface AdminCourseView extends BaseView<AdminCoursePresenter> {
 	
@@ -28,6 +29,8 @@ public interface AdminCourseView extends BaseView<AdminCoursePresenter> {
 	public HTMLPanel getAdminCoursePanel();
 
 	public void setAdminCoursePanel(HTMLPanel adminCoursePanel);
+	
+	public Button getSearchCourseButton();
 
 	public void showErrorMessages(String errorMessages);
 
