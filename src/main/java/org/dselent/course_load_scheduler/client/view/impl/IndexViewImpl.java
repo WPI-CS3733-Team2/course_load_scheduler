@@ -50,8 +50,6 @@ public class IndexViewImpl extends BaseViewImpl<IndexPresenter> implements Index
 	@UiField
 	MenuItem createScheduleMenuItem;
 	@UiField
-	MenuItem modifyScheduleMenuItem;
-	@UiField
 	MenuItem coursesMenuItem;
 	@UiField
 	MenuItem usersMenuItem;
@@ -119,18 +117,6 @@ public class IndexViewImpl extends BaseViewImpl<IndexPresenter> implements Index
 			}
 		});
 		
-		modifyScheduleMenuItem.setScheduledCommand(new Command() {
-			@Override
-			public void execute() {	
-				final Injector injector = Injector.INSTANCE;
-				
-				IndexPresenterImpl indexPresenter = injector.getIndexPresenter(); // on-demand injection
-				IndexView indexView = indexPresenter.getView();		
-				
-				// TODO : modify schedule first page 
-				
-			}
-		});
 		
 		coursesMenuItem.setScheduledCommand(new Command() {
 			@Override

@@ -2,15 +2,18 @@
 <ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
 	xmlns:g="urn:import:com.google.gwt.user.client.ui">
 	<ui:style>
+	.important {
+		font-weight: bold;
+	}
 	</ui:style>
 	<g:HTMLPanel>
-		<g:VerticalPanel width="100%" ui:field="verticalPanel">
-			<g:Label text="Confirm Schedule" width="100%" ui:field="confirmLabel"/>
-			<g:TabBar ui:field="calendarTabs" width="100%"/>
-			<g:Grid width="100%" ui:field="scheduleGrid" borderWidth="1"/>
+		<g:VerticalPanel ui:field="verticalPanel" width="100%">
+			<g:Cell width="100%">
+				<g:Label text="Add a Faculty Member to Schedule" ui:field="facultyLabel" horizontalAlignment="ALIGN_CENTER"/>
+			</g:Cell>
 			<g:HorizontalPanel width="100%">
 				<g:Cell horizontalAlignment="ALIGN_RIGHT">
-					<g:Button text="Next" ui:field="nextPageButton"/>
+					<g:Button ui:field="nextPageButton" text="Next"/>
 				</g:Cell>
 			</g:HorizontalPanel>
 		</g:VerticalPanel>

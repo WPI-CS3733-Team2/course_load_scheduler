@@ -14,8 +14,6 @@ public interface CreateScheduleVisualView extends BaseView<CreateScheduleVisualP
 	void setScheduleGrid(Grid scheduleGrid);
 	VerticalPanel getVerticalPanel();
 	void setVerticalPanel(VerticalPanel verticalPanel);
-	ListBox getNavDropDown();
-	void setNavDropDown(ListBox navDropDown);
 	Button getNextPageButton();
 	void setNextPageButton(Button nextPageButton);
 	TabBar getCalendarTabs();

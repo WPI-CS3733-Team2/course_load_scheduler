@@ -26,7 +26,6 @@ public class CreateScheduleVisualViewImpl extends BaseViewImpl<CreateScheduleVis
 
 	private static CreateScheduleVisualViewImplUiBinder uiBinder = GWT
 			.create(CreateScheduleVisualViewImplUiBinder.class);
-	@UiField ListBox navDropDown;
 	@UiField Label confirmLabel;
 	@UiField Grid scheduleGrid;
 	@UiField Button nextPageButton;
@@ -47,14 +46,6 @@ public class CreateScheduleVisualViewImpl extends BaseViewImpl<CreateScheduleVis
 
 	public void setCalendarTabs(TabBar calendarTabs) {
 		this.calendarTabs = calendarTabs;
-	}
-
-	public ListBox getNavDropDown() {
-		return navDropDown;
-	}
-
-	public void setNavDropDown(ListBox navDropDown) {
-		this.navDropDown = navDropDown;
 	}
 
 	public Label getConfirmLabel() {
