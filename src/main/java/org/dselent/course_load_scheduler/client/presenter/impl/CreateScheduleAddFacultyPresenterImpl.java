@@ -1,6 +1,7 @@
 package org.dselent.course_load_scheduler.client.presenter.impl;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -28,7 +29,8 @@ public class CreateScheduleAddFacultyPresenterImpl extends BasePresenterImpl imp
 		this.view = view;
 		this.parentPresenter = parentPresenter;
 		view.setPresenter(this);
-	
+		List<String> names = Arrays.asList("Faculty1", "Faculty2", "Faculty3");
+		view.addFaculty(names);
 	}
 	
 	@Override

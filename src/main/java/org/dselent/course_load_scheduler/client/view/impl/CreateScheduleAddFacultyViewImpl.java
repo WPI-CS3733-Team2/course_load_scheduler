@@ -1,6 +1,8 @@
 package org.dselent.course_load_scheduler.client.view.impl;
 
 
+import java.util.List;
+
 import org.dselent.course_load_scheduler.client.presenter.CreateScheduleAddFacultyPresenter;
 import org.dselent.course_load_scheduler.client.view.CreateScheduleAddFacultyView;
 
@@ -17,6 +19,7 @@ import com.google.gwt.user.client.ui.HasWidgets;
 import com.google.gwt.user.client.ui.Widget;
 import com.google.gwt.user.client.ui.VerticalPanel;
 import com.google.gwt.user.client.ui.Label;
+import com.google.gwt.user.client.ui.RadioButton;
 
 public class CreateScheduleAddFacultyViewImpl extends BaseViewImpl<CreateScheduleAddFacultyPresenter> implements CreateScheduleAddFacultyView {
 
@@ -78,5 +81,12 @@ public class CreateScheduleAddFacultyViewImpl extends BaseViewImpl<CreateSchedul
 	@Override
 	public Widget getWidgetContainer() {
 		return this;
+	}
+	
+	public void addFaculty(List<String> names) {
+		for (String name : names) {
+			RadioButton radioButton = new RadioButton("facultyMember", name);
+			verticalPanel.add(radioButton);
+		}
 	}
 }

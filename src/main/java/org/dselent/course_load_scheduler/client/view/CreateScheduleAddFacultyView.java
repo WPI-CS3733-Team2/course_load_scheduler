@@ -1,6 +1,8 @@
 package org.dselent.course_load_scheduler.client.view;
 
 
+import java.util.List;
+
 import org.dselent.course_load_scheduler.client.presenter.CreateScheduleAddFacultyPresenter;
 
 import com.google.gwt.user.client.ui.Button;
@@ -15,4 +17,5 @@ public interface CreateScheduleAddFacultyView extends BaseView<CreateScheduleAdd
 	void setFacultyLabel(Label facultyLabel);
 	Button getNextPageButton();
 	void setNextPageButton(Button nextPageButton);
+	void addFaculty(List<String> names);
 }
