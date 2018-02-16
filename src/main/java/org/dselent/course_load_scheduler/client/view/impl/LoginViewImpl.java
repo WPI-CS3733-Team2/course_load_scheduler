@@ -27,25 +27,16 @@ public class LoginViewImpl extends BaseViewImpl<LoginPresenter> implements Login
 	Label viewLabel;
 	
 	@UiField
-	Label nameLabel;
-	
-	@UiField
-	Label passwordLabel;
-	
-	@UiField
-	Label warningLabel;
-	
-	@UiField
-	TextBox nameTextBox;
+	VerticalPanel loginPanel;
 	
 	@UiField
 	TextBox passwordTextBox;
 	
 	@UiField
-	Button loginButton;
+	TextBox nameTextBox;
 	
 	@UiField
-	VerticalPanel loginPanel;
+	Button loginButton;
 	
 	public LoginViewImpl()
 	{
@@ -64,6 +55,8 @@ public class LoginViewImpl extends BaseViewImpl<LoginPresenter> implements Login
 		this.nameTextBox = nameTextBox;
 	}
 
+	
+	
 	@Override
 	public TextBox getPasswordTextBox()
 	{
@@ -104,12 +97,6 @@ public class LoginViewImpl extends BaseViewImpl<LoginPresenter> implements Login
 	public HasWidgets getViewRootPanel()
 	{
 		return loginPanel;
-	}
-	
-	@UiHandler("loginButton")
-	void onloginButtonClicked(ClickEvent evt)
-	{
-		presenter.login();
 	}
 
 }

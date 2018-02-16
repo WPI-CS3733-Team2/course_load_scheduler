@@ -6,6 +6,7 @@ import org.dselent.course_load_scheduler.client.presenter.impl.FacultyCoursePres
 import org.dselent.course_load_scheduler.client.presenter.impl.IndexPresenterImpl;
 import org.dselent.course_load_scheduler.client.presenter.impl.LoginPresenterImpl;
 import org.dselent.course_load_scheduler.client.presenter.impl.RequestCoursePresenterImpl;
+import org.dselent.course_load_scheduler.client.presenter.impl.RequestInboxPresenterImpl;
 import org.dselent.course_load_scheduler.client.presenter.impl.ScheduleListPresenterImpl;
 import org.dselent.course_load_scheduler.client.presenter.impl.ScheduleSpecificsPresenterImpl;
 import org.dselent.course_load_scheduler.client.presenter.impl.SearchSchedulePresenterImpl;
@@ -16,11 +17,16 @@ import org.dselent.course_load_scheduler.client.view.impl.CreateScheduleVisualVi
 import org.dselent.course_load_scheduler.client.presenter.impl.AdminCoursePresenterImpl;
 import org.dselent.course_load_scheduler.client.presenter.impl.ConfirmSchedulePresenterImpl;
 import org.dselent.course_load_scheduler.client.presenter.impl.CreateModifyCoursePresenterImpl;
+import org.dselent.course_load_scheduler.client.presenter.impl.AccountDetailsPresenterImpl;
+import org.dselent.course_load_scheduler.client.presenter.impl.ChangePasswordPresenterImpl;
+import org.dselent.course_load_scheduler.client.view.impl.AccountDetailsViewImpl;
+import org.dselent.course_load_scheduler.client.view.impl.ChangePasswordViewImpl;
 import org.dselent.course_load_scheduler.client.view.impl.FacultyCourseMappingViewImpl;
 import org.dselent.course_load_scheduler.client.view.impl.FacultyCourseViewImpl;
 import org.dselent.course_load_scheduler.client.view.impl.IndexViewImpl;
 import org.dselent.course_load_scheduler.client.view.impl.LoginViewImpl;
 import org.dselent.course_load_scheduler.client.view.impl.RequestCourseViewImpl;
+import org.dselent.course_load_scheduler.client.view.impl.RequestInboxViewImpl;
 import org.dselent.course_load_scheduler.client.view.impl.ScheduleListViewImpl;
 import org.dselent.course_load_scheduler.client.view.impl.ScheduleSpecificsViewImpl;
 import org.dselent.course_load_scheduler.client.view.impl.SearchScheduleViewImpl;
@@ -59,6 +65,8 @@ public interface Injector extends Ginjector
     // presenters
     public IndexPresenterImpl getIndexPresenter();
     public LoginPresenterImpl getLoginPresenter();
+	public ChangePasswordPresenterImpl getChangePasswordPresenter();
+	public AccountDetailsPresenterImpl getAccountDetailsPresenter();
     public FacultyCourseMappingPresenterImpl getFacultyCourseMappingPresenter();
     public SearchSchedulePresenterImpl getSearchSchedulePresenter();
     public ScheduleSpecificsPresenterImpl getScheduleSpecificsPresenter();
@@ -72,10 +80,13 @@ public interface Injector extends Ginjector
     public AdminCoursePresenterImpl getAdminCoursePresenter();
     public FacultyCoursePresenterImpl getFacultyCoursePresenter();
     public RequestCoursePresenterImpl getRequestCoursePresenter();
+    public RequestInboxPresenterImpl getRequestInboxPresenter();
          
     //views
     public IndexViewImpl getIndexView();
     public LoginViewImpl getLoginView();
+    public ChangePasswordViewImpl getChangePasswordView();
+    public AccountDetailsViewImpl getAccountDetailsView();
     public FacultyCourseMappingViewImpl getFacultyCourseMappingView();
     public SearchScheduleViewImpl getSearchScheduleView();
     public ScheduleSpecificsViewImpl getScheduleSpecificsView();
@@ -89,5 +100,6 @@ public interface Injector extends Ginjector
     public AdminCourseViewImpl getAdminCourseView();
     public FacultyCourseViewImpl getFacultyCourseView();
     public RequestCourseViewImpl getRequestCourseView();
+    public RequestInboxViewImpl getRequestInboxView();
 
 }

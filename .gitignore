@@ -1,3 +1,5 @@
 /gwt-unitCache
 /war/course_load_scheduler
 /.settings
+/war/WEB-INF/deploy
+/.gwt

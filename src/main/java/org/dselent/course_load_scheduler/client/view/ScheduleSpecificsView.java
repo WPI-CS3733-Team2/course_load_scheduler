@@ -18,8 +18,6 @@ public interface ScheduleSpecificsView extends BaseView<ScheduleSpecificsPresent
 	void setCalendarGrid(Grid calendarGrid);
 	VerticalPanel getVerticalPanel();
 	void setVerticalPanel(VerticalPanel verticalPanel);
-	ListBox getNavDropDown();
-	void setNavDropDown(ListBox navDropDown);
 	TabBar getCalendarTabs();
 	void setCalendarTabs(TabBar calendarTabs);
 	void clearGrid();

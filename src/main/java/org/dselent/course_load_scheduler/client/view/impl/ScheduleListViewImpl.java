@@ -1,12 +1,19 @@
 package org.dselent.course_load_scheduler.client.view.impl;
 
+import org.dselent.course_load_scheduler.client.gin.Injector;
+import org.dselent.course_load_scheduler.client.model.Calendar;
 import org.dselent.course_load_scheduler.client.model.Schedule;
 import org.dselent.course_load_scheduler.client.presenter.ScheduleListPresenter;
 import org.dselent.course_load_scheduler.client.presenter.SearchSchedulePresenter;
+import org.dselent.course_load_scheduler.client.presenter.impl.AdminCoursePresenterImpl;
+import org.dselent.course_load_scheduler.client.presenter.impl.IndexPresenterImpl;
+import org.dselent.course_load_scheduler.client.presenter.impl.ScheduleSpecificsPresenterImpl;
+import org.dselent.course_load_scheduler.client.view.IndexView;
 import org.dselent.course_load_scheduler.client.view.ScheduleListView;
 import org.dselent.course_load_scheduler.client.view.SearchScheduleView;
 
 import com.google.gwt.cell.client.ButtonCell;
+import com.google.gwt.cell.client.FieldUpdater;
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.uibinder.client.UiBinder;
@@ -30,7 +37,6 @@ import com.google.gwt.user.client.ui.Widget;
 public class ScheduleListViewImpl extends BaseViewImpl<ScheduleListPresenter> implements ScheduleListView {
 
 	private static ScheduleListViewImplUiBinder uiBinder = GWT.create(ScheduleListViewImplUiBinder.class);
-	@UiField ListBox navDropDown;
 	@UiField CellTable<Schedule> scheduleTable;
 	@UiField VerticalPanel verticalPanel;
 	
@@ -48,14 +54,6 @@ public class ScheduleListViewImpl extends BaseViewImpl<ScheduleListPresenter> im
 
 	public void setVerticalPanel(VerticalPanel verticalPanel) {
 		this.verticalPanel = verticalPanel;
-	}
-
-	public ListBox getNavDropDown() {
-		return navDropDown;
-	}
-
-	public void setNavDropDown(ListBox navDropDown) {
-		this.navDropDown = navDropDown;
 	}
 
 	public CellTable<Schedule> getScheduleTable() {
@@ -91,13 +89,32 @@ public class ScheduleListViewImpl extends BaseViewImpl<ScheduleListPresenter> im
 		scheduleNameColumn.setSortable(true);
 		this.scheduleTable.addColumn(scheduleNameColumn, "Name");
 		ButtonCell buttonCell = new ButtonCell();
-		Column buttonColumn = new Column<Schedule, String>(buttonCell) {
+		Column<Schedule, String> buttonColumn = new Column<Schedule, String>(buttonCell) {
 		  @Override
 		  public String getValue(Schedule schedule) {
 		    return "Select";
 		  }
 		};
+		buttonColumn.setFieldUpdater(new FieldUpdater<Schedule, String>() {
+	        @Override
+	        public void update(int index, Schedule schedule, String value) {
+	            onSelectClicked(schedule);
+	        }
+	    });
 		this.scheduleTable.addColumn(buttonColumn, "View Details");
+	}
+	
+	public void onSelectClicked(Schedule schedule) {
+		final Injector injector = Injector.INSTANCE;
+		
+		IndexPresenterImpl indexPresenter = injector.getIndexPresenter(); // on-demand injection
+		IndexView indexView = indexPresenter.getView();		
+
+
+		ScheduleSpecificsPresenterImpl scheduleSpecificsPresenter = injector.getScheduleSpecificsPresenter();
+		Calendar calendar = new Calendar(1, 2018, "A", "TR", "12:00", "1:50");
+		scheduleSpecificsPresenter.fillCalendar(calendar, "Will be replaced with real stuff");
+		scheduleSpecificsPresenter.go(indexView.getViewRootPanel());
 	}
 	
 }

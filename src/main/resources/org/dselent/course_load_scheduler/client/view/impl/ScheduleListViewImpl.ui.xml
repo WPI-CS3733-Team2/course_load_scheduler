@@ -5,7 +5,6 @@
 
 	</ui:style>
 	<g:VerticalPanel ui:field="verticalPanel">
-		<g:ListBox ui:field="navDropDown" width="100%" />
 		<g:ScrollPanel>
 			<c:CellTable ui:field="scheduleTable" />
 		</g:ScrollPanel>

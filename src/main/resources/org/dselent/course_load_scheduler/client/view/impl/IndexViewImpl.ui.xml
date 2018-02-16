@@ -37,7 +37,14 @@
 		<g:Dock direction="NORTH">
 			<g:MenuBar ui:field="navigationMenu">
 				<g:MenuItem text="Account" ui:field="accountMenuItem"/>
-				<g:MenuItem text="Schedules" ui:field="schedulesMenuItem"/>
+				<g:MenuItem text="Schedules" ui:field="schedulesMenuItem">
+					<g:MenuBar vertical="true">
+						<g:MenuItem text="View Schedule" ui:field="viewScheduleMenuItem"/>
+						<g:MenuItem text="Search Schedule" ui:field="searchScheduleMenuItem"/>
+						<g:MenuItem text="Create Schedule" ui:field="createScheduleMenuItem"/>
+						<g:MenuItem text="Modify Schedule" ui:field="modifyScheduleMenuItem"/>
+					</g:MenuBar>
+				</g:MenuItem>
 				<g:MenuItem text="Courses" ui:field="coursesMenuItem"/>
 				<g:MenuItem text="Users" ui:field="usersMenuItem"/>
 				<g:MenuItem text="Requests" ui:field="requestsMenuItem"/>
