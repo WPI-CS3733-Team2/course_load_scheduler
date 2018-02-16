@@ -48,6 +48,10 @@ public class AdminCourseViewImpl extends BaseViewImpl<AdminCoursePresenter> impl
 		allCoursesGrid.insertRow(newRow);
 		allCoursesGrid.setWidget(newRow, 0, dp);
 	}
+	
+	public void clearAllCoursesGrid() {
+		allCoursesGrid.clear();
+	}
 
 	public TextBox getSearchCourseTxtBox() {
 		return searchCourseTxtBox;

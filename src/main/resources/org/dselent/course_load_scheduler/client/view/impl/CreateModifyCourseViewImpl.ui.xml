@@ -79,8 +79,7 @@
 			</g:row>
 		</g:Grid>
 		<g:FlowPanel>
-			<p1:DataGrid width="250px" height="50px" ui:field="sectionsTable"
-				pageSize="1" />
+			<g:FlowPanel ui:field="sectionsGridPanel"/>
 			<g:HorizontalPanel>
 				<g:Button ui:field="removeSectionBtn" width="140px">Remove Last Section</g:Button>
 			</g:HorizontalPanel>

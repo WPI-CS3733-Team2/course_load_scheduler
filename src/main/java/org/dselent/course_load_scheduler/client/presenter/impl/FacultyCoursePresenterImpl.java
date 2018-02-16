@@ -51,6 +51,8 @@ public class FacultyCoursePresenterImpl extends BasePresenterImpl implements Fac
 	}
 	
 	public void onFacultyCoursePageLoad() {
+		view.clearAllCoursesGrid();
+		
 		List<Section> sections = new ArrayList<>();
 		List<Course> courses = new ArrayList<>();
 
