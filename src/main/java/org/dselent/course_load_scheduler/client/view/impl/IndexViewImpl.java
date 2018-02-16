@@ -176,41 +176,4 @@ public class IndexViewImpl extends BaseViewImpl<IndexPresenter> implements Index
 	{
 		return mainPanel;
 	}
-	
-	/*@UiHandler("accountMenuItem")
-	void onAccountMenuItemClick(ClickEvent event) {
-
-	}
-	
-	@UiHandler("schedulesMenuItem")
-	void onSchedulesMenuItemClick(ClickEvent event) {
-		
-	}
-	
-	@UiHandler("coursesMenuItem")
-	void onCoursesMenuItemClick(ClickEvent event) {
-		final Injector injector = Injector.INSTANCE;
-		
-		IndexPresenterImpl indexPresenter = injector.getIndexPresenter(); // on-demand injection
-		IndexView indexView = indexPresenter.getView();		
-
-		boolean faculty = true;
-		
-		BasePresenter coursePresenter;
-		
-		if(faculty) {
-			coursePresenter = injector.getFacultyCoursePresenter();
-		}
-		else {
-			coursePresenter = injector.getAdminCoursePresenter();
-		}
-		
-		coursePresenter.go(indexView.getViewRootPanel());
-	}
-	
-	@UiHandler("requestsMenuItem")
-	void onRequestsMenuItemClick(ClickEvent event) {
-		
-	}*/
-
 }

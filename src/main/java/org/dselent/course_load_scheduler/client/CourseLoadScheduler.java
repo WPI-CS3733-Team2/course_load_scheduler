@@ -94,7 +94,7 @@ public class CourseLoadScheduler implements EntryPoint
 		indexPresenter.go(root);
 		adminCoursePresenter.go(indexView.getViewRootPanel());
 
-		switch (6) {
+		/*switch (6) {
 
 		case 0:
 			LoginPresenterImpl loginPresenter = injector.getLoginPresenter();
@@ -159,6 +159,6 @@ public class CourseLoadScheduler implements EntryPoint
 			//ConfirmScheduleView confirmScheduleView = injector.getConfirmScheduleView();
 			confirmSchedulePresenter.go(indexView.getViewRootPanel());
 		break;
-		}
+		}*/
 	}
 }
