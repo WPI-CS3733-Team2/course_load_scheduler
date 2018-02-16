@@ -1,6 +1,12 @@
 package org.dselent.course_load_scheduler.client.view.impl;
 
+import java.util.ArrayList;
+
+import org.dselent.course_load_scheduler.client.action.AdminCourseAction;
+import org.dselent.course_load_scheduler.client.event.AdminCourseEvent;
+import org.dselent.course_load_scheduler.client.event.InvalidLoginEvent;
 import org.dselent.course_load_scheduler.client.gin.Injector;
+import org.dselent.course_load_scheduler.client.model.Course;
 import org.dselent.course_load_scheduler.client.presenter.AccountDetailsPresenter;
 import org.dselent.course_load_scheduler.client.presenter.BasePresenter;
 import org.dselent.course_load_scheduler.client.presenter.IndexPresenter;
@@ -47,8 +53,6 @@ public class IndexViewImpl extends BaseViewImpl<IndexPresenter> implements Index
 	MenuItem searchScheduleMenuItem;
 	@UiField
 	MenuItem createScheduleMenuItem;
-	@UiField
-	MenuItem modifyScheduleMenuItem;
 	@UiField
 	MenuItem coursesMenuItem;
 	@UiField
@@ -117,19 +121,6 @@ public class IndexViewImpl extends BaseViewImpl<IndexPresenter> implements Index
 			}
 		});
 		
-		modifyScheduleMenuItem.setScheduledCommand(new Command() {
-			@Override
-			public void execute() {	
-				final Injector injector = Injector.INSTANCE;
-				
-				IndexPresenterImpl indexPresenter = injector.getIndexPresenter(); // on-demand injection
-				IndexView indexView = indexPresenter.getView();		
-				
-				// TODO : modify schedule first page 
-				
-			}
-		});
-		
 		coursesMenuItem.setScheduledCommand(new Command() {
 			@Override
 			public void execute() {
@@ -137,21 +128,23 @@ public class IndexViewImpl extends BaseViewImpl<IndexPresenter> implements Index
 				
 				IndexPresenterImpl indexPresenter = injector.getIndexPresenter(); // on-demand injection
 				IndexView indexView = indexPresenter.getView();		
-
-				boolean faculty = true;
+				
+				String userRole = injector.getAccountDetailsPresenter().getUserType();
 				
 				BasePresenter coursePresenter;
 				
-				if(faculty) {
+				if(userRole.equals("Faculty")) {
 					coursePresenter = injector.getFacultyCoursePresenter();
+					coursePresenter.init();
+					coursePresenter.go(indexView.getViewRootPanel());
 				}
-				else {
-					coursePresenter = injector.getAdminCoursePresenter();
+				else if (userRole.equals("Admin")){
+					AdminCourseAction aca = new AdminCourseAction(new ArrayList<Course>());
+					AdminCourseEvent ace = new AdminCourseEvent(aca);
+					//eventBus.fireEvent(ace);
+				} else {
+					//TODO exception needed: user role from database doesn't match either "Faculty" or "Admin".
 				}
-				
-				
-				coursePresenter.go(indexView.getViewRootPanel());
-				
 			}
 		});
 		
@@ -159,6 +152,8 @@ public class IndexViewImpl extends BaseViewImpl<IndexPresenter> implements Index
 			@Override
 			public void execute() {	
 				final Injector injector = Injector.INSTANCE;
+				
+				
 				
 				IndexPresenterImpl indexPresenter = injector.getIndexPresenter(); // on-demand injection
 				IndexView indexView = indexPresenter.getView();		

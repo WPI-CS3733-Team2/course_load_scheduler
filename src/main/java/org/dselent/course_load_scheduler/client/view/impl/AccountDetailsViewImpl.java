@@ -97,6 +97,50 @@ public class AccountDetailsViewImpl extends BaseViewImpl<AccountDetailsPresenter
 	}
 	
 	@Override
+	public void setUserName(String username) {
+		this.userName.setText(username);
+	}
+	
+	@Override
+	public void setAccountType(String acctType) {
+		this.accountType.setText(acctType);
+	}
+	
+	@Override
+	public void setAccountState(int acctStateInt) {
+		if (acctStateInt == 0) {
+			this.accountState.setText("Inactive");
+		} 
+		else if (acctStateInt == 1) {
+			this.accountState.setText("Active");
+		}
+		else {
+			this.accountState.setText("Unknown");
+		}
+		
+	}
+	
+	@Override
+	public void setWpiIdInChar(String wpiIdChar) {
+		this.wpiId.setText(wpiIdChar);
+	}
+	
+	@Override
+	public void setFirstName (String firstName) {
+		this.firstName.setText(firstName);
+	}
+	
+	@Override
+	public void setLastName (String lastName) {
+		this.lastName.setText(lastName);
+	}
+	
+	@Override
+	public void setEmail (String email) {
+		this.email.setText(email);
+	}
+	
+	@Override
 	public void showErrorMessage(String msg) {
 		Window.alert(msg);
 	}
