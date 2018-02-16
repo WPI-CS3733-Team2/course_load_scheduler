@@ -150,7 +150,7 @@ public class AdminCoursePresenterImpl extends BasePresenterImpl implements Admin
 	
 	@Override
 	public void onAdminCourse(AdminCourseEvent evt) {
-		//this.go(container);
+		this.go(parentPresenter.getView().getViewRootPanel());
 		view.clearAllCoursesGrid();
 		
 		List<Section> sections = new ArrayList<>();

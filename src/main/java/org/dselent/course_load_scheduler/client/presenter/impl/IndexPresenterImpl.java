@@ -100,9 +100,12 @@ public class IndexPresenterImpl extends BasePresenterImpl implements IndexPresen
 				BasePresenter coursePresenter;
 				
 				if(userRole.equals("Faculty")) {
-					coursePresenter = injector.getFacultyCoursePresenter();
+					/*coursePresenter = injector.getFacultyCoursePresenter();
 					coursePresenter.init();
-					coursePresenter.go(indexView.getViewRootPanel());
+					coursePresenter.go(indexView.getViewRootPanel());*/
+					AdminCourseAction aca = new AdminCourseAction(new ArrayList<Course>());
+					AdminCourseEvent ace = new AdminCourseEvent(aca);
+					eventBus.fireEvent(ace);
 				}
 				else if (userRole.equals("Admin")){
 					AdminCourseAction aca = new AdminCourseAction(new ArrayList<Course>());
