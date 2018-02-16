@@ -1,7 +1,5 @@
 package org.dselent.course_load_scheduler.client.model;
 
-import java.sql.Timestamp;
-import java.time.Instant;
 
 //All references to the createdAt and updatedAt fields have been commented out until we can figure out how to
 // import the proper modules.

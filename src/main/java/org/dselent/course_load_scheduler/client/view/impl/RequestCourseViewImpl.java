@@ -22,6 +22,8 @@ import com.google.gwt.user.client.ui.HTMLPanel;
 import com.google.gwt.user.client.ui.TextBox;
 import com.google.gwt.user.client.ui.SimpleCheckBox;
 import com.google.gwt.user.client.ui.CheckBox;
+import com.google.gwt.user.client.ui.Grid;
+import com.google.gwt.user.client.ui.Label;
 
 public class RequestCourseViewImpl extends BaseViewImpl<RequestCoursePresenter> implements RequestCourseView {
 
@@ -29,8 +31,6 @@ public class RequestCourseViewImpl extends BaseViewImpl<RequestCoursePresenter> 
 	@UiField(provided=true) CellTable<Object> sectionTable = new CellTable<Object>();
 	@UiField Button submitBtn;
 	@UiField HTMLPanel requestCoursePanel;
-	@UiField TextBox courseNameTextBox;
-	@UiField TextBox courseNumberTextBox;
 	@UiField SimpleCheckBox termCheckBox;
 	@UiField CheckBox eightToNineCB;
 	@UiField CheckBox nineToTenCB;
@@ -43,6 +43,9 @@ public class RequestCourseViewImpl extends BaseViewImpl<RequestCoursePresenter> 
 	@UiField CheckBox fourToFiveCB;
 	@UiField CheckBox fiveToSixCB;
 	@UiField Button cancelBtn;
+	@UiField Grid checkBoxGrid;
+	@UiField Label courseNameLabel;
+	@UiField Label courseNumberLabel;
 	
 	public CellTable<Object> getSectionTable() {
 		return sectionTable;
@@ -51,23 +54,7 @@ public class RequestCourseViewImpl extends BaseViewImpl<RequestCoursePresenter> 
 	public void setSectionTable(CellTable<Object> sectionTable) {
 		this.sectionTable = sectionTable;
 	}
-
-	public TextBox getCourseNameTextBox() {
-		return courseNameTextBox;
-	}
-
-	public void setCourseNameTextBox(TextBox courseNameTextBox) {
-		this.courseNameTextBox = courseNameTextBox;
-	}
-
-	public TextBox getCourseNumberTextBox() {
-		return courseNumberTextBox;
-	}
-
-	public void setCourseNumberTextBox(TextBox courseNumberTextBox) {
-		this.courseNumberTextBox = courseNumberTextBox;
-	}
-
+	
 	public SimpleCheckBox getTermCheckBox() {
 		return termCheckBox;
 	}

@@ -79,10 +79,18 @@
 			</g:row>
 		</g:Grid>
 		<g:FlowPanel>
-			<g:FlowPanel ui:field="sectionsGridPanel"/>
-			<g:HorizontalPanel>
-				<g:Button ui:field="removeSectionBtn" width="140px">Remove Last Section</g:Button>
-			</g:HorizontalPanel>
+			<g:Grid>
+				<g:row>
+					<g:customCell>
+						<p1:CellTable ui:field="sectionTable" height="50px" pageSize="1"/>
+					</g:customCell>
+				</g:row>
+				<g:row>
+					<g:customCell>
+						<g:Button ui:field="removeSectionBtn" width="140px">Remove Last Section</g:Button>
+					</g:customCell>
+				</g:row>
+			</g:Grid>
 		</g:FlowPanel>
 		<g:Grid>
 			<g:row />
