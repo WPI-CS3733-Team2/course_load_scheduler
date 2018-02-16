@@ -11,7 +11,6 @@ import org.dselent.course_load_scheduler.client.gin.Injector;
 import org.dselent.course_load_scheduler.client.model.Course;
 import org.dselent.course_load_scheduler.client.model.Model;
 import org.dselent.course_load_scheduler.client.presenter.AccountDetailsPresenter;
-import org.dselent.course_load_scheduler.client.presenter.BasePresenter;
 import org.dselent.course_load_scheduler.client.presenter.IndexPresenter;
 import org.dselent.course_load_scheduler.client.presenter.RequestInboxPresenter;
 import org.dselent.course_load_scheduler.client.presenter.ScheduleListPresenter;
@@ -95,16 +94,18 @@ public class IndexPresenterImpl extends BasePresenterImpl implements IndexPresen
 				
 				String userRole = injector.getAccountDetailsPresenter().getUserType();
 				
-				if(userRole.equals("Faculty")) {
+				boolean testing = true;
+				if (userRole.equals("Admin") || testing){
+					ViewCourseAction vca = new ViewCourseAction(new ArrayList<Course>());
+					AdminCourseEvent ace = new AdminCourseEvent(vca);
+					eventBus.fireEvent(ace);
+				} 
+				else if(userRole.equals("Faculty")) {
 					ViewCourseAction vca = new ViewCourseAction(new ArrayList<Course>());
 					FacultyCourseEvent fce = new FacultyCourseEvent(vca);
 					eventBus.fireEvent(fce);
 				}
-				else if (userRole.equals("Admin")){
-					ViewCourseAction vca = new ViewCourseAction(new ArrayList<Course>());
-					AdminCourseEvent ace = new AdminCourseEvent(vca);
-					eventBus.fireEvent(ace);
-				} else {
+				else {
 					//TODO exception needed: user role from database doesn't match either "Faculty" or "Admin".
 				}
 			}

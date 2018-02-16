@@ -10,13 +10,11 @@ import org.dselent.course_load_scheduler.client.event.AdminCourseEvent;
 import org.dselent.course_load_scheduler.client.event.ModifyCourseEvent;
 import org.dselent.course_load_scheduler.client.event.SearchCourseEvent;
 import org.dselent.course_load_scheduler.client.exceptions.EmptyStringException;
-import org.dselent.course_load_scheduler.client.gin.Injector;
 import org.dselent.course_load_scheduler.client.model.Course;
 import org.dselent.course_load_scheduler.client.model.Section;
 import org.dselent.course_load_scheduler.client.presenter.AdminCoursePresenter;
 import org.dselent.course_load_scheduler.client.presenter.IndexPresenter;
 import org.dselent.course_load_scheduler.client.view.AdminCourseView;
-import org.dselent.course_load_scheduler.client.view.IndexView;
 
 import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.event.dom.client.ClickHandler;
@@ -258,16 +256,6 @@ public class AdminCoursePresenterImpl extends BasePresenterImpl implements Admin
 					ModifyCourseAction mca = new ModifyCourseAction(new Course());
 					ModifyCourseEvent mce = new ModifyCourseEvent(mca);
 					eventBus.fireEvent(mce);
-					
-					final Injector injector = Injector.INSTANCE;
-
-					IndexPresenterImpl indexPresenter = injector.getIndexPresenter(); // on-demand injection
-					IndexView indexView = indexPresenter.getView();
-
-					CreateModifyCoursePresenterImpl createModifyCoursePresenter = injector
-							.getCreateModifyCoursePresenter();
-
-					createModifyCoursePresenter.go(indexView.getViewRootPanel());
 				}
 			});
 

@@ -8,7 +8,9 @@ import org.dselent.course_load_scheduler.client.event.ModifyCourseEvent;
 import org.dselent.course_load_scheduler.client.model.Course;
 import org.dselent.course_load_scheduler.client.model.Section;
 import org.dselent.course_load_scheduler.client.presenter.CreateModifyCoursePresenter;
+import org.dselent.course_load_scheduler.client.presenter.IndexPresenter;
 import org.dselent.course_load_scheduler.client.view.CreateModifyCourseView;
+import org.dselent.course_load_scheduler.client.view.FacultyCourseView;
 
 import com.google.gwt.event.shared.HandlerRegistration;
 import com.google.gwt.user.client.ui.HasWidgets;
@@ -22,6 +24,7 @@ public class CreateModifyCoursePresenterImpl extends BasePresenterImpl implement
 {
 	
 	private CreateModifyCourseView view;
+	private IndexPresenter parentPresenter;
 	
 	private List<Course> courses;
 	private List<Section> currentSections;
@@ -30,10 +33,12 @@ public class CreateModifyCoursePresenterImpl extends BasePresenterImpl implement
 	private final SingleSelectionModel<Section> selectionModel;
 
 	@Inject
-	public CreateModifyCoursePresenterImpl(CreateModifyCourseView view)
+	public CreateModifyCoursePresenterImpl(CreateModifyCourseView view, IndexPresenter parentPresenter)
 	{
 			this.view = view;
+			this.parentPresenter = parentPresenter;
 			view.setPresenter(this);
+			
 			this.courses = new ArrayList<Course>();
 			this.currentSections = new ArrayList<Section>();
 			
@@ -70,7 +75,10 @@ public class CreateModifyCoursePresenterImpl extends BasePresenterImpl implement
 		return view;
 	}
 	
+	@Override
 	public void onModifyCourse(ModifyCourseEvent evt) {
+		this.go(parentPresenter.getView().getViewRootPanel());
+		
 		Course course = evt.getAction().getCourse();
 		
 		view.setCourseNameTextBoxText(course.getCourseName());
