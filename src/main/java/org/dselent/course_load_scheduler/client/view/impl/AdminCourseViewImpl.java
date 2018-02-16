@@ -20,6 +20,7 @@ import com.google.gwt.uibinder.client.UiHandler;
 import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.user.client.ui.HTMLPanel;
 import com.google.gwt.user.client.ui.Grid;
+import com.google.gwt.event.dom.client.KeyUpEvent;
 
 public class AdminCourseViewImpl extends BaseViewImpl<AdminCoursePresenter> implements AdminCourseView {
 
@@ -32,6 +33,7 @@ public class AdminCourseViewImpl extends BaseViewImpl<AdminCoursePresenter> impl
 	HTMLPanel adminCoursePanel;
 	@UiField
 	Grid allCoursesGrid;
+	@UiField Button searchCourseButton;
 
 	AdminCoursePresenter presenter;
 	
@@ -67,6 +69,11 @@ public class AdminCourseViewImpl extends BaseViewImpl<AdminCoursePresenter> impl
 
 	public void setAdminCoursePanel(HTMLPanel adminCoursePanel) {
 		this.adminCoursePanel = adminCoursePanel;
+	}
+	
+	@Override
+	public Button getSearchCourseButton() {
+		return searchCourseButton;
 	}
 
 	public AdminCourseViewImpl() {
@@ -122,5 +129,9 @@ public class AdminCourseViewImpl extends BaseViewImpl<AdminCoursePresenter> impl
 		CreateModifyCoursePresenterImpl createModifyCoursePresenter = injector.getCreateModifyCoursePresenter();
 
 		createModifyCoursePresenter.go(indexView.getViewRootPanel());
+	}
+	@UiHandler("searchCourseButton")
+	void onSearchCourseButtonClick(ClickEvent event) {
+		presenter.searchCourses();
 	}
 }

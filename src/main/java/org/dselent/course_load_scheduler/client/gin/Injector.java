@@ -17,6 +17,7 @@ import org.dselent.course_load_scheduler.client.view.impl.CreateScheduleVisualVi
 import org.dselent.course_load_scheduler.client.presenter.impl.AdminCoursePresenterImpl;
 import org.dselent.course_load_scheduler.client.presenter.impl.ConfirmSchedulePresenterImpl;
 import org.dselent.course_load_scheduler.client.presenter.impl.CreateModifyCoursePresenterImpl;
+import org.dselent.course_load_scheduler.client.presenter.impl.CreateScheduleAddFacultyPresenterImpl;
 import org.dselent.course_load_scheduler.client.presenter.impl.CreateSchedulePresenterImpl;
 import org.dselent.course_load_scheduler.client.presenter.impl.AccountDetailsPresenterImpl;
 import org.dselent.course_load_scheduler.client.presenter.impl.ChangePasswordPresenterImpl;
@@ -37,6 +38,7 @@ import org.dselent.course_load_scheduler.client.view.impl.UserDetailsViewImpl;
 import org.dselent.course_load_scheduler.client.view.impl.AdminCourseViewImpl;
 import org.dselent.course_load_scheduler.client.view.impl.ConfirmScheduleViewImpl;
 import org.dselent.course_load_scheduler.client.view.impl.CreateModifyCourseViewImpl;
+import org.dselent.course_load_scheduler.client.view.impl.CreateScheduleAddFacultyViewImpl;
 import org.dselent.course_load_scheduler.client.view.impl.CreateScheduleViewImpl;
 
 import com.google.gwt.core.client.GWT;
@@ -83,6 +85,7 @@ public interface Injector extends Ginjector
     public FacultyCoursePresenterImpl getFacultyCoursePresenter();
     public RequestCoursePresenterImpl getRequestCoursePresenter();
     public RequestInboxPresenterImpl getRequestInboxPresenter();
+    public CreateScheduleAddFacultyPresenterImpl getCreateScheduleAddFacultyPresenter();
     public CreateSchedulePresenterImpl getCreateSchedulePresenter();
          
     //views
@@ -104,6 +107,7 @@ public interface Injector extends Ginjector
     public FacultyCourseViewImpl getFacultyCourseView();
     public RequestCourseViewImpl getRequestCourseView();
     public RequestInboxViewImpl getRequestInboxView();
+    public CreateScheduleAddFacultyViewImpl getCreateScheduleAddFacultyView();
     public CreateScheduleViewImpl getCreateScheduleView();
 
 }

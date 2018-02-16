@@ -1,7 +1,11 @@
 package org.dselent.course_load_scheduler.client.view.impl;
 
+import org.dselent.course_load_scheduler.client.gin.Injector;
 import org.dselent.course_load_scheduler.client.presenter.ConfirmSchedulePresenter;
+import org.dselent.course_load_scheduler.client.presenter.impl.IndexPresenterImpl;
+import org.dselent.course_load_scheduler.client.presenter.impl.ScheduleListPresenterImpl;
 import org.dselent.course_load_scheduler.client.view.ConfirmScheduleView;
+import org.dselent.course_load_scheduler.client.view.IndexView;
 
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.uibinder.client.UiBinder;
@@ -71,5 +75,18 @@ public class ConfirmScheduleViewImpl extends BaseViewImpl<ConfirmSchedulePresent
 	public HasWidgets getViewRootPanel()
 	{
 		return confirmSchedulePanel;
+	}
+	
+	
+	@UiHandler("confirmScheduleButton")
+	void onButtonClick(ClickEvent event) {
+		
+		final Injector injector = Injector.INSTANCE;
+				
+		IndexPresenterImpl indexPresenter = injector.getIndexPresenter(); // on-demand injection
+		IndexView indexView = indexPresenter.getView();		
+
+		ScheduleListPresenterImpl scheduleListPresenter = injector.getScheduleListPresenter();
+		scheduleListPresenter.go(indexView.getViewRootPanel()); 
 	}
 }

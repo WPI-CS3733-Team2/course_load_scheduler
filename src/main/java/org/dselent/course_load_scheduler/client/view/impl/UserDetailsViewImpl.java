@@ -41,7 +41,6 @@ public class UserDetailsViewImpl extends BaseViewImpl<UserDetailsPresenter> impl
 	@UiField TextBox accountStateBox;
 	@UiField Label userRoleLabel;
 	@UiField TextBox userRoleBox;
-
 	interface UserDetailsViewImplUiBinder extends UiBinder<Widget, UserDetailsViewImpl> {
 	}
 

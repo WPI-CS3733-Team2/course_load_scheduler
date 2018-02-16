@@ -19,6 +19,7 @@ import org.dselent.course_load_scheduler.client.presenter.impl.CreateScheduleVis
 import org.dselent.course_load_scheduler.client.presenter.AdminCoursePresenter;
 import org.dselent.course_load_scheduler.client.presenter.ConfirmSchedulePresenter;
 import org.dselent.course_load_scheduler.client.presenter.CreateModifyCoursePresenter;
+import org.dselent.course_load_scheduler.client.presenter.CreateScheduleAddFacultyPresenter;
 import org.dselent.course_load_scheduler.client.presenter.CreateSchedulePresenter;
 import org.dselent.course_load_scheduler.client.presenter.impl.AccountDetailsPresenterImpl;
 import org.dselent.course_load_scheduler.client.presenter.impl.ChangePasswordPresenterImpl;
@@ -38,6 +39,7 @@ import org.dselent.course_load_scheduler.client.view.CreateScheduleVisualView;
 import org.dselent.course_load_scheduler.client.presenter.impl.AdminCoursePresenterImpl;
 import org.dselent.course_load_scheduler.client.presenter.impl.ConfirmSchedulePresenterImpl;
 import org.dselent.course_load_scheduler.client.presenter.impl.CreateModifyCoursePresenterImpl;
+import org.dselent.course_load_scheduler.client.presenter.impl.CreateScheduleAddFacultyPresenterImpl;
 import org.dselent.course_load_scheduler.client.presenter.impl.CreateSchedulePresenterImpl;
 import org.dselent.course_load_scheduler.client.view.FacultyCourseMappingView;
 import org.dselent.course_load_scheduler.client.view.FacultyCourseView;
@@ -55,6 +57,7 @@ import org.dselent.course_load_scheduler.client.view.impl.CreateScheduleVisualVi
 import org.dselent.course_load_scheduler.client.view.AdminCourseView;
 import org.dselent.course_load_scheduler.client.view.ConfirmScheduleView;
 import org.dselent.course_load_scheduler.client.view.CreateModifyCourseView;
+import org.dselent.course_load_scheduler.client.view.CreateScheduleAddFacultyView;
 import org.dselent.course_load_scheduler.client.view.CreateScheduleView;
 import org.dselent.course_load_scheduler.client.view.AccountDetailsView;
 import org.dselent.course_load_scheduler.client.view.ChangePasswordView;
@@ -62,7 +65,6 @@ import org.dselent.course_load_scheduler.client.view.impl.AccountDetailsViewImpl
 import org.dselent.course_load_scheduler.client.view.impl.ChangePasswordViewImpl;
 import org.dselent.course_load_scheduler.client.view.impl.FacultyCourseMappingViewImpl;
 import org.dselent.course_load_scheduler.client.view.impl.FacultyCourseViewImpl;
-
 import org.dselent.course_load_scheduler.client.view.impl.IndexViewImpl;
 import org.dselent.course_load_scheduler.client.view.impl.LoginViewImpl;
 import org.dselent.course_load_scheduler.client.view.impl.RequestCourseViewImpl;
@@ -76,6 +78,7 @@ import org.dselent.course_load_scheduler.client.view.impl.UserDetailsViewImpl;
 import org.dselent.course_load_scheduler.client.view.impl.AdminCourseViewImpl;
 import org.dselent.course_load_scheduler.client.view.impl.ConfirmScheduleViewImpl;
 import org.dselent.course_load_scheduler.client.view.impl.CreateModifyCourseViewImpl;
+import org.dselent.course_load_scheduler.client.view.impl.CreateScheduleAddFacultyViewImpl;
 import org.dselent.course_load_scheduler.client.view.impl.CreateScheduleViewImpl;
 
 import com.google.gwt.event.shared.SimpleEventBus;
@@ -116,8 +119,8 @@ public class InjectorModule extends AbstractGinModule
         bind(FacultyCoursePresenter.class).to(FacultyCoursePresenterImpl.class).in(Singleton.class);
         bind(RequestCoursePresenter.class).to(RequestCoursePresenterImpl.class).in(Singleton.class);
         bind(RequestInboxPresenter.class).to(RequestInboxPresenterImpl.class).in(Singleton.class);
+        bind(CreateScheduleAddFacultyPresenter.class).to(CreateScheduleAddFacultyPresenterImpl.class).in(Singleton.class);
         bind(CreateSchedulePresenter.class).to(CreateSchedulePresenterImpl.class).in(Singleton.class);
-
 
         // views
         bind(IndexView.class).to(IndexViewImpl.class).in(Singleton.class);
@@ -138,6 +141,7 @@ public class InjectorModule extends AbstractGinModule
         bind(RequestInboxView.class).to(RequestInboxViewImpl.class).in(Singleton.class);
         bind(ChangePasswordView.class).to(ChangePasswordViewImpl.class).in(Singleton.class);
         bind(AccountDetailsView.class).to(AccountDetailsViewImpl.class).in(Singleton.class);
+        bind(CreateScheduleAddFacultyView.class).to(CreateScheduleAddFacultyViewImpl.class).in(Singleton.class);
         bind(CreateScheduleView.class).to(CreateScheduleViewImpl.class).in(Singleton.class);
         
     }
