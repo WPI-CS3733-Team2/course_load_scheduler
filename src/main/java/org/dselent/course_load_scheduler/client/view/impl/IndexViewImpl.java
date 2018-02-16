@@ -6,6 +6,7 @@ import org.dselent.course_load_scheduler.client.presenter.BasePresenter;
 import org.dselent.course_load_scheduler.client.presenter.IndexPresenter;
 import org.dselent.course_load_scheduler.client.presenter.RequestInboxPresenter;
 import org.dselent.course_load_scheduler.client.presenter.ScheduleListPresenter;
+import org.dselent.course_load_scheduler.client.presenter.SearchSchedulePresenter;
 import org.dselent.course_load_scheduler.client.presenter.UserSearchPresenter;
 import org.dselent.course_load_scheduler.client.presenter.impl.IndexPresenterImpl;
 import org.dselent.course_load_scheduler.client.view.IndexView;
@@ -41,6 +42,14 @@ public class IndexViewImpl extends BaseViewImpl<IndexPresenter> implements Index
 	@UiField
 	MenuItem schedulesMenuItem;
 	@UiField
+	MenuItem viewScheduleMenuItem;
+	@UiField
+	MenuItem searchScheduleMenuItem;
+	@UiField
+	MenuItem createScheduleMenuItem;
+	@UiField
+	MenuItem modifyScheduleMenuItem;
+	@UiField
 	MenuItem coursesMenuItem;
 	@UiField
 	MenuItem usersMenuItem;
@@ -52,7 +61,7 @@ public class IndexViewImpl extends BaseViewImpl<IndexPresenter> implements Index
 	public IndexViewImpl()
 	{
 		initWidget(uiBinder.createAndBindUi(this));
-		
+
 		accountMenuItem.setScheduledCommand(new Command() {
 			@Override
 			public void execute() {	
@@ -67,7 +76,7 @@ public class IndexViewImpl extends BaseViewImpl<IndexPresenter> implements Index
 			}
 		});
 		
-		schedulesMenuItem.setScheduledCommand(new Command() {
+		viewScheduleMenuItem.setScheduledCommand(new Command() {
 			@Override
 			public void execute() {	
 				final Injector injector = Injector.INSTANCE;
@@ -78,6 +87,46 @@ public class IndexViewImpl extends BaseViewImpl<IndexPresenter> implements Index
 				ScheduleListPresenter scheduleListPresenter = injector.getScheduleListPresenter();
 				
 				scheduleListPresenter.go(indexView.getViewRootPanel());
+			}
+		});
+		
+		searchScheduleMenuItem.setScheduledCommand(new Command() {
+			@Override
+			public void execute() {	
+				final Injector injector = Injector.INSTANCE;
+				
+				IndexPresenterImpl indexPresenter = injector.getIndexPresenter(); // on-demand injection
+				IndexView indexView = indexPresenter.getView();		
+				
+				SearchSchedulePresenter searchSchedulePresenter = injector.getSearchSchedulePresenter();
+				
+				searchSchedulePresenter.go(indexView.getViewRootPanel());
+			}
+		});
+		
+		createScheduleMenuItem.setScheduledCommand(new Command() {
+			@Override
+			public void execute() {	
+				final Injector injector = Injector.INSTANCE;
+				
+				IndexPresenterImpl indexPresenter = injector.getIndexPresenter(); // on-demand injection
+				IndexView indexView = indexPresenter.getView();		
+				
+				// TODO : create schedule first page 
+				
+			}
+		});
+		
+		modifyScheduleMenuItem.setScheduledCommand(new Command() {
+			@Override
+			public void execute() {	
+				final Injector injector = Injector.INSTANCE;
+				
+				IndexPresenterImpl indexPresenter = injector.getIndexPresenter(); // on-demand injection
+				IndexView indexView = indexPresenter.getView();		
+				
+				// TODO : modify schedule first page 
+				
 			}
 		});
 		

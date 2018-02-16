@@ -6,7 +6,6 @@ import org.dselent.course_load_scheduler.client.presenter.RequestInboxPresenter;
 
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.uibinder.client.UiBinder;
-import com.google.gwt.user.client.ui.Composite;
 import com.google.gwt.user.client.ui.HasWidgets;
 import com.google.gwt.user.client.ui.VerticalPanel;
 import com.google.gwt.user.client.ui.Widget;
@@ -19,15 +18,9 @@ public class RequestInboxViewImpl extends BaseViewImpl<RequestInboxPresenter> im
 
 	private static RequestInboxViewImplUiBinder uiBinder = GWT.create(RequestInboxViewImplUiBinder.class);
 	@UiField VerticalPanel RequestInboxPanel;
-	@UiField Button AccountButton;
-	@UiField Button CourcesButton;
-	@UiField Button SchedulesButton;
-	@UiField Button UsersButton;
-	@UiField Button InboxButton;
 	@UiField Button ApproveButton;
 	@UiField Button DenyButton;
 	@UiField Button DeleteButton;
-	
 	@UiField Button request1Button;
 	@UiField Button request2Button;
 	@UiField Button request3Button;
@@ -45,31 +38,6 @@ public class RequestInboxViewImpl extends BaseViewImpl<RequestInboxPresenter> im
 	}
 	
 	@Override
-	public Button getAccountButton() {
-		return AccountButton;
-	}
-	
-	@Override
-	public Button getCourcesButton() {
-		return CourcesButton;
-	}
-	
-	@Override
-	public Button getSchedulesButton() {
-		return SchedulesButton;
-	}
-	
-	@Override
-	public Button getUsersButton() {
-		return UsersButton;
-	}
-	
-	@Override
-	public Button getInboxButton() {
-		return InboxButton;
-	}
-	
-	@Override
 	public Button getApproveButton() {
 		return ApproveButton;
 	}
@@ -83,22 +51,7 @@ public class RequestInboxViewImpl extends BaseViewImpl<RequestInboxPresenter> im
 	public Button getDeleteButton() {
 		return DeleteButton;
 	}
-	
-	@UiHandler("AccountButton")
-	void onAccountButtonClick(ClickEvent event) {
-	}
-	@UiHandler("CourcesButton")
-	void onCourcesButtonClick(ClickEvent event) {
-	}
-	@UiHandler("SchedulesButton")
-	void onSchedulesButtonClick(ClickEvent event) {
-	}
-	@UiHandler("UsersButton")
-	void onUsersButtonClick(ClickEvent event) {
-	}
-	@UiHandler("InboxButton")
-	void onInboxButtonClick(ClickEvent event) {
-	}
+
 	@UiHandler("ApproveButton")
 	void onApproveButtonClick(ClickEvent event) {
 	}

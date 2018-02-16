@@ -95,6 +95,7 @@ public class CourseLoadScheduler implements EntryPoint
 		adminCoursePresenter.go(indexView.getViewRootPanel());
 
 		/*switch (6) {
+		switch (8) {
 
 		case 0:
 			LoginPresenterImpl loginPresenter = injector.getLoginPresenter();

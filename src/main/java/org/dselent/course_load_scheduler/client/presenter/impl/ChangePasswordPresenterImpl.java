@@ -44,10 +44,13 @@ public class ChangePasswordPresenterImpl extends BasePresenterImpl implements Ch
 	
 	@Override
 	public void bind() {
-		HandlerRegistration registration;
-		registration = eventBus.addHandler(InvalidChangePasswordEvent.TYPE, this);
-		eventBusRegistration.put(InvalidChangePasswordEvent.TYPE, registration);
-		view.hideWindow();
+		HandlerRegistration registration1;
+		HandlerRegistration registration2;
+		registration1 = eventBus.addHandler(InvalidChangePasswordEvent.TYPE, this);
+		registration2 = eventBus.addHandler(TriggerChangePasswordWindowEvent.TYPE, this);
+		eventBusRegistration.put(InvalidChangePasswordEvent.TYPE, registration1);
+		eventBusRegistration.put(TriggerChangePasswordWindowEvent.TYPE, registration2);
+		view.getChangePasswordPopupPanel().getElement().getStyle().setVisibility(Style.Visibility.HIDDEN);
 	}
 	
 	@Override
@@ -71,7 +74,7 @@ public class ChangePasswordPresenterImpl extends BasePresenterImpl implements Ch
 		this.userId = userId;
 	}
 	
-	public void onTriggerChangePasswordWindow(TriggerChangePasswordWindowEvent evt) {
+	public void onTriggerChangePasswordWindow1(TriggerChangePasswordWindowEvent evt) {
 		//view.showWindow();
 		view.getChangePasswordPopupPanel().getElement().getStyle().setVisibility(Style.Visibility.VISIBLE);
 		TriggerChangePasswordWindowAction action = evt.getAction();

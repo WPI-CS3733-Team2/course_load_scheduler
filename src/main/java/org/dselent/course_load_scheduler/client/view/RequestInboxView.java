@@ -7,12 +7,7 @@ import com.google.gwt.user.client.ui.TabPanel;
 import com.google.gwt.user.client.ui.TextBox;
 
 public interface RequestInboxView extends BaseView<RequestInboxPresenter>{
-	public Button getAccountButton();
-	public Button getCourcesButton();
-	public Button getSchedulesButton();
-	public Button getUsersButton();
 	public Button getApproveButton();
-	public Button getInboxButton();
 	public Button getDenyButton();
 	public Button getDeleteButton();
 }

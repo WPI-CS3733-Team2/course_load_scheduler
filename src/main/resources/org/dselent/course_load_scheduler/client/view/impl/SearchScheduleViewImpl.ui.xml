@@ -5,18 +5,14 @@
 	
 	</ui:style>
 	<g:HTMLPanel>
-		<g:VerticalPanel ui:field="verticalPanel" width="448px">
-			<g:ListBox ui:field="navDropDown" width="100%"/>
+		<g:VerticalPanel ui:field="verticalPanel" width="100%">
 			<g:TextBox width="100%" name="searchBar" ui:field="searchBar" text="search..."/>
-			<g:HorizontalPanel horizontalAlignment="ALIGN_RIGHT" width="449px">
-				<g:HorizontalPanel horizontalAlignment="ALIGN_LEFT" width="334px">
-				<g:RadioButton name="searchBy" text="By Faculty" ui:field="byFaculty" checked="true"/>
-				<g:RadioButton name="searchBy" text="By Course" ui:field="byCourse"/>
-				<g:RadioButton name="searchBy" text="By Semester" ui:field="bySemester"/>
-				<g:RadioButton name="searchBy" text="By Schedule Name" ui:field="byScheduleName"/>
-			</g:HorizontalPanel>
-				<g:Button text="Advanced Search" ui:field="advancedSearch" width="81px" height="46px"/>
-			</g:HorizontalPanel>
+				<g:HorizontalPanel horizontalAlignment="ALIGN_LEFT" width="100%">
+					<g:RadioButton name="searchBy" text="By Faculty" ui:field="byFaculty" checked="true"/>
+					<g:RadioButton name="searchBy" text="By Course" ui:field="byCourse"/>
+					<g:RadioButton name="searchBy" text="By Semester" ui:field="bySemester"/>
+					<g:RadioButton name="searchBy" text="By Schedule Name" ui:field="byScheduleName"/>
+				</g:HorizontalPanel>
 		</g:VerticalPanel>
 	</g:HTMLPanel>
 </ui:UiBinder> 

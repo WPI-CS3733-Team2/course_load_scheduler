@@ -23,16 +23,7 @@ public class SearchSchedulePresenterImpl extends BasePresenterImpl implements Se
 		this.view = view;
 		this.parentPresenter = parentPresenter;
 		view.setPresenter(this);
-		this.insertDropDown();
 	}
-
-	public void insertDropDown() {
-		view.getNavDropDown().insertItem("View Schedule", 1);
-		view.getNavDropDown().insertItem("Search Schedule", 2);
-		view.getNavDropDown().insertItem("Create Schedule", 3);
-		view.getNavDropDown().insertItem("Modify Schedule", 4);
-	}
-	
 	
 	@Override
 	public void init()
