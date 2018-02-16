@@ -14,6 +14,30 @@ public class Course extends Model
 	private String courseNumber;
 	private List<Section> sections;
 	
+	public String getCourseName() {
+		return courseName;
+	}
+
+	public void setCourseName(String courseName) {
+		this.courseName = courseName;
+	}
+
+	public String getCourseNumber() {
+		return courseNumber;
+	}
+
+	public void setCourseNumber(String courseNumber) {
+		this.courseNumber = courseNumber;
+	}
+
+	public List<Section> getSections() {
+		return sections;
+	}
+
+	public void setSections(List<Section> sections) {
+		this.sections = sections;
+	}
+
 	public void addCourse_idList(Section section) {
 		this.sections.add(section);
 	}

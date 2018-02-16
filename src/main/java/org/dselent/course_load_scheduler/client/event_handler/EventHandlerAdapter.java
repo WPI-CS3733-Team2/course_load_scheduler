@@ -29,6 +29,9 @@ public abstract class EventHandlerAdapter implements InvalidLoginEventHandler, S
 	@Override
 	public void onSendLogin(SendLoginEvent evt) {}
 	
+	//@Override
+	//public void onNavigate(NavigateEvent evt) {}
+	
 	@Override
 	public void onSearchUser(SearchUserEvent evt) {}
 	
@@ -49,4 +52,5 @@ public abstract class EventHandlerAdapter implements InvalidLoginEventHandler, S
 	
 	@Override
 	public void onInvalidChangePassword(InvalidChangePasswordEvent evt) {}
+	
 }

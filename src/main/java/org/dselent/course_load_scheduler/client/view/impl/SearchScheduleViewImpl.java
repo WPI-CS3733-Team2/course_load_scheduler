@@ -1,19 +1,23 @@
 package org.dselent.course_load_scheduler.client.view.impl;
 
+import org.dselent.course_load_scheduler.client.gin.Injector;
 import org.dselent.course_load_scheduler.client.presenter.SearchSchedulePresenter;
+import org.dselent.course_load_scheduler.client.presenter.impl.IndexPresenterImpl;
+import org.dselent.course_load_scheduler.client.presenter.impl.ScheduleListPresenterImpl;
+import org.dselent.course_load_scheduler.client.view.IndexView;
 import org.dselent.course_load_scheduler.client.view.SearchScheduleView;
 
 import com.google.gwt.core.client.GWT;
+import com.google.gwt.event.dom.client.KeyCodes;
+import com.google.gwt.event.dom.client.KeyDownEvent;
+import com.google.gwt.event.dom.client.KeyDownHandler;
 import com.google.gwt.uibinder.client.UiBinder;
-import com.google.gwt.user.client.ui.Composite;
 import com.google.gwt.user.client.ui.HasWidgets;
-import com.google.gwt.user.client.ui.ListBox;
 import com.google.gwt.user.client.ui.Widget;
 import com.google.gwt.uibinder.client.UiField;
 import com.google.gwt.user.client.ui.TextBox;
 import com.google.gwt.user.client.ui.VerticalPanel;
 import com.google.gwt.user.client.ui.RadioButton;
-import com.google.gwt.user.client.ui.Button;
 
 //public class SearchScheduleViewImpl extends Composite {
 public class SearchScheduleViewImpl extends BaseViewImpl<SearchSchedulePresenter> implements SearchScheduleView {
@@ -24,15 +28,20 @@ public class SearchScheduleViewImpl extends BaseViewImpl<SearchSchedulePresenter
 	@UiField RadioButton byCourse;
 	@UiField RadioButton bySemester;
 	@UiField RadioButton byScheduleName;
-	@UiField Button advancedSearch;
 	@UiField VerticalPanel verticalPanel;
-	@UiField ListBox navDropDown;
 
 	interface SearchScheduleImplUiBinder extends UiBinder<Widget, SearchScheduleViewImpl> {
 	}
 
 	public SearchScheduleViewImpl() {
 		initWidget(uiBinder.createAndBindUi(this));
+		searchBar.addKeyDownHandler(new KeyDownHandler() {
+	        public void onKeyDown(KeyDownEvent event) {
+	            if (event.getNativeKeyCode() == KeyCodes.KEY_ENTER) {
+	              results();
+	            }
+	          }
+	        });
 	}
 	
 	public RadioButton getBySemester() {
@@ -85,22 +94,6 @@ public class SearchScheduleViewImpl extends BaseViewImpl<SearchSchedulePresenter
 		this.byCourse = byCourse;
 	}
 
-	public Button getAdvancedSearch() {
-		return advancedSearch;
-	}
-
-	public void setAdvancedSearch(Button advancedSearch) {
-		this.advancedSearch = advancedSearch;
-	}
-
-	public ListBox getNavDropDown() {
-		return navDropDown;
-	}
-
-	public void setNavDropDown(ListBox navDropDown) {
-		this.navDropDown = navDropDown;
-	}
-
 	@Override
 	public Widget getWidgetContainer()
 	{
@@ -120,4 +113,33 @@ public class SearchScheduleViewImpl extends BaseViewImpl<SearchSchedulePresenter
 		this.presenter = presenter;
 	}
 	
+	
+	
+	public void results() {
+		// TODO : pass these terms for SQL queries
+		final String queryTerm = searchBar.getText().trim();
+		String searchBy = "";
+		if (byFaculty.getValue()) {
+			searchBy = "faculty";
+		}
+		else if (byCourse.getValue()){
+			searchBy = "course";
+		}
+		else if (bySemester.getValue()) {
+			searchBy = "semester";
+		}
+		else if (byScheduleName.getValue()) {
+			searchBy = "name";
+		}
+		GWT.log(queryTerm + " " + searchBy);
+	      
+		final Injector injector = Injector.INSTANCE;
+		
+		IndexPresenterImpl indexPresenter = injector.getIndexPresenter(); // on-demand injection
+		IndexView indexView = indexPresenter.getView();		
+
+
+		ScheduleListPresenterImpl scheduleListPresenter = injector.getScheduleListPresenter();
+		scheduleListPresenter.go(indexView.getViewRootPanel());
+	}
 }

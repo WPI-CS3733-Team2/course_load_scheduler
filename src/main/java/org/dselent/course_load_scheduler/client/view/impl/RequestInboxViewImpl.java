@@ -21,7 +21,6 @@ public class RequestInboxViewImpl extends BaseViewImpl<RequestInboxPresenter> im
 	@UiField Button ApproveButton;
 	@UiField Button DenyButton;
 	@UiField Button DeleteButton;
-	
 	@UiField Button request1Button;
 	@UiField Button request2Button;
 	@UiField Button request3Button;
@@ -52,7 +51,7 @@ public class RequestInboxViewImpl extends BaseViewImpl<RequestInboxPresenter> im
 	public Button getDeleteButton() {
 		return DeleteButton;
 	}
-	
+
 	@UiHandler("ApproveButton")
 	void onApproveButtonClick(ClickEvent event) {
 	}

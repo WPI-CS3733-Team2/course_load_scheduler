@@ -15,6 +15,7 @@ import com.google.gwt.user.client.ui.Button;
 import com.google.gwt.uibinder.client.UiHandler;
 import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.user.client.ui.TextBox;
+import com.google.gwt.user.client.ui.Grid;
 
 public class UserDetailsViewImpl extends BaseViewImpl<UserDetailsPresenter> implements UserDetailsView {
 
@@ -23,22 +24,23 @@ public class UserDetailsViewImpl extends BaseViewImpl<UserDetailsPresenter> impl
 	@UiField Label userDetailsLabel;
 	@UiField Button returnToSearchButton;
 	@UiField Button terminateAccountButton;
-	@UiField TextBox wpiIdBox;
+	@UiField Grid userInformationGrid;
+	@UiField Label userIdLabel;
+	@UiField TextBox userIdBox;
 	@UiField Label wpiIdLabel;
+	@UiField TextBox wpiIdBox;
 	@UiField Label userNameLabel;
 	@UiField TextBox userNameBox;
 	@UiField Label firstNameLabel;
 	@UiField TextBox firstNameBox;
-	@UiField Label userRoleLabel;
-	@UiField TextBox userRoleBox;
 	@UiField Label lastNameLabel;
 	@UiField TextBox lastNameBox;
 	@UiField Label emailLabel;
 	@UiField TextBox emailBox;
 	@UiField Label accountStateLabel;
 	@UiField TextBox accountStateBox;
-	@UiField Label userIDLabel;
-	@UiField TextBox userIdBox;
+	@UiField Label userRoleLabel;
+	@UiField TextBox userRoleBox;
 
 	interface UserDetailsViewImplUiBinder extends UiBinder<Widget, UserDetailsViewImpl> {
 	}

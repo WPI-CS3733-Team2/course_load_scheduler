@@ -112,7 +112,6 @@ public class CreateScheduleVisualPresenterImpl extends BasePresenterImpl impleme
 		String startTime = calendar.getStart_time();
 		String endTime = calendar.getEnd_time();
 		String days = calendar.getDays();
-		String semester = calendar.getSemester();
 		
 		int endRow = 1;
 
@@ -209,8 +208,27 @@ public class CreateScheduleVisualPresenterImpl extends BasePresenterImpl impleme
 	
 	@Override
 	public void updateGrid() {
+		view.clearGrid();
+		
 		int tabIndex = view.getCalendarTabs().getSelectedTab();
-		fillCalendar(calendars.get(tabIndex), "brooooo");
+		List<Calendar> thisSemester = new ArrayList<Calendar>();
+		
+		Map<String, Integer> tabMap = new HashMap<String,Integer>();
+		tabMap.put("A", 0);
+		tabMap.put("B", 1);
+		tabMap.put("C", 2);
+		tabMap.put("D", 3);
+		tabMap.put("F", 4);
+		tabMap.put("S", 5);
+		
+		for (Calendar cal : calendars) {
+			if (tabMap.get(cal.getSemester()) == tabIndex) {
+				thisSemester.add(cal);
+			}
+		}
+		for (Calendar cal : thisSemester) {
+			fillCalendar(cal, "This will be filled from the database");
+		}
 	}
 	
 }

@@ -5,17 +5,9 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import org.dselent.course_load_scheduler.client.action.InvalidLoginAction;
-import org.dselent.course_load_scheduler.client.action.SendLoginAction;
-import org.dselent.course_load_scheduler.client.errorstring.InvalidLoginStrings;
-import org.dselent.course_load_scheduler.client.event.InvalidLoginEvent;
-import org.dselent.course_load_scheduler.client.event.SendLoginEvent;
-import org.dselent.course_load_scheduler.client.exceptions.EmptyStringException;
 import org.dselent.course_load_scheduler.client.model.Calendar;
 import org.dselent.course_load_scheduler.client.presenter.IndexPresenter;
-import org.dselent.course_load_scheduler.client.presenter.LoginPresenter;
 import org.dselent.course_load_scheduler.client.presenter.ScheduleSpecificsPresenter;
-import org.dselent.course_load_scheduler.client.view.LoginView;
 import org.dselent.course_load_scheduler.client.view.ScheduleSpecificsView;
 
 import com.google.gwt.event.shared.HandlerRegistration;
@@ -45,12 +37,11 @@ public class ScheduleSpecificsPresenterImpl extends BasePresenterImpl implements
 		calendar1.setStart_time("9:00");
 		calendar1.setEnd_time("10:50");
 		calendars.add(calendar1);
-		this.fillCalendar(calendar1, "Some Course You're Assigned");
 		
 		Calendar calendar2 = new Calendar();
 		calendar2.setId(1);
 		calendar2.setYear(2018);
-		calendar2.setSemester("B");
+		calendar2.setSemester("C");
 		calendar2.setDays("WTF");
 		calendar2.setStart_time("9:00");
 		calendar2.setEnd_time("10:50");
@@ -59,7 +50,7 @@ public class ScheduleSpecificsPresenterImpl extends BasePresenterImpl implements
 		Calendar calendar3 = new Calendar();
 		calendar3.setId(1);
 		calendar3.setYear(2018);
-		calendar3.setSemester("C");
+		calendar3.setSemester("B");
 		calendar3.setDays("R");
 		calendar3.setStart_time("9:00");
 		calendar3.setEnd_time("10:50");
@@ -68,14 +59,7 @@ public class ScheduleSpecificsPresenterImpl extends BasePresenterImpl implements
 	}
 	
 	public void insertText() {
-		view.getReport().setValue("text box test text blah blah blah");
-	}
-	
-	public void insertDropDown() {
-		view.getNavDropDown().insertItem("View Schedule", 1);
-		view.getNavDropDown().insertItem("Search Schedule", 2);
-		view.getNavDropDown().insertItem("Create Schedule", 3);
-		view.getNavDropDown().insertItem("Modify Schedule", 4);
+		view.getReport().setValue("Schedule Name : *from database* \r\n \r\n Courses: *from database* \r\n \r\n Assigned Faculty: *from database*");
 	}
 	
 	@Override
@@ -119,12 +103,9 @@ public class ScheduleSpecificsPresenterImpl extends BasePresenterImpl implements
 	}
 	
 	public void fillCalendar(Calendar calendar, String courseDetails) {
-		view.clearGrid();
-		
 		String startTime = calendar.getStart_time();
 		String endTime = calendar.getEnd_time();
 		String days = calendar.getDays();
-		String semester = calendar.getSemester();
 		
 		int endRow = 1;
 
@@ -141,13 +122,6 @@ public class ScheduleSpecificsPresenterImpl extends BasePresenterImpl implements
 		startMap.put("5:00", 10);
 		startMap.put("6:00", 11);
 		
-		Map<String, Integer> tabMap = new HashMap<String,Integer>();
-		tabMap.put("A", 0);
-		tabMap.put("B", 1);
-		tabMap.put("C", 2);
-		tabMap.put("D", 3);
-		tabMap.put("F", 4);
-		tabMap.put("S", 5);
 		
 		if (endTime.contains("8:")) {
 			if(startTime.contentEquals("8:00")) {
@@ -191,8 +165,6 @@ public class ScheduleSpecificsPresenterImpl extends BasePresenterImpl implements
 			endRow = 12;
 		}
 		
-		//view.getCalendarTabs().selectTab(Integer.parseInt(tabMap.get(semester).toString()), false);
-		
 		for (int col: daysToCols(days))
 			for (int row = Integer.parseInt(startMap.get(startTime).toString()); row <= endRow; row++)
 				view.getCalendarGrid().setText(row, col, courseDetails);
@@ -221,8 +193,27 @@ public class ScheduleSpecificsPresenterImpl extends BasePresenterImpl implements
 	
 	@Override
 	public void updateGrid() {
+		view.clearGrid();
+		
 		int tabIndex = view.getCalendarTabs().getSelectedTab();
-		fillCalendar(calendars.get(tabIndex), "brooooo");
+		List<Calendar> thisSemester = new ArrayList<Calendar>();
+		
+		Map<String, Integer> tabMap = new HashMap<String,Integer>();
+		tabMap.put("A", 0);
+		tabMap.put("B", 1);
+		tabMap.put("C", 2);
+		tabMap.put("D", 3);
+		tabMap.put("F", 4);
+		tabMap.put("S", 5);
+		
+		for (Calendar cal : calendars) {
+			if (tabMap.get(cal.getSemester()) == tabIndex) {
+				thisSemester.add(cal);
+			}
+		}
+		for (Calendar cal : thisSemester) {
+			fillCalendar(cal, "This will be filled from the database");
+		}
 	}
 	
 }
