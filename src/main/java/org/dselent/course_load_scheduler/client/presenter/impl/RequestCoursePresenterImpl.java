@@ -11,6 +11,7 @@ import org.dselent.course_load_scheduler.client.event.FacultyCourseEvent;
 import org.dselent.course_load_scheduler.client.event.InvalidSubmitRequestEvent;
 import org.dselent.course_load_scheduler.client.event.RequestCourseEvent;
 import org.dselent.course_load_scheduler.client.exceptions.EmptyArrayException;
+import org.dselent.course_load_scheduler.client.exceptions.EmptyStringException;
 import org.dselent.course_load_scheduler.client.model.Course;
 import org.dselent.course_load_scheduler.client.model.Section;
 import org.dselent.course_load_scheduler.client.presenter.IndexPresenter;
@@ -108,60 +109,69 @@ public class RequestCoursePresenterImpl extends BasePresenterImpl implements Req
 		String courseNumber = view.getCourseNumberLabel().getText();
 		Set<Section> sections = selectionModel.getSelectedSet();
 		
+		String requestString = "Request for " + courseName + " (" + courseNumber + "): \n";
+		String requestTimes = "";
+		String requestSections = "";
+		
 		List<String> invalidReasonList = new ArrayList<>();
-		List<String> requestedTimes = new ArrayList<>();
 		if(view.getEightToNineCB().getValue()) {
-			requestedTimes.add(view.getEightToNineCB().getText());
+			requestTimes += view.getEightToNineCB().getText() + "\n";
 		}
 		if(view.getNineToTenCB().getValue()) {
-			requestedTimes.add(view.getNineToTenCB().getText());
+			requestTimes += view.getNineToTenCB().getText() + "\n";
 		}
 		if(view.getTenToElevenCB().getValue()) {
-			requestedTimes.add(view.getTenToElevenCB().getText());
+			requestTimes += view.getTenToElevenCB().getText() + "\n";
 		}
 		if(view.getElevenToTwelveCB().getValue()) {
-			requestedTimes.add(view.getElevenToTwelveCB().getText());
+			requestTimes += view.getElevenToTwelveCB().getText() + "\n";
 		}
 		if(view.getTwelveToOneCB().getValue()) {
-			requestedTimes.add(view.getTwelveToOneCB().getText());
+			requestTimes += view.getTwelveToOneCB().getText() + "\n";
 		}
 		if(view.getOneToTwoCB().getValue()) {
-			requestedTimes.add(view.getOneToTwoCB().getText());
+			requestTimes += view.getOneToTwoCB().getText() + "\n";
 		}
 		if(view.getTwoToThreeCB().getValue()) {
-			requestedTimes.add(view.getTwoToThreeCB().getText());
+			requestTimes += view.getTwoToThreeCB().getText() + "\n";
 		}
 		if(view.getThreeToFourCB().getValue()) {
-			requestedTimes.add(view.getThreeToFourCB().getText());
+			requestTimes += view.getThreeToFourCB().getText() + "\n";
 		}
 		if(view.getFourToFiveCB().getValue()) {
-			requestedTimes.add(view.getFourToFiveCB().getText());
+			requestTimes += view.getFourToFiveCB().getText() + "\n";
 		}
 		if(view.getFiveToSixCB().getValue()) {
-			requestedTimes.add(view.getFiveToSixCB().getText());
+			requestTimes += view.getFiveToSixCB().getText() + "\n";
+		}
+		
+		for(Section section: sections) {
+			requestSections += section.getCrn() + ": " + section.getType() + " section " + section.getSectionName() + "\n";
 		}
 		
 		int unselectedAreas = 0;
 		
 		try {
-			checkEmptyArray(requestedTimes);
+			checkEmptyString(requestTimes);
+			requestTimes = "\n Requested Times: \n" + requestTimes;
 		}
-		catch (EmptyArrayException e) {
+		catch (EmptyStringException e) {
 			unselectedAreas++;
 		}
 		
 		try {
-			checkEmptySet(sections);
+			checkEmptyString(requestSections);
+			requestSections = "\n Requested Sections: \n" + requestSections;
 		}
-		catch (EmptyArrayException e) {
+		catch (EmptyStringException e) {
 			unselectedAreas++;
 		}
 		
 		if(unselectedAreas < 2) {
-			String requestString = "Request for " + courseName + "(" + courseNumber + "): ";
-			requestString.concat(requestedTimes.toString());
-			requestString.concat(sections.toString());
+			requestString += requestSections;
+			requestString += requestTimes;
 			
+			view.showErrorMessages(requestString);
 			//TODO: Send to database
 			
 			clearForm();
@@ -186,19 +196,11 @@ public class RequestCoursePresenterImpl extends BasePresenterImpl implements Req
 		view.showErrorMessages(iamca.toString());
 	}
 	
-	private void checkEmptyArray(List<?> list) throws EmptyArrayException
+	private void checkEmptyString(String string) throws EmptyStringException
 	{
-		if(list.size() == 0)
+		if(string == null || string.equals(""))
 		{
-			throw new EmptyArrayException();
-		}
-	}
-	
-	private void checkEmptySet(Set<?> set) throws EmptyArrayException
-	{
-		if(set.size() == 0)
-		{
-			throw new EmptyArrayException();
+			throw new EmptyStringException();
 		}
 	}
 	
