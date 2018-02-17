@@ -14,10 +14,8 @@ import org.dselent.course_load_scheduler.client.event.UserSearchPageEvent;
 import org.dselent.course_load_scheduler.client.event.UserCreatePageEvent;
 import org.dselent.course_load_scheduler.client.event.UserDetailsPageEvent;
 import org.dselent.course_load_scheduler.client.exceptions.EmptyStringException;
-import org.dselent.course_load_scheduler.client.gin.Injector;
 import org.dselent.course_load_scheduler.client.presenter.IndexPresenter;
 import org.dselent.course_load_scheduler.client.presenter.UserSearchPresenter;
-import org.dselent.course_load_scheduler.client.presenter.impl.UserCreatePresenterImpl;
 //import org.dselent.course_load_scheduler.client.view.LoginView;
 
 public class UserSearchPresenterImpl extends BasePresenterImpl implements UserSearchPresenter{
@@ -163,12 +161,7 @@ public class UserSearchPresenterImpl extends BasePresenterImpl implements UserSe
 		view.getSearchUserButton().setEnabled(true);
 		searchInProgress = false;
 		//For now, it just navigates to the user details presenter.
-		//In the future, the search function will require retrieving data to the server.
-		/*final Injector injector = Injector.INSTANCE;
-		UserDetailsPresenterImpl userDetailsPresenter = injector.getUserDetailsPresenter();
-		userDetailsPresenter.init();
-		userDetailsPresenter.go(parentPresenter.getView().getViewRootPanel());*/
-		
+		//In the future, the search function will require retrieving data to the server.		
 		UserDetailsPageAction udpa = new UserDetailsPageAction();
 		udpa.getUser().setId(1);
 		udpa.getUser().setWpiId(111111111);
