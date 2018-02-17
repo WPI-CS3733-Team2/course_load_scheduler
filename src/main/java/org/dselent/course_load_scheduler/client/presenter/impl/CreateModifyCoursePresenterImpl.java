@@ -4,7 +4,15 @@ package org.dselent.course_load_scheduler.client.presenter.impl;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.dselent.course_load_scheduler.client.action.InvalidAddSectionAction;
+import org.dselent.course_load_scheduler.client.action.InvalidLoginAction;
+import org.dselent.course_load_scheduler.client.errorstring.InvalidAddSectionStrings;
+import org.dselent.course_load_scheduler.client.errorstring.InvalidLoginStrings;
+import org.dselent.course_load_scheduler.client.event.InvalidAddSectionEvent;
+import org.dselent.course_load_scheduler.client.event.InvalidLoginEvent;
 import org.dselent.course_load_scheduler.client.event.ModifyCourseEvent;
+import org.dselent.course_load_scheduler.client.exceptions.DuplicateCRNException;
+import org.dselent.course_load_scheduler.client.exceptions.EmptyStringException;
 import org.dselent.course_load_scheduler.client.model.Course;
 import org.dselent.course_load_scheduler.client.model.Section;
 import org.dselent.course_load_scheduler.client.presenter.CreateModifyCoursePresenter;
@@ -60,6 +68,9 @@ public class CreateModifyCoursePresenterImpl extends BasePresenterImpl implement
 	{
 		HandlerRegistration registration;
 		
+		registration = eventBus.addHandler(InvalidAddSectionEvent.TYPE, this);
+		eventBusRegistration.put(InvalidAddSectionEvent.TYPE, registration);
+		
 		registration = eventBus.addHandler(ModifyCourseEvent.TYPE, this);
 		eventBusRegistration.put(ModifyCourseEvent.TYPE, registration);
 	}
@@ -87,17 +98,79 @@ public class CreateModifyCoursePresenterImpl extends BasePresenterImpl implement
 	
 	@Override
 	public void addSection() {
-		List<Section> sections = new ArrayList<>();
+		List<Section> sections = dataProvider.getList();
 		Section section = new Section();
-		section.setSectionName(view.getSectionNameTextBox().getText());
-		section.setCrn(Integer.parseInt(view.getCrnTextBox().getText()));
-		section.setType(view.getTypeTextBox().getText());
-		section.setExpectedPopulation(Integer.parseInt(view.getPopTextBox().getText()));
-		section.setFrequency(Integer.parseInt(view.getFreqTextBox().getText()));
-		sections.add(section);
-		currentSections.add(section);
-	    dataProvider.setList(currentSections);
-	    dataProvider.refresh();
+		
+		String sectionName = view.getSectionNameTextBox().getText();
+		String crn = view.getCrnTextBox().getText();
+		String type = view.getTypeTextBox().getText();
+		String expectedPop = view.getPopTextBox().getText();
+		String freq = view.getFreqTextBox().getText();
+		
+		List<String> invalidReasonList = new ArrayList<>();
+		
+		try {
+			checkEmptyString(sectionName);
+			checkEmptyString(crn);
+			checkEmptyString(type);
+			checkEmptyString(expectedPop);
+			checkEmptyString(freq);
+			checkDuplicateCrn(Integer.parseInt(crn), sections);
+		}
+		catch(EmptyStringException e) {
+			invalidReasonList.add(InvalidAddSectionStrings.EMPTY_SECTION_FIELD);
+		}
+		catch (DuplicateCRNException e) {
+			invalidReasonList.add(InvalidAddSectionStrings.DUPLICATE_CRN);
+		}
+		
+		if(invalidReasonList.size() == 0)
+		{
+
+			section.setSectionName(sectionName);
+			section.setCrn(Integer.parseInt(crn));
+			section.setType(type);
+			section.setExpectedPopulation(Integer.parseInt(expectedPop));
+			section.setFrequency(Integer.parseInt(freq));
+			
+			clearSectionForm();
+			currentSections.add(section);
+		    dataProvider.setList(currentSections);
+		    dataProvider.refresh();
+		
+		}
+		else
+		{
+			InvalidAddSectionAction iasa = new InvalidAddSectionAction(invalidReasonList);
+			InvalidAddSectionEvent iase = new InvalidAddSectionEvent(iasa);
+			eventBus.fireEvent(iase);
+		}
+	}
+	
+	private void checkEmptyString(String string) throws EmptyStringException
+	{
+		if(string == null || string.equals(""))
+		{
+			throw new EmptyStringException();
+		}
+	}
+	
+	private void checkDuplicateCrn(int crn, List<Section> sections) throws DuplicateCRNException
+	{
+		for(int i = 0; i < sections.size(); i++) {
+			if(crn == sections.get(i).getCrn()) {
+				throw new DuplicateCRNException();
+			}
+		}
+	}
+	
+	@Override
+	public void onInvalidAddSection(InvalidAddSectionEvent evt)
+	{
+		parentPresenter.hideLoadScreen();
+		
+		InvalidAddSectionAction iasa = evt.getAction();
+		view.showErrorMessages(iasa.toString());
 	}
 	
 	@Override
@@ -108,32 +181,38 @@ public class CreateModifyCoursePresenterImpl extends BasePresenterImpl implement
             dataProvider.getList().remove(selected);
             dataProvider.refresh();
         }
+        while(selectionModel.getSelectedSet().size() > 0) {
+            selectionModel.setSelected(selectionModel.getSelectedObject(), false);
+        }
 	}
 	
 	@Override
 	public void createModifyCourseSubmit() {
-		List<Section> sections = new ArrayList<>();
-		Section section = new Section();
-		
-		
 		Course course = new Course();
 		course.setCourseName(view.getCourseNameTextBox().getText());
 		course.setCourseNumber(view.getCourseNumberTextBox().getText());
-		course.setSections(sections);
+		course.setSections(dataProvider.getList());
 		
 		//TODO: Send to database
+		
+		clearForm();
 	}
 	
 	@Override
 	public void clearForm() {
 		view.setCourseNameTextBoxText("");
 		view.setCourseNumberTextBoxText("");
-		view.setCrnTextBoxText("");
+		clearSectionForm();
+		dataProvider.getList().clear();
+	}
+	
+	@Override
+	public void clearSectionForm() {
 		view.setSectionNameTextBoxText("");
+		view.setCrnTextBoxText("");
 		view.setTypeTextBoxText("");
 		view.setPopTextBoxText("");
 		view.setFreqTextBoxText("");
-		dataProvider.getList().clear();
 	}
 		
 }
