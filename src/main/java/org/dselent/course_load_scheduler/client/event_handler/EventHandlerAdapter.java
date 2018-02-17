@@ -13,8 +13,12 @@ import org.dselent.course_load_scheduler.client.event.CreateUserEvent;
 import org.dselent.course_load_scheduler.client.event.FacultyCourseEvent;
 import org.dselent.course_load_scheduler.client.event.InvalidAddSectionEvent;
 import org.dselent.course_load_scheduler.client.event.AdminCourseEvent;
+import org.dselent.course_load_scheduler.client.event.ConfirmSchedulePageEvent;
 import org.dselent.course_load_scheduler.client.event.CreateScheduleEvent;
 import org.dselent.course_load_scheduler.client.event.SearchCourseEvent;
+import org.dselent.course_load_scheduler.client.event.UserSearchPageEvent;
+import org.dselent.course_load_scheduler.client.event.UserCreatePageEvent;
+import org.dselent.course_load_scheduler.client.event.UserDetailsPageEvent;
 
 /**
  * Adapter class for convenience All classes that need to implement an event
@@ -30,7 +34,8 @@ public abstract class EventHandlerAdapter implements InvalidLoginEventHandler, S
 		SearchUserEventHandler, CreateUserEventHandler, TerminateAccountEventHandler, CreateScheduleEventHandler,
 		InvalidChangePasswordEventHandler, SendChangePasswordEventHandler, TriggerChangePasswordWindowEventHandler,
 		ModifyCourseEventHandler, SearchCourseEventHandler, AdminCourseEventHandler, FacultyCourseEventHandler,
-		InvalidAddSectionEventHandler, InvalidSubmitCourseEventHandler {
+		InvalidAddSectionEventHandler, InvalidSubmitCourseEventHandler, UserSearchPageEventHandler,
+		UserCreatePageEventHandler, UserDetailsPageEventHandler, ConfirmSchedulePageEventHandler  {
 	@Override
 	public void onInvalidLogin(InvalidLoginEvent evt) {}
 	
@@ -62,13 +67,26 @@ public abstract class EventHandlerAdapter implements InvalidLoginEventHandler, S
 	public void onModifyCourse(ModifyCourseEvent evt) {}
 	
 	@Override
+	public void onFacultyCourse(FacultyCourseEvent evt) {}
+	
+	@Override
 	public void onSearchCourse(SearchCourseEvent evt) {}
 
 	@Override
 	public void onAdminCourse(AdminCourseEvent evt) {}
 	
 	@Override
-	public void onFacultyCourse(FacultyCourseEvent evt) {}
+	public void onUserSearchPage(UserSearchPageEvent evt) {}
+	
+	@Override
+	public void onUserCreatePage(UserCreatePageEvent evt) {}
+	
+	@Override
+	public void onUserDetailsPage(UserDetailsPageEvent evt) {}
+	
+	@Override
+	public void onConfirmSchedulePage(ConfirmSchedulePageEvent evt) {}
+	
 	
 	@Override
 	public void onInvalidAddSection(InvalidAddSectionEvent evt) {}

@@ -10,6 +10,8 @@ import org.dselent.course_load_scheduler.client.action.CreateScheduleAction;
 import org.dselent.course_load_scheduler.client.errorstring.InvalidLoginStrings;
 import org.dselent.course_load_scheduler.client.event.CreateScheduleEvent;
 import org.dselent.course_load_scheduler.client.event.SearchUserEvent;
+import org.dselent.course_load_scheduler.client.event.UserSearchPageEvent;
+import org.dselent.course_load_scheduler.client.event.ConfirmSchedulePageEvent;
 import org.dselent.course_load_scheduler.client.exceptions.EmptyStringException;
 import org.dselent.course_load_scheduler.client.presenter.ConfirmSchedulePresenter;
 import org.dselent.course_load_scheduler.client.view.ConfirmScheduleView;
@@ -50,6 +52,9 @@ public class ConfirmSchedulePresenterImpl extends BasePresenterImpl implements C
 		
 		registration = eventBus.addHandler(CreateScheduleEvent.TYPE, this);
 		eventBusRegistration.put(CreateScheduleEvent.TYPE, registration);
+		
+		registration = eventBus.addHandler(ConfirmSchedulePageEvent.TYPE, this);
+		eventBusRegistration.put(ConfirmSchedulePageEvent.TYPE, registration);
 	}
 	
 	@Override
@@ -142,5 +147,11 @@ public class ConfirmSchedulePresenterImpl extends BasePresenterImpl implements C
 		CreateScheduleAction csa = new CreateScheduleAction(schedule);
 		CreateScheduleEvent cse = new CreateScheduleEvent(csa);
 		eventBus.fireEvent(cse);
+	}
+	
+	//Navigate to this page
+	@Override
+	public void onConfirmSchedulePage(ConfirmSchedulePageEvent evt) {
+		this.go(parentPresenter.getView().getViewRootPanel());
 	}
 }
