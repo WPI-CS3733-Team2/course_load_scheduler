@@ -65,6 +65,9 @@ public abstract class EventHandlerAdapter implements InvalidLoginEventHandler, S
 	public void onModifyCourse(ModifyCourseEvent evt) {}
 	
 	@Override
+	public void onFacultyCourse(FacultyCourseEvent evt) {}
+	
+	@Override
 	public void onSearchCourse(SearchCourseEvent evt) {}
 
 	@Override
