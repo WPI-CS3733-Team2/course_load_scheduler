@@ -16,6 +16,7 @@ import org.dselent.course_load_scheduler.client.presenter.impl.UserDetailsPresen
 import org.dselent.course_load_scheduler.client.presenter.impl.ConfirmSchedulePresenterImpl;
 import org.dselent.course_load_scheduler.client.presenter.impl.IndexPresenterImpl;
 import org.dselent.course_load_scheduler.client.presenter.impl.RequestCoursePresenterImpl;
+import org.dselent.course_load_scheduler.client.presenter.impl.RequestInboxPresenterImpl;
 import org.dselent.course_load_scheduler.client.presenter.impl.ScheduleListPresenterImpl;
 import org.dselent.course_load_scheduler.client.presenter.impl.ScheduleSpecificsPresenterImpl;
 import org.dselent.course_load_scheduler.client.presenter.impl.SearchSchedulePresenterImpl;
@@ -94,6 +95,9 @@ public class CourseLoadScheduler implements EntryPoint
 		
 		FacultyCourseMappingPresenterImpl facultyCourseMappingPresenter = injector.getFacultyCourseMappingPresenter();
 		facultyCourseMappingPresenter.init();
+		
+		RequestInboxPresenterImpl requestInboxPresenter = injector.getRequestInboxPresenter();
+		requestInboxPresenter.init();
 
 
 		// indexPresenter.go(RootPanel.get("indexContainer"));

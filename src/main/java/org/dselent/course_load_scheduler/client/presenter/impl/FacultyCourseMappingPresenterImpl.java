@@ -91,7 +91,6 @@ public class FacultyCourseMappingPresenterImpl extends BasePresenterImpl impleme
 	
 	@Override
 	public void onFacultyCourseNavigation(FacultyCourseNavigationEvent evt) {
-		int i = 0;
 		this.go(parentPresenter.getView().getViewRootPanel());
 	}
 }
