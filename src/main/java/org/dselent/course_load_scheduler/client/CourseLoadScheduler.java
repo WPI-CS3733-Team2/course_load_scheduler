@@ -4,7 +4,11 @@ import org.dselent.course_load_scheduler.client.gin.Injector;
 import org.dselent.course_load_scheduler.client.presenter.impl.AccountDetailsPresenterImpl;
 import org.dselent.course_load_scheduler.client.presenter.impl.AdminCoursePresenterImpl;
 import org.dselent.course_load_scheduler.client.presenter.impl.CreateModifyCoursePresenterImpl;
+import org.dselent.course_load_scheduler.client.presenter.impl.UserSearchPresenterImpl;
 import org.dselent.course_load_scheduler.client.presenter.impl.FacultyCoursePresenterImpl;
+import org.dselent.course_load_scheduler.client.presenter.impl.UserCreatePresenterImpl;
+import org.dselent.course_load_scheduler.client.presenter.impl.UserDetailsPresenterImpl;
+import org.dselent.course_load_scheduler.client.presenter.impl.ConfirmSchedulePresenterImpl;
 import org.dselent.course_load_scheduler.client.presenter.impl.IndexPresenterImpl;
 import org.dselent.course_load_scheduler.client.presenter.impl.ScheduleListPresenterImpl;
 import org.dselent.course_load_scheduler.client.presenter.impl.ScheduleSpecificsPresenterImpl;
@@ -39,18 +43,37 @@ public class CourseLoadScheduler implements EntryPoint
 
 		AccountDetailsPresenterImpl accountPresenter = injector.getAccountDetailsPresenter();
 		accountPresenter.init();
+		
 		FacultyCoursePresenterImpl facultyCoursePresenter = injector.getFacultyCoursePresenter();
 		facultyCoursePresenter.init();
+		
 		AdminCoursePresenterImpl adminCoursePresenter = injector.getAdminCoursePresenter();
 		adminCoursePresenter.init();
+		
 		CreateModifyCoursePresenterImpl createModifyPresenter = injector.getCreateModifyCoursePresenter();
 		createModifyPresenter.init();
+		
 		ScheduleListPresenterImpl scheduleListPresenter = injector.getScheduleListPresenter();
 		scheduleListPresenter.init();
+		
 		SearchSchedulePresenterImpl searchSchedulePresenter = injector.getSearchSchedulePresenter();
 		searchSchedulePresenter.init();
+		
 		ScheduleSpecificsPresenterImpl scheduleSpecificsPresenter = injector.getScheduleSpecificsPresenter();
 		scheduleSpecificsPresenter.init();
+		
+		UserSearchPresenterImpl userSearchPresenter = injector.getUserSearchPresenter();
+		userSearchPresenter.init();
+		
+		UserCreatePresenterImpl userCreatePresenter = injector.getUserCreatePresenter();
+		userCreatePresenter.init();
+		
+		UserDetailsPresenterImpl userDetailsPresenter = injector.getUserDetailsPresenter();
+		userDetailsPresenter.init();
+		
+		ConfirmSchedulePresenterImpl confirmSchedulePresenter = injector.getConfirmSchedulePresenter();
+		confirmSchedulePresenter.init();
+
 
 		// indexPresenter.go(RootPanel.get("indexContainer"));
 		indexPresenter.go(root);

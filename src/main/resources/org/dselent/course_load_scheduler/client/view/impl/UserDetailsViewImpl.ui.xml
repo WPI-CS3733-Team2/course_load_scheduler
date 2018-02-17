@@ -46,7 +46,7 @@
 						<g:Label text="First name: " ui:field="firstNameLabel" horizontalAlignment="ALIGN_RIGHT"/>
 					</g:customCell>
 					<g:customCell>
-						<g:TextBox readOnly="true" ui:field="firstNameBox" alignment="CENTER"/>
+						<g:TextBox readOnly="true" ui:field="firstNameBox" alignment="LEFT"/>
 					</g:customCell>
 				</g:row>
 				<g:row>

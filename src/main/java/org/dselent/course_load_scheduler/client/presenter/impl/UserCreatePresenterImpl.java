@@ -1,8 +1,13 @@
 package org.dselent.course_load_scheduler.client.presenter.impl;
 
 import org.dselent.course_load_scheduler.client.action.CreateUserAction;
+import org.dselent.course_load_scheduler.client.action.UserCreatePageAction;
+import org.dselent.course_load_scheduler.client.action.UserSearchPageAction;
 import org.dselent.course_load_scheduler.client.event.CreateUserEvent;
 import org.dselent.course_load_scheduler.client.event.InvalidLoginEvent;
+import org.dselent.course_load_scheduler.client.event.SearchUserEvent;
+import org.dselent.course_load_scheduler.client.event.UserSearchPageEvent;
+import org.dselent.course_load_scheduler.client.event.UserCreatePageEvent;
 import org.dselent.course_load_scheduler.client.exceptions.EmptyStringException;
 import org.dselent.course_load_scheduler.client.gin.Injector;
 import org.dselent.course_load_scheduler.client.presenter.IndexPresenter;
@@ -55,10 +60,14 @@ public class UserCreatePresenterImpl extends BasePresenterImpl implements UserCr
 	
 	//Navigates back to the user search page
 	public void backToSearch(){
-		final Injector injector = Injector.INSTANCE;
+		/*final Injector injector = Injector.INSTANCE;
 		UserSearchPresenterImpl userSearchPresenter = injector.getUserSearchPresenter();
 		userSearchPresenter.init();
-		userSearchPresenter.go(parentPresenter.getView().getViewRootPanel());
+		userSearchPresenter.go(parentPresenter.getView().getViewRootPanel());*/
+		
+		UserSearchPageAction uspa = new UserSearchPageAction();
+		UserSearchPageEvent uspe = new UserSearchPageEvent(uspa);
+		eventBus.fireEvent(uspe);
 	}
 	
 	@Override
@@ -74,6 +83,9 @@ public class UserCreatePresenterImpl extends BasePresenterImpl implements UserCr
 		
 		registration = eventBus.addHandler(CreateUserEvent.TYPE, this);
 		eventBusRegistration.put(CreateUserEvent.TYPE, registration);
+		
+		registration = eventBus.addHandler(UserCreatePageEvent.TYPE, this);
+		eventBusRegistration.put(UserCreatePageEvent.TYPE, registration);
 	}
 	
 	//Initiates the "create user" action
@@ -191,4 +203,10 @@ public class UserCreatePresenterImpl extends BasePresenterImpl implements UserCr
 			throw new EmptyStringException();
 		}
 	}
+	
+	//Navigate to this page
+		@Override
+		public void onUserCreatePage(UserCreatePageEvent evt) {
+			this.go(parentPresenter.getView().getViewRootPanel());
+		}
 }

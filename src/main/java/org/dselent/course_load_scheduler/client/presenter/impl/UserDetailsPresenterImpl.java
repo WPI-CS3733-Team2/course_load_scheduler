@@ -12,9 +12,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.dselent.course_load_scheduler.client.action.TerminateAccountAction;
+import org.dselent.course_load_scheduler.client.action.UserSearchPageAction;
 import org.dselent.course_load_scheduler.client.errorstring.InvalidLoginStrings;
 import org.dselent.course_load_scheduler.client.event.SearchUserEvent;
 import org.dselent.course_load_scheduler.client.event.TerminateAccountEvent;
+import org.dselent.course_load_scheduler.client.event.UserDetailsPageEvent;
+import org.dselent.course_load_scheduler.client.event.UserSearchPageEvent;
 import org.dselent.course_load_scheduler.client.exceptions.EmptyStringException;
 import org.dselent.course_load_scheduler.client.gin.Injector;
 import org.dselent.course_load_scheduler.client.presenter.IndexPresenter;
@@ -39,7 +42,7 @@ public class UserDetailsPresenterImpl extends BasePresenterImpl implements UserD
 		//Only temporary so this can display some information before accessing the server
 		//Will need a different field to contain the user role from the users/roles linking table
 		//And possibly the name of the role through that
-		this.user = new User();
+		/*this.user = new User();
 		
 		user.setId(1);
 		user.setWpiId(111111111);
@@ -47,13 +50,13 @@ public class UserDetailsPresenterImpl extends BasePresenterImpl implements UserD
 		user.setFirstName("Jimmy");
 		user.setLastName("Jones");
 		user.setEmail("jjones1990@wpi.edu");
-		user.setUserStateId(1);
+		user.setUserStateId(1);*/
 	}
 	
 	@Override
 	public void init()
 	{
-		view.getUserIdBox().setText(Integer.toString(user.getId()));
+		/*view.getUserIdBox().setText(Integer.toString(user.getId()));
 		view.getWpiIdBox().setText(Integer.toString(user.getWpiId()));
 		view.getUserNameBox().setText(user.getUserName());
 		view.getFirstNameBox().setText(user.getFirstName());
@@ -62,7 +65,7 @@ public class UserDetailsPresenterImpl extends BasePresenterImpl implements UserD
 		view.getAccountStateBox().setText(Integer.toString(user.getUserStateId()));
 		
 		//Temporary; placeholder until role can be retrieved from server/other model
-		view.getUserRoleBox().setText("2");
+		view.getUserRoleBox().setText("2");*/
 		bind();
 	}
 
@@ -73,6 +76,9 @@ public class UserDetailsPresenterImpl extends BasePresenterImpl implements UserD
 		
 		registration = eventBus.addHandler(TerminateAccountEvent.TYPE, this);
 		eventBusRegistration.put(TerminateAccountEvent.TYPE, registration);
+		
+		registration = eventBus.addHandler(UserDetailsPageEvent.TYPE, this);
+		eventBusRegistration.put(UserDetailsPageEvent.TYPE, registration);
 		
 	}
 	
@@ -104,10 +110,14 @@ public class UserDetailsPresenterImpl extends BasePresenterImpl implements UserD
 	//Navigates back to the user search page
 	@Override
 	public void backToSearch(){
-		final Injector injector = Injector.INSTANCE;
+		/*final Injector injector = Injector.INSTANCE;
 		UserSearchPresenterImpl userSearchPresenter = injector.getUserSearchPresenter();
 		userSearchPresenter.init();
-		userSearchPresenter.go(parentPresenter.getView().getViewRootPanel());
+		userSearchPresenter.go(parentPresenter.getView().getViewRootPanel());*/
+		
+		UserSearchPageAction uspa = new UserSearchPageAction();
+		UserSearchPageEvent uspe = new UserSearchPageEvent(uspa);
+		eventBus.fireEvent(uspe);
 	}
 	
 	//terminates account of user with given ID (stored in view fields?)
@@ -169,5 +179,23 @@ public class UserDetailsPresenterImpl extends BasePresenterImpl implements UserD
 		TerminateAccountAction taa = new TerminateAccountAction(intId);
 		TerminateAccountEvent tae = new TerminateAccountEvent(taa);
 		eventBus.fireEvent(tae);
+	}
+	
+	@Override
+	public void onUserDetailsPage(UserDetailsPageEvent evt) {
+		this.go(parentPresenter.getView().getViewRootPanel());
+		
+		User displayedUser = evt.getAction().getUser();
+		
+		view.getUserIdBox().setText(Integer.toString(displayedUser.getId()));
+		view.getWpiIdBox().setText(Integer.toString(displayedUser.getWpiId()));
+		view.getUserNameBox().setText(displayedUser.getUserName());
+		view.getFirstNameBox().setText(displayedUser.getFirstName());
+		view.getLastNameBox().setText(displayedUser.getLastName());
+		view.getEmailBox().setText(displayedUser.getEmail());
+		view.getAccountStateBox().setText(Integer.toString(displayedUser.getUserStateId()));
+		
+		//Temporary; placeholder until role can be retrieved from server/other model
+		view.getUserRoleBox().setText("2");
 	}
 }
