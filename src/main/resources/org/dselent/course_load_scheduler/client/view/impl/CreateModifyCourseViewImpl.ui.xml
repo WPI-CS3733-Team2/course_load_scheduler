@@ -82,7 +82,9 @@
 			<g:Grid>
 				<g:row>
 					<g:customCell>
-						<p1:CellTable ui:field="sectionTable" height="50px" pageSize="1"/>
+						<g:FlowPanel height="151px">
+							<p1:CellTable ui:field="sectionTable" height="50px"/>
+						</g:FlowPanel>
 					</g:customCell>
 				</g:row>
 				<g:row>
@@ -90,6 +92,7 @@
 						<g:Button ui:field="removeSectionBtn" width="140px">Remove Last Section</g:Button>
 					</g:customCell>
 				</g:row>
+				<g:row/>
 			</g:Grid>
 		</g:FlowPanel>
 		<g:Grid>

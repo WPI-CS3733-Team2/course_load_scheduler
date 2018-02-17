@@ -3,36 +3,16 @@ package org.dselent.course_load_scheduler.client;
 import org.dselent.course_load_scheduler.client.gin.Injector;
 import org.dselent.course_load_scheduler.client.presenter.ChangePasswordPresenter;
 import org.dselent.course_load_scheduler.client.presenter.impl.AccountDetailsPresenterImpl;
-import org.dselent.course_load_scheduler.client.presenter.impl.ChangePasswordPresenterImpl;
 import org.dselent.course_load_scheduler.client.presenter.impl.AdminCoursePresenterImpl;
-import org.dselent.course_load_scheduler.client.presenter.impl.ConfirmSchedulePresenterImpl;
-import org.dselent.course_load_scheduler.client.presenter.impl.CreateScheduleVisualPresenterImpl;
-import org.dselent.course_load_scheduler.client.presenter.impl.FacultyCourseMappingPresenterImpl;
-import org.dselent.course_load_scheduler.client.presenter.impl.FacultyCoursePresenterImpl;
-import org.dselent.course_load_scheduler.client.presenter.impl.IndexPresenterImpl;
-import org.dselent.course_load_scheduler.client.presenter.impl.LoginPresenterImpl;
-import org.dselent.course_load_scheduler.client.presenter.impl.RequestCoursePresenterImpl;
-import org.dselent.course_load_scheduler.client.presenter.impl.ScheduleListPresenterImpl;
-import org.dselent.course_load_scheduler.client.presenter.impl.ScheduleSpecificsPresenterImpl;
-import org.dselent.course_load_scheduler.client.presenter.impl.SearchSchedulePresenterImpl;
-import org.dselent.course_load_scheduler.client.presenter.impl.UserSearchPresenterImpl;
 import org.dselent.course_load_scheduler.client.presenter.impl.CreateModifyCoursePresenterImpl;
-import org.dselent.course_load_scheduler.client.presenter.impl.CreateSchedulePresenterImpl;
-import org.dselent.course_load_scheduler.client.view.CreateScheduleView;
+import org.dselent.course_load_scheduler.client.presenter.impl.UserSearchPresenterImpl;
+import org.dselent.course_load_scheduler.client.presenter.impl.FacultyCoursePresenterImpl;
+import org.dselent.course_load_scheduler.client.presenter.impl.UserCreatePresenterImpl;
+import org.dselent.course_load_scheduler.client.presenter.impl.UserDetailsPresenterImpl;
+import org.dselent.course_load_scheduler.client.presenter.impl.ConfirmSchedulePresenterImpl;
+import org.dselent.course_load_scheduler.client.presenter.impl.IndexPresenterImpl;
 import org.dselent.course_load_scheduler.client.view.IndexView;
-import org.dselent.course_load_scheduler.client.view.ScheduleListView;
 
-/*
-import org.dselent.course_load_scheduler.client.view.ConfirmScheduleView;
-import org.dselent.course_load_scheduler.client.view.CreateScheduleVisualView;
->>>>>>> c95ae7a641c5581c0e7af174d3d8e7698a0d374a
-import org.dselent.course_load_scheduler.client.view.FacultyCourseMappingView;
-import org.dselent.course_load_scheduler.client.view.IndexView;
-import org.dselent.course_load_scheduler.client.view.ScheduleListView;
-import org.dselent.course_load_scheduler.client.view.ScheduleSpecificsView;
-import org.dselent.course_load_scheduler.client.view.SearchScheduleView;
-import org.dselent.course_load_scheduler.client.view.UserSearchView;
-*/
 import com.google.gwt.core.client.EntryPoint;
 import com.google.gwt.user.client.ui.RootLayoutPanel;
 
@@ -59,8 +39,25 @@ public class CourseLoadScheduler implements EntryPoint
 		
 		indexPresenter.go(root);
 
+		AccountDetailsPresenterImpl accountPresenter = injector.getAccountDetailsPresenter();
+		accountPresenter.init();
+		FacultyCoursePresenterImpl facultyCoursePresenter = injector.getFacultyCoursePresenter();
+		facultyCoursePresenter.init();
 		AdminCoursePresenterImpl adminCoursePresenter = injector.getAdminCoursePresenter();
 		adminCoursePresenter.init();
+		CreateModifyCoursePresenterImpl createModifyPresenter = injector.getCreateModifyCoursePresenter();
+		createModifyPresenter.init();
+		UserSearchPresenterImpl userSearchPresenter = injector.getUserSearchPresenter();
+		userSearchPresenter.init();
+		
+		UserCreatePresenterImpl userCreatePresenter = injector.getUserCreatePresenter();
+		userCreatePresenter.init();
+		
+		UserDetailsPresenterImpl userDetailsPresenter = injector.getUserDetailsPresenter();
+		userDetailsPresenter.init();
+		
+		ConfirmSchedulePresenterImpl confirmSchedulePresenter = injector.getConfirmSchedulePresenter();
+		confirmSchedulePresenter.init();
 
 		// indexPresenter.go(RootPanel.get("indexContainer"));
 		indexPresenter.go(root);

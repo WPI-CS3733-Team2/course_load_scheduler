@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.dselent.course_load_scheduler.client.action.SearchCourseAction;
+import org.dselent.course_load_scheduler.client.event.FacultyCourseEvent;
 import org.dselent.course_load_scheduler.client.event.SearchCourseEvent;
 import org.dselent.course_load_scheduler.client.exceptions.EmptyStringException;
 import org.dselent.course_load_scheduler.client.gin.Injector;
@@ -57,6 +58,9 @@ public class FacultyCoursePresenterImpl extends BasePresenterImpl implements Fac
 	{
 		HandlerRegistration registration;
 		
+		registration = eventBus.addHandler(FacultyCourseEvent.TYPE, this);
+		eventBusRegistration.put(FacultyCourseEvent.TYPE, registration);
+		
 		registration = eventBus.addHandler(SearchCourseEvent.TYPE, this);
 		eventBusRegistration.put(SearchCourseEvent.TYPE, registration);
 		
@@ -64,8 +68,6 @@ public class FacultyCoursePresenterImpl extends BasePresenterImpl implements Fac
 
 	@Override
 	public void go(HasWidgets container) {
-		this.onFacultyCoursePageLoad();
-		
 		container.clear();
 		container.add(view.getWidgetContainer());
 	}
@@ -75,7 +77,9 @@ public class FacultyCoursePresenterImpl extends BasePresenterImpl implements Fac
 		return view;
 	}
 	
-	public void onFacultyCoursePageLoad() {
+	@Override
+	public void onFacultyCourse(FacultyCourseEvent evt) {
+		this.go(parentPresenter.getView().getViewRootPanel());
 		view.clearAllCoursesGrid();
 		
 		List<Section> sections = new ArrayList<>();

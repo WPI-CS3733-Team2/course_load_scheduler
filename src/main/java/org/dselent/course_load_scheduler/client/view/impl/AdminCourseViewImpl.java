@@ -20,7 +20,6 @@ import com.google.gwt.uibinder.client.UiHandler;
 import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.user.client.ui.HTMLPanel;
 import com.google.gwt.user.client.ui.Grid;
-import com.google.gwt.event.dom.client.KeyUpEvent;
 
 public class AdminCourseViewImpl extends BaseViewImpl<AdminCoursePresenter> implements AdminCourseView {
 
@@ -37,7 +36,8 @@ public class AdminCourseViewImpl extends BaseViewImpl<AdminCoursePresenter> impl
 	HTMLPanel adminCoursePanel;
 	@UiField
 	Grid allCoursesGrid;
-	@UiField Button searchCourseButton;
+	@UiField
+	Button searchCourseButton;
 
 	AdminCoursePresenter presenter;
 	
@@ -56,7 +56,9 @@ public class AdminCourseViewImpl extends BaseViewImpl<AdminCoursePresenter> impl
 	}
 	
 	public void clearAllCoursesGrid() {
-		allCoursesGrid.clear();
+		while(allCoursesGrid.getRowCount() > 0) {
+			allCoursesGrid.removeRow(0);
+		}
 	}
 
 	public TextBox getSearchCourseTxtBox() {
@@ -106,19 +108,6 @@ public class AdminCourseViewImpl extends BaseViewImpl<AdminCoursePresenter> impl
 	public void setPresenter(AdminCoursePresenter presenter) {
 		this.presenter = presenter;
 	}
-
-	/*
-	 * @UiHandler("modifyCourseBtn") void onModifyCourseBtnClick(ClickEvent event) {
-	 * final Injector injector = Injector.INSTANCE;
-	 * 
-	 * IndexPresenterImpl indexPresenter = injector.getIndexPresenter(); //
-	 * on-demand injection IndexView indexView = indexPresenter.getView();
-	 * 
-	 * CreateModifyCoursePresenterImpl createModifyCoursePresenter =
-	 * injector.getCreateModifyCoursePresenter();
-	 * 
-	 * createModifyCoursePresenter.go(indexView.getViewRootPanel()); }
-	 */
 
 	@UiHandler("addCourseBtn")
 	void onAddCourseBtnClick(ClickEvent event) {

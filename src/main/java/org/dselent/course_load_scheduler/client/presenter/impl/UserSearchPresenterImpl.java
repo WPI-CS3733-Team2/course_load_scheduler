@@ -2,12 +2,17 @@ package org.dselent.course_load_scheduler.client.presenter.impl;
 
 import org.dselent.course_load_scheduler.client.view.UserSearchView;
 import org.dselent.course_load_scheduler.client.action.SearchUserAction;
+import org.dselent.course_load_scheduler.client.action.UserCreatePageAction;
+import org.dselent.course_load_scheduler.client.action.UserDetailsPageAction;
 
 import com.google.gwt.event.shared.HandlerRegistration;
 import com.google.gwt.user.client.ui.HasWidgets;
 import com.google.inject.Inject;
 
 import org.dselent.course_load_scheduler.client.event.SearchUserEvent;
+import org.dselent.course_load_scheduler.client.event.UserSearchPageEvent;
+import org.dselent.course_load_scheduler.client.event.UserCreatePageEvent;
+import org.dselent.course_load_scheduler.client.event.UserDetailsPageEvent;
 import org.dselent.course_load_scheduler.client.exceptions.EmptyStringException;
 import org.dselent.course_load_scheduler.client.gin.Injector;
 import org.dselent.course_load_scheduler.client.presenter.IndexPresenter;
@@ -41,9 +46,11 @@ public class UserSearchPresenterImpl extends BasePresenterImpl implements UserSe
 	{
 		HandlerRegistration registration;
 		
+		registration = eventBus.addHandler(UserSearchPageEvent.TYPE, this);
+		eventBusRegistration.put(UserSearchPageEvent.TYPE, registration);
+		
 		registration = eventBus.addHandler(SearchUserEvent.TYPE, this);
 		eventBusRegistration.put(SearchUserEvent.TYPE, registration);
-		
 		//Don't know if I need to register the navigate event, if we're using it
 	}
 	
@@ -128,13 +135,14 @@ public class UserSearchPresenterImpl extends BasePresenterImpl implements UserSe
 	
 	//Navigate to create users page
 	public void toCreateUsers(){
-		final Injector injector = Injector.INSTANCE;
-		UserCreatePresenterImpl userCreatePresenter = injector.getUserCreatePresenter();
+		/*final Injector injector = Injector.INSTANCE;
+		UserCreatePresenterImpl userCreatePresenter = injector.getUserCreatePresenter();*/
 		/*NavigateAction na = new NavigateAction(userCreatePresenter);
 		NavigateEvent ne = new NavigateEvent(na);
 		eventBus.fireEvent(ne);*/
-		userCreatePresenter.init();
-		userCreatePresenter.go(parentPresenter.getView().getViewRootPanel());
+		UserCreatePageAction ucpa = new UserCreatePageAction();
+		UserCreatePageEvent ucpe = new UserCreatePageEvent(ucpa);
+		eventBus.fireEvent(ucpe);
 	}
 	
 	//The way it is, it might be better to not have the event.
@@ -156,10 +164,27 @@ public class UserSearchPresenterImpl extends BasePresenterImpl implements UserSe
 		searchInProgress = false;
 		//For now, it just navigates to the user details presenter.
 		//In the future, the search function will require retrieving data to the server.
-		final Injector injector = Injector.INSTANCE;
+		/*final Injector injector = Injector.INSTANCE;
 		UserDetailsPresenterImpl userDetailsPresenter = injector.getUserDetailsPresenter();
 		userDetailsPresenter.init();
-		userDetailsPresenter.go(parentPresenter.getView().getViewRootPanel());
+		userDetailsPresenter.go(parentPresenter.getView().getViewRootPanel());*/
+		
+		UserDetailsPageAction udpa = new UserDetailsPageAction();
+		udpa.getUser().setId(1);
+		udpa.getUser().setWpiId(111111111);
+		udpa.getUser().setUserName("jjones");
+		udpa.getUser().setFirstName("Jimmy");
+		udpa.getUser().setLastName("Jones");
+		udpa.getUser().setEmail("jjones1990@wpi.edu");
+		udpa.getUser().setUserStateId(1);
+		UserDetailsPageEvent udpe = new UserDetailsPageEvent(udpa);
+		eventBus.fireEvent(udpe);
+	}
+	
+	//Navigate to this page
+	@Override
+	public void onUserSearchPage(UserSearchPageEvent evt) {
+		this.go(parentPresenter.getView().getViewRootPanel());
 	}
 	
 	

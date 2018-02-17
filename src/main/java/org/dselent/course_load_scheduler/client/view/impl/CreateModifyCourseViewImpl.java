@@ -1,8 +1,12 @@
 package org.dselent.course_load_scheduler.client.view.impl;
 
+import java.util.ArrayList;
 import java.util.List;
 
+import org.dselent.course_load_scheduler.client.action.ViewCourseAction;
+import org.dselent.course_load_scheduler.client.event.AdminCourseEvent;
 import org.dselent.course_load_scheduler.client.gin.Injector;
+import org.dselent.course_load_scheduler.client.model.Course;
 import org.dselent.course_load_scheduler.client.model.Section;
 import org.dselent.course_load_scheduler.client.presenter.CreateModifyCoursePresenter;
 import org.dselent.course_load_scheduler.client.presenter.impl.AdminCoursePresenterImpl;
@@ -234,32 +238,12 @@ public class CreateModifyCourseViewImpl extends BaseViewImpl<CreateModifyCourseP
 
 	@UiHandler("closeBtn")
 	void onCloseBtnClick(ClickEvent event) {
-		this.presenter.clearForm();
-
-		final Injector injector = Injector.INSTANCE;
-
-		IndexPresenterImpl indexPresenter = injector.getIndexPresenter(); // on-demand injection
-		IndexView indexView = indexPresenter.getView();
-
-		AdminCoursePresenterImpl adminCoursePresenter = injector.getAdminCoursePresenter();
-
-		adminCoursePresenter.go(indexView.getViewRootPanel());
+		this.presenter.createModifyCourseCancel();
 	}
 
 	@UiHandler("submitBtn")
 	void onSubmitBtnClick(ClickEvent event) {
 		this.presenter.createModifyCourseSubmit();
-		
-		this.presenter.clearForm();
-		
-		final Injector injector = Injector.INSTANCE;
-
-		IndexPresenterImpl indexPresenter = injector.getIndexPresenter(); // on-demand injection
-		IndexView indexView = indexPresenter.getView();
-
-		AdminCoursePresenterImpl adminCoursePresenter = injector.getAdminCoursePresenter();
-
-		adminCoursePresenter.go(indexView.getViewRootPanel());
 	}
 
 	@Override
