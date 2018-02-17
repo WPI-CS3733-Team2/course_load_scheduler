@@ -4,6 +4,8 @@ import org.dselent.course_load_scheduler.client.presenter.AccountDetailsPresente
 import org.dselent.course_load_scheduler.client.presenter.IndexPresenter;
 import org.dselent.course_load_scheduler.client.view.AccountDetailsView;
 import org.dselent.course_load_scheduler.client.action.TriggerChangePasswordWindowAction;
+import org.dselent.course_load_scheduler.client.action.UserDetailsPageAction;
+import org.dselent.course_load_scheduler.client.event.AccountDetailsEvent;
 import org.dselent.course_load_scheduler.client.event.TriggerChangePasswordWindowEvent;
 import org.dselent.course_load_scheduler.client.model.User;
 import org.dselent.course_load_scheduler.client.model.UserRole;
@@ -29,6 +31,7 @@ public class AccountDetailsPresenterImpl extends BasePresenterImpl implements Ac
 		this.parentPresenter = parentPresenter;
 		view.setPresenter(this);
 		changePasswordInProgress = false;
+		
 		this.user = new User();
 		this.usersRolesLink = new UsersRolesLink();
 		this.userRole = new UserRole();
@@ -45,12 +48,6 @@ public class AccountDetailsPresenterImpl extends BasePresenterImpl implements Ac
 		usersRolesLink.setUserId(user.getId());
 		usersRolesLink.setRoleId(userRole.getId());
 		
-		view.setFirstName(user.getFirstName());
-		view.setLastName(user.getLastName());
-		view.setUserName(user.getUserName());
-		view.setWpiIdInChar(user.getWpiId().toString());
-		view.setEmail(user.getEmail());
-		view.setAccountType(userRole.getRoleName());
 	}
 	
 	@Override
@@ -63,6 +60,10 @@ public class AccountDetailsPresenterImpl extends BasePresenterImpl implements Ac
 	public void bind()
 	{
 		HandlerRegistration registration;
+		
+		registration = eventBus.addHandler(AccountDetailsEvent.TYPE, this);
+		eventBusRegistration.put(AccountDetailsEvent.TYPE, registration);
+		
 		registration = eventBus.addHandler(TriggerChangePasswordWindowEvent.TYPE, this);
 		eventBusRegistration.put(TriggerChangePasswordWindowEvent.TYPE, registration);
 		
@@ -93,6 +94,18 @@ public class AccountDetailsPresenterImpl extends BasePresenterImpl implements Ac
 	@Override
 	public String getUserType() {
 		return this.userRole.getRoleName();
+	}
+	
+	@Override
+	public void onAccountDetails(AccountDetailsEvent evt) {
+		this.go(this.parentPresenter.getView().getViewRootPanel());
+		
+		view.setFirstName(user.getFirstName());
+		view.setLastName(user.getLastName());
+		view.setUserName(user.getUserName());
+		view.setWpiIdInChar(user.getWpiId().toString());
+		view.setEmail(user.getEmail());
+		view.setAccountType(userRole.getRoleName());
 	}
 	
 	// event:
