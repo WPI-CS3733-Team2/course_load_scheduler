@@ -5,7 +5,14 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import org.dselent.course_load_scheduler.client.action.InvalidLoginAction;
+import org.dselent.course_load_scheduler.client.action.ScheduleSpecificsAction;
+import org.dselent.course_load_scheduler.client.action.SearchScheduleAction;
+import org.dselent.course_load_scheduler.client.event.InvalidLoginEvent;
+import org.dselent.course_load_scheduler.client.event.ScheduleSpecificsEvent;
+import org.dselent.course_load_scheduler.client.event.SearchScheduleEvent;
 import org.dselent.course_load_scheduler.client.model.Calendar;
+import org.dselent.course_load_scheduler.client.model.Schedule;
 import org.dselent.course_load_scheduler.client.presenter.IndexPresenter;
 import org.dselent.course_load_scheduler.client.presenter.ScheduleSpecificsPresenter;
 import org.dselent.course_load_scheduler.client.view.ScheduleSpecificsView;
@@ -19,7 +26,7 @@ public class ScheduleSpecificsPresenterImpl extends BasePresenterImpl implements
 {
 	private IndexPresenter parentPresenter;
 	private ScheduleSpecificsView view;
-	
+	private Schedule schedule = new Schedule();
 	private List<Calendar> calendars = new ArrayList<Calendar>();
 
 	@Inject
@@ -73,8 +80,8 @@ public class ScheduleSpecificsPresenterImpl extends BasePresenterImpl implements
 	{
 		HandlerRegistration registration;
 		
-		//registration = eventBus.addHandler(InvalidLoginEvent.TYPE, this);
-		//eventBusRegistration.put(InvalidLoginEvent.TYPE, registration);
+		registration = eventBus.addHandler(ScheduleSpecificsEvent.TYPE, this);
+		eventBusRegistration.put(ScheduleSpecificsEvent.TYPE, registration);
 	}
 		
 	@Override
@@ -214,6 +221,14 @@ public class ScheduleSpecificsPresenterImpl extends BasePresenterImpl implements
 		for (Calendar cal : thisSemester) {
 			fillCalendar(cal, "This will be filled from the database");
 		}
+	}
+	
+	@Override
+	public void onScheduleSpecifics(ScheduleSpecificsEvent evt)
+	{
+		ScheduleSpecificsAction ssa = evt.getAction();
+		schedule = ssa.getSchedule();
+		this.go(parentPresenter.getView().getViewRootPanel());
 	}
 	
 }
