@@ -193,6 +193,15 @@ public class CreateModifyCoursePresenterImpl extends BasePresenterImpl implement
 	}
 	
 	@Override
+	public void createModifyCourseCancel() {
+		clearForm();
+
+		ViewCourseAction vca = new ViewCourseAction(new ArrayList<Course>());
+		AdminCourseEvent ace = new AdminCourseEvent(vca);
+		eventBus.fireEvent(ace);
+	}
+	
+	@Override
 	public void createModifyCourseSubmit() {
 		Course course = new Course();
 		

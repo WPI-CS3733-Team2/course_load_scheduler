@@ -17,7 +17,6 @@ import org.dselent.course_load_scheduler.client.presenter.IndexPresenter;
 import org.dselent.course_load_scheduler.client.presenter.RequestInboxPresenter;
 import org.dselent.course_load_scheduler.client.presenter.ScheduleListPresenter;
 import org.dselent.course_load_scheduler.client.presenter.SearchSchedulePresenter;
-import org.dselent.course_load_scheduler.client.presenter.UserSearchPresenter;
 import org.dselent.course_load_scheduler.client.view.IndexView;
 import com.google.gwt.dom.client.Style;
 import com.google.gwt.user.client.Command;
@@ -96,7 +95,7 @@ public class IndexPresenterImpl extends BasePresenterImpl implements IndexPresen
 				
 				String userRole = injector.getAccountDetailsPresenter().getUserType();
 				
-				boolean testing = true;
+				boolean testing = false;
 				if (userRole.equals("Admin") || testing){
 					ViewCourseAction vca = new ViewCourseAction(new ArrayList<Course>());
 					AdminCourseEvent ace = new AdminCourseEvent(vca);
