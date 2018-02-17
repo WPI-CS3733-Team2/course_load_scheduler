@@ -6,4 +6,5 @@ public interface CreateScheduleAddFacultyPresenter extends BasePresenter
 	IndexPresenter getParentPresenter();
 	void setParentPresenter(IndexPresenter parentPresenter);
 	void fireConfirmSchedulePage();
+	
 }

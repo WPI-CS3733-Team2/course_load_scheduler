@@ -94,7 +94,7 @@ public class CourseLoadScheduler implements EntryPoint
 
 		// indexPresenter.go(RootPanel.get("indexContainer"));
 		indexPresenter.go(root);
-		adminCoursePresenter.go(indexView.getViewRootPanel());
+		accountPresenter.go(indexView.getViewRootPanel());
 		
 		ChangePasswordPresenter changePasswordPresenter = injector.getChangePasswordPresenter();
 		changePasswordPresenter.init();

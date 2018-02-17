@@ -1,6 +1,7 @@
 package org.dselent.course_load_scheduler.client.view.impl;
 
 
+import java.util.ArrayList;
 import java.util.List;
 import org.dselent.course_load_scheduler.client.presenter.CreateScheduleAddFacultyPresenter;
 import org.dselent.course_load_scheduler.client.view.CreateScheduleAddFacultyView;
@@ -11,6 +12,7 @@ import com.google.gwt.uibinder.client.UiBinder;
 import com.google.gwt.uibinder.client.UiField;
 import com.google.gwt.uibinder.client.UiHandler;
 import com.google.gwt.user.client.ui.Button;
+import com.google.gwt.user.client.ui.CheckBox;
 import com.google.gwt.user.client.ui.HasWidgets;
 import com.google.gwt.user.client.ui.Widget;
 import com.google.gwt.user.client.ui.VerticalPanel;
@@ -84,6 +86,19 @@ public class CreateScheduleAddFacultyViewImpl extends BaseViewImpl<CreateSchedul
 			RadioButton radioButton = new RadioButton("facultyMember", name);
 			verticalPanel.add(radioButton);
 		}
+	}
+	
+	public String getCheckedFaculty() {
+		String checkedFaculty = new String();
+		for (Widget widget : verticalPanel) {
+			if (widget instanceof RadioButton){
+			    RadioButton radioButton = (RadioButton) widget;
+			    if (radioButton.getValue()) {
+			    	checkedFaculty = radioButton.getText();
+			    }
+			}
+		}
+		return checkedFaculty;
 	}
 	
 	@UiHandler("nextPageButton")

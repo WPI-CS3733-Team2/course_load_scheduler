@@ -22,7 +22,7 @@ import com.google.inject.Inject;
 
 
 public class CreateScheduleVisualPresenterImpl extends BasePresenterImpl implements CreateScheduleVisualPresenter
-{
+{ 
 	private IndexPresenter parentPresenter;
 	private CreateScheduleVisualView view;
 	private List<Calendar> calendars = new ArrayList<Calendar>();
