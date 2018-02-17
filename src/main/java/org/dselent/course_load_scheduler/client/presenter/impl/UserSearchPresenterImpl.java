@@ -14,10 +14,8 @@ import org.dselent.course_load_scheduler.client.event.UserSearchPageEvent;
 import org.dselent.course_load_scheduler.client.event.UserCreatePageEvent;
 import org.dselent.course_load_scheduler.client.event.UserDetailsPageEvent;
 import org.dselent.course_load_scheduler.client.exceptions.EmptyStringException;
-import org.dselent.course_load_scheduler.client.gin.Injector;
 import org.dselent.course_load_scheduler.client.presenter.IndexPresenter;
 import org.dselent.course_load_scheduler.client.presenter.UserSearchPresenter;
-import org.dselent.course_load_scheduler.client.presenter.impl.UserCreatePresenterImpl;
 //import org.dselent.course_load_scheduler.client.view.LoginView;
 
 public class UserSearchPresenterImpl extends BasePresenterImpl implements UserSearchPresenter{

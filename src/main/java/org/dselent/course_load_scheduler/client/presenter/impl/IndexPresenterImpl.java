@@ -10,11 +10,9 @@ import org.dselent.course_load_scheduler.client.event.AdminCourseEvent;
 import org.dselent.course_load_scheduler.client.event.CreateScheduleNavigationEvent;
 import org.dselent.course_load_scheduler.client.event.FacultyCourseEvent;
 import org.dselent.course_load_scheduler.client.event.FacultyCourseNavigationEvent;
-import org.dselent.course_load_scheduler.client.event.ScheduleSpecificsEvent;
 import org.dselent.course_load_scheduler.client.event.SearchScheduleNavigationEvent;
 import org.dselent.course_load_scheduler.client.action.CreateScheduleNavigationAction;
 import org.dselent.course_load_scheduler.client.action.FacultyCourseNavigationAction;
-import org.dselent.course_load_scheduler.client.action.ScheduleSpecificsAction;
 import org.dselent.course_load_scheduler.client.action.SearchScheduleNavigationAction;
 import org.dselent.course_load_scheduler.client.action.UserSearchPageAction;
 import org.dselent.course_load_scheduler.client.event.UserSearchPageEvent;
@@ -25,8 +23,6 @@ import org.dselent.course_load_scheduler.client.model.Model;
 import org.dselent.course_load_scheduler.client.presenter.AccountDetailsPresenter;
 import org.dselent.course_load_scheduler.client.presenter.IndexPresenter;
 import org.dselent.course_load_scheduler.client.presenter.RequestInboxPresenter;
-import org.dselent.course_load_scheduler.client.presenter.ScheduleListPresenter;
-import org.dselent.course_load_scheduler.client.presenter.SearchSchedulePresenter;
 import org.dselent.course_load_scheduler.client.view.IndexView;
 import com.google.gwt.dom.client.Style;
 import com.google.gwt.user.client.Command;
@@ -112,20 +108,9 @@ public class IndexPresenterImpl extends BasePresenterImpl implements IndexPresen
 		view.setUsersCommand(new Command() {
 			@Override
 			public void execute() {	
-				final Injector injector = Injector.INSTANCE;
-				
-				//BasePresenter userSearchPresenter;
-				
-				IndexPresenterImpl indexPresenter = injector.getIndexPresenter(); // on-demand injection
-				IndexView indexView = indexPresenter.getView();
-				
 				UserSearchPageAction uspa = new UserSearchPageAction();
 				UserSearchPageEvent uspe = new UserSearchPageEvent(uspa);
 				eventBus.fireEvent(uspe);
-				
-				/*UserSearchPresenter userSearchPresenter = injector.getUserSearchPresenter();
-				
-				userSearchPresenter.go(indexView.getViewRootPanel());*/
 			}
 		});
 		

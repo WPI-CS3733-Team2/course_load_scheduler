@@ -1,10 +1,6 @@
 package org.dselent.course_load_scheduler.client.view.impl;
 
-import org.dselent.course_load_scheduler.client.gin.Injector;
 import org.dselent.course_load_scheduler.client.presenter.SearchSchedulePresenter;
-import org.dselent.course_load_scheduler.client.presenter.impl.IndexPresenterImpl;
-import org.dselent.course_load_scheduler.client.presenter.impl.ScheduleListPresenterImpl;
-import org.dselent.course_load_scheduler.client.view.IndexView;
 import org.dselent.course_load_scheduler.client.view.SearchScheduleView;
 
 import com.google.gwt.core.client.GWT;

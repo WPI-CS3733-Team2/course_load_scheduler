@@ -3,14 +3,8 @@ package org.dselent.course_load_scheduler.client.view.impl;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.dselent.course_load_scheduler.client.gin.Injector;
-import org.dselent.course_load_scheduler.client.model.Calendar;
 import org.dselent.course_load_scheduler.client.presenter.CreateSchedulePresenter;
-import org.dselent.course_load_scheduler.client.presenter.impl.CreateScheduleVisualPresenterImpl;
-import org.dselent.course_load_scheduler.client.presenter.impl.IndexPresenterImpl;
-import org.dselent.course_load_scheduler.client.presenter.impl.ScheduleSpecificsPresenterImpl;
 import org.dselent.course_load_scheduler.client.view.CreateScheduleView;
-import org.dselent.course_load_scheduler.client.view.IndexView;
 
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.event.dom.client.ClickEvent;
@@ -20,8 +14,6 @@ import com.google.gwt.uibinder.client.UiHandler;
 import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.ui.Button;
 import com.google.gwt.user.client.ui.CheckBox;
-import com.google.gwt.user.client.ui.Composite;
-import com.google.gwt.user.client.ui.HasText;
 import com.google.gwt.user.client.ui.HasWidgets;
 import com.google.gwt.user.client.ui.TextBox;
 import com.google.gwt.user.client.ui.VerticalPanel;

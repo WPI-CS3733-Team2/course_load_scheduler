@@ -8,18 +8,11 @@ import com.google.gwt.event.shared.HandlerRegistration;
 import com.google.gwt.user.client.ui.HasWidgets;
 import com.google.inject.Inject;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import org.dselent.course_load_scheduler.client.action.TerminateAccountAction;
 import org.dselent.course_load_scheduler.client.action.UserSearchPageAction;
-import org.dselent.course_load_scheduler.client.errorstring.InvalidLoginStrings;
-import org.dselent.course_load_scheduler.client.event.SearchUserEvent;
 import org.dselent.course_load_scheduler.client.event.TerminateAccountEvent;
 import org.dselent.course_load_scheduler.client.event.UserDetailsPageEvent;
 import org.dselent.course_load_scheduler.client.event.UserSearchPageEvent;
-import org.dselent.course_load_scheduler.client.exceptions.EmptyStringException;
-import org.dselent.course_load_scheduler.client.gin.Injector;
 import org.dselent.course_load_scheduler.client.presenter.IndexPresenter;
 import org.dselent.course_load_scheduler.client.presenter.UserDetailsPresenter;
 
@@ -109,12 +102,7 @@ public class UserDetailsPresenterImpl extends BasePresenterImpl implements UserD
 	
 	//Navigates back to the user search page
 	@Override
-	public void backToSearch(){
-		/*final Injector injector = Injector.INSTANCE;
-		UserSearchPresenterImpl userSearchPresenter = injector.getUserSearchPresenter();
-		userSearchPresenter.init();
-		userSearchPresenter.go(parentPresenter.getView().getViewRootPanel());*/
-		
+	public void backToSearch(){		
 		UserSearchPageAction uspa = new UserSearchPageAction();
 		UserSearchPageEvent uspe = new UserSearchPageEvent(uspa);
 		eventBus.fireEvent(uspe);
