@@ -8,6 +8,7 @@ import org.dselent.course_load_scheduler.client.presenter.impl.CreateModifyCours
 import org.dselent.course_load_scheduler.client.presenter.impl.CreateScheduleAddFacultyPresenterImpl;
 import org.dselent.course_load_scheduler.client.presenter.impl.CreateSchedulePresenterImpl;
 import org.dselent.course_load_scheduler.client.presenter.impl.CreateScheduleVisualPresenterImpl;
+import org.dselent.course_load_scheduler.client.presenter.impl.FacultyCourseMappingPresenterImpl;
 import org.dselent.course_load_scheduler.client.presenter.impl.UserSearchPresenterImpl;
 import org.dselent.course_load_scheduler.client.presenter.impl.FacultyCoursePresenterImpl;
 import org.dselent.course_load_scheduler.client.presenter.impl.UserCreatePresenterImpl;
@@ -90,6 +91,9 @@ public class CourseLoadScheduler implements EntryPoint
 		
 		CreateScheduleAddFacultyPresenterImpl createScheduleAddFacultyPresenter = injector.getCreateScheduleAddFacultyPresenter();
 		createScheduleAddFacultyPresenter.init();
+		
+		FacultyCourseMappingPresenterImpl facultyCourseMappingPresenter = injector.getFacultyCourseMappingPresenter();
+		facultyCourseMappingPresenter.init();
 
 
 		// indexPresenter.go(RootPanel.get("indexContainer"));

@@ -9,9 +9,11 @@ import org.dselent.course_load_scheduler.client.action.ViewScheduleNavigationAct
 import org.dselent.course_load_scheduler.client.event.AdminCourseEvent;
 import org.dselent.course_load_scheduler.client.event.CreateScheduleNavigationEvent;
 import org.dselent.course_load_scheduler.client.event.FacultyCourseEvent;
+import org.dselent.course_load_scheduler.client.event.FacultyCourseNavigationEvent;
 import org.dselent.course_load_scheduler.client.event.ScheduleSpecificsEvent;
 import org.dselent.course_load_scheduler.client.event.SearchScheduleNavigationEvent;
 import org.dselent.course_load_scheduler.client.action.CreateScheduleNavigationAction;
+import org.dselent.course_load_scheduler.client.action.FacultyCourseNavigationAction;
 import org.dselent.course_load_scheduler.client.action.ScheduleSpecificsAction;
 import org.dselent.course_load_scheduler.client.action.SearchScheduleNavigationAction;
 import org.dselent.course_load_scheduler.client.action.UserSearchPageAction;
@@ -140,6 +142,16 @@ public class IndexPresenterImpl extends BasePresenterImpl implements IndexPresen
 				requestInboxPresenter.go(indexView.getViewRootPanel());
 			}
 		});
+		
+		view.setFacultyCourseCommand(new Command() {
+			@Override
+			public void execute() {
+				FacultyCourseNavigationAction fcna = new FacultyCourseNavigationAction();
+				FacultyCourseNavigationEvent fcne = new FacultyCourseNavigationEvent(fcna);
+				eventBus.fireEvent(fcne); 
+			}
+		});
+		
 
 	}
 	
