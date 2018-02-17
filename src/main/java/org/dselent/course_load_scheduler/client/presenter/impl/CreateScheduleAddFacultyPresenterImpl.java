@@ -21,6 +21,7 @@ public class CreateScheduleAddFacultyPresenterImpl extends BasePresenterImpl imp
 {
 	private IndexPresenter parentPresenter;
 	private CreateScheduleAddFacultyView view;
+	private List<Course> courses;
 
 	@Inject
 	public CreateScheduleAddFacultyPresenterImpl(IndexPresenter parentPresenter, CreateScheduleAddFacultyView view)
@@ -73,7 +74,7 @@ public class CreateScheduleAddFacultyPresenterImpl extends BasePresenterImpl imp
 	}
 	
 	public void fireConfirmSchedulePage() {
-		ConfirmSchedulePageAction csa = new ConfirmSchedulePageAction();
+		ConfirmSchedulePageAction csa = new ConfirmSchedulePageAction(courses,view.getCheckedFaculty());
 		ConfirmSchedulePageEvent cse = new ConfirmSchedulePageEvent(csa);
 		eventBus.fireEvent(cse);
 	}
@@ -81,6 +82,7 @@ public class CreateScheduleAddFacultyPresenterImpl extends BasePresenterImpl imp
 	@Override
 	public void onCreateScheduleSelectFaculty(CreateScheduleSelectFacultyEvent evt) {
 		this.go(parentPresenter.getView().getViewRootPanel());
+		this.courses = evt.getAction().getCourses();
 	}
 
 }

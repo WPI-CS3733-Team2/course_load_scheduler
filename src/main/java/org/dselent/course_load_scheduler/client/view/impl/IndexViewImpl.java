@@ -47,7 +47,21 @@ public class IndexViewImpl extends BaseViewImpl<IndexPresenter> implements Index
 	MenuItem requestsMenuItem;
 	@UiField 
 	MenuBar navigationMenu;
+	@UiField
+	MenuItem facultyCourseMenuItem;
 	
+	public MenuItem getFacultyCourseMenuItem() {
+		return facultyCourseMenuItem;
+	}
+
+	public void setFacultyCourseMenuItem(MenuItem facultyCourseMenuItem) {
+		this.facultyCourseMenuItem = facultyCourseMenuItem;
+	}
+	
+	public void setFacultyCourseCommand(Command cmd) {
+		this.facultyCourseMenuItem.setScheduledCommand(cmd);
+	}
+
 	public MenuItem getAccountMenuItem() {
 		return accountMenuItem;
 	}

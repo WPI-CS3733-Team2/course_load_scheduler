@@ -88,6 +88,7 @@ public class CreateScheduleAddFacultyViewImpl extends BaseViewImpl<CreateSchedul
 		}
 	}
 	
+	@Override
 	public String getCheckedFaculty() {
 		String checkedFaculty = new String();
 		for (Widget widget : verticalPanel) {

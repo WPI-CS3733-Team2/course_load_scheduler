@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+import org.dselent.course_load_scheduler.client.event.FacultyCourseNavigationEvent;
 import org.dselent.course_load_scheduler.client.model.FacultyCourse;
 import org.dselent.course_load_scheduler.client.presenter.FacultyCourseMappingPresenter;
 import org.dselent.course_load_scheduler.client.presenter.IndexPresenter;
@@ -24,8 +25,10 @@ public class FacultyCourseMappingPresenterImpl extends BasePresenterImpl impleme
 		this.view = view;
 		this.parentPresenter = parentPresenter;
 		view.setPresenter(this);
-		List<Integer> numberList = Arrays.asList(1);
-		List<String> stringList = Arrays.asList("Stringssssssssss");
+		List<Integer> numberList = new ArrayList<Integer>();
+		List<String> stringList = new ArrayList<String>();
+		numberList.add(1);
+		stringList.add("Course info example");
 		FacultyCourse faculty1 = new FacultyCourse();
 		faculty1.setUser_id(1);
 		faculty1.setFaculty_id(1);
@@ -57,8 +60,8 @@ public class FacultyCourseMappingPresenterImpl extends BasePresenterImpl impleme
 	{
 		HandlerRegistration registration;
 		
-		//registration = eventBus.addHandler(InvalidLoginEvent.TYPE, this);
-		//eventBusRegistration.put(InvalidLoginEvent.TYPE, registration);
+		registration = eventBus.addHandler(FacultyCourseNavigationEvent.TYPE, this);
+		eventBusRegistration.put(FacultyCourseNavigationEvent.TYPE, registration);
 	}
 		
 	@Override
@@ -86,4 +89,9 @@ public class FacultyCourseMappingPresenterImpl extends BasePresenterImpl impleme
 		this.parentPresenter = parentPresenter;
 	}
 	
+	@Override
+	public void onFacultyCourseNavigation(FacultyCourseNavigationEvent evt) {
+		int i = 0;
+		this.go(parentPresenter.getView().getViewRootPanel());
+	}
 }
