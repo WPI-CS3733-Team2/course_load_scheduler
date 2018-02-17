@@ -60,7 +60,7 @@
 						</g:row>
 						<g:row>
 							<g:customCell>
-								<g:CheckBox text="2:00 PM - 3: 00 PM" ui:field="twoToThreeCB"/>
+								<g:CheckBox text="2:00 PM - 3:00 PM" ui:field="twoToThreeCB"/>
 							</g:customCell>
 							<g:customCell>
 								<g:CheckBox text="3:00 PM - 4:00 PM" ui:field="threeToFourCB"/>
