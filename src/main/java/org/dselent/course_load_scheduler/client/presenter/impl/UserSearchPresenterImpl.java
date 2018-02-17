@@ -163,12 +163,10 @@ public class UserSearchPresenterImpl extends BasePresenterImpl implements UserSe
 		view.getSearchUserButton().setEnabled(true);
 		searchInProgress = false;
 		//For now, it just navigates to the user details presenter.
-		//In the future, the search function will require retrieving data to the server.
-		/*final Injector injector = Injector.INSTANCE;
-		UserDetailsPresenterImpl userDetailsPresenter = injector.getUserDetailsPresenter();
-		userDetailsPresenter.init();
-		userDetailsPresenter.go(parentPresenter.getView().getViewRootPanel());*/
+		//In the future, the search function will require retrieving data from the server.
+		//This includes the user role, which for now is not in the model.
 		
+		//Obtain this from 
 		UserDetailsPageAction udpa = new UserDetailsPageAction();
 		udpa.getUser().setId(1);
 		udpa.getUser().setWpiId(111111111);

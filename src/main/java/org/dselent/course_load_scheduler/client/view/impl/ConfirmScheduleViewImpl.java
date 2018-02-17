@@ -82,17 +82,4 @@ public class ConfirmScheduleViewImpl extends BaseViewImpl<ConfirmSchedulePresent
 	{
 		return confirmSchedulePanel;
 	}
-	
-	
-	@UiHandler("confirmScheduleButton")
-	void onButtonClick(ClickEvent event) {
-		
-		final Injector injector = Injector.INSTANCE;
-				
-		IndexPresenterImpl indexPresenter = injector.getIndexPresenter(); // on-demand injection
-		IndexView indexView = indexPresenter.getView();		
-
-		ScheduleListPresenterImpl scheduleListPresenter = injector.getScheduleListPresenter();
-		scheduleListPresenter.go(indexView.getViewRootPanel()); 
-	}
 }
