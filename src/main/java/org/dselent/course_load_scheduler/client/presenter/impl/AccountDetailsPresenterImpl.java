@@ -119,10 +119,4 @@ public class AccountDetailsPresenterImpl extends BasePresenterImpl implements Ac
 			view.getChangePasswordButton().setEnabled(true);
 		}
 	}
-	
-	private void debug1(TriggerChangePasswordWindowEvent evt) {
-		parentPresenter.hideLoadScreen();
-		TriggerChangePasswordWindowAction action = evt.getAction();
-		view.showErrorMessage("debug1");
-	}
 }

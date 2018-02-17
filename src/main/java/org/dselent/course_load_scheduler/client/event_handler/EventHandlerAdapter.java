@@ -6,6 +6,7 @@ import org.dselent.course_load_scheduler.client.event.InvalidSubmitCourseEvent;
 import org.dselent.course_load_scheduler.client.event.InvalidSubmitRequestEvent;
 import org.dselent.course_load_scheduler.client.event.ModifyCourseEvent;
 import org.dselent.course_load_scheduler.client.event.RequestCourseEvent;
+import org.dselent.course_load_scheduler.client.event.ScheduleSpecificsEvent;
 import org.dselent.course_load_scheduler.client.event.SendChangePasswordEvent;
 import org.dselent.course_load_scheduler.client.event.SendLoginEvent;
 import org.dselent.course_load_scheduler.client.event.TerminateAccountEvent;
@@ -18,6 +19,7 @@ import org.dselent.course_load_scheduler.client.event.AdminCourseEvent;
 import org.dselent.course_load_scheduler.client.event.ConfirmSchedulePageEvent;
 import org.dselent.course_load_scheduler.client.event.CreateScheduleEvent;
 import org.dselent.course_load_scheduler.client.event.SearchCourseEvent;
+import org.dselent.course_load_scheduler.client.event.SearchScheduleEvent;
 import org.dselent.course_load_scheduler.client.event.UserSearchPageEvent;
 import org.dselent.course_load_scheduler.client.event.UserCreatePageEvent;
 import org.dselent.course_load_scheduler.client.event.UserDetailsPageEvent;
@@ -38,7 +40,9 @@ public abstract class EventHandlerAdapter implements InvalidLoginEventHandler, S
 		ModifyCourseEventHandler, SearchCourseEventHandler, AdminCourseEventHandler, FacultyCourseEventHandler,
 		InvalidAddSectionEventHandler, InvalidSubmitCourseEventHandler, UserSearchPageEventHandler,
 		UserCreatePageEventHandler, UserDetailsPageEventHandler, ConfirmSchedulePageEventHandler,
-		RequestCourseEventHandler, InvalidSubmitRequestEventHandler  {
+		RequestCourseEventHandler, InvalidSubmitRequestEventHandler, SearchScheduleEventHandler,
+		ScheduleSpecificsEventHandler {
+	
 	@Override
 	public void onInvalidLogin(InvalidLoginEvent evt) {}
 	
@@ -78,6 +82,12 @@ public abstract class EventHandlerAdapter implements InvalidLoginEventHandler, S
 	@Override
 	public void onAdminCourse(AdminCourseEvent evt) {}
 	
+	@Override
+	public void onSearchSchedule(SearchScheduleEvent evt) {}
+	
+	@Override
+	public void onScheduleSpecifics(ScheduleSpecificsEvent evt) {}
+
 	@Override
 	public void onUserSearchPage(UserSearchPageEvent evt) {}
 	

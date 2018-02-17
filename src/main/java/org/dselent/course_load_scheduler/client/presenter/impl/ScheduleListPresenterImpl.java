@@ -3,13 +3,16 @@ package org.dselent.course_load_scheduler.client.presenter.impl;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import org.dselent.course_load_scheduler.client.exceptions.EmptyStringException;
+
+import org.dselent.course_load_scheduler.client.action.ScheduleSpecificsAction;
+import org.dselent.course_load_scheduler.client.event.ScheduleSpecificsEvent;
+import org.dselent.course_load_scheduler.client.event.SearchScheduleEvent;
+import org.dselent.course_load_scheduler.client.model.Calendar;
 import org.dselent.course_load_scheduler.client.model.Schedule;
 import org.dselent.course_load_scheduler.client.presenter.IndexPresenter;
 import org.dselent.course_load_scheduler.client.presenter.ScheduleListPresenter;
 import org.dselent.course_load_scheduler.client.view.ScheduleListView;
 
-import com.google.gwt.core.client.GWT;
 import com.google.gwt.event.shared.HandlerRegistration;
 import com.google.gwt.user.client.ui.HasWidgets;
 import com.google.inject.Inject;
@@ -19,6 +22,7 @@ public class ScheduleListPresenterImpl extends BasePresenterImpl implements Sche
 {
 	private IndexPresenter parentPresenter;
 	private ScheduleListView view;
+	private List<Schedule> schedules = new ArrayList<Schedule>();
 
 	@Inject
 	public ScheduleListPresenterImpl(IndexPresenter parentPresenter, ScheduleListView view)
@@ -30,11 +34,15 @@ public class ScheduleListPresenterImpl extends BasePresenterImpl implements Sche
 		schedule.setId(1);
 		schedule.setFacultyId(1);
 		schedule.setScheduleName("Schedule Test");
-		List<Schedule> schedules = Arrays.asList(schedule, schedule, schedule, schedule, schedule, schedule, schedule, schedule, schedule, schedule, schedule, schedule, schedule, schedule, schedule, schedule, schedule, schedule, schedule, schedule, schedule, schedule, schedule, schedule);
+		schedules = Arrays.asList(schedule, schedule, schedule, schedule, schedule, schedule, schedule, schedule);
 		
 		this.fillTable(schedules);
 	}
 	
+	public List<Schedule> getSchedules() {
+		return schedules;
+	}
+
 	@Override
 	public void init()
 	{
@@ -46,8 +54,8 @@ public class ScheduleListPresenterImpl extends BasePresenterImpl implements Sche
 	{
 		HandlerRegistration registration;
 		
-		//registration = eventBus.addHandler(InvalidLoginEvent.TYPE, this);
-		//eventBusRegistration.put(InvalidLoginEvent.TYPE, registration);
+		registration = eventBus.addHandler(SearchScheduleEvent.TYPE, this);
+		eventBusRegistration.put(SearchScheduleEvent.TYPE, registration);
 	}
 		
 	@Override
@@ -78,5 +86,18 @@ public class ScheduleListPresenterImpl extends BasePresenterImpl implements Sche
 	public void fillTable(List<Schedule> schedules) {
 		view.getScheduleTable().setRowData(schedules);
 	}
+	
+	@Override
+	public void onSearchSchedule(SearchScheduleEvent evt) {
+		//TODO sql query stuff
+		this.go(parentPresenter.getView().getViewRootPanel());
+	}
+	
+	public void viewSpecifics(Schedule schedule) {
+		ScheduleSpecificsAction ssa = new ScheduleSpecificsAction(schedule);
+		ScheduleSpecificsEvent sse = new ScheduleSpecificsEvent(ssa);
+		eventBus.fireEvent(sse);
+	}
+	
 	
 }

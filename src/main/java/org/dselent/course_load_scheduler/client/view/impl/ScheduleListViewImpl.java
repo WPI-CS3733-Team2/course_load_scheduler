@@ -98,23 +98,16 @@ public class ScheduleListViewImpl extends BaseViewImpl<ScheduleListPresenter> im
 		buttonColumn.setFieldUpdater(new FieldUpdater<Schedule, String>() {
 	        @Override
 	        public void update(int index, Schedule schedule, String value) {
-	            onSelectClicked(schedule);
+	            onSelectClicked(index);
 	        }
 	    });
 		this.scheduleTable.addColumn(buttonColumn, "View Details");
 	}
 	
-	public void onSelectClicked(Schedule schedule) {
-		final Injector injector = Injector.INSTANCE;
-		
-		IndexPresenterImpl indexPresenter = injector.getIndexPresenter(); // on-demand injection
-		IndexView indexView = indexPresenter.getView();		
-
-
-		ScheduleSpecificsPresenterImpl scheduleSpecificsPresenter = injector.getScheduleSpecificsPresenter();
-		Calendar calendar = new Calendar(1, 2018, "A", "TR", "12:00", "1:50");
-		scheduleSpecificsPresenter.fillCalendar(calendar, "Will be replaced with real stuff");
-		scheduleSpecificsPresenter.go(indexView.getViewRootPanel());
+	public void onSelectClicked(int index) {
+		int size = presenter.getSchedules().size();
+		Schedule schedule = presenter.getSchedules().get(index);
+		presenter.viewSpecifics(schedule);
 	}
 	
 }
