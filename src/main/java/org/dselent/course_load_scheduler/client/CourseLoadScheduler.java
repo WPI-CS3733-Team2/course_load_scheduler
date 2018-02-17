@@ -10,6 +10,7 @@ import org.dselent.course_load_scheduler.client.presenter.impl.UserCreatePresent
 import org.dselent.course_load_scheduler.client.presenter.impl.UserDetailsPresenterImpl;
 import org.dselent.course_load_scheduler.client.presenter.impl.ConfirmSchedulePresenterImpl;
 import org.dselent.course_load_scheduler.client.presenter.impl.IndexPresenterImpl;
+import org.dselent.course_load_scheduler.client.presenter.impl.RequestCoursePresenterImpl;
 import org.dselent.course_load_scheduler.client.view.IndexView;
 
 import com.google.gwt.core.client.EntryPoint;
@@ -46,6 +47,8 @@ public class CourseLoadScheduler implements EntryPoint
 		adminCoursePresenter.init();
 		CreateModifyCoursePresenterImpl createModifyPresenter = injector.getCreateModifyCoursePresenter();
 		createModifyPresenter.init();
+		RequestCoursePresenterImpl requestPresenter = injector.getRequestCoursePresenter();
+		requestPresenter.init();
 		UserSearchPresenterImpl userSearchPresenter = injector.getUserSearchPresenter();
 		userSearchPresenter.init();
 		

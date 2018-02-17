@@ -4,17 +4,17 @@ package org.dselent.course_load_scheduler.client.presenter.impl;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.dselent.course_load_scheduler.client.action.RequestCourseAction;
 import org.dselent.course_load_scheduler.client.action.SearchCourseAction;
 import org.dselent.course_load_scheduler.client.event.FacultyCourseEvent;
+import org.dselent.course_load_scheduler.client.event.RequestCourseEvent;
 import org.dselent.course_load_scheduler.client.event.SearchCourseEvent;
 import org.dselent.course_load_scheduler.client.exceptions.EmptyStringException;
-import org.dselent.course_load_scheduler.client.gin.Injector;
 import org.dselent.course_load_scheduler.client.model.Course;
 import org.dselent.course_load_scheduler.client.model.Section;
 import org.dselent.course_load_scheduler.client.presenter.FacultyCoursePresenter;
 import org.dselent.course_load_scheduler.client.presenter.IndexPresenter;
 import org.dselent.course_load_scheduler.client.view.FacultyCourseView;
-import org.dselent.course_load_scheduler.client.view.IndexView;
 
 import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.event.dom.client.ClickHandler;
@@ -173,25 +173,20 @@ public class FacultyCoursePresenterImpl extends BasePresenterImpl implements Fac
 			courseSections.setRowData(0, courses.get(i).getSections());
 			courseSections.setWidth("500px");
 
-			Button modifyCourseButton = new Button("Request");
-			modifyCourseButton.addClickHandler(new ClickHandler() {
+			Button requestCourseButton = new Button("Request");
+			requestCourseButton.addClickHandler(new ClickHandler() {
 
 				@Override
 				public void onClick(ClickEvent event) {
-					final Injector injector = Injector.INSTANCE;
-
-					IndexPresenterImpl indexPresenter = injector.getIndexPresenter(); // on-demand injection
-					IndexView indexView = indexPresenter.getView();
-
-					RequestCoursePresenterImpl requestCoursePresenter = injector.getRequestCoursePresenter();
-
-					requestCoursePresenter.go(indexView.getViewRootPanel());
+					RequestCourseAction rca = new RequestCourseAction(new Course());
+					RequestCourseEvent rce = new RequestCourseEvent(rca);
+					eventBus.fireEvent(rce);
 				}
 			});
 
 			layout.setWidget(0, 0, courseInfoPanel);
 			layout.setWidget(0, 1, courseSections);
-			layout.setWidget(0, 2, modifyCourseButton);
+			layout.setWidget(0, 2, requestCourseButton);
 
 			coursePanel.add(layout);
 			coursePanel.setWidth("650px");
