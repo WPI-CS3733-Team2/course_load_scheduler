@@ -6,5 +6,5 @@ public interface CreateScheduleVisualPresenter extends BasePresenter
 	IndexPresenter getParentPresenter();
 	void setParentPresenter(IndexPresenter parentPresenter);
 	void updateGrid();
-	void fireCreateScheduleSelectFaculty();
+	void fireCreateScheduleSelectFaculty(); 
 }
