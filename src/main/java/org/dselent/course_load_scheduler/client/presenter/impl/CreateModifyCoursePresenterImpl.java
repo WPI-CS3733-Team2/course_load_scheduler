@@ -94,6 +94,7 @@ public class CreateModifyCoursePresenterImpl extends BasePresenterImpl implement
 		
 		view.setCourseNameTextBoxText(course.getCourseName());
 		view.setCourseNumberTextBoxText(course.getCourseNumber());
+		view.addRowsToSectionTable(course.getSections());
 	}
 	
 	@Override

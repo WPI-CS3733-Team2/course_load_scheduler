@@ -7,6 +7,5 @@ public interface ChangePasswordPresenter extends BasePresenter{
 	public void goBack();
 	int getUserId();
 	void setUserId(int userId);
-	void onTriggerChangePasswordWindow1(TriggerChangePasswordWindowEvent evt);
 	
 }
