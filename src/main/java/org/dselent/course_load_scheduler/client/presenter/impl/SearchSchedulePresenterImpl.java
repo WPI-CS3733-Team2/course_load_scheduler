@@ -2,6 +2,7 @@ package org.dselent.course_load_scheduler.client.presenter.impl;
 
 import org.dselent.course_load_scheduler.client.action.SearchScheduleAction;
 import org.dselent.course_load_scheduler.client.event.SearchScheduleEvent;
+import org.dselent.course_load_scheduler.client.event.SearchScheduleNavigationEvent;
 import org.dselent.course_load_scheduler.client.presenter.IndexPresenter;
 import org.dselent.course_load_scheduler.client.presenter.SearchSchedulePresenter;
 import org.dselent.course_load_scheduler.client.view.SearchScheduleView;
@@ -34,6 +35,8 @@ public class SearchSchedulePresenterImpl extends BasePresenterImpl implements Se
 	public void bind()
 	{
 		HandlerRegistration registration;
+		registration = eventBus.addHandler(SearchScheduleNavigationEvent.TYPE, this);
+		eventBusRegistration.put(SearchScheduleNavigationEvent.TYPE, registration);
 		
 	}
 		
@@ -82,6 +85,11 @@ public class SearchSchedulePresenterImpl extends BasePresenterImpl implements Se
 		SearchScheduleAction ssa = new SearchScheduleAction(queryTerm, searchBy);
 		SearchScheduleEvent sse = new SearchScheduleEvent(ssa);
 		eventBus.fireEvent(sse);
+	}
+	
+	@Override
+	public void onSearchScheduleNavigation(SearchScheduleNavigationEvent evt) {
+		this.go(parentPresenter.getView().getViewRootPanel());
 	}
 	
 }

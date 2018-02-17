@@ -131,6 +131,8 @@ public class IndexViewImpl extends BaseViewImpl<IndexPresenter> implements Index
 	public void setUsersCommand(Command cmd) {
 		this.usersMenuItem.setScheduledCommand(cmd);
 	}
+	
+	
 
 	public MenuItem getRequestsMenuItem() {
 		return requestsMenuItem;

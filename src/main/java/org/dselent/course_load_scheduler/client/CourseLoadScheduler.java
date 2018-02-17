@@ -84,7 +84,7 @@ public class CourseLoadScheduler implements EntryPoint
 		
 		CreateSchedulePresenterImpl createSchedulePresenter = injector.getCreateSchedulePresenter();
 		createSchedulePresenter.init();
-		
+
 		CreateScheduleVisualPresenterImpl createScheduleVisualPresenter = injector.getCreateScheduleVisualPresenter();
 		createScheduleVisualPresenter.init();
 		
