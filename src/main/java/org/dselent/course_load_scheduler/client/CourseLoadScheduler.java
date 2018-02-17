@@ -11,6 +11,9 @@ import org.dselent.course_load_scheduler.client.presenter.impl.UserCreatePresent
 import org.dselent.course_load_scheduler.client.presenter.impl.UserDetailsPresenterImpl;
 import org.dselent.course_load_scheduler.client.presenter.impl.ConfirmSchedulePresenterImpl;
 import org.dselent.course_load_scheduler.client.presenter.impl.IndexPresenterImpl;
+import org.dselent.course_load_scheduler.client.presenter.impl.ScheduleListPresenterImpl;
+import org.dselent.course_load_scheduler.client.presenter.impl.ScheduleSpecificsPresenterImpl;
+import org.dselent.course_load_scheduler.client.presenter.impl.SearchSchedulePresenterImpl;
 import org.dselent.course_load_scheduler.client.view.IndexView;
 
 import com.google.gwt.core.client.EntryPoint;
@@ -41,12 +44,25 @@ public class CourseLoadScheduler implements EntryPoint
 
 		AccountDetailsPresenterImpl accountPresenter = injector.getAccountDetailsPresenter();
 		accountPresenter.init();
+		
 		FacultyCoursePresenterImpl facultyCoursePresenter = injector.getFacultyCoursePresenter();
 		facultyCoursePresenter.init();
+		
 		AdminCoursePresenterImpl adminCoursePresenter = injector.getAdminCoursePresenter();
 		adminCoursePresenter.init();
+		
 		CreateModifyCoursePresenterImpl createModifyPresenter = injector.getCreateModifyCoursePresenter();
 		createModifyPresenter.init();
+		
+		ScheduleListPresenterImpl scheduleListPresenter = injector.getScheduleListPresenter();
+		scheduleListPresenter.init();
+		
+		SearchSchedulePresenterImpl searchSchedulePresenter = injector.getSearchSchedulePresenter();
+		searchSchedulePresenter.init();
+		
+		ScheduleSpecificsPresenterImpl scheduleSpecificsPresenter = injector.getScheduleSpecificsPresenter();
+		scheduleSpecificsPresenter.init();
+		
 		UserSearchPresenterImpl userSearchPresenter = injector.getUserSearchPresenter();
 		userSearchPresenter.init();
 		
@@ -58,6 +74,7 @@ public class CourseLoadScheduler implements EntryPoint
 		
 		ConfirmSchedulePresenterImpl confirmSchedulePresenter = injector.getConfirmSchedulePresenter();
 		confirmSchedulePresenter.init();
+
 
 		// indexPresenter.go(RootPanel.get("indexContainer"));
 		indexPresenter.go(root);

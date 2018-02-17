@@ -38,7 +38,7 @@ public class SearchScheduleViewImpl extends BaseViewImpl<SearchSchedulePresenter
 		searchBar.addKeyDownHandler(new KeyDownHandler() {
 	        public void onKeyDown(KeyDownEvent event) {
 	            if (event.getNativeKeyCode() == KeyCodes.KEY_ENTER) {
-	              results();
+	              presenter.results();
 	            }
 	          }
 	        });
@@ -113,33 +113,4 @@ public class SearchScheduleViewImpl extends BaseViewImpl<SearchSchedulePresenter
 		this.presenter = presenter;
 	}
 	
-	
-	
-	public void results() {
-		// TODO : pass these terms for SQL queries
-		final String queryTerm = searchBar.getText().trim();
-		String searchBy = "";
-		if (byFaculty.getValue()) {
-			searchBy = "faculty";
-		}
-		else if (byCourse.getValue()){
-			searchBy = "course";
-		}
-		else if (bySemester.getValue()) {
-			searchBy = "semester";
-		}
-		else if (byScheduleName.getValue()) {
-			searchBy = "name";
-		}
-		GWT.log(queryTerm + " " + searchBy);
-	      
-		final Injector injector = Injector.INSTANCE;
-		
-		IndexPresenterImpl indexPresenter = injector.getIndexPresenter(); // on-demand injection
-		IndexView indexView = indexPresenter.getView();		
-
-
-		ScheduleListPresenterImpl scheduleListPresenter = injector.getScheduleListPresenter();
-		scheduleListPresenter.go(indexView.getViewRootPanel());
-	}
 }

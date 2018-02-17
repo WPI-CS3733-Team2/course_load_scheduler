@@ -5,4 +5,5 @@ public interface SearchSchedulePresenter extends BasePresenter
 {
 	IndexPresenter getParentPresenter();
 	void setParentPresenter(IndexPresenter parentPresenter);
+	void results();
 }

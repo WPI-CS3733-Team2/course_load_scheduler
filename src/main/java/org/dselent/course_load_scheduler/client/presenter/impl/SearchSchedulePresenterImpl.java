@@ -1,8 +1,7 @@
 package org.dselent.course_load_scheduler.client.presenter.impl;
 
-import java.util.ArrayList;
-import java.util.List;
-
+import org.dselent.course_load_scheduler.client.action.SearchScheduleAction;
+import org.dselent.course_load_scheduler.client.event.SearchScheduleEvent;
 import org.dselent.course_load_scheduler.client.presenter.IndexPresenter;
 import org.dselent.course_load_scheduler.client.presenter.SearchSchedulePresenter;
 import org.dselent.course_load_scheduler.client.view.SearchScheduleView;
@@ -36,8 +35,6 @@ public class SearchSchedulePresenterImpl extends BasePresenterImpl implements Se
 	{
 		HandlerRegistration registration;
 		
-		//registration = eventBus.addHandler(InvalidLoginEvent.TYPE, this);
-		//eventBusRegistration.put(InvalidLoginEvent.TYPE, registration);
 	}
 		
 	@Override
@@ -63,6 +60,28 @@ public class SearchSchedulePresenterImpl extends BasePresenterImpl implements Se
 	public void setParentPresenter(IndexPresenter parentPresenter)
 	{
 		this.parentPresenter = parentPresenter;
+	}
+	
+	public void results() {
+		// TODO : pass these terms for SQL queries
+		final String queryTerm = view.getSearchBar().getText().trim();
+		String searchBy = "";
+		if (view.getByFaculty().getValue()) {
+			searchBy = "faculty";
+		}
+		else if (view.getByCourse().getValue()){
+			searchBy = "course";
+		}
+		else if (view.getBySemester().getValue()) {
+			searchBy = "semester";
+		}
+		else if (view.getByScheduleName().getValue()) {
+			searchBy = "name";
+		}
+	      
+		SearchScheduleAction ssa = new SearchScheduleAction(queryTerm, searchBy);
+		SearchScheduleEvent sse = new SearchScheduleEvent(ssa);
+		eventBus.fireEvent(sse);
 	}
 	
 }
