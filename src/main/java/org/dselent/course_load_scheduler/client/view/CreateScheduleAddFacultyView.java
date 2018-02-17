@@ -18,4 +18,5 @@ public interface CreateScheduleAddFacultyView extends BaseView<CreateScheduleAdd
 	Button getNextPageButton();
 	void setNextPageButton(Button nextPageButton);
 	void addFaculty(List<String> names);
+	String getCheckedFaculty();
 }

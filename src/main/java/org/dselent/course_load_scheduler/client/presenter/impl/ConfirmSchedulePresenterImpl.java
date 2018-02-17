@@ -157,6 +157,7 @@ public class ConfirmSchedulePresenterImpl extends BasePresenterImpl implements C
 	@Override
 	public void onConfirmSchedulePage(ConfirmSchedulePageEvent evt) {
 		this.go(parentPresenter.getView().getViewRootPanel());
+		String faculty = "Faculty: " + evt.getAction().getFaculty() + "\n";
 		ListIterator<Course> iterator = evt.getAction().getCourses().listIterator(0);
 		String courseList = "Courses: ";
 		Course course;
@@ -167,6 +168,7 @@ public class ConfirmSchedulePresenterImpl extends BasePresenterImpl implements C
 				courseList = courseList.concat(", ");
 			}
 		}
-		view.getCourseInformationBox().setText(courseList);
+		String informationString = faculty.concat(courseList);
+		view.getCourseInformationBox().setText(informationString);
 	}
 }

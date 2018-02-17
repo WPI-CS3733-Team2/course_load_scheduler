@@ -74,7 +74,7 @@ public class CreateScheduleAddFacultyPresenterImpl extends BasePresenterImpl imp
 	}
 	
 	public void fireConfirmSchedulePage() {
-		ConfirmSchedulePageAction csa = new ConfirmSchedulePageAction(courses);
+		ConfirmSchedulePageAction csa = new ConfirmSchedulePageAction(courses,view.getCheckedFaculty());
 		ConfirmSchedulePageEvent cse = new ConfirmSchedulePageEvent(csa);
 		eventBus.fireEvent(cse);
 	}
