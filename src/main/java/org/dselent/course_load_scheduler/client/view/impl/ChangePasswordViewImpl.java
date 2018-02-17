@@ -119,18 +119,16 @@ public class ChangePasswordViewImpl extends BaseViewImpl<ChangePasswordPresenter
 	
 	@Override
 	public void hideWindow() {
-		if (this.changePasswordPopupPanel.isShowing()){
-			changePasswordPopupPanel.hide();
-			changePasswordPopupPanel.getElement().getStyle().setVisibility(Style.Visibility.HIDDEN);
-		}
+		//changePasswordPopupPanel.hide();
+		changePasswordPopupPanel.setVisible(false);
+		//changePasswordPopupPanel.getElement().getStyle().setVisibility(Style.Visibility.HIDDEN);
 	}
 	
 	@Override
 	public void showWindow() {
-		if (!this.changePasswordPopupPanel.isShowing()) {
-			changePasswordPopupPanel.show();
-			changePasswordPopupPanel.getElement().getStyle().setVisibility(Style.Visibility.VISIBLE);
-		}
+		//changePasswordPopupPanel.show();
+		changePasswordPopupPanel.setVisible(true);
+		//changePasswordPopupPanel.getElement().getStyle().setZIndex(1);
 	}
 	
 	@Override
