@@ -4,6 +4,7 @@ import org.dselent.course_load_scheduler.client.presenter.IndexPresenter;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.ListIterator;
 
 import org.dselent.course_load_scheduler.client.action.InvalidLoginAction;
 import org.dselent.course_load_scheduler.client.action.CreateScheduleAction;
@@ -17,6 +18,7 @@ import org.dselent.course_load_scheduler.client.presenter.ConfirmSchedulePresent
 import org.dselent.course_load_scheduler.client.view.ConfirmScheduleView;
 import org.dselent.course_load_scheduler.client.view.LoginView;
 import org.dselent.course_load_scheduler.client.model.Schedule;
+import org.dselent.course_load_scheduler.client.model.Course;
 
 import com.google.gwt.core.client.GWT;
 //import org.dselent.course_load_scheduler.client.view.TextBox;
@@ -29,6 +31,7 @@ public class ConfirmSchedulePresenterImpl extends BasePresenterImpl implements C
 	private IndexPresenter parentPresenter;
 	private ConfirmScheduleView view;
 	private boolean scheduleCreationInProgress;
+	private List<Course> courses;
 	
 	@Inject
 	public ConfirmSchedulePresenterImpl(IndexPresenter parentPresenter, ConfirmScheduleView view)
@@ -150,8 +153,20 @@ public class ConfirmSchedulePresenterImpl extends BasePresenterImpl implements C
 	}
 	
 	//Navigate to this page
+	//Displays schedule information
 	@Override
 	public void onConfirmSchedulePage(ConfirmSchedulePageEvent evt) {
 		this.go(parentPresenter.getView().getViewRootPanel());
+		ListIterator<Course> iterator = evt.getAction().getCourses().listIterator(0);
+		String courseList = "Courses: ";
+		Course course;
+		while(iterator.hasNext()) {
+			course = iterator.next();
+			courseList = courseList.concat(course.getCourseName() + " " + course.getCourseNumber().toString());
+			if(iterator.hasNext()) {
+				courseList = courseList.concat(", ");
+			}
+		}
+		view.getCourseInformationBox().setText(courseList);
 	}
 }

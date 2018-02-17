@@ -4,10 +4,12 @@ import org.dselent.course_load_scheduler.client.presenter.ConfirmSchedulePresent
 import org.dselent.course_load_scheduler.client.presenter.IndexPresenter;
 
 import com.google.gwt.user.client.ui.TextBox;
+import com.google.gwt.user.client.ui.TextArea;
 import com.google.gwt.user.client.ui.Button;
 
 public interface ConfirmScheduleView extends BaseView<ConfirmSchedulePresenter>{
 	void showErrorMessages(String errorMessages);
 	TextBox getScheduleNameBox();
 	Button getConfirmScheduleButton();
+	TextArea getCourseInformationBox();
 }

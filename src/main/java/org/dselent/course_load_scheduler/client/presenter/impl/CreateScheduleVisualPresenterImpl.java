@@ -26,6 +26,7 @@ public class CreateScheduleVisualPresenterImpl extends BasePresenterImpl impleme
 	private IndexPresenter parentPresenter;
 	private CreateScheduleVisualView view;
 	private List<Calendar> calendars = new ArrayList<Calendar>();
+	private List<Course> courses;
 
 	@Inject
 	public CreateScheduleVisualPresenterImpl(IndexPresenter parentPresenter, CreateScheduleVisualView view)
@@ -228,14 +229,15 @@ public class CreateScheduleVisualPresenterImpl extends BasePresenterImpl impleme
 	}
 	
 	public void fireCreateScheduleSelectFaculty() {
-		CreateScheduleSelectFacultyAction cssfa = new CreateScheduleSelectFacultyAction();
+		CreateScheduleSelectFacultyAction cssfa = new CreateScheduleSelectFacultyAction(courses);
 		CreateScheduleSelectFacultyEvent cssfe = new CreateScheduleSelectFacultyEvent(cssfa);
 		eventBus.fireEvent(cssfe);
 	}
 	
 	@Override
 	public void onCreateScheduleSelectCourses(CreateScheduleSelectCoursesEvent evt) {
-		List<Course> courseList = evt.getAction().getCourses();
+		//List<Course> courseList = evt.getAction().getCourses();
+		courses = evt.getAction().getCourses();
 		//will get calendars from sections from courses
 		this.go(parentPresenter.getView().getViewRootPanel());
 	}
