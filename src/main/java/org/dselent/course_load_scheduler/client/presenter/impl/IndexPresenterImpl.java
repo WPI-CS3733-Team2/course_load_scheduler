@@ -11,9 +11,11 @@ import org.dselent.course_load_scheduler.client.event.AdminCourseEvent;
 import org.dselent.course_load_scheduler.client.event.CreateScheduleNavigationEvent;
 import org.dselent.course_load_scheduler.client.event.FacultyCourseEvent;
 import org.dselent.course_load_scheduler.client.event.FacultyCourseNavigationEvent;
+import org.dselent.course_load_scheduler.client.event.RequestInboxNavigationEvent;
 import org.dselent.course_load_scheduler.client.event.SearchScheduleNavigationEvent;
 import org.dselent.course_load_scheduler.client.action.CreateScheduleNavigationAction;
 import org.dselent.course_load_scheduler.client.action.FacultyCourseNavigationAction;
+import org.dselent.course_load_scheduler.client.action.RequestInboxNavigationAction;
 import org.dselent.course_load_scheduler.client.action.SearchScheduleNavigationAction;
 import org.dselent.course_load_scheduler.client.action.UserDetailsPageAction;
 import org.dselent.course_load_scheduler.client.action.UserSearchPageAction;
@@ -22,9 +24,7 @@ import org.dselent.course_load_scheduler.client.event.ViewScheduleNavigationEven
 import org.dselent.course_load_scheduler.client.gin.Injector;
 import org.dselent.course_load_scheduler.client.model.Course;
 import org.dselent.course_load_scheduler.client.model.Model;
-import org.dselent.course_load_scheduler.client.presenter.AccountDetailsPresenter;
 import org.dselent.course_load_scheduler.client.presenter.IndexPresenter;
-import org.dselent.course_load_scheduler.client.presenter.RequestInboxPresenter;
 import org.dselent.course_load_scheduler.client.view.IndexView;
 import com.google.gwt.dom.client.Style;
 import com.google.gwt.user.client.Command;
@@ -47,14 +47,6 @@ public class IndexPresenterImpl extends BasePresenterImpl implements IndexPresen
 				UserDetailsPageAction udpa = new UserDetailsPageAction();
 				AccountDetailsEvent ade = new AccountDetailsEvent(udpa);
 				eventBus.fireEvent(ade);
-				/*final Injector injector = Injector.INSTANCE;
-				
-				IndexPresenterImpl indexPresenter = injector.getIndexPresenter(); // on-demand injection
-				IndexView indexView = indexPresenter.getView();		
-				
-				AccountDetailsPresenter accountDetailsPresenter = injector.getAccountDetailsPresenter();
-				
-				accountDetailsPresenter.go(indexView.getViewRootPanel());*/
 			}
 		});
 		
@@ -121,14 +113,9 @@ public class IndexPresenterImpl extends BasePresenterImpl implements IndexPresen
 		view.setRequestsCommand(new Command() {
 			@Override
 			public void execute() {	
-				final Injector injector = Injector.INSTANCE;
-				
-				IndexPresenterImpl indexPresenter = injector.getIndexPresenter(); // on-demand injection
-				IndexView indexView = indexPresenter.getView();		
-				
-				RequestInboxPresenter requestInboxPresenter = injector.getRequestInboxPresenter();
-				
-				requestInboxPresenter.go(indexView.getViewRootPanel());
+				RequestInboxNavigationAction rina = new RequestInboxNavigationAction();
+				RequestInboxNavigationEvent rine = new RequestInboxNavigationEvent(rina);
+				eventBus.fireEvent(rine);
 			}
 		});
 		

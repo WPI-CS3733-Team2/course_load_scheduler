@@ -1,11 +1,13 @@
 package org.dselent.course_load_scheduler.client.presenter.impl;
 
+import org.dselent.course_load_scheduler.client.event.RequestInboxNavigationEvent;
 import org.dselent.course_load_scheduler.client.presenter.BasePresenter;
 import org.dselent.course_load_scheduler.client.presenter.IndexPresenter;
 import org.dselent.course_load_scheduler.client.presenter.RequestInboxPresenter;
 import org.dselent.course_load_scheduler.client.view.BaseView;
 import org.dselent.course_load_scheduler.client.view.RequestInboxView;
 
+import com.google.gwt.event.shared.HandlerRegistration;
 import com.google.gwt.user.client.ui.HasWidgets;
 import com.google.inject.Inject;
 
@@ -31,6 +33,10 @@ public class RequestInboxPresenterImpl extends BasePresenterImpl implements Requ
 	@Override
 	public void bind() {
 		
+		HandlerRegistration registration;
+		
+		registration = eventBus.addHandler(RequestInboxNavigationEvent.TYPE, this);
+		eventBusRegistration.put(RequestInboxNavigationEvent.TYPE, registration);
 	}
 	
 	@Override
@@ -54,6 +60,11 @@ public class RequestInboxPresenterImpl extends BasePresenterImpl implements Requ
 	public void setParentPresenter(IndexPresenter parentPresenter)
 	{
 		this.parentPresenter = parentPresenter;
+	}
+	
+	@Override
+	public void onRequestInboxNavigation(RequestInboxNavigationEvent evt) {
+		this.go(parentPresenter.getView().getViewRootPanel());
 	}
 
 }
