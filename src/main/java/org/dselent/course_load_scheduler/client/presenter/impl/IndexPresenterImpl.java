@@ -4,15 +4,15 @@ import java.util.ArrayList;
 
 import javax.inject.Inject;
 
-import org.dselent.course_load_scheduler.client.action.AdminCourseAction;
+import org.dselent.course_load_scheduler.client.action.ViewCourseAction;
 import org.dselent.course_load_scheduler.client.event.AdminCourseEvent;
+import org.dselent.course_load_scheduler.client.event.FacultyCourseEvent;
 import org.dselent.course_load_scheduler.client.action.UserSearchPageAction;
 import org.dselent.course_load_scheduler.client.event.UserSearchPageEvent;
 import org.dselent.course_load_scheduler.client.gin.Injector;
 import org.dselent.course_load_scheduler.client.model.Course;
 import org.dselent.course_load_scheduler.client.model.Model;
 import org.dselent.course_load_scheduler.client.presenter.AccountDetailsPresenter;
-import org.dselent.course_load_scheduler.client.presenter.BasePresenter;
 import org.dselent.course_load_scheduler.client.presenter.IndexPresenter;
 import org.dselent.course_load_scheduler.client.presenter.RequestInboxPresenter;
 import org.dselent.course_load_scheduler.client.presenter.ScheduleListPresenter;
@@ -94,26 +94,20 @@ public class IndexPresenterImpl extends BasePresenterImpl implements IndexPresen
 			public void execute() {
 				final Injector injector = Injector.INSTANCE;
 				
-				IndexPresenterImpl indexPresenter = injector.getIndexPresenter(); // on-demand injection
-				IndexView indexView = indexPresenter.getView();		
-				
 				String userRole = injector.getAccountDetailsPresenter().getUserType();
 				
-				BasePresenter coursePresenter;
-				
-				if(userRole.equals("Faculty")) {
-					/*coursePresenter = injector.getFacultyCoursePresenter();
-					coursePresenter.init();
-					coursePresenter.go(indexView.getViewRootPanel());*/
-					AdminCourseAction aca = new AdminCourseAction(new ArrayList<Course>());
-					AdminCourseEvent ace = new AdminCourseEvent(aca);
+				boolean testing = true;
+				if (userRole.equals("Admin") || testing){
+					ViewCourseAction vca = new ViewCourseAction(new ArrayList<Course>());
+					AdminCourseEvent ace = new AdminCourseEvent(vca);
 					eventBus.fireEvent(ace);
+				} 
+				else if(userRole.equals("Faculty")) {
+					ViewCourseAction vca = new ViewCourseAction(new ArrayList<Course>());
+					FacultyCourseEvent fce = new FacultyCourseEvent(vca);
+					eventBus.fireEvent(fce);
 				}
-				else if (userRole.equals("Admin")){
-					AdminCourseAction aca = new AdminCourseAction(new ArrayList<Course>());
-					AdminCourseEvent ace = new AdminCourseEvent(aca);
-					eventBus.fireEvent(ace);
-				} else {
+				else {
 					//TODO exception needed: user role from database doesn't match either "Faculty" or "Admin".
 				}
 			}

@@ -83,7 +83,7 @@
 				<g:row>
 					<g:customCell>
 						<g:FlowPanel height="151px">
-							<p1:CellTable ui:field="sectionTable" height="50px" pageSize="1"/>
+							<p1:CellTable ui:field="sectionTable" height="50px"/>
 						</g:FlowPanel>
 					</g:customCell>
 				</g:row>

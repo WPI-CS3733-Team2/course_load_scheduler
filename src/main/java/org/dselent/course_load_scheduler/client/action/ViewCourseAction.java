@@ -12,36 +12,36 @@ import org.dselent.course_load_scheduler.client.model.Course;
  * @author dselent
  *
  */
-public class AdminCourseAction 
+public class ViewCourseAction 
 {
 	private List<Course> courses;
 	
-	public AdminCourseAction()
+	public ViewCourseAction()
 	{
 		courses = new ArrayList<>();
 	}
 	
-	public AdminCourseAction(List<Course> courses)
+	public ViewCourseAction(List<Course> courses)
 	{
 		this.courses = courses;
 	}
 
-	public boolean addReasons(List<Course> courses)
+	public boolean addCourses(List<Course> courses)
 	{
 		return this.courses.addAll(courses);
 	}
 	
-	public void addReason(Course course)
+	public void addCourse(Course course)
 	{
 		courses.add(course);
 	}
 	
-	public Course getReason(int index)
+	public Course getCourse(int index)
 	{
 		return courses.get(index);
 	}
 	
-	public int getNumberOfReasons()
+	public int getNumberOfCourses()
 	{
 		return courses.size();
 	}
