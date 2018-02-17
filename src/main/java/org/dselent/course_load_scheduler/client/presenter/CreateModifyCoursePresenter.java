@@ -5,4 +5,5 @@ public interface CreateModifyCoursePresenter extends BasePresenter {
 	public void removeSection();
 	public void createModifyCourseSubmit();
 	public void clearForm();
+	public void clearSectionForm();
 }
