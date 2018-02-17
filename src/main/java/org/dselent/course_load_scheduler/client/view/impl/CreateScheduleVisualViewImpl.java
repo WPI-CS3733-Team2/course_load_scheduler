@@ -145,15 +145,10 @@ public class CreateScheduleVisualViewImpl extends BaseViewImpl<CreateScheduleVis
 		presenter.updateGrid();
 	}
 	
+	
 	@UiHandler("nextPageButton")
 	void onSubmitBtnClick(ClickEvent event) {
-		final Injector injector = Injector.INSTANCE;
-		
-		IndexPresenterImpl indexPresenter = injector.getIndexPresenter(); // on-demand injection
-		IndexView indexView = indexPresenter.getView();		
-
-		CreateScheduleAddFacultyPresenterImpl createScheduleAddFacultyPresenter = injector.getCreateScheduleAddFacultyPresenter();
-		createScheduleAddFacultyPresenter.go(indexView.getViewRootPanel());
+		presenter.fireCreateScheduleSelectFaculty();
 	}
 	
 }

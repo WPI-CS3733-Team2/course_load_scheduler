@@ -5,10 +5,18 @@ import java.util.ArrayList;
 import javax.inject.Inject;
 
 import org.dselent.course_load_scheduler.client.action.ViewCourseAction;
+import org.dselent.course_load_scheduler.client.action.ViewScheduleNavigationAction;
 import org.dselent.course_load_scheduler.client.event.AdminCourseEvent;
+import org.dselent.course_load_scheduler.client.event.CreateScheduleNavigationEvent;
 import org.dselent.course_load_scheduler.client.event.FacultyCourseEvent;
+import org.dselent.course_load_scheduler.client.event.ScheduleSpecificsEvent;
+import org.dselent.course_load_scheduler.client.event.SearchScheduleNavigationEvent;
+import org.dselent.course_load_scheduler.client.action.CreateScheduleNavigationAction;
+import org.dselent.course_load_scheduler.client.action.ScheduleSpecificsAction;
+import org.dselent.course_load_scheduler.client.action.SearchScheduleNavigationAction;
 import org.dselent.course_load_scheduler.client.action.UserSearchPageAction;
 import org.dselent.course_load_scheduler.client.event.UserSearchPageEvent;
+import org.dselent.course_load_scheduler.client.event.ViewScheduleNavigationEvent;
 import org.dselent.course_load_scheduler.client.gin.Injector;
 import org.dselent.course_load_scheduler.client.model.Course;
 import org.dselent.course_load_scheduler.client.model.Model;
@@ -50,40 +58,27 @@ public class IndexPresenterImpl extends BasePresenterImpl implements IndexPresen
 		view.setViewScheduleCommand(new Command() {
 			@Override
 			public void execute() {	
-				final Injector injector = Injector.INSTANCE;
-				
-				IndexPresenterImpl indexPresenter = injector.getIndexPresenter(); // on-demand injection
-				IndexView indexView = indexPresenter.getView();		
-				
-				ScheduleListPresenter scheduleListPresenter = injector.getScheduleListPresenter();
-				
-				scheduleListPresenter.go(indexView.getViewRootPanel());
+				ViewScheduleNavigationAction vsna = new ViewScheduleNavigationAction();
+				ViewScheduleNavigationEvent vsne = new ViewScheduleNavigationEvent(vsna);
+				eventBus.fireEvent(vsne); 
 			}
 		});
 		
 		view.setSearchScheduleCommand(new Command() {
 			@Override
 			public void execute() {	
-				final Injector injector = Injector.INSTANCE;
-				
-				IndexPresenterImpl indexPresenter = injector.getIndexPresenter(); // on-demand injection
-				IndexView indexView = indexPresenter.getView();		
-				
-				SearchSchedulePresenter searchSchedulePresenter = injector.getSearchSchedulePresenter();
-				
-				searchSchedulePresenter.go(indexView.getViewRootPanel());
+				SearchScheduleNavigationAction ssna = new SearchScheduleNavigationAction();
+				SearchScheduleNavigationEvent ssne = new SearchScheduleNavigationEvent(ssna);
+				eventBus.fireEvent(ssne); 
 			}
 		});
 		
 		view.setCreateScheduleCommand(new Command() {
 			@Override
 			public void execute() {	
-				final Injector injector = Injector.INSTANCE;
-				
-				IndexPresenterImpl indexPresenter = injector.getIndexPresenter(); // on-demand injection
-				IndexView indexView = indexPresenter.getView();		
-				
-				// TODO : create schedule first page 
+				CreateScheduleNavigationAction csna = new CreateScheduleNavigationAction();
+				CreateScheduleNavigationEvent csne = new CreateScheduleNavigationEvent(csna);
+				eventBus.fireEvent(csne); 
 				
 			}
 		});

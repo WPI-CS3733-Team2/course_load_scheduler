@@ -18,9 +18,14 @@ import org.dselent.course_load_scheduler.client.event.InvalidAddSectionEvent;
 import org.dselent.course_load_scheduler.client.event.AdminCourseEvent;
 import org.dselent.course_load_scheduler.client.event.ConfirmSchedulePageEvent;
 import org.dselent.course_load_scheduler.client.event.CreateScheduleEvent;
+import org.dselent.course_load_scheduler.client.event.CreateScheduleNavigationEvent;
+import org.dselent.course_load_scheduler.client.event.CreateScheduleSelectCoursesEvent;
+import org.dselent.course_load_scheduler.client.event.CreateScheduleSelectFacultyEvent;
 import org.dselent.course_load_scheduler.client.event.SearchCourseEvent;
 import org.dselent.course_load_scheduler.client.event.SearchScheduleEvent;
+import org.dselent.course_load_scheduler.client.event.SearchScheduleNavigationEvent;
 import org.dselent.course_load_scheduler.client.event.UserSearchPageEvent;
+import org.dselent.course_load_scheduler.client.event.ViewScheduleNavigationEvent;
 import org.dselent.course_load_scheduler.client.event.UserCreatePageEvent;
 import org.dselent.course_load_scheduler.client.event.UserDetailsPageEvent;
 
@@ -40,9 +45,9 @@ public abstract class EventHandlerAdapter implements InvalidLoginEventHandler, S
 		ModifyCourseEventHandler, SearchCourseEventHandler, AdminCourseEventHandler, FacultyCourseEventHandler,
 		InvalidAddSectionEventHandler, InvalidSubmitCourseEventHandler, UserSearchPageEventHandler,
 		UserCreatePageEventHandler, UserDetailsPageEventHandler, ConfirmSchedulePageEventHandler,
-		RequestCourseEventHandler, InvalidSubmitRequestEventHandler, SearchScheduleEventHandler,
-		ScheduleSpecificsEventHandler {
-	
+		SearchScheduleEventHandler, ScheduleSpecificsEventHandler, CreateScheduleSelectCoursesEventHandler, 
+		CreateScheduleSelectFacultyEventHandler, RequestCourseEventHandler, InvalidSubmitRequestEventHandler,
+		CreateScheduleNavigationEventHandler, SearchScheduleNavigationEventHandler, ViewScheduleNavigationEventHandler {
 	@Override
 	public void onInvalidLogin(InvalidLoginEvent evt) {}
 	
@@ -107,8 +112,23 @@ public abstract class EventHandlerAdapter implements InvalidLoginEventHandler, S
 	public void onInvalidSubmitCourse(InvalidSubmitCourseEvent evt) {}
 	
 	@Override
+	public void onCreateScheduleSelectCourses(CreateScheduleSelectCoursesEvent evt) {}
+
+	@Override
+	public void onCreateScheduleSelectFaculty(CreateScheduleSelectFacultyEvent evt) {}
+	
+	@Override
 	public void onRequestCourse(RequestCourseEvent evt) {}
 	
 	@Override
 	public void onInvalidSubmitRequest(InvalidSubmitRequestEvent evt) {}
+	
+	@Override
+	public void onCreateScheduleNavigation(CreateScheduleNavigationEvent evt) {}
+	
+	@Override
+	public void onSearchScheduleNavigation(SearchScheduleNavigationEvent evt) {}
+	
+	@Override
+	public void onViewScheduleNavigation(ViewScheduleNavigationEvent evt) {}
 }

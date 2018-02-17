@@ -37,12 +37,7 @@
 			<g:TextBox ui:field="searchTextBox" addStyleNames="{style.search-textbox}" width="644px" text="Search for courses..."/>
 		</g:FlowPanel>
 			<g:FlowPanel>
-				<g:VerticalPanel width="740px" height="257px">
-					<g:CheckBox text="CS 1101" width="109px" addStyleNames="{style.course-checkBox}"/>
-					<g:CheckBox text="CS 2011" width="109px" addStyleNames="{style.course-checkBox}"/>
-					<g:CheckBox text="CS 3000" width="109px" addStyleNames="{style.course-checkBox}"/>
-					<g:CheckBox text="CS 3700" width="109px" addStyleNames="{style.course-checkBox}"/>
-					<g:CheckBox text="CS 3733" width="109px" addStyleNames="{style.course-checkBox}"/>
+				<g:VerticalPanel width="740px" height="257px" ui:field="coursesVerticalPanel">
 				</g:VerticalPanel>
 			</g:FlowPanel>
 		

@@ -115,12 +115,12 @@
     	margin-left:50%;
     	margin-right:50%;
     	z-index: 1;
-    	visibility:hidden;
+    	visibility:visible;
 	}
 
 	</ui:style>
 	<g:HTMLPanel>
-	<d:ChangePasswordViewImpl ui:field="changePasswordPopupPanel" addStyleNames="{style.loading-glass-panel},{style.loading-popup},{style.gwt-popup-panel-glass}" width="500"/>
+	<d:ChangePasswordViewImpl ui:field="changePasswordPopupPanel" addStyleNames="{style.loading-popup}" width="500"/>
 	<g:VerticalPanel ui:field="accountDetailsPanel" addStyleNames="{style.accountDetails-panel},{style.center}" horizontalAlignment="center" width="500px">
 		<g:Grid height="37px">
 			<g:row>

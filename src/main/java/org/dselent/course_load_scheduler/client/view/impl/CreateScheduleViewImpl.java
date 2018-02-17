@@ -1,5 +1,8 @@
 package org.dselent.course_load_scheduler.client.view.impl;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.dselent.course_load_scheduler.client.gin.Injector;
 import org.dselent.course_load_scheduler.client.model.Calendar;
 import org.dselent.course_load_scheduler.client.presenter.CreateSchedulePresenter;
@@ -16,6 +19,7 @@ import com.google.gwt.uibinder.client.UiField;
 import com.google.gwt.uibinder.client.UiHandler;
 import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.ui.Button;
+import com.google.gwt.user.client.ui.CheckBox;
 import com.google.gwt.user.client.ui.Composite;
 import com.google.gwt.user.client.ui.HasText;
 import com.google.gwt.user.client.ui.HasWidgets;
@@ -39,6 +43,9 @@ public class CreateScheduleViewImpl extends BaseViewImpl<CreateSchedulePresenter
 	
 	@UiField
 	Button nextButton;
+	
+	@UiField
+	VerticalPanel coursesVerticalPanel;
 
 	public CreateScheduleViewImpl() {
 		initWidget(uiBinder.createAndBindUi(this));
@@ -54,35 +61,52 @@ public class CreateScheduleViewImpl extends BaseViewImpl<CreateSchedulePresenter
 		return this;
 	}
 
-	@Override
 	public HasWidgets getViewRootPanel() {
 		return createSchedulePanel;
 	}
 	
-	@Override
 	public TextBox getSearchTextBox() {
 		return searchTextBox;
 	}
-	
-	@Override
+
 	public void setSearchTextbox(TextBox searchTextBox) {
 		this.searchTextBox = searchTextBox;
 	}
 	
-	@Override
 	public Button getNextButton() {
 		return nextButton;
 	}
 
+	public VerticalPanel getCoursesVerticalPanel() {
+		return coursesVerticalPanel;
+	}
+
+	public void setCoursesVerticalPanel(VerticalPanel coursesVerticalPanel) {
+		this.coursesVerticalPanel = coursesVerticalPanel;
+	}
+	
+	public void addCourses(List<String> names) {
+		for (String name : names) {
+			CheckBox checkBox = new CheckBox(name);
+			coursesVerticalPanel.add(checkBox);
+		}
+	}
+	
+	public List<String> getCheckedCourses() {
+		List<String> checkedCourses = new ArrayList<String>();
+		for (Widget widget : coursesVerticalPanel) {
+			if (widget instanceof CheckBox){
+			    CheckBox checkBox = (CheckBox) widget;
+			    if (checkBox.getValue()) {
+			    	checkedCourses.add(checkBox.getText());
+			    }
+			}
+		}
+		return checkedCourses;
+	}
+
 	@UiHandler("nextButton")
-	void onButtonClick(ClickEvent event) {
-		final Injector injector = Injector.INSTANCE;
-		
-		IndexPresenterImpl indexPresenter = injector.getIndexPresenter(); // on-demand injection
-		IndexView indexView = indexPresenter.getView();		
-
-
-		CreateScheduleVisualPresenterImpl createScheduleVisualPresenter = injector.getCreateScheduleVisualPresenter();
-		createScheduleVisualPresenter.go(indexView.getViewRootPanel());
+	public void onButtonClick(ClickEvent event) {
+		presenter.goToNextPage(getCheckedCourses());
 	}
 }
