@@ -133,8 +133,6 @@ public class UserSearchPresenterImpl extends BasePresenterImpl implements UserSe
 	
 	//Navigate to create users page
 	public void toCreateUsers(){
-		/*final Injector injector = Injector.INSTANCE;
-		UserCreatePresenterImpl userCreatePresenter = injector.getUserCreatePresenter();*/
 		/*NavigateAction na = new NavigateAction(userCreatePresenter);
 		NavigateEvent ne = new NavigateEvent(na);
 		eventBus.fireEvent(ne);*/
