@@ -20,26 +20,17 @@
 		<g:Grid>
 			<g:row>
 				<g:customCell>
-					<g:Grid ui:field="checkBoxGrid">
-						<g:row>
-							<g:customCell>
-								<g:Label text="Terms"/>
-							</g:customCell>
-						</g:row>
-						<g:row>
-							<g:customCell>
-								<g:SimpleCheckBox width="28px" height="25px" ui:field="termCheckBox"/>
-							</g:customCell>
-						</g:row>
-					</g:Grid>
+					<g:Label text="Course Sections:"/>
 				</g:customCell>
 				<g:customCell>
-					<g:FlowPanel width="247px">
-						<p1:CellTable ui:field="sectionTable" height="50px" pageSize="1"/>
+					<g:FlowPanel width="500px" height="200px">
+						<p1:CellTable ui:field="sectionTable" height="50px" pageSize="10"/>
 					</g:FlowPanel>
 				</g:customCell>
+			</g:row>
+			<g:row>
 				<g:customCell>
-					<g:Label text="Times:"/>
+					<g:Label text="Available Times:"/>
 				</g:customCell>
 				<g:customCell>
 					<g:Grid>

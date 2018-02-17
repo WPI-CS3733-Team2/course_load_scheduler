@@ -1,37 +1,33 @@
 package org.dselent.course_load_scheduler.client.view.impl;
 
-import org.dselent.course_load_scheduler.client.gin.Injector;
+import java.util.List;
+
+import org.dselent.course_load_scheduler.client.model.Section;
 import org.dselent.course_load_scheduler.client.presenter.RequestCoursePresenter;
-import org.dselent.course_load_scheduler.client.presenter.impl.FacultyCoursePresenterImpl;
-import org.dselent.course_load_scheduler.client.presenter.impl.IndexPresenterImpl;
-import org.dselent.course_load_scheduler.client.presenter.impl.RequestCoursePresenterImpl;
-import org.dselent.course_load_scheduler.client.view.IndexView;
 import org.dselent.course_load_scheduler.client.view.RequestCourseView;
 
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.uibinder.client.UiBinder;
 import com.google.gwt.user.client.ui.HasWidgets;
 import com.google.gwt.user.client.ui.Widget;
+import com.google.gwt.view.client.SelectionModel;
 import com.google.gwt.uibinder.client.UiField;
 import com.google.gwt.user.cellview.client.CellTable;
+import com.google.gwt.user.cellview.client.TextColumn;
 import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.ui.Button;
 import com.google.gwt.uibinder.client.UiHandler;
 import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.user.client.ui.HTMLPanel;
-import com.google.gwt.user.client.ui.TextBox;
-import com.google.gwt.user.client.ui.SimpleCheckBox;
 import com.google.gwt.user.client.ui.CheckBox;
-import com.google.gwt.user.client.ui.Grid;
 import com.google.gwt.user.client.ui.Label;
 
 public class RequestCourseViewImpl extends BaseViewImpl<RequestCoursePresenter> implements RequestCourseView {
 
 	private static RequestCourseViewImplUiBinder uiBinder = GWT.create(RequestCourseViewImplUiBinder.class);
-	@UiField(provided=true) CellTable<Object> sectionTable = new CellTable<Object>();
+	@UiField(provided=true) CellTable<Section> sectionTable = new CellTable<Section>();
 	@UiField Button submitBtn;
 	@UiField HTMLPanel requestCoursePanel;
-	@UiField SimpleCheckBox termCheckBox;
 	@UiField CheckBox eightToNineCB;
 	@UiField CheckBox nineToTenCB;
 	@UiField CheckBox tenToElevenCB;
@@ -43,26 +39,52 @@ public class RequestCourseViewImpl extends BaseViewImpl<RequestCoursePresenter> 
 	@UiField CheckBox fourToFiveCB;
 	@UiField CheckBox fiveToSixCB;
 	@UiField Button cancelBtn;
-	@UiField Grid checkBoxGrid;
 	@UiField Label courseNameLabel;
+	
+	public Label getCourseNameLabel() {
+		return courseNameLabel;
+	}
+
+	public void setCourseNameLabel(Label courseNameLabel) {
+		this.courseNameLabel = courseNameLabel;
+	}
+	
+	public void setCourseNameLabelText(String courseName) {
+		this.courseNameLabel.setText(courseName);
+	}
+
+	public Label getCourseNumberLabel() {
+		return courseNumberLabel;
+	}
+
+	public void setCourseNumberLabel(Label courseNumberLabel) {
+		this.courseNumberLabel = courseNumberLabel;
+	}
+	
+	public void setCourseNumberLabelText(String courseNumber) {
+		this.courseNumberLabel.setText(courseNumber);
+	}
+
 	@UiField Label courseNumberLabel;
 	
-	public CellTable<Object> getSectionTable() {
+	public CellTable<Section> getSectionTable() {
 		return sectionTable;
 	}
 
-	public void setSectionTable(CellTable<Object> sectionTable) {
+	public void setSectionTable(CellTable<Section> sectionTable) {
 		this.sectionTable = sectionTable;
 	}
 	
-	public SimpleCheckBox getTermCheckBox() {
-		return termCheckBox;
+	public void addRowsToSectionTable(List<Section> sections) {
+		int rowCount = sectionTable.getRowCount();
+		sectionTable.setRowCount(rowCount + sections.size(), true);
+		sectionTable.setRowData(rowCount, sections);
 	}
 
-	public void setTermCheckBox(SimpleCheckBox termCheckBox) {
-		this.termCheckBox = termCheckBox;
+	public void setSectionTableSelectionModel(SelectionModel<Section> selectionModel) {
+		sectionTable.setSelectionModel(selectionModel);
 	}
-
+	
 	public CheckBox getEightToNineCB() {
 		return eightToNineCB;
 	}
@@ -142,6 +164,19 @@ public class RequestCourseViewImpl extends BaseViewImpl<RequestCoursePresenter> 
 	public void setFiveToSixCB(CheckBox fiveToSixCB) {
 		this.fiveToSixCB = fiveToSixCB;
 	}
+	
+	public void uncheckAllCB() {
+		eightToNineCB.setValue(false);
+		nineToTenCB.setValue(false);
+		tenToElevenCB.setValue(false);
+		elevenToTwelveCB.setValue(false);
+		twelveToOneCB.setValue(false);
+		oneToTwoCB.setValue(false);
+		twoToThreeCB.setValue(false);
+		threeToFourCB.setValue(false);
+		fourToFiveCB.setValue(false);
+		fiveToSixCB.setValue(false);
+	}
 
 	RequestCoursePresenter presenter;
 
@@ -150,6 +185,48 @@ public class RequestCourseViewImpl extends BaseViewImpl<RequestCoursePresenter> 
 
 	public RequestCourseViewImpl() {
 		initWidget(uiBinder.createAndBindUi(this));
+		
+		sectionTable.setRowCount(0);
+		TextColumn<Section> nameColumn = new TextColumn<Section>() {
+			@Override
+			public String getValue(Section object) {
+				return object.getSectionName();
+			}
+		};
+		sectionTable.addColumn(nameColumn, "Name");
+
+		TextColumn<Section> crnColumn = new TextColumn<Section>() {
+			@Override
+			public String getValue(Section object) {
+				return Integer.toString(object.getCrn());
+			}
+		};
+		sectionTable.addColumn(crnColumn, "CRN");
+
+		TextColumn<Section> typeColumn = new TextColumn<Section>() {
+			@Override
+			public String getValue(Section object) {
+				return object.getType();
+			}
+		};
+		sectionTable.addColumn(typeColumn, "Type");
+
+		TextColumn<Section> populationColumn = new TextColumn<Section>() {
+			@Override
+			public String getValue(Section object) {
+				return Integer.toString(object.getExpectedPopulation());
+			}
+		};
+		sectionTable.addColumn(populationColumn, "Population");
+
+		TextColumn<Section> frequencyColumn = new TextColumn<Section>() {
+			@Override
+			public String getValue(Section object) {
+				return Integer.toString(object.getFrequency());
+			}
+		};
+		sectionTable.addColumn(frequencyColumn, "Frequency");
+		sectionTable.setWidth("500px");
 	}
 	
 	@Override
@@ -176,22 +253,12 @@ public class RequestCourseViewImpl extends BaseViewImpl<RequestCoursePresenter> 
 	
 	@UiHandler("submitBtn")
 	void onSubmitBtnClick(ClickEvent event) {
-		returnToFacultyCourseView();
+		this.presenter.requestCourseSubmit();
 	}
 	
 	@UiHandler("cancelBtn")
 	void onCancelBtnClick(ClickEvent event) {
-		returnToFacultyCourseView();
+		this.presenter.requestCourseCancel();
 	}
 	
-	public void returnToFacultyCourseView() {
-		final Injector injector = Injector.INSTANCE;
-		
-		IndexPresenterImpl indexPresenter = injector.getIndexPresenter(); // on-demand injection
-		IndexView indexView = indexPresenter.getView();		
-
-		FacultyCoursePresenterImpl facultyCoursePresenter = injector.getFacultyCoursePresenter();
-		
-		facultyCoursePresenter.go(indexView.getViewRootPanel());
-	}
 }

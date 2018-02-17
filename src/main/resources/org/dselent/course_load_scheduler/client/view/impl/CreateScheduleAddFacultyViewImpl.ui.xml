@@ -11,12 +11,12 @@
 			<g:Cell width="100%">
 				<g:Label text="Add a Faculty Member to Schedule" ui:field="facultyLabel" horizontalAlignment="ALIGN_CENTER"/>
 			</g:Cell>
-			<g:HorizontalPanel width="100%">
+		</g:VerticalPanel>
+		<g:HorizontalPanel width="100%">
 				<g:Cell horizontalAlignment="ALIGN_RIGHT">
 					<g:Button ui:field="nextPageButton" text="Next"/>
 				</g:Cell>
 			</g:HorizontalPanel>
-		</g:VerticalPanel>
 	
 	</g:HTMLPanel>
 </ui:UiBinder> 

@@ -1,17 +1,16 @@
 package org.dselent.course_load_scheduler.client.presenter.impl;
 
-import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
-import org.dselent.course_load_scheduler.client.model.Calendar;
+import org.dselent.course_load_scheduler.client.action.ConfirmSchedulePageAction;
+import org.dselent.course_load_scheduler.client.event.ConfirmSchedulePageEvent;
+import org.dselent.course_load_scheduler.client.event.CreateScheduleSelectCoursesEvent;
+import org.dselent.course_load_scheduler.client.event.CreateScheduleSelectFacultyEvent;
+import org.dselent.course_load_scheduler.client.model.Course;
 import org.dselent.course_load_scheduler.client.presenter.CreateScheduleAddFacultyPresenter;
-import org.dselent.course_load_scheduler.client.presenter.CreateScheduleVisualPresenter;
 import org.dselent.course_load_scheduler.client.presenter.IndexPresenter;
 import org.dselent.course_load_scheduler.client.view.CreateScheduleAddFacultyView;
-import org.dselent.course_load_scheduler.client.view.CreateScheduleVisualView;
 
 import com.google.gwt.event.shared.HandlerRegistration;
 import com.google.gwt.user.client.ui.HasWidgets;
@@ -44,8 +43,8 @@ public class CreateScheduleAddFacultyPresenterImpl extends BasePresenterImpl imp
 	{
 		HandlerRegistration registration;
 		
-		//registration = eventBus.addHandler(InvalidLoginEvent.TYPE, this);
-		//eventBusRegistration.put(InvalidLoginEvent.TYPE, registration);
+		registration = eventBus.addHandler(CreateScheduleSelectFacultyEvent.TYPE, this);
+		eventBusRegistration.put(CreateScheduleSelectFacultyEvent.TYPE, registration);
 	}
 		
 	@Override
@@ -71,6 +70,17 @@ public class CreateScheduleAddFacultyPresenterImpl extends BasePresenterImpl imp
 	public void setParentPresenter(IndexPresenter parentPresenter)
 	{
 		this.parentPresenter = parentPresenter;
+	}
+	
+	public void fireConfirmSchedulePage() {
+		ConfirmSchedulePageAction csa = new ConfirmSchedulePageAction();
+		ConfirmSchedulePageEvent cse = new ConfirmSchedulePageEvent(csa);
+		eventBus.fireEvent(cse);
+	}
+	
+	@Override
+	public void onCreateScheduleSelectFaculty(CreateScheduleSelectFacultyEvent evt) {
+		this.go(parentPresenter.getView().getViewRootPanel());
 	}
 
 }
