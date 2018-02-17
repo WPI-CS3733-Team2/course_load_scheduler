@@ -7,15 +7,13 @@
 	<g:HTMLPanel>
 		<g:VerticalPanel ui:field="confirmSchedulePanel" width="640px">
 			<g:Label text="Confirm Schedule" ui:field="confirmScheduleHeader" horizontalAlignment="ALIGN_CENTER" width="640px"/>
-			<g:Cell horizontalAlignment="ALIGN_CENTER">
-				<g:TextBox readOnly="true" alignment="CENTER" width="624px" height="70px" ui:field="courseInformationBox"/>
-			</g:Cell>
+			<g:TextArea width="630px" height="73px" ui:field="courseInformationBox" alignment="LEFT" readOnly="true"/>
 			<g:HorizontalPanel width="641px" height="54px">
 				<g:Cell verticalAlignment="ALIGN_MIDDLE" horizontalAlignment="ALIGN_RIGHT">
 					<g:Label text="Schedule Name" ui:field="scheduleNameLabel" horizontalAlignment="ALIGN_CENTER" width="220px"/>
 				</g:Cell>
 				<g:Cell verticalAlignment="ALIGN_MIDDLE">
-					<g:TextBox alignment="CENTER" ui:field="scheduleNameBox" width="196px"/>
+					<g:TextBox alignment="LEFT" ui:field="scheduleNameBox" width="196px"/>
 				</g:Cell>
 			</g:HorizontalPanel>
 			<g:Cell horizontalAlignment="ALIGN_RIGHT">

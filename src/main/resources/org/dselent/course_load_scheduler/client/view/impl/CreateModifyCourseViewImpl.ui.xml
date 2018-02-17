@@ -89,7 +89,7 @@
 				</g:row>
 				<g:row>
 					<g:customCell>
-						<g:Button ui:field="removeSectionBtn" width="140px">Remove Last Section</g:Button>
+						<g:Button ui:field="removeSectionBtn" width="140px">Remove Selected Section</g:Button>
 					</g:customCell>
 				</g:row>
 				<g:row/>

@@ -60,6 +60,12 @@ public class CreateScheduleViewImpl extends BaseViewImpl<CreateSchedulePresenter
 	public Widget getWidgetContainer() {
 		return this;
 	}
+	
+	@Override
+	public void showErrorMessages(String errorMessages)
+	{
+		Window.alert(errorMessages);
+	}
 
 	public HasWidgets getViewRootPanel() {
 		return createSchedulePanel;

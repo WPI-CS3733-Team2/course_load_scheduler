@@ -20,16 +20,17 @@ import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.ui.Button;
 import com.google.gwt.uibinder.client.UiHandler;
 import com.google.gwt.event.dom.client.ClickEvent;
+import com.google.gwt.user.client.ui.TextArea;
 
 public class ConfirmScheduleViewImpl extends BaseViewImpl<ConfirmSchedulePresenter> implements ConfirmScheduleView {
 
 	private static ConfirmScheduleViewImplUiBinder uiBinder = GWT.create(ConfirmScheduleViewImplUiBinder.class);
 	@UiField VerticalPanel confirmSchedulePanel;
 	@UiField Label confirmScheduleHeader;
-	@UiField TextBox courseInformationBox;
 	@UiField TextBox scheduleNameBox;
 	@UiField Button confirmScheduleButton;
 	@UiField Label scheduleNameLabel;
+	@UiField TextArea courseInformationBox;
 
 	interface ConfirmScheduleViewImplUiBinder extends UiBinder<Widget, ConfirmScheduleViewImpl> {
 	}
@@ -57,6 +58,11 @@ public class ConfirmScheduleViewImpl extends BaseViewImpl<ConfirmSchedulePresent
 	@Override
 	public Button getConfirmScheduleButton(){
 		return confirmScheduleButton;
+	}
+	
+	@Override
+	public TextArea getCourseInformationBox(){
+		return courseInformationBox;
 	}
 	
 	@Override

@@ -19,5 +19,6 @@ public interface CreateScheduleView extends BaseView<CreateSchedulePresenter>{
 	void onButtonClick(ClickEvent event);
 	void addCourses(List<String> names);
 	List<String> getCheckedCourses();
+	void showErrorMessages(String errorMessages);
 
 }

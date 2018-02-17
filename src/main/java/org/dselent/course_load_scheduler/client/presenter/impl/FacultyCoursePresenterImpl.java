@@ -28,6 +28,7 @@ import com.google.gwt.user.client.ui.Grid;
 import com.google.gwt.user.client.ui.HasWidgets;
 import com.google.gwt.user.client.ui.Label;
 import com.google.gwt.user.client.ui.VerticalPanel;
+import com.google.gwt.user.client.ui.Widget;
 import com.google.inject.Inject;
 
 
@@ -174,11 +175,12 @@ public class FacultyCoursePresenterImpl extends BasePresenterImpl implements Fac
 			courseSections.setWidth("500px");
 
 			Button requestCourseButton = new Button("Request");
-			requestCourseButton.addClickHandler(new ClickHandler() {
-
+			Course currentCourse = courses.get(i);
+			requestCourseButton.addClickHandler(new CustomClickHandler(currentCourse) {
+				
 				@Override
 				public void onClick(ClickEvent event) {
-					RequestCourseAction rca = new RequestCourseAction(new Course());
+					RequestCourseAction rca = new RequestCourseAction(course);
 					RequestCourseEvent rce = new RequestCourseEvent(rca);
 					eventBus.fireEvent(rce);
 				}
@@ -251,6 +253,21 @@ public class FacultyCoursePresenterImpl extends BasePresenterImpl implements Fac
 		searchInProgress = false;
 		
 		view.showErrorMessages("Course search to be implemented.");
+	}
+	
+	private class CustomClickHandler implements ClickHandler {
+		Course course;
+		
+		public CustomClickHandler(Course course) {
+			this.course = course;
+		}
+		
+		@Override
+		public void onClick(ClickEvent event) {
+			// TODO Auto-generated method stub
+			
+		}
+		
 	}
 		
 }
