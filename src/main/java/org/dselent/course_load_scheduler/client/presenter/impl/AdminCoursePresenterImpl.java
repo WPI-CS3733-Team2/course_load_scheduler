@@ -248,12 +248,12 @@ public class AdminCoursePresenterImpl extends BasePresenterImpl implements Admin
 			courseSections.setWidth("500px");
 
 			Button modifyCourseButton = new Button("Modify");
-			//Course thisCourse = courses.get(i);
+			Course thisCourse = courses.get(i);
 			
-			modifyCourseButton.addClickHandler(new ClickHandler() {
+			modifyCourseButton.addClickHandler(new CustomClickHandler(thisCourse) {
 				@Override
 				public void onClick(ClickEvent event) {
-					ModifyCourseAction mca = new ModifyCourseAction(new Course());
+					ModifyCourseAction mca = new ModifyCourseAction(course);
 					ModifyCourseEvent mce = new ModifyCourseEvent(mca);
 					eventBus.fireEvent(mce);
 				}
@@ -269,6 +269,28 @@ public class AdminCoursePresenterImpl extends BasePresenterImpl implements Admin
 			view.addCourseToGrid(coursePanel);
 		}
 
+	}
+	
+	@Override
+	public void addCourse() {
+		ModifyCourseAction mca = new ModifyCourseAction(null);
+		ModifyCourseEvent mce = new ModifyCourseEvent(mca);
+		eventBus.fireEvent(mce);
+	}
+	
+	private class CustomClickHandler implements ClickHandler {
+		Course course;
+		
+		public CustomClickHandler(Course course) {
+			this.course = course;
+		}
+		
+		@Override
+		public void onClick(ClickEvent event) {
+			// TODO Auto-generated method stub
+			
+		}
+		
 	}
 		
 }

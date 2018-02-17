@@ -21,6 +21,7 @@ import org.dselent.course_load_scheduler.client.presenter.IndexPresenter;
 import org.dselent.course_load_scheduler.client.view.CreateModifyCourseView;
 
 import com.google.gwt.event.shared.HandlerRegistration;
+import com.google.gwt.user.cellview.client.CellTable;
 import com.google.gwt.user.client.ui.HasWidgets;
 import com.google.gwt.view.client.ListDataProvider;
 import com.google.gwt.view.client.SingleSelectionModel;
@@ -91,10 +92,14 @@ public class CreateModifyCoursePresenterImpl extends BasePresenterImpl implement
 		this.go(parentPresenter.getView().getViewRootPanel());
 		
 		Course course = evt.getAction().getCourse();
-		
-		view.setCourseNameTextBoxText(course.getCourseName());
-		view.setCourseNumberTextBoxText(course.getCourseNumber());
-		view.addRowsToSectionTable(course.getSections());
+		if(course != null) {
+			view.setCourseNameTextBoxText(course.getCourseName());
+			view.setCourseNumberTextBoxText(course.getCourseNumber());
+			//view.addRowsToSectionTable(course.getSections());
+			currentSections = course.getSections();
+			dataProvider.setList(currentSections);
+			dataProvider.refresh();
+		}
 	}
 	
 	@Override
@@ -182,10 +187,10 @@ public class CreateModifyCoursePresenterImpl extends BasePresenterImpl implement
 	
 	@Override
 	public void removeSection() {
-		currentSections.remove(currentSections.size()-1);
 		Section selected = selectionModel.getSelectedObject();
         if (selected != null) {
-            dataProvider.getList().remove(selected);
+        	currentSections.remove(selected);
+            dataProvider.setList(currentSections);
             dataProvider.refresh();
         }
         while(selectionModel.getSelectedSet().size() > 0) {
@@ -253,7 +258,12 @@ public class CreateModifyCoursePresenterImpl extends BasePresenterImpl implement
 		view.setCourseNameTextBoxText("");
 		view.setCourseNumberTextBoxText("");
 		clearSectionForm();
+		currentSections.clear();
 		dataProvider.getList().clear();
+		dataProvider.refresh();
+		/*CellTable<Section> sectionTable = view.getSectionTable();
+		sectionTable.setRowData(dataProvider.getList());
+		view.setSectionTable(sectionTable);*/
 	}
 	
 	@Override
