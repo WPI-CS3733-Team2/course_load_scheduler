@@ -11,6 +11,7 @@ import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.uibinder.client.UiBinder;
 import com.google.gwt.uibinder.client.UiField;
 import com.google.gwt.uibinder.client.UiHandler;
+import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.ui.Button;
 import com.google.gwt.user.client.ui.CheckBox;
 import com.google.gwt.user.client.ui.HasWidgets;
@@ -34,6 +35,12 @@ public class CreateScheduleAddFacultyViewImpl extends BaseViewImpl<CreateSchedul
 	@UiField VerticalPanel verticalPanel;
 	@UiField Label facultyLabel;
 	@UiField Button nextPageButton;
+	
+	@Override
+	public void showErrorMessages(String errorMessages)
+	{
+		Window.alert(errorMessages);
+	}
 
 	public CreateScheduleAddFacultyViewImpl(String firstName) {
 		initWidget(uiBinder.createAndBindUi(this));
@@ -104,6 +111,10 @@ public class CreateScheduleAddFacultyViewImpl extends BaseViewImpl<CreateSchedul
 	
 	@UiHandler("nextPageButton")
 	void onButtonClick(ClickEvent event) {
-		presenter.fireConfirmSchedulePage();
+		if(getCheckedFaculty() == "") {
+			showErrorMessages("Must select a faculty.");
+		}else {
+			presenter.fireConfirmSchedulePage();
+		}
 	}
 }

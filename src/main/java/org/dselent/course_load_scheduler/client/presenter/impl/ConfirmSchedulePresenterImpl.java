@@ -124,6 +124,7 @@ public class ConfirmSchedulePresenterImpl extends BasePresenterImpl implements C
 				
 				//Replace with existing schedule model from other pages
 				Schedule tempSchedule = new Schedule();
+				tempSchedule.setScheduleName(scheduleName);
 				createScheduleEventFire(tempSchedule);
 			}
 			else
