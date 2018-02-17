@@ -38,4 +38,7 @@ public interface IndexView extends BaseView<IndexPresenter>
 	void setMainPanel(HTMLPanel mainPanel);
 	PopupPanel getGlassLoadingPanel();
 	Image getLoadingImage();
+	MenuItem getFacultyCourseMenuItem();
+	void setFacultyCourseMenuItem(MenuItem facultyCourseMenuItem);
+	public void setFacultyCourseCommand(Command command);
 }

@@ -47,6 +47,8 @@
 				<g:MenuItem text="Courses" ui:field="coursesMenuItem"/>
 				<g:MenuItem text="Users" ui:field="usersMenuItem"/>
 				<g:MenuItem text="Requests" ui:field="requestsMenuItem"/>
+				<g:MenuItem text="Faculty Course Assignments" ui:field="facultyCourseMenuItem"/>
+				
 			</g:MenuBar>
 		</g:Dock>
 	</g:DockPanel>
