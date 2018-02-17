@@ -5,6 +5,7 @@ import java.util.Arrays;
 import java.util.List;
 
 import org.dselent.course_load_scheduler.client.action.ScheduleSpecificsAction;
+import org.dselent.course_load_scheduler.client.event.CreateScheduleEvent;
 import org.dselent.course_load_scheduler.client.event.ScheduleSpecificsEvent;
 import org.dselent.course_load_scheduler.client.event.SearchScheduleEvent;
 import org.dselent.course_load_scheduler.client.model.Calendar;
@@ -56,6 +57,9 @@ public class ScheduleListPresenterImpl extends BasePresenterImpl implements Sche
 		
 		registration = eventBus.addHandler(SearchScheduleEvent.TYPE, this);
 		eventBusRegistration.put(SearchScheduleEvent.TYPE, registration);
+
+		registration = eventBus.addHandler(CreateScheduleEvent.TYPE, this);
+		eventBusRegistration.put(CreateScheduleEvent.TYPE, registration);
 	}
 		
 	@Override
@@ -99,5 +103,8 @@ public class ScheduleListPresenterImpl extends BasePresenterImpl implements Sche
 		eventBus.fireEvent(sse);
 	}
 	
-	
+	@Override
+	public void onCreateSchedule(CreateScheduleEvent evt) {
+		this.go(parentPresenter.getView().getViewRootPanel());
+	}
 }

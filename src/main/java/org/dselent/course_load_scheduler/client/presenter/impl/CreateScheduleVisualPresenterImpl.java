@@ -5,7 +5,13 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import org.dselent.course_load_scheduler.client.action.ConfirmSchedulePageAction;
+import org.dselent.course_load_scheduler.client.action.CreateScheduleSelectFacultyAction;
+import org.dselent.course_load_scheduler.client.event.ConfirmSchedulePageEvent;
+import org.dselent.course_load_scheduler.client.event.CreateScheduleSelectCoursesEvent;
+import org.dselent.course_load_scheduler.client.event.CreateScheduleSelectFacultyEvent;
 import org.dselent.course_load_scheduler.client.model.Calendar;
+import org.dselent.course_load_scheduler.client.model.Course;
 import org.dselent.course_load_scheduler.client.presenter.CreateScheduleVisualPresenter;
 import org.dselent.course_load_scheduler.client.presenter.IndexPresenter;
 import org.dselent.course_load_scheduler.client.view.CreateScheduleVisualView;
@@ -69,8 +75,8 @@ public class CreateScheduleVisualPresenterImpl extends BasePresenterImpl impleme
 	{
 		HandlerRegistration registration;
 		
-		//registration = eventBus.addHandler(InvalidLoginEvent.TYPE, this);
-		//eventBusRegistration.put(InvalidLoginEvent.TYPE, registration);
+		registration = eventBus.addHandler(CreateScheduleSelectCoursesEvent.TYPE, this);
+		eventBusRegistration.put(CreateScheduleSelectCoursesEvent.TYPE, registration);
 	}
 		
 	@Override
@@ -170,8 +176,6 @@ public class CreateScheduleVisualPresenterImpl extends BasePresenterImpl impleme
 			endRow = 12;
 		}
 		
-		//view.getCalendarTabs().selectTab(Integer.parseInt(tabMap.get(semester).toString()), false);
-		
 		for (int col: daysToCols(days))
 			for (int row = Integer.parseInt(startMap.get(startTime).toString()); row <= endRow; row++)
 				view.getScheduleGrid().setText(row, col, courseDetails);
@@ -223,4 +227,16 @@ public class CreateScheduleVisualPresenterImpl extends BasePresenterImpl impleme
 		}
 	}
 	
+	public void fireCreateScheduleSelectFaculty() {
+		CreateScheduleSelectFacultyAction cssfa = new CreateScheduleSelectFacultyAction();
+		CreateScheduleSelectFacultyEvent cssfe = new CreateScheduleSelectFacultyEvent(cssfa);
+		eventBus.fireEvent(cssfe);
+	}
+	
+	@Override
+	public void onCreateScheduleSelectCourses(CreateScheduleSelectCoursesEvent evt) {
+		List<Course> courseList = evt.getAction().getCourses();
+		//will get calendars from sections from courses
+		this.go(parentPresenter.getView().getViewRootPanel());
+	}
 }
