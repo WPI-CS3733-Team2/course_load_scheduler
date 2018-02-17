@@ -4,6 +4,7 @@ import org.dselent.course_load_scheduler.client.presenter.ChangePasswordPresente
 import org.dselent.course_load_scheduler.client.view.ChangePasswordView;
 
 import com.google.gwt.core.client.GWT;
+import com.google.gwt.dom.client.Style;
 import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.uibinder.client.UiBinder;
 import com.google.gwt.uibinder.client.UiField;
@@ -120,6 +121,7 @@ public class ChangePasswordViewImpl extends BaseViewImpl<ChangePasswordPresenter
 	public void hideWindow() {
 		if (this.changePasswordPopupPanel.isShowing()){
 			changePasswordPopupPanel.hide();
+			changePasswordPopupPanel.getElement().getStyle().setVisibility(Style.Visibility.HIDDEN);
 		}
 	}
 	
@@ -127,6 +129,7 @@ public class ChangePasswordViewImpl extends BaseViewImpl<ChangePasswordPresenter
 	public void showWindow() {
 		if (!this.changePasswordPopupPanel.isShowing()) {
 			changePasswordPopupPanel.show();
+			changePasswordPopupPanel.getElement().getStyle().setVisibility(Style.Visibility.VISIBLE);
 		}
 	}
 	

@@ -1,6 +1,7 @@
 package org.dselent.course_load_scheduler.client;
 
 import org.dselent.course_load_scheduler.client.gin.Injector;
+import org.dselent.course_load_scheduler.client.presenter.ChangePasswordPresenter;
 import org.dselent.course_load_scheduler.client.presenter.impl.AccountDetailsPresenterImpl;
 import org.dselent.course_load_scheduler.client.presenter.impl.ChangePasswordPresenterImpl;
 import org.dselent.course_load_scheduler.client.presenter.impl.AdminCoursePresenterImpl;
@@ -64,5 +65,9 @@ public class CourseLoadScheduler implements EntryPoint
 		// indexPresenter.go(RootPanel.get("indexContainer"));
 		indexPresenter.go(root);
 		adminCoursePresenter.go(indexView.getViewRootPanel());
+		
+		ChangePasswordPresenter changePasswordPresenter = injector.getChangePasswordPresenter();
+		changePasswordPresenter.init();
+
 	}
 }
