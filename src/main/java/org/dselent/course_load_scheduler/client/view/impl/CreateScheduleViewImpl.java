@@ -113,6 +113,10 @@ public class CreateScheduleViewImpl extends BaseViewImpl<CreateSchedulePresenter
 
 	@UiHandler("nextButton")
 	public void onButtonClick(ClickEvent event) {
-		presenter.goToNextPage(getCheckedCourses());
+		if(getCheckedCourses().isEmpty()) {
+			showErrorMessages("At least 1 course must be selected.");
+		}else {
+			presenter.goToNextPage(getCheckedCourses());
+		}
 	}
 }
