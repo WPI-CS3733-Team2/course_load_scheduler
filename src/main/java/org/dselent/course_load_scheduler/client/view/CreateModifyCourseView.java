@@ -6,7 +6,6 @@ import org.dselent.course_load_scheduler.client.model.Section;
 import org.dselent.course_load_scheduler.client.presenter.CreateModifyCoursePresenter;
 
 import com.google.gwt.user.cellview.client.CellTable;
-import com.google.gwt.user.client.ui.FlowPanel;
 import com.google.gwt.user.client.ui.HasWidgets;
 import com.google.gwt.user.client.ui.Widget;
 import com.google.gwt.view.client.SelectionModel;

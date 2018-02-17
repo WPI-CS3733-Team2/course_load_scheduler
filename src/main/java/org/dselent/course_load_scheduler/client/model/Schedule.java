@@ -1,10 +1,5 @@
 package org.dselent.course_load_scheduler.client.model;
 
-import java.sql.Timestamp;
-import java.time.Instant;
-import java.util.List;
-
-
 public class Schedule extends Model implements Comparable<Schedule>
 {	
 	// attributes

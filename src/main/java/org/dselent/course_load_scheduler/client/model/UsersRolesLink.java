@@ -1,9 +1,5 @@
 package org.dselent.course_load_scheduler.client.model;
 
-import java.sql.Timestamp;
-import java.time.Instant;
-
-
 public class UsersRolesLink extends Model
 {	
 	// attributes

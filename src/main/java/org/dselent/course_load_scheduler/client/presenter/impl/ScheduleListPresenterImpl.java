@@ -9,7 +9,6 @@ import org.dselent.course_load_scheduler.client.event.CreateScheduleEvent;
 import org.dselent.course_load_scheduler.client.event.ScheduleSpecificsEvent;
 import org.dselent.course_load_scheduler.client.event.SearchScheduleEvent;
 import org.dselent.course_load_scheduler.client.event.ViewScheduleNavigationEvent;
-import org.dselent.course_load_scheduler.client.model.Calendar;
 import org.dselent.course_load_scheduler.client.model.Schedule;
 import org.dselent.course_load_scheduler.client.presenter.IndexPresenter;
 import org.dselent.course_load_scheduler.client.presenter.ScheduleListPresenter;

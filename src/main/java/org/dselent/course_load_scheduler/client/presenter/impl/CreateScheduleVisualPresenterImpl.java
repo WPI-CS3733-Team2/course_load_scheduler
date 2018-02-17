@@ -5,9 +5,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import org.dselent.course_load_scheduler.client.action.ConfirmSchedulePageAction;
 import org.dselent.course_load_scheduler.client.action.CreateScheduleSelectFacultyAction;
-import org.dselent.course_load_scheduler.client.event.ConfirmSchedulePageEvent;
 import org.dselent.course_load_scheduler.client.event.CreateScheduleSelectCoursesEvent;
 import org.dselent.course_load_scheduler.client.event.CreateScheduleSelectFacultyEvent;
 import org.dselent.course_load_scheduler.client.model.Calendar;

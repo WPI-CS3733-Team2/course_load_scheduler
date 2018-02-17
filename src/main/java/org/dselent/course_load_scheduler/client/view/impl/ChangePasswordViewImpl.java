@@ -4,7 +4,6 @@ import org.dselent.course_load_scheduler.client.presenter.ChangePasswordPresente
 import org.dselent.course_load_scheduler.client.view.ChangePasswordView;
 
 import com.google.gwt.core.client.GWT;
-import com.google.gwt.dom.client.Style;
 import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.uibinder.client.UiBinder;
 import com.google.gwt.uibinder.client.UiField;

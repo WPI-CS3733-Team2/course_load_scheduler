@@ -5,7 +5,6 @@ import java.util.List;
 
 import org.dselent.course_load_scheduler.client.presenter.CreateScheduleAddFacultyPresenter;
 
-import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.ui.Button;
 import com.google.gwt.user.client.ui.Label;
 import com.google.gwt.user.client.ui.VerticalPanel;

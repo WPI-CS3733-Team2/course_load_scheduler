@@ -1,12 +1,9 @@
 package org.dselent.course_load_scheduler.client.event;
 
-import org.dselent.course_load_scheduler.client.model.User;
-
 import org.dselent.course_load_scheduler.client.action.UserDetailsPageAction;
 import org.dselent.course_load_scheduler.client.event_handler.UserDetailsPageEventHandler;
 
 import com.google.gwt.event.shared.GwtEvent;
-import com.google.gwt.event.shared.GwtEvent.Type;
 
 public class UserDetailsPageEvent extends GwtEvent<UserDetailsPageEventHandler>{
 	

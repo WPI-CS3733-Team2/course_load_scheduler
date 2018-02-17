@@ -2,26 +2,19 @@ package org.dselent.course_load_scheduler.client.presenter.impl;
 
 import org.dselent.course_load_scheduler.client.presenter.IndexPresenter;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.ListIterator;
 
-import org.dselent.course_load_scheduler.client.action.InvalidLoginAction;
 import org.dselent.course_load_scheduler.client.action.CreateScheduleAction;
-import org.dselent.course_load_scheduler.client.errorstring.InvalidLoginStrings;
 import org.dselent.course_load_scheduler.client.event.CreateScheduleEvent;
-import org.dselent.course_load_scheduler.client.event.SearchUserEvent;
-import org.dselent.course_load_scheduler.client.event.UserSearchPageEvent;
 import org.dselent.course_load_scheduler.client.event.ConfirmSchedulePageEvent;
 import org.dselent.course_load_scheduler.client.exceptions.EmptyStringException;
 import org.dselent.course_load_scheduler.client.presenter.ConfirmSchedulePresenter;
 import org.dselent.course_load_scheduler.client.view.ConfirmScheduleView;
-import org.dselent.course_load_scheduler.client.view.LoginView;
 import org.dselent.course_load_scheduler.client.model.Schedule;
 import org.dselent.course_load_scheduler.client.model.Course;
 
 import com.google.gwt.core.client.GWT;
-//import org.dselent.course_load_scheduler.client.view.TextBox;
 import com.google.gwt.event.shared.HandlerRegistration;
 
 import com.google.gwt.user.client.ui.HasWidgets;

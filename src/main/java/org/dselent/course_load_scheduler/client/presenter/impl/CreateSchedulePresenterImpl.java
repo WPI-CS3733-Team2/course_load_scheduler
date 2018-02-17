@@ -7,7 +7,6 @@ import java.util.List;
 import org.dselent.course_load_scheduler.client.action.CreateScheduleSelectCoursesAction;
 import org.dselent.course_load_scheduler.client.event.CreateScheduleNavigationEvent;
 import org.dselent.course_load_scheduler.client.event.CreateScheduleSelectCoursesEvent;
-import org.dselent.course_load_scheduler.client.event.SearchScheduleEvent;
 import org.dselent.course_load_scheduler.client.model.Course;
 import org.dselent.course_load_scheduler.client.model.Section;
 import org.dselent.course_load_scheduler.client.presenter.CreateSchedulePresenter;

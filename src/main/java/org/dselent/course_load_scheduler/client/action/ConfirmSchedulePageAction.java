@@ -1,7 +1,6 @@
 package org.dselent.course_load_scheduler.client.action;
 
 import org.dselent.course_load_scheduler.client.model.Course;
-import org.dselent.course_load_scheduler.client.model.FacultyCourse;
 import java.util.List;
 
 public class ConfirmSchedulePageAction {

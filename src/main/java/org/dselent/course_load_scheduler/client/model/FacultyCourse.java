@@ -1,8 +1,5 @@
 package org.dselent.course_load_scheduler.client.model;
 
-import java.sql.Timestamp;
-import java.time.Instant;
-import java.util.Arrays;
 import java.util.List;
 
 

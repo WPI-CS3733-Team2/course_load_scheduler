@@ -4,7 +4,6 @@ import org.dselent.course_load_scheduler.client.presenter.ScheduleSpecificsPrese
 import org.dselent.course_load_scheduler.client.view.ScheduleSpecificsView;
 
 import com.google.gwt.core.client.GWT;
-import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.event.logical.shared.SelectionEvent;
 import com.google.gwt.uibinder.client.UiBinder;
 import com.google.gwt.user.client.ui.HasWidgets;
@@ -13,7 +12,6 @@ import com.google.gwt.uibinder.client.UiField;
 import com.google.gwt.uibinder.client.UiHandler;
 import com.google.gwt.user.client.ui.TextBox;
 import com.google.gwt.user.client.ui.VerticalPanel;
-import com.google.gwt.user.client.ui.ListBox;
 import com.google.gwt.user.client.ui.Grid;
 import com.google.gwt.user.client.ui.TabBar;
 

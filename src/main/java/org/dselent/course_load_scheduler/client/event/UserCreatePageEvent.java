@@ -4,7 +4,6 @@ import org.dselent.course_load_scheduler.client.action.UserCreatePageAction;
 import org.dselent.course_load_scheduler.client.event_handler.UserCreatePageEventHandler;
 
 import com.google.gwt.event.shared.GwtEvent;
-import com.google.gwt.event.shared.GwtEvent.Type;
 
 public class UserCreatePageEvent extends GwtEvent<UserCreatePageEventHandler>{
 public static Type<UserCreatePageEventHandler> TYPE = new Type<UserCreatePageEventHandler>();

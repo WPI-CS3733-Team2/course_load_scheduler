@@ -2,7 +2,6 @@ package org.dselent.course_load_scheduler.client.event;
 
 import org.dselent.course_load_scheduler.client.action.ModifyCourseAction;
 import org.dselent.course_load_scheduler.client.event_handler.ModifyCourseEventHandler;
-import org.dselent.course_load_scheduler.client.event_handler.ModifyCourseEventHandler;
 
 import com.google.gwt.event.shared.GwtEvent;
 

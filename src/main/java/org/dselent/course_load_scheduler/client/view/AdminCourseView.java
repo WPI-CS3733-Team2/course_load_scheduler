@@ -1,7 +1,6 @@
 package org.dselent.course_load_scheduler.client.view;
 
 import org.dselent.course_load_scheduler.client.presenter.AdminCoursePresenter;
-import org.dselent.course_load_scheduler.client.presenter.CreateModifyCoursePresenter;
 
 import com.google.gwt.user.client.ui.DecoratorPanel;
 import com.google.gwt.user.client.ui.Grid;

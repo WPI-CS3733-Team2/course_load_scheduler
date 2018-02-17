@@ -4,7 +4,6 @@ import org.dselent.course_load_scheduler.client.model.Schedule;
 import org.dselent.course_load_scheduler.client.presenter.ScheduleListPresenter;
 
 import com.google.gwt.user.cellview.client.CellTable;
-import com.google.gwt.user.client.ui.ListBox;
 
 public interface ScheduleListView extends BaseView<ScheduleListPresenter>
 {

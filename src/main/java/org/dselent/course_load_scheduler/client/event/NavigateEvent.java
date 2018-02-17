@@ -1,11 +1,9 @@
 package org.dselent.course_load_scheduler.client.event;
 
 import org.dselent.course_load_scheduler.client.event_handler.NavigateEventHandler;
-import org.dselent.course_load_scheduler.client.action.InvalidLoginAction;
 import org.dselent.course_load_scheduler.client.action.NavigateAction;
 
 import com.google.gwt.event.shared.GwtEvent;
-import com.google.gwt.event.shared.GwtEvent.Type;
 
 public class NavigateEvent extends GwtEvent<NavigateEventHandler>{
 	

@@ -2,10 +2,7 @@ package org.dselent.course_load_scheduler.client.view;
 
 import org.dselent.course_load_scheduler.client.presenter.ScheduleSpecificsPresenter;
 
-import com.google.gwt.user.cellview.client.DataGrid;
-import com.google.gwt.user.client.ui.Button;
 import com.google.gwt.user.client.ui.Grid;
-import com.google.gwt.user.client.ui.ListBox;
 import com.google.gwt.user.client.ui.TabBar;
 import com.google.gwt.user.client.ui.TextBox;
 import com.google.gwt.user.client.ui.VerticalPanel;

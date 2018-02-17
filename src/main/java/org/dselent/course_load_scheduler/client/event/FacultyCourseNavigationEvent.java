@@ -4,7 +4,6 @@ import org.dselent.course_load_scheduler.client.action.FacultyCourseNavigationAc
 import org.dselent.course_load_scheduler.client.event_handler.FacultyCourseNavigationEventHandler;
 
 import com.google.gwt.event.shared.GwtEvent;
-import com.google.gwt.event.shared.GwtEvent.Type;
 
 public class FacultyCourseNavigationEvent extends GwtEvent<FacultyCourseNavigationEventHandler>{
 	public static Type<FacultyCourseNavigationEventHandler> TYPE = new Type<FacultyCourseNavigationEventHandler>();

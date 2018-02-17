@@ -1,8 +1,5 @@
 package org.dselent.course_load_scheduler.client.action;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import org.dselent.course_load_scheduler.client.model.Course;
 
 /**

@@ -5,12 +5,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import org.dselent.course_load_scheduler.client.action.InvalidLoginAction;
 import org.dselent.course_load_scheduler.client.action.ScheduleSpecificsAction;
-import org.dselent.course_load_scheduler.client.action.SearchScheduleAction;
-import org.dselent.course_load_scheduler.client.event.InvalidLoginEvent;
 import org.dselent.course_load_scheduler.client.event.ScheduleSpecificsEvent;
-import org.dselent.course_load_scheduler.client.event.SearchScheduleEvent;
 import org.dselent.course_load_scheduler.client.model.Calendar;
 import org.dselent.course_load_scheduler.client.model.Schedule;
 import org.dselent.course_load_scheduler.client.presenter.IndexPresenter;

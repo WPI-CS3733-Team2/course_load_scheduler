@@ -4,7 +4,6 @@ import org.dselent.course_load_scheduler.client.action.CreateScheduleSelectCours
 import org.dselent.course_load_scheduler.client.event_handler.CreateScheduleSelectCoursesEventHandler;
 
 import com.google.gwt.event.shared.GwtEvent;
-import com.google.gwt.event.shared.GwtEvent.Type;
 
 public class CreateScheduleSelectCoursesEvent extends GwtEvent<CreateScheduleSelectCoursesEventHandler>{
 	public static Type<CreateScheduleSelectCoursesEventHandler> TYPE = new Type<CreateScheduleSelectCoursesEventHandler>();

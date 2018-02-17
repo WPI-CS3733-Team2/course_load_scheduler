@@ -5,7 +5,6 @@ import java.util.List;
 
 import org.dselent.course_load_scheduler.client.action.ConfirmSchedulePageAction;
 import org.dselent.course_load_scheduler.client.event.ConfirmSchedulePageEvent;
-import org.dselent.course_load_scheduler.client.event.CreateScheduleSelectCoursesEvent;
 import org.dselent.course_load_scheduler.client.event.CreateScheduleSelectFacultyEvent;
 import org.dselent.course_load_scheduler.client.model.Course;
 import org.dselent.course_load_scheduler.client.presenter.CreateScheduleAddFacultyPresenter;

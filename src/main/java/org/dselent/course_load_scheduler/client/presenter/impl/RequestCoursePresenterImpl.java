@@ -10,7 +10,6 @@ import org.dselent.course_load_scheduler.client.errorstring.InvalidRequestCourse
 import org.dselent.course_load_scheduler.client.event.FacultyCourseEvent;
 import org.dselent.course_load_scheduler.client.event.InvalidSubmitRequestEvent;
 import org.dselent.course_load_scheduler.client.event.RequestCourseEvent;
-import org.dselent.course_load_scheduler.client.exceptions.EmptyArrayException;
 import org.dselent.course_load_scheduler.client.exceptions.EmptyStringException;
 import org.dselent.course_load_scheduler.client.model.Course;
 import org.dselent.course_load_scheduler.client.model.Section;

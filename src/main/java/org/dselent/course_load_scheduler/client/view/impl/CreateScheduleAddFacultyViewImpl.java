@@ -1,7 +1,5 @@
 package org.dselent.course_load_scheduler.client.view.impl;
 
-
-import java.util.ArrayList;
 import java.util.List;
 import org.dselent.course_load_scheduler.client.presenter.CreateScheduleAddFacultyPresenter;
 import org.dselent.course_load_scheduler.client.view.CreateScheduleAddFacultyView;
@@ -13,7 +11,6 @@ import com.google.gwt.uibinder.client.UiField;
 import com.google.gwt.uibinder.client.UiHandler;
 import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.ui.Button;
-import com.google.gwt.user.client.ui.CheckBox;
 import com.google.gwt.user.client.ui.HasWidgets;
 import com.google.gwt.user.client.ui.Widget;
 import com.google.gwt.user.client.ui.VerticalPanel;
