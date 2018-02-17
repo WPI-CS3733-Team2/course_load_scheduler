@@ -4,28 +4,27 @@ package org.dselent.course_load_scheduler.client.presenter.impl;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.dselent.course_load_scheduler.client.action.InvalidAddSectionAction;
-import org.dselent.course_load_scheduler.client.action.InvalidLoginAction;
-import org.dselent.course_load_scheduler.client.errorstring.InvalidAddSectionStrings;
-import org.dselent.course_load_scheduler.client.errorstring.InvalidLoginStrings;
+import org.dselent.course_load_scheduler.client.action.InvalidAddModifyCourseAction;
+import org.dselent.course_load_scheduler.client.action.ViewCourseAction;
+import org.dselent.course_load_scheduler.client.errorstring.InvalidAddModifyCourseStrings;
+import org.dselent.course_load_scheduler.client.event.AdminCourseEvent;
 import org.dselent.course_load_scheduler.client.event.InvalidAddSectionEvent;
-import org.dselent.course_load_scheduler.client.event.InvalidLoginEvent;
+import org.dselent.course_load_scheduler.client.event.InvalidSubmitCourseEvent;
 import org.dselent.course_load_scheduler.client.event.ModifyCourseEvent;
 import org.dselent.course_load_scheduler.client.exceptions.DuplicateCRNException;
+import org.dselent.course_load_scheduler.client.exceptions.EmptyArrayException;
 import org.dselent.course_load_scheduler.client.exceptions.EmptyStringException;
 import org.dselent.course_load_scheduler.client.model.Course;
 import org.dselent.course_load_scheduler.client.model.Section;
 import org.dselent.course_load_scheduler.client.presenter.CreateModifyCoursePresenter;
 import org.dselent.course_load_scheduler.client.presenter.IndexPresenter;
 import org.dselent.course_load_scheduler.client.view.CreateModifyCourseView;
-import org.dselent.course_load_scheduler.client.view.FacultyCourseView;
 
 import com.google.gwt.event.shared.HandlerRegistration;
 import com.google.gwt.user.client.ui.HasWidgets;
 import com.google.gwt.view.client.ListDataProvider;
 import com.google.gwt.view.client.SingleSelectionModel;
 import com.google.inject.Inject;
-import com.ibm.icu.impl.Row;
 
 
 public class CreateModifyCoursePresenterImpl extends BasePresenterImpl implements CreateModifyCoursePresenter
@@ -33,8 +32,7 @@ public class CreateModifyCoursePresenterImpl extends BasePresenterImpl implement
 	
 	private CreateModifyCourseView view;
 	private IndexPresenter parentPresenter;
-	
-	private List<Course> courses;
+
 	private List<Section> currentSections;
 	
 	private final ListDataProvider<Section> dataProvider;
@@ -47,7 +45,6 @@ public class CreateModifyCoursePresenterImpl extends BasePresenterImpl implement
 			this.parentPresenter = parentPresenter;
 			view.setPresenter(this);
 			
-			this.courses = new ArrayList<Course>();
 			this.currentSections = new ArrayList<Section>();
 			
 			dataProvider = new ListDataProvider<Section>(currentSections);
@@ -67,6 +64,9 @@ public class CreateModifyCoursePresenterImpl extends BasePresenterImpl implement
 	public void bind()
 	{
 		HandlerRegistration registration;
+		
+		registration = eventBus.addHandler(InvalidSubmitCourseEvent.TYPE, this);
+		eventBusRegistration.put(InvalidSubmitCourseEvent.TYPE, registration);
 		
 		registration = eventBus.addHandler(InvalidAddSectionEvent.TYPE, this);
 		eventBusRegistration.put(InvalidAddSectionEvent.TYPE, registration);
@@ -118,10 +118,10 @@ public class CreateModifyCoursePresenterImpl extends BasePresenterImpl implement
 			checkDuplicateCrn(Integer.parseInt(crn), sections);
 		}
 		catch(EmptyStringException e) {
-			invalidReasonList.add(InvalidAddSectionStrings.EMPTY_SECTION_FIELD);
+			invalidReasonList.add(InvalidAddModifyCourseStrings.EMPTY_SECTION_FIELD);
 		}
 		catch (DuplicateCRNException e) {
-			invalidReasonList.add(InvalidAddSectionStrings.DUPLICATE_CRN);
+			invalidReasonList.add(InvalidAddModifyCourseStrings.DUPLICATE_CRN);
 		}
 		
 		if(invalidReasonList.size() == 0)
@@ -141,7 +141,7 @@ public class CreateModifyCoursePresenterImpl extends BasePresenterImpl implement
 		}
 		else
 		{
-			InvalidAddSectionAction iasa = new InvalidAddSectionAction(invalidReasonList);
+			InvalidAddModifyCourseAction iasa = new InvalidAddModifyCourseAction(invalidReasonList);
 			InvalidAddSectionEvent iase = new InvalidAddSectionEvent(iasa);
 			eventBus.fireEvent(iase);
 		}
@@ -152,6 +152,14 @@ public class CreateModifyCoursePresenterImpl extends BasePresenterImpl implement
 		if(string == null || string.equals(""))
 		{
 			throw new EmptyStringException();
+		}
+	}
+	
+	private void checkEmptyArray(List<?> list) throws EmptyArrayException
+	{
+		if(list.size() == 0)
+		{
+			throw new EmptyArrayException();
 		}
 	}
 	
@@ -167,10 +175,8 @@ public class CreateModifyCoursePresenterImpl extends BasePresenterImpl implement
 	@Override
 	public void onInvalidAddSection(InvalidAddSectionEvent evt)
 	{
-		parentPresenter.hideLoadScreen();
-		
-		InvalidAddSectionAction iasa = evt.getAction();
-		view.showErrorMessages(iasa.toString());
+		InvalidAddModifyCourseAction iamca = evt.getAction();
+		view.showErrorMessages(iamca.toString());
 	}
 	
 	@Override
@@ -189,13 +195,47 @@ public class CreateModifyCoursePresenterImpl extends BasePresenterImpl implement
 	@Override
 	public void createModifyCourseSubmit() {
 		Course course = new Course();
-		course.setCourseName(view.getCourseNameTextBox().getText());
-		course.setCourseNumber(view.getCourseNumberTextBox().getText());
-		course.setSections(dataProvider.getList());
 		
-		//TODO: Send to database
+		String courseName = view.getCourseNameTextBox().getText();
+		String courseNumber = view.getCourseNumberTextBox().getText();
+		List<Section> sections = dataProvider.getList();
 		
-		clearForm();
+		List<String> invalidReasonList = new ArrayList<>();
+		
+		try {
+			checkEmptyString(courseName);
+			checkEmptyString(courseNumber);
+			checkEmptyArray(sections);
+		}
+		catch (EmptyStringException | EmptyArrayException e) {
+			invalidReasonList.add(InvalidAddModifyCourseStrings.EMPTY_COURSE_FIELD);
+		}
+		
+		if(invalidReasonList.size() == 0) {
+			course.setCourseName(courseName);
+			course.setCourseNumber(courseNumber);
+			course.setSections(sections);
+			
+			//TODO: Send to database
+			
+			clearForm();
+			
+			ViewCourseAction vca = new ViewCourseAction(new ArrayList<Course>());
+			AdminCourseEvent ace = new AdminCourseEvent(vca);
+			eventBus.fireEvent(ace);
+		}
+		else {
+			InvalidAddModifyCourseAction iamca = new InvalidAddModifyCourseAction(invalidReasonList);
+			InvalidSubmitCourseEvent isce = new InvalidSubmitCourseEvent(iamca);
+			eventBus.fireEvent(isce);
+		}
+	}
+	
+	@Override
+	public void onInvalidSubmitCourse(InvalidSubmitCourseEvent evt) 
+	{
+		InvalidAddModifyCourseAction iamca = evt.getAction();
+		view.showErrorMessages(iamca.toString());
 	}
 	
 	@Override

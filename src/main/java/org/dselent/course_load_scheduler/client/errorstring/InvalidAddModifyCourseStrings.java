@@ -8,9 +8,10 @@ package org.dselent.course_load_scheduler.client.errorstring;
  *
  */
 
-public class InvalidAddSectionStrings
+public class InvalidAddModifyCourseStrings
 {
-	public static final String EMPTY_SECTION_FIELD = "All fields must be filled in.";
+	public static final String EMPTY_SECTION_FIELD = "All section fields must be filled in.";
+	public static final String EMPTY_COURSE_FIELD = "All course fields must be filled in and there must be at least one section.";
 	public static final String DUPLICATE_CRN = "No duplicate CRNs are allowed.";
 
 }

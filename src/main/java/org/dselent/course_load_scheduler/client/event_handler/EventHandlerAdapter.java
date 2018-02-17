@@ -2,6 +2,7 @@ package org.dselent.course_load_scheduler.client.event_handler;
 
 import org.dselent.course_load_scheduler.client.event.InvalidChangePasswordEvent;
 import org.dselent.course_load_scheduler.client.event.InvalidLoginEvent;
+import org.dselent.course_load_scheduler.client.event.InvalidSubmitCourseEvent;
 import org.dselent.course_load_scheduler.client.event.ModifyCourseEvent;
 import org.dselent.course_load_scheduler.client.event.SendChangePasswordEvent;
 import org.dselent.course_load_scheduler.client.event.SendLoginEvent;
@@ -29,7 +30,7 @@ public abstract class EventHandlerAdapter implements InvalidLoginEventHandler, S
 		SearchUserEventHandler, CreateUserEventHandler, TerminateAccountEventHandler, CreateScheduleEventHandler,
 		InvalidChangePasswordEventHandler, SendChangePasswordEventHandler, TriggerChangePasswordWindowEventHandler,
 		ModifyCourseEventHandler, SearchCourseEventHandler, AdminCourseEventHandler, FacultyCourseEventHandler,
-		InvalidAddSectionEventHandler {
+		InvalidAddSectionEventHandler, InvalidSubmitCourseEventHandler {
 	@Override
 	public void onInvalidLogin(InvalidLoginEvent evt) {}
 	
@@ -71,4 +72,7 @@ public abstract class EventHandlerAdapter implements InvalidLoginEventHandler, S
 	
 	@Override
 	public void onInvalidAddSection(InvalidAddSectionEvent evt) {}
+	
+	@Override
+	public void onInvalidSubmitCourse(InvalidSubmitCourseEvent evt) {}
 }

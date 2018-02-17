@@ -10,16 +10,16 @@ import java.util.List;
  * @author dselent
  *
  */
-public class InvalidAddSectionAction 
+public class InvalidAddModifyCourseAction 
 {
 	private List<String> reasonList;
 	
-	public InvalidAddSectionAction()
+	public InvalidAddModifyCourseAction()
 	{
 		reasonList = new ArrayList<>();
 	}
 	
-	public InvalidAddSectionAction(List<String> reasonList)
+	public InvalidAddModifyCourseAction(List<String> reasonList)
 	{
 		this.reasonList = reasonList;
 	}

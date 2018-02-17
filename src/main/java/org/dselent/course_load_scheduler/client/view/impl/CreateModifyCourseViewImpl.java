@@ -249,17 +249,6 @@ public class CreateModifyCourseViewImpl extends BaseViewImpl<CreateModifyCourseP
 	@UiHandler("submitBtn")
 	void onSubmitBtnClick(ClickEvent event) {
 		this.presenter.createModifyCourseSubmit();
-		
-		this.presenter.clearForm();
-		
-		final Injector injector = Injector.INSTANCE;
-
-		IndexPresenterImpl indexPresenter = injector.getIndexPresenter(); // on-demand injection
-		IndexView indexView = indexPresenter.getView();
-
-		AdminCoursePresenterImpl adminCoursePresenter = injector.getAdminCoursePresenter();
-
-		adminCoursePresenter.go(indexView.getViewRootPanel());
 	}
 
 	@Override

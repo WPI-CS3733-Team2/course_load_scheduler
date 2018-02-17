@@ -1,7 +1,7 @@
 package org.dselent.course_load_scheduler.client.event;
 
 import org.dselent.course_load_scheduler.client.action.InvalidAddModifyCourseAction;
-import org.dselent.course_load_scheduler.client.event_handler.InvalidAddSectionEventHandler;
+import org.dselent.course_load_scheduler.client.event_handler.InvalidSubmitCourseEventHandler;
 
 import com.google.gwt.event.shared.GwtEvent;
 
@@ -12,13 +12,13 @@ import com.google.gwt.event.shared.GwtEvent;
  * @author dselent
  *
  */
-public class InvalidAddSectionEvent extends GwtEvent<InvalidAddSectionEventHandler>
+public class InvalidSubmitCourseEvent extends GwtEvent<InvalidSubmitCourseEventHandler>
 {
-	public static Type<InvalidAddSectionEventHandler> TYPE = new Type<InvalidAddSectionEventHandler>();
+	public static Type<InvalidSubmitCourseEventHandler> TYPE = new Type<InvalidSubmitCourseEventHandler>();
 	
 	private InvalidAddModifyCourseAction action;
 	
-	public InvalidAddSectionEvent(InvalidAddModifyCourseAction action)
+	public InvalidSubmitCourseEvent(InvalidAddModifyCourseAction action)
 	{
 		this.action = action;
 	}
@@ -32,7 +32,7 @@ public class InvalidAddSectionEvent extends GwtEvent<InvalidAddSectionEventHandl
 	 * 
 	 */
 	@Override
-	public Type<InvalidAddSectionEventHandler> getAssociatedType()
+	public Type<InvalidSubmitCourseEventHandler> getAssociatedType()
 	{
 		return TYPE;
 	}
@@ -41,8 +41,8 @@ public class InvalidAddSectionEvent extends GwtEvent<InvalidAddSectionEventHandl
 	 * 
 	 */
 	@Override
-	protected void dispatch(InvalidAddSectionEventHandler handler)
+	protected void dispatch(InvalidSubmitCourseEventHandler handler)
 	{
-		handler.onInvalidAddSection(this);
+		handler.onInvalidSubmitCourse(this);
 	}
 }
