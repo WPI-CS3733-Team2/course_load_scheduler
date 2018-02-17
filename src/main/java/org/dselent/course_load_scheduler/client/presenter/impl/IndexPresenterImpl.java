@@ -88,19 +88,18 @@ public class IndexPresenterImpl extends BasePresenterImpl implements IndexPresen
 				
 				String userRole = injector.getAccountDetailsPresenter().getUserType();
 				
+				// Used to simulate being an admin
 				boolean testing = false;
-				if (userRole.equals("Admin") || testing){
+				
+				if (userRole.equals("Admin") || testing) {
 					ViewCourseAction vca = new ViewCourseAction(new ArrayList<Course>());
 					AdminCourseEvent ace = new AdminCourseEvent(vca);
 					eventBus.fireEvent(ace);
 				} 
-				else if(userRole.equals("Faculty")) {
+				else {
 					ViewCourseAction vca = new ViewCourseAction(new ArrayList<Course>());
 					FacultyCourseEvent fce = new FacultyCourseEvent(vca);
 					eventBus.fireEvent(fce);
-				}
-				else {
-					//TODO exception needed: user role from database doesn't match either "Faculty" or "Admin".
 				}
 			}
 		});
