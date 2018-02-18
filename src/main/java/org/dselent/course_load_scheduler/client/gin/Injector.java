@@ -97,7 +97,7 @@ public interface Injector extends Ginjector
     //views
     public IndexViewImpl getIndexView();
     public LoginViewImpl getLoginView();
-    public ExampleViewImpl geExampleView();
+    public ExampleViewImpl getExampleView();
     public ChangePasswordViewImpl getChangePasswordView();
     public AccountDetailsViewImpl getAccountDetailsView();
     public FacultyCourseMappingViewImpl getFacultyCourseMappingView();
