@@ -1,5 +1,6 @@
 package org.dselent.course_load_scheduler.client.gin;
 
+import org.dselent.course_load_scheduler.client.presenter.impl.ExamplePresenterImpl;
 import org.dselent.course_load_scheduler.client.presenter.impl.CreateScheduleVisualPresenterImpl;
 import org.dselent.course_load_scheduler.client.presenter.impl.FacultyCourseMappingPresenterImpl;
 import org.dselent.course_load_scheduler.client.presenter.impl.FacultyCoursePresenterImpl;
@@ -21,6 +22,7 @@ import org.dselent.course_load_scheduler.client.presenter.impl.CreateScheduleAdd
 import org.dselent.course_load_scheduler.client.presenter.impl.CreateSchedulePresenterImpl;
 import org.dselent.course_load_scheduler.client.presenter.impl.AccountDetailsPresenterImpl;
 import org.dselent.course_load_scheduler.client.presenter.impl.ChangePasswordPresenterImpl;
+
 import org.dselent.course_load_scheduler.client.view.impl.AccountDetailsViewImpl;
 import org.dselent.course_load_scheduler.client.view.impl.ChangePasswordViewImpl;
 import org.dselent.course_load_scheduler.client.view.impl.FacultyCourseMappingViewImpl;
@@ -40,6 +42,9 @@ import org.dselent.course_load_scheduler.client.view.impl.ConfirmScheduleViewImp
 import org.dselent.course_load_scheduler.client.view.impl.CreateModifyCourseViewImpl;
 import org.dselent.course_load_scheduler.client.view.impl.CreateScheduleAddFacultyViewImpl;
 import org.dselent.course_load_scheduler.client.view.impl.CreateScheduleViewImpl;
+import org.dselent.course_load_scheduler.client.view.impl.ExampleViewImpl;
+
+import org.dselent.course_load_scheduler.client.service.impl.UserServiceImpl;
 
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.event.shared.SimpleEventBus;
@@ -69,6 +74,7 @@ public interface Injector extends Ginjector
     // presenters
     public IndexPresenterImpl getIndexPresenter();
     public LoginPresenterImpl getLoginPresenter();
+    public ExamplePresenterImpl getExamplePresenter();
 	public ChangePasswordPresenterImpl getChangePasswordPresenter();
 	public AccountDetailsPresenterImpl getAccountDetailsPresenter();
     public FacultyCourseMappingPresenterImpl getFacultyCourseMappingPresenter();
@@ -91,6 +97,7 @@ public interface Injector extends Ginjector
     //views
     public IndexViewImpl getIndexView();
     public LoginViewImpl getLoginView();
+    public ExampleViewImpl geExampleView();
     public ChangePasswordViewImpl getChangePasswordView();
     public AccountDetailsViewImpl getAccountDetailsView();
     public FacultyCourseMappingViewImpl getFacultyCourseMappingView();
@@ -109,5 +116,8 @@ public interface Injector extends Ginjector
     public RequestInboxViewImpl getRequestInboxView();
     public CreateScheduleAddFacultyViewImpl getCreateScheduleAddFacultyView();
     public CreateScheduleViewImpl getCreateScheduleView();
+    
+    //services
+    public UserServiceImpl getUserService();
 
 }
