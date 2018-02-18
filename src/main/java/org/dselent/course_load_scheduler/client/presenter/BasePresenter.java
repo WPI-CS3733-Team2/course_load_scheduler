@@ -1,6 +1,5 @@
 package org.dselent.course_load_scheduler.client.presenter;
 
-import org.dselent.course_load_scheduler.client.model.Model;
 import org.dselent.course_load_scheduler.client.view.BaseView;
 
 import com.google.gwt.user.client.ui.HasWidgets;
@@ -32,11 +31,6 @@ public interface BasePresenter
 	BaseView<? extends BasePresenter> getView();
 	
 	/**
-	 * Returns the modesl associated with the presenter
-	 */
-	Model getModel();
-	
-	/**
 	 * Binds all specified event handlers to the presenter
 	 */
 	void bind();
@@ -45,7 +39,4 @@ public interface BasePresenter
 	 * Unbinds all speficied event handlers to the presenter
 	 */
 	void unbind();
-	
-	//Navigates to the specified presenter
-	//void navigate(BasePresenter presenter);
 }

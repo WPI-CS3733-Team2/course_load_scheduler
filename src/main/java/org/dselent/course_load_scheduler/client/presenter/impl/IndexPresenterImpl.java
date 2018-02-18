@@ -144,13 +144,6 @@ public class IndexPresenterImpl extends BasePresenterImpl implements IndexPresen
 		return view;
 	}
 	
-	// Currently no model
-	@Override
-	public Model getModel()
-	{
-		return null;
-	}
-	
 	@Override
 	public void showLoadScreen()
 	{
