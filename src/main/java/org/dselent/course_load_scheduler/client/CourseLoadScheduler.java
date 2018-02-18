@@ -1,6 +1,7 @@
 package org.dselent.course_load_scheduler.client;
 
 import org.dselent.course_load_scheduler.client.gin.Injector;
+import org.dselent.course_load_scheduler.client.presenter.impl.ExamplePresenterImpl;
 import org.dselent.course_load_scheduler.client.presenter.ChangePasswordPresenter;
 import org.dselent.course_load_scheduler.client.presenter.impl.AccountDetailsPresenterImpl;
 import org.dselent.course_load_scheduler.client.presenter.impl.AdminCoursePresenterImpl;
@@ -16,10 +17,10 @@ import org.dselent.course_load_scheduler.client.presenter.impl.UserDetailsPresen
 import org.dselent.course_load_scheduler.client.presenter.impl.ConfirmSchedulePresenterImpl;
 import org.dselent.course_load_scheduler.client.presenter.impl.IndexPresenterImpl;
 import org.dselent.course_load_scheduler.client.presenter.impl.RequestCoursePresenterImpl;
-import org.dselent.course_load_scheduler.client.presenter.impl.RequestInboxPresenterImpl;
 import org.dselent.course_load_scheduler.client.presenter.impl.ScheduleListPresenterImpl;
 import org.dselent.course_load_scheduler.client.presenter.impl.ScheduleSpecificsPresenterImpl;
 import org.dselent.course_load_scheduler.client.presenter.impl.SearchSchedulePresenterImpl;
+import org.dselent.course_load_scheduler.client.service.impl.UserServiceImpl;
 import org.dselent.course_load_scheduler.client.view.IndexView;
 
 import com.google.gwt.core.client.EntryPoint;
@@ -47,6 +48,12 @@ public class CourseLoadScheduler implements EntryPoint
 		IndexView indexView = indexPresenter.getView();		
 		
 		indexPresenter.go(root);
+		
+		ExamplePresenterImpl examplePresenter = injector.getExamplePresenter();
+		examplePresenter.init();
+		
+		UserServiceImpl userService = injector.getUserService();
+		userService.init();
 
 		AccountDetailsPresenterImpl accountPresenter = injector.getAccountDetailsPresenter();
 		accountPresenter.init();
@@ -95,9 +102,6 @@ public class CourseLoadScheduler implements EntryPoint
 		
 		FacultyCourseMappingPresenterImpl facultyCourseMappingPresenter = injector.getFacultyCourseMappingPresenter();
 		facultyCourseMappingPresenter.init();
-		
-		RequestInboxPresenterImpl requestInboxPresenter = injector.getRequestInboxPresenter();
-		requestInboxPresenter.init();
 
 
 		// indexPresenter.go(RootPanel.get("indexContainer"));
