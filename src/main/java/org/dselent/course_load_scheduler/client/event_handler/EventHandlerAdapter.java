@@ -31,6 +31,7 @@ import org.dselent.course_load_scheduler.client.event.UserSearchPageEvent;
 import org.dselent.course_load_scheduler.client.event.ViewScheduleNavigationEvent;
 import org.dselent.course_load_scheduler.client.event.UserCreatePageEvent;
 import org.dselent.course_load_scheduler.client.event.UserDetailsPageEvent;
+import org.dselent.course_load_scheduler.client.event.ReceiveLoginEvent;
 
 /**
  * Adapter class for convenience All classes that need to implement an event
@@ -51,7 +52,8 @@ public abstract class EventHandlerAdapter implements InvalidLoginEventHandler, S
 		SearchScheduleEventHandler, ScheduleSpecificsEventHandler, CreateScheduleSelectCoursesEventHandler, 
 		CreateScheduleSelectFacultyEventHandler, RequestCourseEventHandler, InvalidSubmitRequestEventHandler,
 		CreateScheduleNavigationEventHandler, SearchScheduleNavigationEventHandler, ViewScheduleNavigationEventHandler,
-		FacultyCourseNavigationEventHandler, AccountDetailsEventHandler, RequestInboxNavigationEventHandler {
+		FacultyCourseNavigationEventHandler, AccountDetailsEventHandler, RequestInboxNavigationEventHandler, 
+		ReceiveLoginEventHandler {
 
 	@Override
 	public void onInvalidLogin(InvalidLoginEvent evt) {}
@@ -145,4 +147,7 @@ public abstract class EventHandlerAdapter implements InvalidLoginEventHandler, S
 	
 	@Override
 	public void onRequestInboxNavigation(RequestInboxNavigationEvent evt) {}
+	
+	@Override
+	public void onReceiveLogin(ReceiveLoginEvent evt) {}
 }

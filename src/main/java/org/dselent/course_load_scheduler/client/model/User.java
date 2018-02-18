@@ -1,5 +1,6 @@
 package org.dselent.course_load_scheduler.client.model;
 
+import java.util.Date;
 
 //All references to the createdAt and updatedAt fields have been commented out until we can figure out how to
 // import the proper modules.
@@ -14,11 +15,9 @@ public class User extends Model
 	private String firstName;
 	private String lastName;
 	private String email;
-	private String encryptedPassword;
-	private String salt;
 	private Integer userStateId;
-	//private Instant createdAt;
-	//private Instant updatedAt;
+	private Date createdAt;
+	private Date updatedAt;
 
 	// methods
 		
@@ -84,25 +83,6 @@ public class User extends Model
 		this.email = email;
 	}
 
-	public String getEncryptedPassword()
-	{
-		return encryptedPassword;
-	}
-
-	public void setEncryptedPassword(String encryptedPassword)
-	{
-		this.encryptedPassword = encryptedPassword;
-	}
-
-	public String getSalt()
-	{
-		return salt;
-	}
-
-	public void setSalt(String salt)
-	{
-		this.salt = salt;
-	}
 
 	public Integer getUserStateId()
 	{
@@ -114,56 +94,40 @@ public class User extends Model
 		this.userStateId = userStateId;
 	}
 
-	/*public Instant getCreatedAt()
+	public Date getCreatedAt()
 	{
 		return createdAt;
 	}
 
-	public void setCreatedAt(Instant createdAt)
+	public void setCreatedAt(Date createdAt)
 	{
 		this.createdAt = createdAt;
-	}*/
-	
-	/*public void setCreatedAt(Timestamp createdAt)
-	{
-		if(createdAt != null)
-		{
-			this.createdAt = createdAt.toInstant();
-		}
-	}*/
+	}
 
-	/*public Instant getUpdatedAt()
+
+	public Date getUpdatedAt()
 	{
 		return updatedAt;
 	}
 
-	public void setUpdatedAt(Instant updatedAt)
+	public void setUpdatedAt(Date updatedAt)
 	{
 		this.updatedAt = updatedAt;
-	}*/
+	}
 	
-	/*public void setUpdatedAt(Timestamp updatedAt)
-	{
-		if(updatedAt != null)
-		{
-			this.updatedAt = updatedAt.toInstant();
-		}
-	}*/
 
 	@Override
 	public int hashCode()
 	{
 		final int prime = 31;
 		int result = 1;
-		//result = prime * result + ((createdAt == null) ? 0 : createdAt.hashCode());
+		result = prime * result + ((createdAt == null) ? 0 : createdAt.hashCode());
 		result = prime * result + ((email == null) ? 0 : email.hashCode());
-		result = prime * result + ((encryptedPassword == null) ? 0 : encryptedPassword.hashCode());
 		result = prime * result + ((firstName == null) ? 0 : firstName.hashCode());
 		result = prime * result + ((id == null) ? 0 : id.hashCode());
 		result = prime * result + ((wpiId == null) ? 0 : wpiId.hashCode());
 		result = prime * result + ((lastName == null) ? 0 : lastName.hashCode());
-		result = prime * result + ((salt == null) ? 0 : salt.hashCode());
-		//result = prime * result + ((updatedAt == null) ? 0 : updatedAt.hashCode());
+		result = prime * result + ((updatedAt == null) ? 0 : updatedAt.hashCode());
 		result = prime * result + ((userName == null) ? 0 : userName.hashCode());
 		result = prime * result + ((userStateId == null) ? 0 : userStateId.hashCode());
 		return result;
@@ -185,7 +149,7 @@ public class User extends Model
 			return false;
 		}
 		User other = (User) obj;
-		/*if (createdAt == null)
+		if (createdAt == null)
 		{
 			if (other.createdAt != null)
 			{
@@ -195,7 +159,7 @@ public class User extends Model
 		else if (!createdAt.equals(other.createdAt))
 		{
 			return false;
-		}*/
+		}
 		if (email == null)
 		{
 			if (other.email != null)
@@ -204,17 +168,6 @@ public class User extends Model
 			}
 		}
 		else if (!email.equals(other.email))
-		{
-			return false;
-		}
-		if (encryptedPassword == null)
-		{
-			if (other.encryptedPassword != null)
-			{
-				return false;
-			}
-		}
-		else if (!encryptedPassword.equals(other.encryptedPassword))
 		{
 			return false;
 		}
@@ -262,18 +215,7 @@ public class User extends Model
 		{
 			return false;
 		}
-		if (salt == null)
-		{
-			if (other.salt != null)
-			{
-				return false;
-			}
-		}
-		else if (!salt.equals(other.salt))
-		{
-			return false;
-		}
-		/*if (updatedAt == null)
+		if (updatedAt == null)
 		{
 			if (other.updatedAt != null)
 			{
@@ -283,7 +225,7 @@ public class User extends Model
 		else if (!updatedAt.equals(other.updatedAt))
 		{
 			return false;
-		}*/
+		}
 		if (userName == null)
 		{
 			if (other.userName != null)
@@ -326,16 +268,12 @@ public class User extends Model
 		builder.append(lastName);
 		builder.append(", email=");
 		builder.append(email);
-		builder.append(", encryptedPassword=");
-		builder.append(encryptedPassword);
-		builder.append(", salt=");
-		builder.append(salt);
 		builder.append(", userStateId=");
 		builder.append(userStateId);
-		/*builder.append(", createdAt=");
+		builder.append(", createdAt=");
 		builder.append(createdAt);
 		builder.append(", updatedAt=");
-		builder.append(updatedAt);*/
+		builder.append(updatedAt);
 		builder.append("]");
 		return builder.toString();
 	}
