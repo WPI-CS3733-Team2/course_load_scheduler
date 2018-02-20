@@ -10,10 +10,11 @@ import com.google.gwt.uibinder.client.UiField;
 import com.google.gwt.uibinder.client.UiHandler;
 import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.ui.Button;
+import com.google.gwt.user.client.ui.HTMLPanel;
 import com.google.gwt.user.client.ui.HasWidgets;
 import com.google.gwt.user.client.ui.Label;
-import com.google.gwt.user.client.ui.VerticalPanel;
 import com.google.gwt.user.client.ui.Widget;
+import com.google.inject.Inject;
 import com.google.gwt.user.client.ui.Image;
 
 public class AccountDetailsViewImpl extends BaseViewImpl<AccountDetailsPresenter> implements AccountDetailsView{
@@ -62,12 +63,18 @@ public class AccountDetailsViewImpl extends BaseViewImpl<AccountDetailsPresenter
 	Button toChangePasswordButton;
 	
 	@UiField
-	VerticalPanel accountDetailsPanel;
+	HTMLPanel accountDetailsPanel;
 	
 	@UiField
 	Image logo;
 	
-	public AccountDetailsViewImpl() {
+	@UiField 
+	ChangePasswordViewImpl changePasswordPopupPanel;
+	
+	@Inject
+	public AccountDetailsViewImpl(ChangePasswordViewImpl changePasswordPopupPanel)
+	{
+		this.changePasswordPopupPanel = changePasswordPopupPanel;
 		initWidget(uiBinder.createAndBindUi(this));
 	}
 
@@ -85,6 +92,10 @@ public class AccountDetailsViewImpl extends BaseViewImpl<AccountDetailsPresenter
 	@Override
 	public HasWidgets getViewRootPanel() {
 		return accountDetailsPanel;
+	}
+	
+	public ChangePasswordViewImpl getChangePasswordPopupPanel() {
+		return changePasswordPopupPanel;
 	}
 
 	@Override

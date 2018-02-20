@@ -1,10 +1,10 @@
 package org.dselent.course_load_scheduler.client.presenter.impl;
 
 import org.dselent.course_load_scheduler.client.presenter.AccountDetailsPresenter;
+import org.dselent.course_load_scheduler.client.presenter.ChangePasswordPresenter;
 import org.dselent.course_load_scheduler.client.presenter.IndexPresenter;
 import org.dselent.course_load_scheduler.client.view.AccountDetailsView;
 import org.dselent.course_load_scheduler.client.action.TriggerChangePasswordWindowAction;
-import org.dselent.course_load_scheduler.client.action.UserDetailsPageAction;
 import org.dselent.course_load_scheduler.client.event.AccountDetailsEvent;
 import org.dselent.course_load_scheduler.client.event.TriggerChangePasswordWindowEvent;
 import org.dselent.course_load_scheduler.client.model.User;
@@ -21,14 +21,16 @@ public class AccountDetailsPresenterImpl extends BasePresenterImpl implements Ac
 	private UsersRolesLink usersRolesLink;
 	private UserRole userRole;
 	private IndexPresenter parentPresenter;
+	private ChangePasswordPresenter changePasswordPresenter;
 	private AccountDetailsView view;
 	private boolean changePasswordInProgress;
 	
 	@Inject
-	public AccountDetailsPresenterImpl(IndexPresenter parentPresenter, AccountDetailsView view)
+	public AccountDetailsPresenterImpl(IndexPresenter parentPresenter, AccountDetailsView view, ChangePasswordPresenter changePasswordPresenter)
 	{
 		this.view = view;
 		this.parentPresenter = parentPresenter;
+		this.changePasswordPresenter = changePasswordPresenter;
 		view.setPresenter(this);
 		changePasswordInProgress = false;
 		
@@ -53,6 +55,7 @@ public class AccountDetailsPresenterImpl extends BasePresenterImpl implements Ac
 	@Override
 	public void init()
 	{
+		changePasswordPresenter.init();
 		bind();
 	}
 
@@ -71,6 +74,7 @@ public class AccountDetailsPresenterImpl extends BasePresenterImpl implements Ac
 	
 	@Override
 	public void go(HasWidgets container) {
+		changePasswordPresenter.go(view.getChangePasswordPopupPanel().getViewRootPanel());
 		container.clear();
 		container.add(view.getWidgetContainer());
 	}
