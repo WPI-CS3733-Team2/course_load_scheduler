@@ -1,6 +1,8 @@
 package org.dselent.course_load_scheduler.client.view;
 
 import org.dselent.course_load_scheduler.client.presenter.AccountDetailsPresenter;
+import org.dselent.course_load_scheduler.client.view.impl.ChangePasswordViewImpl;
+
 import com.google.gwt.user.client.ui.Button;
 
 public interface AccountDetailsView extends BaseView<AccountDetailsPresenter>{
@@ -22,4 +24,6 @@ public interface AccountDetailsView extends BaseView<AccountDetailsPresenter>{
 	void setAccountType(String acctType);
 
 	void setEmail(String email);
+	
+	ChangePasswordViewImpl getChangePasswordPopupPanel();
 }
