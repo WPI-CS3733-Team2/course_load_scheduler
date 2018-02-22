@@ -20,6 +20,7 @@ import org.dselent.course_load_scheduler.client.presenter.impl.RequestCoursePres
 import org.dselent.course_load_scheduler.client.presenter.impl.ScheduleListPresenterImpl;
 import org.dselent.course_load_scheduler.client.presenter.impl.ScheduleSpecificsPresenterImpl;
 import org.dselent.course_load_scheduler.client.presenter.impl.SearchSchedulePresenterImpl;
+import org.dselent.course_load_scheduler.client.service.impl.FacultyCourseMappingServiceImpl;
 import org.dselent.course_load_scheduler.client.service.impl.UserServiceImpl;
 import org.dselent.course_load_scheduler.client.view.IndexView;
 
@@ -56,10 +57,14 @@ public class CourseLoadScheduler implements EntryPoint
 		userService.init();
 
 		AccountDetailsPresenterImpl accountPresenter = injector.getAccountDetailsPresenter();
-		accountPresenter.init();
+		accountPresenter.init();	
+		
+		FacultyCourseMappingServiceImpl facultyCourseMappingService = injector.getFacultyCourseMappingService();
+		facultyCourseMappingService.init();
 		
 		FacultyCoursePresenterImpl facultyCoursePresenter = injector.getFacultyCoursePresenter();
 		facultyCoursePresenter.init();
+
 		
 		AdminCoursePresenterImpl adminCoursePresenter = injector.getAdminCoursePresenter();
 		adminCoursePresenter.init();

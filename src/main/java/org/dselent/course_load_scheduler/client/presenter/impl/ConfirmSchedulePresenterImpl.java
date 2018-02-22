@@ -82,7 +82,6 @@ public class ConfirmSchedulePresenterImpl extends BasePresenterImpl implements C
 	//Uses data provided in previous pages
 	@Override
 	public void createSchedule() {
-		GWT.log("in ConfirmSchedulePresenterImpl.createSchedule");
 		//Create schedule
 		//Should use schedule model
 		if(!scheduleCreationInProgress)

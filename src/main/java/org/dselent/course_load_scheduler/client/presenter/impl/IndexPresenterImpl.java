@@ -26,6 +26,9 @@ import org.dselent.course_load_scheduler.client.model.Course;
 import org.dselent.course_load_scheduler.client.model.Model;
 import org.dselent.course_load_scheduler.client.presenter.IndexPresenter;
 import org.dselent.course_load_scheduler.client.view.IndexView;
+import org.dselent.course_load_scheduler.client.view.impl.FacultyCourseMappingViewImpl;
+
+import com.google.gwt.core.client.GWT;
 import com.google.gwt.dom.client.Style;
 import com.google.gwt.user.client.Command;
 import com.google.gwt.user.client.ui.HasWidgets;
@@ -122,8 +125,9 @@ public class IndexPresenterImpl extends BasePresenterImpl implements IndexPresen
 		view.setFacultyCourseCommand(new Command() {
 			@Override
 			public void execute() {
+				HasWidgets container = getView().getViewRootPanel();
 				FacultyCourseNavigationAction fcna = new FacultyCourseNavigationAction();
-				FacultyCourseNavigationEvent fcne = new FacultyCourseNavigationEvent(fcna);
+				FacultyCourseNavigationEvent fcne = new FacultyCourseNavigationEvent(fcna, container);
 				eventBus.fireEvent(fcne); 
 			}
 		});
