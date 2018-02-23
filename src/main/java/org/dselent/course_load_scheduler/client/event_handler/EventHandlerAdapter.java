@@ -51,11 +51,11 @@ public abstract class EventHandlerAdapter implements InvalidLoginEventHandler, S
 		ModifyCourseEventHandler, SearchCourseEventHandler, AdminCourseEventHandler, FacultyCourseEventHandler,
 		InvalidAddSectionEventHandler, InvalidSubmitCourseEventHandler, UserSearchPageEventHandler,
 		UserCreatePageEventHandler, UserDetailsPageEventHandler, ConfirmSchedulePageEventHandler,
-		SearchScheduleEventHandler, ScheduleSpecificsEventHandler, CreateScheduleSelectCoursesEventHandler, 
-		CreateScheduleSelectFacultyEventHandler, RequestCourseEventHandler, InvalidSubmitRequestEventHandler,
-		CreateScheduleNavigationEventHandler, SearchScheduleNavigationEventHandler, ViewScheduleNavigationEventHandler,
-		FacultyCourseNavigationEventHandler, AccountDetailsEventHandler, RequestInboxNavigationEventHandler, 
-		ReceiveLoginEventHandler, ReceiveFacultyCourseNavigationEventHandler, ReceiveViewScheduleNavigationEventHandler {
+		ScheduleSpecificsEventHandler, CreateScheduleSelectCoursesEventHandler, CreateScheduleSelectFacultyEventHandler, 
+		RequestCourseEventHandler, InvalidSubmitRequestEventHandler, CreateScheduleNavigationEventHandler, 
+		SearchScheduleNavigationEventHandler, ViewScheduleNavigationEventHandler, FacultyCourseNavigationEventHandler, 
+		AccountDetailsEventHandler, RequestInboxNavigationEventHandler, ReceiveLoginEventHandler, 
+		ReceiveFacultyCourseNavigationEventHandler, ReceiveViewScheduleNavigationEventHandler {
 
 	@Override
 	public void onInvalidLogin(InvalidLoginEvent evt) {}

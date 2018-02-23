@@ -5,6 +5,7 @@ import java.util.Date;
 import java.util.List;
 
 import org.dselent.course_load_scheduler.client.action.ReceiveViewScheduleNavigationAction;
+import org.dselent.course_load_scheduler.client.action.SearchScheduleAction;
 import org.dselent.course_load_scheduler.client.action.ViewScheduleNavigationAction;
 import org.dselent.course_load_scheduler.client.model.Schedule;
 import org.dselent.course_load_scheduler.client.send.jsonkeys.SendScheduleListKeys;
@@ -20,6 +21,16 @@ public class ViewScheduleNavigationActionTranslatorImpl implements ActionTransla
 {
 	@Override
 	public JSONObject translateToJson(ViewScheduleNavigationAction action)
+	{
+		JSONObject jsonObject = new JSONObject();
+		
+		JSONHelper.putStringValue(jsonObject, JSONHelper.convertKeyName(SendScheduleListKeys.SEARCH_BY), action.getSearchBy());
+		JSONHelper.putStringValue(jsonObject, JSONHelper.convertKeyName(SendScheduleListKeys.SEARCH_TERM), action.getSearchTerm());
+		
+		return jsonObject;
+	}
+	
+	public JSONObject translateToJson(SearchScheduleAction action)
 	{
 		JSONObject jsonObject = new JSONObject();
 		

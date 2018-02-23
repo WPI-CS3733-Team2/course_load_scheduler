@@ -1,5 +1,7 @@
 package org.dselent.course_load_scheduler.client.service.impl;
 
+import org.dselent.course_load_scheduler.client.action.SearchScheduleAction;
+import org.dselent.course_load_scheduler.client.action.SearchScheduleNavigationAction;
 import org.dselent.course_load_scheduler.client.action.ViewScheduleNavigationAction;
 import org.dselent.course_load_scheduler.client.callback.ViewScheduleNavigationCallback;
 import org.dselent.course_load_scheduler.client.event.CreateScheduleEvent;
@@ -54,7 +56,15 @@ public class ScheduleListServiceImpl extends BaseServiceImpl implements Schedule
 	}
 	
 	@Override
-	public void onSearchSchedule(SearchScheduleEvent evt) {
+	public void onSearchSchedule(SearchScheduleEvent evt) { 
+		SearchScheduleAction action = evt.getAction();
+		ViewScheduleNavigationActionTranslatorImpl viewScheduleNavigationActionTranslator = new ViewScheduleNavigationActionTranslatorImpl();
+		JSONObject json = viewScheduleNavigationActionTranslator.translateToJson(action);
+		ViewScheduleNavigationCallback viewScheduleNavigationCallback = new ViewScheduleNavigationCallback(eventBus, evt.getContainer());
+	
+		
+		NetworkRequest request = new NetworkRequest(NetworkRequestStrings.SCHEDULE_SEARCH, viewScheduleNavigationCallback, json);
+		request.send();
 	}
 	
 	@Override

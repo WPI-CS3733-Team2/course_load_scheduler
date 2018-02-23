@@ -66,7 +66,7 @@ public class SearchSchedulePresenterImpl extends BasePresenterImpl implements Se
 	}
 	
 	public void results() {
-		final String queryTerm = view.getSearchBar().getText().trim();
+		final String searchTerm = view.getSearchBar().getText().trim();
 		String searchBy = "";
 		if (view.getByFaculty().getValue()) {
 			searchBy = "faculty";
@@ -81,8 +81,8 @@ public class SearchSchedulePresenterImpl extends BasePresenterImpl implements Se
 			searchBy = "name";
 		}
 	      
-		SearchScheduleAction ssa = new SearchScheduleAction(queryTerm, searchBy);
-		SearchScheduleEvent sse = new SearchScheduleEvent(ssa);
+		SearchScheduleAction ssa = new SearchScheduleAction(searchBy, searchTerm);
+		SearchScheduleEvent sse = new SearchScheduleEvent(ssa, parentPresenter.getView().getViewRootPanel());
 		eventBus.fireEvent(sse);
 	}
 	
