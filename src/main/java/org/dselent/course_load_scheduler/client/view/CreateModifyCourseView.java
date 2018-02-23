@@ -57,12 +57,6 @@ public interface CreateModifyCourseView extends BaseView<CreateModifyCoursePrese
 
 	public void setPopTextBoxText(String text);
 	
-	public TextBox getFreqTextBox();
-	
-	public void setFreqTextBox(TextBox freqTextBox);
-	
-	public void setFreqTextBoxText(String text);
-	
 	public void showErrorMessages(String errorMessages);
 
 	public Widget getWidgetContainer();

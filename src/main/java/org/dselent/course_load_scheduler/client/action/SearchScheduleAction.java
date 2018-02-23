@@ -8,19 +8,19 @@ package org.dselent.course_load_scheduler.client.action;
  * @author dselent
  *
  */
-public class SearchScheduleAction 
+public class SearchScheduleAction extends Action 
 {
-	private String queryTerm;
+	private String searchTerm;
 	private String searchBy;
 	
-	public SearchScheduleAction(String queryTerm, String searchBy)
+	public SearchScheduleAction(String searchBy, String searchTerm)
 	{
-		this.queryTerm = queryTerm;
+		this.searchTerm = searchTerm;
 		this.searchBy = searchBy;
 	}
 	
-	public String getQueryTerm() {
-		return queryTerm;
+	public String getSearchTerm() {
+		return searchTerm;
 	}
 
 	public String getSearchBy() {
@@ -29,7 +29,7 @@ public class SearchScheduleAction
 
 	@Override
 	public String toString() {
-		return "SearchScheduleAction [queryTerm=" + queryTerm + ", searchBy=" + searchBy + "]";
+		return "SearchScheduleAction [searchBy=" + searchBy + ", searchTerm=" + searchTerm + "]";
 	}
 
 }

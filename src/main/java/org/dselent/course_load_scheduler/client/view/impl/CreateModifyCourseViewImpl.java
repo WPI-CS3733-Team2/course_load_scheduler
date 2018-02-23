@@ -45,8 +45,6 @@ public class CreateModifyCourseViewImpl extends BaseViewImpl<CreateModifyCourseP
 	@UiField
 	TextBox popTextBox;
 	@UiField
-	TextBox freqTextBox;
-	@UiField
 	HTMLPanel createModifyPanel;
 	@UiField
 	CellTable<Section> sectionTable;
@@ -161,18 +159,6 @@ public class CreateModifyCourseViewImpl extends BaseViewImpl<CreateModifyCourseP
 		this.popTextBox.setText(text);
 	}
 
-	public TextBox getFreqTextBox() {
-		return freqTextBox;
-	}
-
-	public void setFreqTextBox(TextBox freqTextBox) {
-		this.freqTextBox = freqTextBox;
-	}
-	
-	public void setFreqTextBoxText(String text) {
-		this.freqTextBox.setText(text);
-	}
-
 	public CreateModifyCourseViewImpl() {
 		initWidget(uiBinder.createAndBindUi(this));
 		
@@ -208,14 +194,6 @@ public class CreateModifyCourseViewImpl extends BaseViewImpl<CreateModifyCourseP
 			}
 		};
 		sectionTable.addColumn(populationColumn, "Population");
-
-		TextColumn<Section> frequencyColumn = new TextColumn<Section>() {
-			@Override
-			public String getValue(Section object) {
-				return Integer.toString(object.getFrequency());
-			}
-		};
-		sectionTable.addColumn(frequencyColumn, "Frequency");
 	}
 
 	@UiHandler("removeSectionBtn")

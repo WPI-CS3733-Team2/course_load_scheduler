@@ -50,6 +50,9 @@ public class AccountDetailsPresenterImpl extends BasePresenterImpl implements Ac
 		
 		registration = eventBus.addHandler(TriggerChangePasswordWindowEvent.TYPE, this);
 		eventBusRegistration.put(TriggerChangePasswordWindowEvent.TYPE, registration);
+		
+		registration = eventBus.addHandler(ReceiveLoginEvent.TYPE, this);
+		eventBusRegistration.put(ReceiveLoginEvent.TYPE, registration);
 	}
 	
 	@Override

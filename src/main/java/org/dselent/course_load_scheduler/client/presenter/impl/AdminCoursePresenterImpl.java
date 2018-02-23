@@ -158,14 +158,12 @@ public class AdminCoursePresenterImpl extends BasePresenterImpl implements Admin
 		section1.setSectionName("C01");
 		section1.setCrn(12345);
 		section1.setType("Lecture");
-		section1.setFrequency(4);
 		section1.setExpectedPopulation(50);
 
 		Section section2 = new Section();
 		section2.setSectionName("C02");
 		section2.setCrn(12346);
 		section2.setType("Lab");
-		section2.setFrequency(4);
 		section2.setExpectedPopulation(50);
 
 		sections.add(section1);
@@ -234,14 +232,6 @@ public class AdminCoursePresenterImpl extends BasePresenterImpl implements Admin
 				}
 			};
 			courseSections.addColumn(populationColumn, "Population");
-
-			TextColumn<Section> frequencyColumn = new TextColumn<Section>() {
-				@Override
-				public String getValue(Section object) {
-					return Integer.toString(object.getFrequency());
-				}
-			};
-			courseSections.addColumn(frequencyColumn, "Frequency");
 
 			courseSections.setRowCount(courses.get(i).getSections().size(), true);
 			courseSections.setRowData(0, courses.get(i).getSections());

@@ -36,7 +36,7 @@ public class LoginActionTranslatorImpl implements ActionTranslator<SendLoginActi
 		// sent timestamps as epoch seconds (long)
 		
 		JSONValue jsonObject = json.get("success");
-		JSONObject userObject = jsonObject.isArray().get(0).isObject();
+		JSONObject userObject = jsonObject.isObject();
 		
 		Integer usersId = JSONHelper.getIntValue(userObject, JSONHelper.convertKeyName(ReceiveLoginKeys.USERS_ID));
 		String usersWpiId = JSONHelper.getStringValue(userObject, JSONHelper.convertKeyName(ReceiveLoginKeys.USERS_WPI_ID));

@@ -1,10 +1,5 @@
 package org.dselent.course_load_scheduler.client.action;
 
-import java.util.ArrayList;
-import java.util.List;
-
-import org.dselent.course_load_scheduler.client.model.Course;
-
 /**
  * Actions are used to package up data to be sent on the event bus
  * This particular action is for data related to an invalid login attempt caught client-side
@@ -12,38 +7,44 @@ import org.dselent.course_load_scheduler.client.model.Course;
  * @author dselent
  *
  */
-public class ViewCourseAction 
+public class ViewCourseAction extends Action
 {
-	private List<Course> courses;
+	private String courseName;
+	private String courseNumber;
+	private Integer frequency;
 	
-	public ViewCourseAction()
-	{
-		courses = new ArrayList<>();
-	}
-	
-	public ViewCourseAction(List<Course> courses)
-	{
-		this.courses = courses;
+	public String getCourseName() {
+		return courseName;
 	}
 
-	public boolean addCourses(List<Course> courses)
-	{
-		return this.courses.addAll(courses);
+	public String getCourseNumber() {
+		return courseNumber;
+	}
+
+	public Integer getFrequency() {
+		return frequency;
 	}
 	
-	public void addCourse(Course course)
-	{
-		courses.add(course);
+	public ViewCourseAction()
+	{	
+		courseName = "";
+		courseNumber = "";
+		frequency = -1;
 	}
 	
-	public Course getCourse(int index)
+	public ViewCourseAction(String courseName, String courseNumber)
 	{
-		return courses.get(index);
+		if(courseName != null) {
+			this.courseName = courseName;
+		}
+		else {
+			this.courseNumber = courseNumber;
+		}
 	}
 	
-	public int getNumberOfCourses()
+	public ViewCourseAction(Integer frequency)
 	{
-		return courses.size();
+		this.frequency = frequency;
 	}
 	
 	@Override
@@ -51,11 +52,12 @@ public class ViewCourseAction
 	{
 		StringBuilder sb = new StringBuilder();
 		
-		for(Course course : courses)
-		{
-			sb.append(course);
-			sb.append("\n");
-		}
+		sb.append(courseName);
+		sb.append("\n");
+		sb.append(courseNumber);
+		sb.append("\n");
+		sb.append(frequency);
+		sb.append("\n");
 		
 		return sb.toString();
 	}
