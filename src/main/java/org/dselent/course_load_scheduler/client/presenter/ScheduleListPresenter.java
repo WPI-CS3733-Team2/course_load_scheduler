@@ -8,6 +8,6 @@ public interface ScheduleListPresenter extends BasePresenter
 {
 	IndexPresenter getParentPresenter();
 	void setParentPresenter(IndexPresenter parentPresenter);
-	List<Schedule> getSchedules();
 	void viewSpecifics(Schedule schedule);
+	List<Schedule> getSchedules();
 }

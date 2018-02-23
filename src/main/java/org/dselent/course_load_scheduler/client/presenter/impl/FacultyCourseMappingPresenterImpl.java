@@ -26,16 +26,6 @@ public class FacultyCourseMappingPresenterImpl extends BasePresenterImpl impleme
 		this.view = view;
 		this.parentPresenter = parentPresenter;
 		view.setPresenter(this);
-		/*List<Integer> numberList = new ArrayList<Integer>();
-		List<String> stringList = new ArrayList<String>();
-		numberList.add(1);
-		stringList.add("Course info example");
-		FacultyCourse faculty1 = new FacultyCourse();
-		faculty1.setFirstName("Jim");
-		faculty1.setLastName("Bob");
-		faculty1.setCourseAssignment("course assignment example");
-		List<FacultyCourse> facultyList = Arrays.asList(faculty1,faculty1,faculty1,faculty1,faculty1,faculty1,faculty1);
-		this.fillCellTable(facultyList);*/
 		
 	}
 	

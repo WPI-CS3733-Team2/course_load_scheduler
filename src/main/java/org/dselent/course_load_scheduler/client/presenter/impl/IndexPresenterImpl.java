@@ -55,9 +55,10 @@ public class IndexPresenterImpl extends BasePresenterImpl implements IndexPresen
 		
 		view.setViewScheduleCommand(new Command() {
 			@Override
-			public void execute() {	
+			public void execute() {
+				HasWidgets container = getView().getViewRootPanel();
 				ViewScheduleNavigationAction vsna = new ViewScheduleNavigationAction();
-				ViewScheduleNavigationEvent vsne = new ViewScheduleNavigationEvent(vsna);
+				ViewScheduleNavigationEvent vsne = new ViewScheduleNavigationEvent(vsna, container);
 				eventBus.fireEvent(vsne); 
 			}
 		});

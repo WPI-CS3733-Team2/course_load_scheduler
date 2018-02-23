@@ -88,8 +88,10 @@ import org.dselent.course_load_scheduler.client.view.impl.CreateModifyCourseView
 import org.dselent.course_load_scheduler.client.view.impl.CreateScheduleAddFacultyViewImpl;
 import org.dselent.course_load_scheduler.client.view.impl.CreateScheduleViewImpl;
 import org.dselent.course_load_scheduler.client.service.FacultyCourseMappingService;
+import org.dselent.course_load_scheduler.client.service.ScheduleListService;
 import org.dselent.course_load_scheduler.client.service.UserService;
 import org.dselent.course_load_scheduler.client.service.impl.FacultyCourseMappingServiceImpl;
+import org.dselent.course_load_scheduler.client.service.impl.ScheduleListServiceImpl;
 import org.dselent.course_load_scheduler.client.service.impl.UserServiceImpl;
 
 import com.google.gwt.event.shared.SimpleEventBus;
@@ -159,6 +161,8 @@ public class InjectorModule extends AbstractGinModule
         //services
         bind(UserService.class).to(UserServiceImpl.class).in(Singleton.class);
         bind(FacultyCourseMappingService.class).to(FacultyCourseMappingServiceImpl.class).in(Singleton.class);
+        bind(ScheduleListService.class).to(ScheduleListServiceImpl.class).in(Singleton.class);
+        
     }
 	
 	/*

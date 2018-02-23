@@ -66,7 +66,6 @@ public class SearchSchedulePresenterImpl extends BasePresenterImpl implements Se
 	}
 	
 	public void results() {
-		// TODO : pass these terms for SQL queries
 		final String queryTerm = view.getSearchBar().getText().trim();
 		String searchBy = "";
 		if (view.getByFaculty().getValue()) {
