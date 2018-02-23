@@ -3,35 +3,22 @@ package org.dselent.course_load_scheduler.client.event;
 import org.dselent.course_load_scheduler.client.action.FacultyCourseNavigationAction;
 import org.dselent.course_load_scheduler.client.event_handler.FacultyCourseNavigationEventHandler;
 
-import com.google.gwt.event.shared.GwtEvent;
+import com.google.gwt.user.client.ui.HasWidgets;
 
-public class FacultyCourseNavigationEvent extends GwtEvent<FacultyCourseNavigationEventHandler>{
+public class FacultyCourseNavigationEvent extends DisplayEvent<FacultyCourseNavigationAction, FacultyCourseNavigationEventHandler>{
 	public static Type<FacultyCourseNavigationEventHandler> TYPE = new Type<FacultyCourseNavigationEventHandler>();
 	
-	private FacultyCourseNavigationAction action;
-	
-	public FacultyCourseNavigationEvent(FacultyCourseNavigationAction action)
+	public FacultyCourseNavigationEvent(FacultyCourseNavigationAction action, HasWidgets container)
 	{
-		this.action = action;
+		super(action,container);
 	}
 	
-	public FacultyCourseNavigationAction getAction()
-	{
-		return action;
-	}
-	
-	/*
-	 * 
-	 */
 	@Override
 	public Type<FacultyCourseNavigationEventHandler> getAssociatedType()
 	{
 		return TYPE;
 	}
-
-	/*
-	 * 
-	 */
+	
 	@Override
 	protected void dispatch(FacultyCourseNavigationEventHandler handler)
 	{

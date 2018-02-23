@@ -22,6 +22,9 @@ import org.dselent.course_load_scheduler.client.event.ViewScheduleNavigationEven
 import org.dselent.course_load_scheduler.client.gin.Injector;
 import org.dselent.course_load_scheduler.client.presenter.IndexPresenter;
 import org.dselent.course_load_scheduler.client.view.IndexView;
+import org.dselent.course_load_scheduler.client.view.impl.FacultyCourseMappingViewImpl;
+
+import com.google.gwt.core.client.GWT;
 import com.google.gwt.dom.client.Style;
 import com.google.gwt.user.client.Command;
 import com.google.gwt.user.client.ui.HasWidgets;
@@ -48,9 +51,10 @@ public class IndexPresenterImpl extends BasePresenterImpl implements IndexPresen
 		
 		view.setViewScheduleCommand(new Command() {
 			@Override
-			public void execute() {	
+			public void execute() {
+				HasWidgets container = getView().getViewRootPanel();
 				ViewScheduleNavigationAction vsna = new ViewScheduleNavigationAction();
-				ViewScheduleNavigationEvent vsne = new ViewScheduleNavigationEvent(vsna);
+				ViewScheduleNavigationEvent vsne = new ViewScheduleNavigationEvent(vsna, container);
 				eventBus.fireEvent(vsne); 
 			}
 		});
@@ -119,8 +123,9 @@ public class IndexPresenterImpl extends BasePresenterImpl implements IndexPresen
 		view.setFacultyCourseCommand(new Command() {
 			@Override
 			public void execute() {
+				HasWidgets container = getView().getViewRootPanel();
 				FacultyCourseNavigationAction fcna = new FacultyCourseNavigationAction();
-				FacultyCourseNavigationEvent fcne = new FacultyCourseNavigationEvent(fcna);
+				FacultyCourseNavigationEvent fcne = new FacultyCourseNavigationEvent(fcna, container);
 				eventBus.fireEvent(fcne); 
 			}
 		});
