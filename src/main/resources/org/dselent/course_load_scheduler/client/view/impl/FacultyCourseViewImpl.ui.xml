@@ -20,6 +20,8 @@
 			</g:row>
 			<g:row/>
 		</g:Grid>
-		<g:Grid width="700px" ui:field="allCoursesGrid"/>
+		<g:ScrollPanel width="800px" height="500px">
+			<g:Grid width="700px" ui:field="allCoursesGrid"/>
+		</g:ScrollPanel>
 	</g:HTMLPanel>
 </ui:UiBinder> 
