@@ -1,7 +1,5 @@
 package org.dselent.course_load_scheduler.client.presenter.impl;
 
-import java.util.ArrayList;
-
 import javax.inject.Inject;
 
 import org.dselent.course_load_scheduler.client.action.ViewCourseAction;
@@ -22,8 +20,6 @@ import org.dselent.course_load_scheduler.client.action.UserSearchPageAction;
 import org.dselent.course_load_scheduler.client.event.UserSearchPageEvent;
 import org.dselent.course_load_scheduler.client.event.ViewScheduleNavigationEvent;
 import org.dselent.course_load_scheduler.client.gin.Injector;
-import org.dselent.course_load_scheduler.client.model.Course;
-import org.dselent.course_load_scheduler.client.model.Model;
 import org.dselent.course_load_scheduler.client.presenter.IndexPresenter;
 import org.dselent.course_load_scheduler.client.view.IndexView;
 import org.dselent.course_load_scheduler.client.view.impl.FacultyCourseMappingViewImpl;
@@ -82,7 +78,7 @@ public class IndexPresenterImpl extends BasePresenterImpl implements IndexPresen
 			}
 		});
 		
-		view.setCoursesCommand(new Command() {
+		view.setCoursesCommand(new CustomCommand(view) {
 			@Override
 			public void execute() {
 				final Injector injector = Injector.INSTANCE;
@@ -91,15 +87,16 @@ public class IndexPresenterImpl extends BasePresenterImpl implements IndexPresen
 				
 				// Used to simulate being an admin
 				boolean testing = false;
+				HasWidgets container = view.getViewRootPanel();
 				
 				if (userRole.equals("Admin") || testing) {
-					ViewCourseAction vca = new ViewCourseAction(new ArrayList<Course>());
+					ViewCourseAction vca = new ViewCourseAction();
 					AdminCourseEvent ace = new AdminCourseEvent(vca);
 					eventBus.fireEvent(ace);
 				} 
 				else {
-					ViewCourseAction vca = new ViewCourseAction(new ArrayList<Course>());
-					FacultyCourseEvent fce = new FacultyCourseEvent(vca);
+					ViewCourseAction vca = new ViewCourseAction();
+					FacultyCourseEvent fce = new FacultyCourseEvent(vca, container);
 					eventBus.fireEvent(fce);
 				}
 			}
@@ -163,5 +160,21 @@ public class IndexPresenterImpl extends BasePresenterImpl implements IndexPresen
 	{
 		view.getLoadingImage().getElement().getStyle().setVisibility(Style.Visibility.HIDDEN);
 		view.getGlassLoadingPanel().getElement().getStyle().setVisibility(Style.Visibility.HIDDEN);
+	}
+	
+	private class CustomCommand implements Command {
+
+		IndexView view;
+		
+		public CustomCommand(IndexView view) {
+			this.view = view;
+		}
+		
+		@Override
+		public void execute() {
+			// TODO Auto-generated method stub
+			
+		}
+		
 	}
 }

@@ -97,8 +97,9 @@ public class RequestCoursePresenterImpl extends BasePresenterImpl implements Req
 	public void requestCourseCancel() {
 		clearForm();
 
-		ViewCourseAction vca = new ViewCourseAction(new ArrayList<Course>());
-		FacultyCourseEvent ace = new FacultyCourseEvent(vca);
+		HasWidgets container = parentPresenter.getView().getViewRootPanel();
+		ViewCourseAction vca = new ViewCourseAction();
+		FacultyCourseEvent ace = new FacultyCourseEvent(vca, container);
 		eventBus.fireEvent(ace);
 	}
 	
@@ -175,8 +176,9 @@ public class RequestCoursePresenterImpl extends BasePresenterImpl implements Req
 			
 			clearForm();
 			
-			ViewCourseAction vca = new ViewCourseAction(new ArrayList<Course>());
-			FacultyCourseEvent fce = new FacultyCourseEvent(vca);
+			HasWidgets container = parentPresenter.getView().getViewRootPanel();
+			ViewCourseAction vca = new ViewCourseAction();
+			FacultyCourseEvent fce = new FacultyCourseEvent(vca, container);
 			eventBus.fireEvent(fce);
 		}
 		else {

@@ -81,7 +81,6 @@ public class CreateSchedulePresenterImpl extends BasePresenterImpl implements Cr
 			section.setCrn(45678);
 			section.setType("Lecture");
 			section.setExpectedPopulation(50);
-			section.setFrequency(2);
 			sectionList.add(section);
 			sectionList.add(section);
 			course.setSections(sectionList);
