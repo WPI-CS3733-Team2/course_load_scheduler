@@ -17,13 +17,11 @@ import org.dselent.course_load_scheduler.client.action.CreateScheduleNavigationA
 import org.dselent.course_load_scheduler.client.action.FacultyCourseNavigationAction;
 import org.dselent.course_load_scheduler.client.action.RequestInboxNavigationAction;
 import org.dselent.course_load_scheduler.client.action.SearchScheduleNavigationAction;
-import org.dselent.course_load_scheduler.client.action.UserDetailsPageAction;
 import org.dselent.course_load_scheduler.client.action.UserSearchPageAction;
 import org.dselent.course_load_scheduler.client.event.UserSearchPageEvent;
 import org.dselent.course_load_scheduler.client.event.ViewScheduleNavigationEvent;
 import org.dselent.course_load_scheduler.client.gin.Injector;
 import org.dselent.course_load_scheduler.client.model.Course;
-import org.dselent.course_load_scheduler.client.model.Model;
 import org.dselent.course_load_scheduler.client.presenter.IndexPresenter;
 import org.dselent.course_load_scheduler.client.view.IndexView;
 import com.google.gwt.dom.client.Style;
@@ -43,9 +41,9 @@ public class IndexPresenterImpl extends BasePresenterImpl implements IndexPresen
 		
 		view.setAccountCommand(new Command() {
 			@Override
-			public void execute() {	
-				UserDetailsPageAction udpa = new UserDetailsPageAction();
-				AccountDetailsEvent ade = new AccountDetailsEvent(udpa);
+			public void execute()
+			{	
+				AccountDetailsEvent ade = new AccountDetailsEvent(view.getViewRootPanel());
 				eventBus.fireEvent(ade);
 			}
 		});
