@@ -10,24 +10,35 @@ import org.dselent.course_load_scheduler.client.utils.JSONHelper;
 import com.google.gwt.event.shared.SimpleEventBus;
 import com.google.gwt.json.client.JSONObject;
 import com.google.gwt.json.client.JSONValue;
+import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.ui.HasWidgets;
 
 public class SendLoginCallback extends DisplayCallback<JSONValue>
 {
 	public SendLoginCallback(SimpleEventBus eventBus, HasWidgets container)
-	 {
+	{
 		super(eventBus, container);
-	 }
+	}
 	  
 	@Override
 	public void onSuccess(JSONValue result)
 	{
-		JSONObject json = JSONHelper.getObjectValue(result);
-		LoginActionTranslatorImpl loginActionTranslator = new LoginActionTranslatorImpl();
-		ReceiveLoginAction action = loginActionTranslator.translateToAction(json);
+		try
+		{
+			JSONObject json = JSONHelper.getObjectValue(result);
+			LoginActionTranslatorImpl loginActionTranslator = new LoginActionTranslatorImpl();
+			ReceiveLoginAction action = loginActionTranslator.translateToAction(json);
 	
-		ReceiveLoginEvent event = new ReceiveLoginEvent(action, getContainer());
-		eventBus.fireEvent(event);
+			ReceiveLoginEvent event = new ReceiveLoginEvent(action, getContainer());
+			eventBus.fireEvent(event);
+		}
+		catch(Throwable caught)
+		{
+			// succeeded then had an exception
+			// this is more likely due to programmer error
+			
+			Window.alert(caught.getMessage());
+		}
 	}
   
 	@Override

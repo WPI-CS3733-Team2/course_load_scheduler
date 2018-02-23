@@ -1,6 +1,5 @@
 package org.dselent.course_load_scheduler.client.gin;
 
-import org.dselent.course_load_scheduler.client.presenter.ExamplePresenter;
 import org.dselent.course_load_scheduler.client.presenter.AccountDetailsPresenter;
 import org.dselent.course_load_scheduler.client.presenter.ChangePasswordPresenter;
 import org.dselent.course_load_scheduler.client.presenter.CreateScheduleVisualPresenter;
@@ -23,7 +22,6 @@ import org.dselent.course_load_scheduler.client.presenter.CreateScheduleAddFacul
 import org.dselent.course_load_scheduler.client.presenter.CreateSchedulePresenter;
 
 import org.dselent.course_load_scheduler.client.presenter.impl.CreateScheduleVisualPresenterImpl;
-import org.dselent.course_load_scheduler.client.presenter.impl.ExamplePresenterImpl;
 import org.dselent.course_load_scheduler.client.presenter.impl.AccountDetailsPresenterImpl;
 import org.dselent.course_load_scheduler.client.presenter.impl.ChangePasswordPresenterImpl;
 import org.dselent.course_load_scheduler.client.presenter.impl.FacultyCourseMappingPresenterImpl;
@@ -65,9 +63,6 @@ import org.dselent.course_load_scheduler.client.view.CreateScheduleAddFacultyVie
 import org.dselent.course_load_scheduler.client.view.CreateScheduleView;
 import org.dselent.course_load_scheduler.client.view.AccountDetailsView;
 import org.dselent.course_load_scheduler.client.view.ChangePasswordView;
-import org.dselent.course_load_scheduler.client.view.ExampleView;
-
-import org.dselent.course_load_scheduler.client.view.impl.ExampleViewImpl;
 import org.dselent.course_load_scheduler.client.view.impl.AccountDetailsViewImpl;
 import org.dselent.course_load_scheduler.client.view.impl.ChangePasswordViewImpl;
 import org.dselent.course_load_scheduler.client.view.impl.FacultyCourseMappingViewImpl;
@@ -112,7 +107,7 @@ public class InjectorModule extends AbstractGinModule
         // presenters
         bind(IndexPresenter.class).to(IndexPresenterImpl.class).in(Singleton.class);
         bind(LoginPresenter.class).to(LoginPresenterImpl.class).in(Singleton.class);
-        bind(ExamplePresenter.class).to(ExamplePresenterImpl.class).in(Singleton.class);
+        //bind(ExamplePresenter.class).to(ExamplePresenterImpl.class).in(Singleton.class);
         bind(ChangePasswordPresenter.class).to(ChangePasswordPresenterImpl.class).in(Singleton.class);
         bind(AccountDetailsPresenter.class).to(AccountDetailsPresenterImpl.class).in(Singleton.class);    
         bind(FacultyCourseMappingPresenter.class).to(FacultyCourseMappingPresenterImpl.class).in(Singleton.class);
@@ -153,7 +148,7 @@ public class InjectorModule extends AbstractGinModule
         bind(AccountDetailsView.class).to(AccountDetailsViewImpl.class).in(Singleton.class);
         bind(CreateScheduleAddFacultyView.class).to(CreateScheduleAddFacultyViewImpl.class).in(Singleton.class);
         bind(CreateScheduleView.class).to(CreateScheduleViewImpl.class).in(Singleton.class);
-        bind(ExampleView.class).to(ExampleViewImpl.class).in(Singleton.class);
+        //bind(ExampleView.class).to(ExampleViewImpl.class).in(Singleton.class);
         
         //services
         bind(UserService.class).to(UserServiceImpl.class).in(Singleton.class);

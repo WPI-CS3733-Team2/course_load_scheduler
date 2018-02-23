@@ -74,7 +74,7 @@ public interface Injector extends Ginjector
     // presenters
     public IndexPresenterImpl getIndexPresenter();
     public LoginPresenterImpl getLoginPresenter();
-    public ExamplePresenterImpl getExamplePresenter();
+    //public ExamplePresenterImpl getExamplePresenter();
 	public ChangePasswordPresenterImpl getChangePasswordPresenter();
 	public AccountDetailsPresenterImpl getAccountDetailsPresenter();
     public FacultyCourseMappingPresenterImpl getFacultyCourseMappingPresenter();
