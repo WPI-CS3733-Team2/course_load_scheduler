@@ -1,12 +1,13 @@
 package org.dselent.course_load_scheduler.client.presenter.impl;
 
 
-import java.util.ArrayList;
 import java.util.List;
 
 import org.dselent.course_load_scheduler.client.action.RequestCourseAction;
 import org.dselent.course_load_scheduler.client.action.SearchCourseAction;
-import org.dselent.course_load_scheduler.client.event.FacultyCourseEvent;
+import org.dselent.course_load_scheduler.client.action.ViewSectionAction;
+import org.dselent.course_load_scheduler.client.event.FacultySectionEvent;
+import org.dselent.course_load_scheduler.client.event.ReceiveFacultyCourseEvent;
 import org.dselent.course_load_scheduler.client.event.RequestCourseEvent;
 import org.dselent.course_load_scheduler.client.event.SearchCourseEvent;
 import org.dselent.course_load_scheduler.client.exceptions.EmptyStringException;
@@ -34,6 +35,7 @@ import com.google.inject.Inject;
 public class FacultyCoursePresenterImpl extends BasePresenterImpl implements FacultyCoursePresenter
 {
 	
+	List<Course> courses;
 	private FacultyCourseView view;
 	private IndexPresenter parentPresenter;
 	boolean searchInProgress;
@@ -58,8 +60,11 @@ public class FacultyCoursePresenterImpl extends BasePresenterImpl implements Fac
 	{
 		HandlerRegistration registration;
 		
-		registration = eventBus.addHandler(FacultyCourseEvent.TYPE, this);
-		eventBusRegistration.put(FacultyCourseEvent.TYPE, registration);
+		registration = eventBus.addHandler(FacultySectionEvent.TYPE, this);
+		eventBusRegistration.put(FacultySectionEvent.TYPE, registration);
+		
+		registration = eventBus.addHandler(ReceiveFacultyCourseEvent.TYPE, this);
+		eventBusRegistration.put(ReceiveFacultyCourseEvent.TYPE, registration);
 		
 		registration = eventBus.addHandler(SearchCourseEvent.TYPE, this);
 		eventBusRegistration.put(SearchCourseEvent.TYPE, registration);
@@ -78,38 +83,29 @@ public class FacultyCoursePresenterImpl extends BasePresenterImpl implements Fac
 	}
 	
 	@Override
-	public void onFacultyCourse(FacultyCourseEvent evt) {
+	public void onFacultySection(FacultySectionEvent evt)
+	{
+		ViewSectionAction action = evt.getAction();
+		courses = action.getAllCourses();
+	}
+	
+	@Override
+	public void onReceiveFacultyCourse(ReceiveFacultyCourseEvent evt) {
 		this.go(parentPresenter.getView().getViewRootPanel());
 		view.clearAllCoursesGrid();
 		
-		List<Section> sections = new ArrayList<>();
-		List<Course> courses = new ArrayList<>();
+		List<Section> sections = evt.getAction().getAllSections();
+		int courseId = sections.get(0).getCourseId();
+		int currentCourse = 0;
+		for (int i = 0; i < sections.size(); i++) {
+			Section section = sections.get(i);
+			if (section.getCourseId() != courseId)  {
+				currentCourse++;
+				courseId = section.getCourseId();
+			}
 
-		Section section1 = new Section();
-		section1.setSectionName("C01");
-		section1.setCrn(12345);
-		section1.setType("Lecture");
-		section1.setFrequency(4);
-		section1.setExpectedPopulation(50);
-
-		Section section2 = new Section();
-		section2.setSectionName("C02");
-		section2.setCrn(12346);
-		section2.setType("Lab");
-		section2.setFrequency(4);
-		section2.setExpectedPopulation(50);
-
-		sections.add(section1);
-		sections.add(section2);
-
-		Course course1 = new Course();
-		course1.setCourseName("Software Engineering");
-		course1.setCourseNumber("3733");
-		course1.setSections(sections);
-
-		courses.add(course1);
-		courses.add(course1);
-		courses.add(course1);
+			courses.get(currentCourse).addSection(section);
+		}
 
 		for (int i = 0; i < courses.size(); i++) {
 			DecoratorPanel coursePanel = new DecoratorPanel();
@@ -161,21 +157,12 @@ public class FacultyCoursePresenterImpl extends BasePresenterImpl implements Fac
 			};
 			courseSections.addColumn(populationColumn, "Population");
 
-			TextColumn<Section> frequencyColumn = new TextColumn<Section>() {
-				@Override
-				public String getValue(Section object) {
-					return Integer.toString(object.getFrequency());
-				}
-			};
-			courseSections.addColumn(frequencyColumn, "Frequency");
-
 			courseSections.setRowCount(courses.get(i).getSections().size(), true);
 			courseSections.setRowData(0, courses.get(i).getSections());
 			courseSections.setWidth("500px");
 
 			Button requestCourseButton = new Button("Request");
-			Course currentCourse = courses.get(i);
-			requestCourseButton.addClickHandler(new CustomClickHandler(currentCourse) {
+			requestCourseButton.addClickHandler(new CustomClickHandler(courses.get(i)) {
 				
 				@Override
 				public void onClick(ClickEvent event) {
