@@ -9,20 +9,7 @@ public class Section extends Model
 	private String type;
 	private Integer expectedPopulation;
 	private Integer frequency;
-	
-	@Override
-	public int hashCode() {
-		final int prime = 31;
-		int result = 1;
-		result = prime * result + ((sectionName == null) ? 0 : sectionName.hashCode());
-		result = prime * result + ((crn == null) ? 0 : crn.hashCode());
-		result = prime * result + ((type == null) ? 0 : type.hashCode());
-		result = prime * result + ((expectedPopulation == null) ? 0 : expectedPopulation.hashCode());
-		result = prime * result + ((frequency == null) ? 0 : frequency.hashCode());
-		return result;
-	}
-
-	
+	private Calendar calendar;
 
 	public String getSectionName() {
 		return sectionName;
@@ -64,13 +51,38 @@ public class Section extends Model
 	}
 
 
-	public int getFrequency() {
+	public Calendar getCalendar() {
+		return calendar;
+	}
+
+
+
+	public void setCalendar(Calendar calendar) {
+		this.calendar = calendar;
+	}
+
+
+	public Integer getFrequency() {
 		return frequency;
 	}
 
 
-	public void setFrequency(int frequency) {
+	public void setFrequency(Integer frequency) {
 		this.frequency = frequency;
+	}
+
+
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((calendar == null) ? 0 : calendar.hashCode());
+		result = prime * result + ((crn == null) ? 0 : crn.hashCode());
+		result = prime * result + ((expectedPopulation == null) ? 0 : expectedPopulation.hashCode());
+		result = prime * result + ((frequency == null) ? 0 : frequency.hashCode());
+		result = prime * result + ((sectionName == null) ? 0 : sectionName.hashCode());
+		result = prime * result + ((type == null) ? 0 : type.hashCode());
+		return result;
 	}
 
 
@@ -83,20 +95,15 @@ public class Section extends Model
 		if (getClass() != obj.getClass())
 			return false;
 		Section other = (Section) obj;
-		if (sectionName == null) {
-			if (other.sectionName != null)
+		if (calendar == null) {
+			if (other.calendar != null)
 				return false;
-		} else if (!sectionName.equals(other.sectionName))
+		} else if (!calendar.equals(other.calendar))
 			return false;
 		if (crn == null) {
 			if (other.crn != null)
 				return false;
 		} else if (!crn.equals(other.crn))
-			return false;
-		if (type == null) {
-			if (other.type != null)
-				return false;
-		} else if (!type.equals(other.type))
 			return false;
 		if (expectedPopulation == null) {
 			if (other.expectedPopulation != null)
@@ -108,14 +115,24 @@ public class Section extends Model
 				return false;
 		} else if (!frequency.equals(other.frequency))
 			return false;
+		if (sectionName == null) {
+			if (other.sectionName != null)
+				return false;
+		} else if (!sectionName.equals(other.sectionName))
+			return false;
+		if (type == null) {
+			if (other.type != null)
+				return false;
+		} else if (!type.equals(other.type))
+			return false;
 		return true;
 	}
-	
+
 
 	@Override
 	public String toString() {
-		return "FacultyCourse [sectionName=" + sectionName + ", crn=" + crn + ", type=" + type + ", expectedPopulation="
-				+ expectedPopulation + ", frequency=" + frequency + "]";
+		return "Section [sectionName=" + sectionName + ", crn=" + crn + ", type=" + type + ", expectedPopulation="
+				+ expectedPopulation + ", frequency=" + frequency + ", calendar=" + calendar + "]";
 	}
-	
+
 }
