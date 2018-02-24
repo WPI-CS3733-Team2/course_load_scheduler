@@ -1,7 +1,9 @@
 package org.dselent.course_load_scheduler.client.callback;
 
+import org.dselent.course_load_scheduler.client.action.InvalidSearchCourseAction;
 import org.dselent.course_load_scheduler.client.action.ViewSectionAction;
 import org.dselent.course_load_scheduler.client.event.FacultySectionEvent;
+import org.dselent.course_load_scheduler.client.event.InvalidSearchCourseEvent;
 import org.dselent.course_load_scheduler.client.translator.impl.FacultyCourseTranslatorImpl;
 import org.dselent.course_load_scheduler.client.utils.JSONHelper;
 
@@ -44,10 +46,9 @@ public class ViewCourseCallback extends DisplayCallback<JSONValue>
 			sb.append("\n");
 		}
 
-		System.out.println("Something went wrong with Faculty Courses ;-;");
-		/*InvalidLoginAction ila = new InvalidLoginAction(sb.toString());
-		InvalidLoginEvent ile = new InvalidLoginEvent(ila);
-		eventBus.fireEvent(ile);*/
+		InvalidSearchCourseAction sca = new InvalidSearchCourseAction();
+		InvalidSearchCourseEvent sce = new InvalidSearchCourseEvent(sca);
+		eventBus.fireEvent(sce);
 	}
 	
 }

@@ -27,7 +27,7 @@ import org.dselent.course_load_scheduler.client.event.CreateScheduleEvent;
 import org.dselent.course_load_scheduler.client.event.CreateScheduleNavigationEvent;
 import org.dselent.course_load_scheduler.client.event.CreateScheduleSelectCoursesEvent;
 import org.dselent.course_load_scheduler.client.event.CreateScheduleSelectFacultyEvent;
-import org.dselent.course_load_scheduler.client.event.SearchCourseEvent;
+import org.dselent.course_load_scheduler.client.event.InvalidSearchCourseEvent;
 import org.dselent.course_load_scheduler.client.event.SearchScheduleEvent;
 import org.dselent.course_load_scheduler.client.event.SearchScheduleNavigationEvent;
 import org.dselent.course_load_scheduler.client.event.UserSearchPageEvent;
@@ -50,7 +50,7 @@ import org.dselent.course_load_scheduler.client.event.ReceiveViewScheduleNavigat
 public abstract class EventHandlerAdapter implements InvalidLoginEventHandler, SendLoginEventHandler,
 		SearchUserEventHandler, CreateUserEventHandler, TerminateAccountEventHandler, CreateScheduleEventHandler,
 		InvalidChangePasswordEventHandler, SendChangePasswordEventHandler, TriggerChangePasswordWindowEventHandler,
-		ModifyCourseEventHandler, SearchCourseEventHandler, AdminCourseEventHandler, FacultyCourseEventHandler,
+		ModifyCourseEventHandler, InvalidSearchCourseEventHandler, AdminCourseEventHandler, FacultyCourseEventHandler,
 		InvalidAddSectionEventHandler, InvalidSubmitCourseEventHandler, UserSearchPageEventHandler,
 		UserCreatePageEventHandler, UserDetailsPageEventHandler, ConfirmSchedulePageEventHandler,
 		SearchScheduleEventHandler, ScheduleSpecificsEventHandler, CreateScheduleSelectCoursesEventHandler, 
@@ -94,7 +94,7 @@ public abstract class EventHandlerAdapter implements InvalidLoginEventHandler, S
 	public void onFacultyCourse(FacultyCourseEvent evt) {}
 	
 	@Override
-	public void onSearchCourse(SearchCourseEvent evt) {}
+	public void onInvalidSearchCourse(InvalidSearchCourseEvent evt) {}
 
 	@Override
 	public void onAdminCourse(AdminCourseEvent evt) {}

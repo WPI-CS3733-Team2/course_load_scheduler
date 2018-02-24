@@ -5,10 +5,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.dselent.course_load_scheduler.client.action.ModifyCourseAction;
-import org.dselent.course_load_scheduler.client.action.SearchCourseAction;
+import org.dselent.course_load_scheduler.client.action.InvalidSearchCourseAction;
 import org.dselent.course_load_scheduler.client.event.AdminCourseEvent;
 import org.dselent.course_load_scheduler.client.event.ModifyCourseEvent;
-import org.dselent.course_load_scheduler.client.event.SearchCourseEvent;
+import org.dselent.course_load_scheduler.client.event.InvalidSearchCourseEvent;
 import org.dselent.course_load_scheduler.client.exceptions.EmptyStringException;
 import org.dselent.course_load_scheduler.client.model.Course;
 import org.dselent.course_load_scheduler.client.model.Section;
@@ -61,8 +61,8 @@ public class AdminCoursePresenterImpl extends BasePresenterImpl implements Admin
 		registration = eventBus.addHandler(AdminCourseEvent.TYPE, this);
 		eventBusRegistration.put(AdminCourseEvent.TYPE, registration);
 		
-		registration = eventBus.addHandler(SearchCourseEvent.TYPE, this);
-		eventBusRegistration.put(SearchCourseEvent.TYPE, registration);
+		registration = eventBus.addHandler(InvalidSearchCourseEvent.TYPE, this);
+		eventBusRegistration.put(InvalidSearchCourseEvent.TYPE, registration);
 	}
 
 	@Override
@@ -132,18 +132,18 @@ public class AdminCoursePresenterImpl extends BasePresenterImpl implements Admin
 	}
 	
 	private void searchCourseEventFire(String query) {
-		SearchCourseAction sca = new SearchCourseAction(query);
-		SearchCourseEvent sce = new SearchCourseEvent(sca);
+		InvalidSearchCourseAction sca = new InvalidSearchCourseAction();
+		InvalidSearchCourseEvent sce = new InvalidSearchCourseEvent(sca);
 		eventBus.fireEvent(sce);
 	}
 	
 	@Override
-	public void onSearchCourse(SearchCourseEvent evt) {
-		parentPresenter.hideLoadScreen();
+	public void onInvalidSearchCourse(InvalidSearchCourseEvent evt) {
+		/*parentPresenter.hideLoadScreen();
 		view.getSearchCourseButton().setEnabled(true);
 		searchInProgress = false;
 		
-		view.showErrorMessages("Course search to be implemented.");
+		view.showErrorMessages("Course search to be implemented.");*/
 	}
 	
 	@Override
