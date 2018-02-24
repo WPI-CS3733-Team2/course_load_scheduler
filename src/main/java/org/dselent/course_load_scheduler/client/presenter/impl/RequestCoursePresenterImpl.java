@@ -84,6 +84,7 @@ public class RequestCoursePresenterImpl extends BasePresenterImpl implements Req
 	public void onRequestCourse(RequestCourseEvent evt) {
 		this.go(parentPresenter.getView().getViewRootPanel());
 		dataProvider.getList().clear();
+		clearForm();
 		
 		Course course = evt.getAction().getCourse();
 		List<Section> sections = course.getSections();
@@ -95,11 +96,10 @@ public class RequestCoursePresenterImpl extends BasePresenterImpl implements Req
 	
 	@Override
 	public void requestCourseCancel() {
-		clearForm();
-
-		ViewCourseAction vca = new ViewCourseAction(new ArrayList<Course>());
-		FacultyCourseEvent ace = new FacultyCourseEvent(vca);
-		eventBus.fireEvent(ace);
+		HasWidgets container = parentPresenter.getView().getViewRootPanel();
+		ViewCourseAction vca = new ViewCourseAction();
+		FacultyCourseEvent fce = new FacultyCourseEvent(vca, container);
+		eventBus.fireEvent(fce);
 	}
 	
 	@Override
@@ -173,10 +173,9 @@ public class RequestCoursePresenterImpl extends BasePresenterImpl implements Req
 			view.showErrorMessages(requestString);
 			//TODO: Send to database
 			
-			clearForm();
-			
-			ViewCourseAction vca = new ViewCourseAction(new ArrayList<Course>());
-			FacultyCourseEvent fce = new FacultyCourseEvent(vca);
+			HasWidgets container = parentPresenter.getView().getViewRootPanel();
+			ViewCourseAction vca = new ViewCourseAction();
+			FacultyCourseEvent fce = new FacultyCourseEvent(vca, container);
 			eventBus.fireEvent(fce);
 		}
 		else {

@@ -217,15 +217,6 @@ public class RequestCourseViewImpl extends BaseViewImpl<RequestCoursePresenter> 
 				return Integer.toString(object.getExpectedPopulation());
 			}
 		};
-		sectionTable.addColumn(populationColumn, "Population");
-
-		TextColumn<Section> frequencyColumn = new TextColumn<Section>() {
-			@Override
-			public String getValue(Section object) {
-				return Integer.toString(object.getFrequency());
-			}
-		};
-		sectionTable.addColumn(frequencyColumn, "Frequency");
 		sectionTable.setWidth("500px");
 	}
 	

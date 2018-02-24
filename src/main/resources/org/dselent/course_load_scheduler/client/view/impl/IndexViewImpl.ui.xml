@@ -27,6 +27,11 @@
     	visibility:hidden;
 	}
 	
+	.invisible
+	{
+    	visibility:hidden;
+	}
+	
 </ui:style>
 
 <g:VerticalPanel>
@@ -35,7 +40,7 @@
 			<g:HTMLPanel ui:field="mainPanel"/>
 		</g:Dock>
 		<g:Dock direction="NORTH">
-			<g:MenuBar ui:field="navigationMenu">
+			<g:MenuBar ui:field="navigationMenu" addStyleNames="{style.invisible}">
 				<g:MenuItem text="Account" ui:field="accountMenuItem"/>
 				<g:MenuItem text="Schedules" ui:field="schedulesMenuItem">
 					<g:MenuBar vertical="true">

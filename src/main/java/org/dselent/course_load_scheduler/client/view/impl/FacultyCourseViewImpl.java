@@ -30,7 +30,8 @@ public class FacultyCourseViewImpl extends BaseViewImpl<FacultyCoursePresenter> 
 	HTMLPanel facultyCoursePanel;
 	@UiField
 	Grid allCoursesGrid;
-	@UiField Button searchCourseButton;
+	@UiField 
+	Button searchCourseButton;
 
 	public TextBox getSearchCourseTextBox() {
 		return searchCourseTextBox;

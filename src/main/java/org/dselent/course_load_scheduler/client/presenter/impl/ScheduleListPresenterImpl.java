@@ -1,14 +1,13 @@
 package org.dselent.course_load_scheduler.client.presenter.impl;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 import org.dselent.course_load_scheduler.client.action.ScheduleSpecificsAction;
 import org.dselent.course_load_scheduler.client.event.CreateScheduleEvent;
+import org.dselent.course_load_scheduler.client.event.ReceiveViewScheduleNavigationEvent;
 import org.dselent.course_load_scheduler.client.event.ScheduleSpecificsEvent;
 import org.dselent.course_load_scheduler.client.event.SearchScheduleEvent;
-import org.dselent.course_load_scheduler.client.event.ViewScheduleNavigationEvent;
 import org.dselent.course_load_scheduler.client.model.Schedule;
 import org.dselent.course_load_scheduler.client.presenter.IndexPresenter;
 import org.dselent.course_load_scheduler.client.presenter.ScheduleListPresenter;
@@ -23,7 +22,7 @@ public class ScheduleListPresenterImpl extends BasePresenterImpl implements Sche
 {
 	private IndexPresenter parentPresenter;
 	private ScheduleListView view;
-	private List<Schedule> schedules = new ArrayList<Schedule>();
+	private List<Schedule> schedulesList = new ArrayList();
 
 	@Inject
 	public ScheduleListPresenterImpl(IndexPresenter parentPresenter, ScheduleListView view)
@@ -31,23 +30,18 @@ public class ScheduleListPresenterImpl extends BasePresenterImpl implements Sche
 		this.view = view;
 		this.parentPresenter = parentPresenter;
 		view.setPresenter(this);
-		Schedule schedule = new Schedule();
-		schedule.setId(1);
-		schedule.setFacultyId(1);
-		schedule.setScheduleName("Schedule Test");
-		schedules = Arrays.asList(schedule, schedule, schedule, schedule, schedule, schedule, schedule, schedule);
-		
-		this.fillTable(schedules);
-	}
-	
-	public List<Schedule> getSchedules() {
-		return schedules;
+
 	}
 
 	@Override
 	public void init()
 	{
 		bind();
+	}
+	
+	@Override
+	public List<Schedule> getSchedules(){
+		return schedulesList;
 	}
 
 	@Override
@@ -61,8 +55,8 @@ public class ScheduleListPresenterImpl extends BasePresenterImpl implements Sche
 		registration = eventBus.addHandler(CreateScheduleEvent.TYPE, this);
 		eventBusRegistration.put(CreateScheduleEvent.TYPE, registration);
 		
-		registration = eventBus.addHandler(ViewScheduleNavigationEvent.TYPE, this);
-		eventBusRegistration.put(ViewScheduleNavigationEvent.TYPE, registration);
+		registration = eventBus.addHandler(ReceiveViewScheduleNavigationEvent.TYPE, this);
+		eventBusRegistration.put(ReceiveViewScheduleNavigationEvent.TYPE, registration);
 	}
 		
 	@Override
@@ -94,16 +88,16 @@ public class ScheduleListPresenterImpl extends BasePresenterImpl implements Sche
 		view.getScheduleTable().setRowData(schedules);
 	}
 	
-	@Override
-	public void onSearchSchedule(SearchScheduleEvent evt) {
-		//TODO sql query stuff
-		this.go(parentPresenter.getView().getViewRootPanel());
+	public void viewSpecifics(int index) {
+		Schedule schedule = schedulesList.get(index);
+		ScheduleSpecificsAction ssa = new ScheduleSpecificsAction(schedule);
+		ScheduleSpecificsEvent sse = new ScheduleSpecificsEvent(ssa, parentPresenter.getView().getViewRootPanel());
+		eventBus.fireEvent(sse);
 	}
 	
-	public void viewSpecifics(Schedule schedule) {
-		ScheduleSpecificsAction ssa = new ScheduleSpecificsAction(schedule);
-		ScheduleSpecificsEvent sse = new ScheduleSpecificsEvent(ssa);
-		eventBus.fireEvent(sse);
+	@Override
+	public void onSearchSchedule(SearchScheduleEvent evt) {
+		this.go(parentPresenter.getView().getViewRootPanel());
 	}
 	
 	@Override
@@ -112,7 +106,9 @@ public class ScheduleListPresenterImpl extends BasePresenterImpl implements Sche
 	}
 	
 	@Override
-	public void onViewScheduleNavigation(ViewScheduleNavigationEvent evt) {
+	public void onReceiveViewScheduleNavigation(ReceiveViewScheduleNavigationEvent evt) {
+		schedulesList = evt.getAction().getModels();
+		this.fillTable(schedulesList);
 		this.go(parentPresenter.getView().getViewRootPanel());
 	}
 }

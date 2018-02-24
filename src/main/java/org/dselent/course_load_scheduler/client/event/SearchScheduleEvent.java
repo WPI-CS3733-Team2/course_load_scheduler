@@ -1,9 +1,9 @@
 package org.dselent.course_load_scheduler.client.event;
 
 import org.dselent.course_load_scheduler.client.action.SearchScheduleAction;
-import org.dselent.course_load_scheduler.client.event_handler.SearchScheduleEventHandler;
+import org.dselent.course_load_scheduler.client.event_handler.ViewScheduleNavigationEventHandler;
 
-import com.google.gwt.event.shared.GwtEvent;
+import com.google.gwt.user.client.ui.HasWidgets;
 
 /**
  * Events are "fired" and sent on the event bus to be sent to an applicable event handler
@@ -12,36 +12,22 @@ import com.google.gwt.event.shared.GwtEvent;
  * @author dselent
  *
  */
-public class SearchScheduleEvent extends GwtEvent<SearchScheduleEventHandler>
-{
-	public static Type<SearchScheduleEventHandler> TYPE = new Type<SearchScheduleEventHandler>();
-	
-	private SearchScheduleAction action;
-	
-	public SearchScheduleEvent(SearchScheduleAction action)
+public class SearchScheduleEvent extends DisplayEvent<SearchScheduleAction, ViewScheduleNavigationEventHandler>{
+	public static Type<ViewScheduleNavigationEventHandler> TYPE = new Type<ViewScheduleNavigationEventHandler>();
+
+	public SearchScheduleEvent(SearchScheduleAction action, HasWidgets container)
 	{
-		this.action = action;
+		super(action, container);
 	}
-	
-	public SearchScheduleAction getAction()
-	{
-		return action;
-	}
-	
-	/*
-	 * 
-	 */
+
 	@Override
-	public Type<SearchScheduleEventHandler> getAssociatedType()
+	public Type<ViewScheduleNavigationEventHandler> getAssociatedType()
 	{
 		return TYPE;
 	}
 
-	/*
-	 * 
-	 */
 	@Override
-	protected void dispatch(SearchScheduleEventHandler handler)
+	protected void dispatch(ViewScheduleNavigationEventHandler handler)
 	{
 		handler.onSearchSchedule(this);
 	}

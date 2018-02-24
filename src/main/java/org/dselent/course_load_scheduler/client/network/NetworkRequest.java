@@ -7,6 +7,7 @@ import org.dselent.course_load_scheduler.client.exceptions.StatusCodeException;
 import org.dselent.course_load_scheduler.client.utils.JSONHelper;
 import org.dselent.course_load_scheduler.client.utils.ToStringHelper;
 
+import com.google.gwt.core.client.GWT;
 import com.google.gwt.http.client.Request;
 import com.google.gwt.http.client.RequestBuilder;
 import com.google.gwt.http.client.RequestCallback;
@@ -128,7 +129,7 @@ public class NetworkRequest implements RequestCallback
 			}
 		}
 		catch(Throwable t)
-		{      
+		{
 			callback.onFailure(t);
 		}
 	}

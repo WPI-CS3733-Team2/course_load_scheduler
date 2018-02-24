@@ -3,7 +3,7 @@ package org.dselent.course_load_scheduler.client.event;
 import org.dselent.course_load_scheduler.client.action.ViewCourseAction;
 import org.dselent.course_load_scheduler.client.event_handler.FacultyCourseEventHandler;
 
-import com.google.gwt.event.shared.GwtEvent;
+import com.google.gwt.user.client.ui.HasWidgets;
 
 /**
  * Events are "fired" and sent on the event bus to be sent to an applicable event handler
@@ -12,20 +12,13 @@ import com.google.gwt.event.shared.GwtEvent;
  * @author dselent
  *
  */
-public class FacultyCourseEvent extends GwtEvent<FacultyCourseEventHandler>
+public class FacultyCourseEvent extends DisplayEvent<ViewCourseAction, FacultyCourseEventHandler>
 {
 	public static Type<FacultyCourseEventHandler> TYPE = new Type<FacultyCourseEventHandler>();
 	
-	private ViewCourseAction action;
-	
-	public FacultyCourseEvent(ViewCourseAction action)
+	public FacultyCourseEvent(ViewCourseAction action, HasWidgets container)
 	{
-		this.action = action;
-	}
-	
-	public ViewCourseAction getAction()
-	{
-		return action;
+		super(action, container);
 	}
 	
 	/*
