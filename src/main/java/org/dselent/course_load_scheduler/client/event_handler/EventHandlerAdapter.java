@@ -71,15 +71,12 @@ public abstract class EventHandlerAdapter implements InvalidLoginEventHandler, S
 		ReceiveLoginEventHandler, LoadPendingRequestListEventHandler, ReceivePendingRequestListEventHandler, 
 		ReceiveCreatedUserEventHandler, ReceiveUserSearchResultsEventHandler,
 		SendChangeRequestStateEventHandler, ReceiveChangeRequestStateEventHandler,ReceiveFacultyCourseEventHandler,
-<<<<<<< HEAD
 		ReceiveTerminatedAccountEventHandler, FacultySectionEventHandler, ReceiveFacultyCourseNavigationEventHandler, 
-		ReceiveViewScheduleNavigationEventHandler, ReceiveScheduleSpecificsEventHandler, InvalidEventHandler {
-=======
-		FacultySectionEventHandler, ReceiveFacultyCourseNavigationEventHandler, ReceiveViewScheduleNavigationEventHandler,
-		ReceiveScheduleSpecificsEventHandler, SendAccountDetailsEventHandler, ReceiveAccountDetailsEventHandler,
-		InvalidAccountDetailsEventHandler, ReceiveTerminatedAccountEventHandler
+		ReceiveViewScheduleNavigationEventHandler, ReceiveScheduleSpecificsEventHandler, InvalidEventHandler,
+		SendAccountDetailsEventHandler, ReceiveAccountDetailsEventHandler,
+		InvalidAccountDetailsEventHandler
 {
->>>>>>> d8d159e862ceea382e913f95a5a5c96c89928ad0
+
 
 
 	@Override
