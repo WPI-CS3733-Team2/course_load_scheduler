@@ -9,6 +9,7 @@ import org.dselent.course_load_scheduler.client.action.TriggerChangePasswordWind
 import org.dselent.course_load_scheduler.client.event.AccountDetailsEvent;
 import org.dselent.course_load_scheduler.client.event.ReceiveLoginEvent;
 import org.dselent.course_load_scheduler.client.event.TriggerChangePasswordWindowEvent;
+import org.dselent.course_load_scheduler.client.gin.Injector;
 import org.dselent.course_load_scheduler.client.model.UserInfo;
 
 import com.google.gwt.event.shared.HandlerRegistration;
@@ -134,9 +135,10 @@ public class AccountDetailsPresenterImpl extends BasePresenterImpl implements Ac
 		HasWidgets container = evt.getContainer();
 		ReceiveLoginAction rla = evt.getAction();
 
-		userInfo = rla.getUserInfo();
+		userInfo = Injector.INSTANCE.getGlobalData().getUserInfo();//rla.getUserInfo();
 
 		go(container);
+		parentPresenter.showMenuBar();
 		parentPresenter.hideLoadScreen();
 	}
 }

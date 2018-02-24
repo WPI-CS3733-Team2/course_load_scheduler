@@ -86,14 +86,16 @@ public class RequestInboxPresenterImpl extends BasePresenterImpl implements Requ
 	*/
 	
 	@Override
-	public void bind() {
-		
+	public void bind()
+	{
 		HandlerRegistration registration;
 		
 		registration = eventBus.addHandler(RequestInboxNavigationEvent.TYPE, this);
 		eventBusRegistration.put(RequestInboxNavigationEvent.TYPE, registration);
+		
 		registration = eventBus.addHandler(ReceivePendingRequestListEvent.TYPE, this);
 		eventBusRegistration.put(ReceivePendingRequestListEvent.TYPE, registration);
+		
 		registration = eventBus.addHandler(ReceiveChangeRequestStateEvent.TYPE, this);
 		eventBusRegistration.put(ReceiveChangeRequestStateEvent.TYPE, registration);
 	}
@@ -121,7 +123,8 @@ public class RequestInboxPresenterImpl extends BasePresenterImpl implements Requ
 		this.parentPresenter = parentPresenter;
 	}
 	
-	public void onRequestInboxNavigation(RequestInboxNavigationEvent evt) {
+	public void onRequestInboxNavigation(RequestInboxNavigationEvent evt)
+	{
 		this.go(parentPresenter.getView().getViewRootPanel());
 		loadRequestList();
 	}

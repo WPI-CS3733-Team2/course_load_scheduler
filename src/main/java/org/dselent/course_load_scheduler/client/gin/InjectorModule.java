@@ -1,5 +1,6 @@
 package org.dselent.course_load_scheduler.client.gin;
 
+import org.dselent.course_load_scheduler.client.model.GlobalData;
 import org.dselent.course_load_scheduler.client.presenter.AccountDetailsPresenter;
 import org.dselent.course_load_scheduler.client.presenter.ChangePasswordPresenter;
 import org.dselent.course_load_scheduler.client.presenter.CreateScheduleVisualPresenter;
@@ -86,7 +87,6 @@ import org.dselent.course_load_scheduler.client.service.RequestService;
 import org.dselent.course_load_scheduler.client.service.UserService;
 import org.dselent.course_load_scheduler.client.service.impl.RequestServiceImpl;
 import org.dselent.course_load_scheduler.client.service.FacultyCourseService;
-import org.dselent.course_load_scheduler.client.service.UserService;
 import org.dselent.course_load_scheduler.client.service.impl.FacultyCourseServiceImpl;
 import org.dselent.course_load_scheduler.client.service.FacultyCourseMappingService;
 import org.dselent.course_load_scheduler.client.service.ScheduleListService;
@@ -160,14 +160,17 @@ public class InjectorModule extends AbstractGinModule
         bind(CreateScheduleView.class).to(CreateScheduleViewImpl.class).in(Singleton.class);
         //bind(ExampleView.class).to(ExampleViewImpl.class).in(Singleton.class);
         
-        //services
+        // services
         bind(UserService.class).to(UserServiceImpl.class).in(Singleton.class);
         bind(RequestService.class).to(RequestServiceImpl.class).in(Singleton.class);
         bind(FacultyCourseService.class).to(FacultyCourseServiceImpl.class).in(Singleton.class);
         bind(FacultyCourseMappingService.class).to(FacultyCourseMappingServiceImpl.class).in(Singleton.class);
         bind(ScheduleListService.class).to(ScheduleListServiceImpl.class).in(Singleton.class);
         bind(ScheduleSpecificsService.class).to(ScheduleSpecificsServiceImpl.class).in(Singleton.class);
-        }
+        
+        // global data
+        bind(GlobalData.class).in(Singleton.class);
+    }
 	
 	/*
 	 * Tried playing with this but had unresolved issues

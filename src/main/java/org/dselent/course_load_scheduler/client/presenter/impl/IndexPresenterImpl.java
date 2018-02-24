@@ -15,15 +15,13 @@ import org.dselent.course_load_scheduler.client.action.CreateScheduleNavigationA
 import org.dselent.course_load_scheduler.client.action.FacultyCourseNavigationAction;
 import org.dselent.course_load_scheduler.client.action.RequestInboxNavigationAction;
 import org.dselent.course_load_scheduler.client.action.SearchScheduleNavigationAction;
+import org.dselent.course_load_scheduler.client.action.UserDetailsPageAction;
 import org.dselent.course_load_scheduler.client.action.UserSearchPageAction;
 import org.dselent.course_load_scheduler.client.event.UserSearchPageEvent;
 import org.dselent.course_load_scheduler.client.event.ViewScheduleNavigationEvent;
 import org.dselent.course_load_scheduler.client.gin.Injector;
 import org.dselent.course_load_scheduler.client.presenter.IndexPresenter;
 import org.dselent.course_load_scheduler.client.view.IndexView;
-import org.dselent.course_load_scheduler.client.view.impl.FacultyCourseMappingViewImpl;
-
-import com.google.gwt.core.client.GWT;
 import com.google.gwt.dom.client.Style;
 import com.google.gwt.user.client.Command;
 import com.google.gwt.user.client.ui.HasWidgets;
@@ -39,15 +37,12 @@ public class IndexPresenterImpl extends BasePresenterImpl implements IndexPresen
 		this.view = view;
 		view.setPresenter(this);
 		
-		// TODO the following lines failed to compile
-		// I commented them out for now
-		/*
 		view.setAccountCommand(new Command() {
 			@Override
-			public void execute()
-			{	
-				AccountDetailsEvent ade = new AccountDetailsEvent(view.getViewRootPanel());
-				eventBus.fireEvent(ade);
+			public void execute() {	
+				//UserDetailsPageAction udpa = new UserDetailsPageAction();
+				//AccountDetailsEvent ade = new AccountDetailsEvent(udpa);
+				//eventBus.fireEvent(ade);
 			}
 		});
 		
@@ -131,7 +126,7 @@ public class IndexPresenterImpl extends BasePresenterImpl implements IndexPresen
 				eventBus.fireEvent(fcne); 
 			}
 		});
-		*/
+		
 
 	}
 	
@@ -162,6 +157,18 @@ public class IndexPresenterImpl extends BasePresenterImpl implements IndexPresen
 	{
 		view.getLoadingImage().getElement().getStyle().setVisibility(Style.Visibility.HIDDEN);
 		view.getGlassLoadingPanel().getElement().getStyle().setVisibility(Style.Visibility.HIDDEN);
+	}
+	
+	@Override
+	public void showMenuBar()
+	{
+		view.getNavigationMenu().getElement().getStyle().setVisibility(Style.Visibility.VISIBLE);
+	}
+	
+	@Override
+	public void hideMenuBar()
+	{
+		view.getNavigationMenu().getElement().getStyle().setVisibility(Style.Visibility.HIDDEN);
 	}
 	
 	private class CustomCommand implements Command {
