@@ -1,32 +1,30 @@
 package org.dselent.course_load_scheduler.client.action;
 
-import org.dselent.course_load_scheduler.client.model.User;
+import org.dselent.course_load_scheduler.client.model.UserInfo;
 
-public class ReceiveLoginAction extends Action{
-	private User model;
+public class ReceiveLoginAction extends Action
+{
+	private UserInfo userInfo;
 	
-	public ReceiveLoginAction(User model)
+	public ReceiveLoginAction(UserInfo userInfo)
 	{
-		this.model = model;
+		this.userInfo = userInfo;
 	}
-
-	public User getModel()
+	
+	public UserInfo getUserInfo()
 	{
-		return model;
-	}
-
-	public void setModel(User model)
-	{
-		this.model = model;
+		return userInfo;
 	}
 
 	@Override
 	public String toString()
 	{
 		StringBuilder builder = new StringBuilder();
-		builder.append("ReceiveLoginAction [model=");
-		builder.append(model);
+		builder.append("ReceiveLoginAction [userInfo=");
+		builder.append(userInfo);
 		builder.append("]");
 		return builder.toString();
 	}
+	
+	
 }

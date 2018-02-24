@@ -4,12 +4,13 @@ import org.dselent.course_load_scheduler.client.presenter.AccountDetailsPresente
 import org.dselent.course_load_scheduler.client.presenter.ChangePasswordPresenter;
 import org.dselent.course_load_scheduler.client.presenter.IndexPresenter;
 import org.dselent.course_load_scheduler.client.view.AccountDetailsView;
+import org.dselent.course_load_scheduler.client.action.ReceiveAccountDetailsAction;
+import org.dselent.course_load_scheduler.client.action.ReceiveLoginAction;
 import org.dselent.course_load_scheduler.client.action.TriggerChangePasswordWindowAction;
-import org.dselent.course_load_scheduler.client.event.AccountDetailsEvent;
+import org.dselent.course_load_scheduler.client.event.ReceiveAccountDetailsEvent;
+import org.dselent.course_load_scheduler.client.event.ReceiveLoginEvent;
 import org.dselent.course_load_scheduler.client.event.TriggerChangePasswordWindowEvent;
-import org.dselent.course_load_scheduler.client.model.User;
-import org.dselent.course_load_scheduler.client.model.UserRole;
-import org.dselent.course_load_scheduler.client.model.UsersRolesLink;
+import org.dselent.course_load_scheduler.client.model.UserInfo;
 
 import com.google.gwt.event.shared.HandlerRegistration;
 import com.google.gwt.user.client.ui.HasWidgets;
@@ -17,9 +18,7 @@ import com.google.inject.Inject;
 
 public class AccountDetailsPresenterImpl extends BasePresenterImpl implements AccountDetailsPresenter
 {
-	private User user;
-	private UsersRolesLink usersRolesLink;
-	private UserRole userRole;
+	private UserInfo userInfo;
 	private IndexPresenter parentPresenter;
 	private ChangePasswordPresenter changePasswordPresenter;
 	private AccountDetailsView view;
@@ -32,24 +31,7 @@ public class AccountDetailsPresenterImpl extends BasePresenterImpl implements Ac
 		this.parentPresenter = parentPresenter;
 		this.changePasswordPresenter = changePasswordPresenter;
 		view.setPresenter(this);
-		changePasswordInProgress = false;
-		
-		this.user = new User();
-		this.usersRolesLink = new UsersRolesLink();
-		this.userRole = new UserRole();
-		
-		user.setId(1);
-		user.setWpiId(111111111);
-		user.setUserName("jjones");
-		user.setFirstName("Jimmy");
-		user.setLastName("Jones");
-		user.setEmail("jjones1990@wpi.edu");
-		user.setUserStateId(1);
-		userRole.setId(1);
-		userRole.setRoleName("Faculty");
-		usersRolesLink.setUserId(user.getId());
-		usersRolesLink.setRoleId(userRole.getId());
-		
+		changePasswordInProgress = false;		
 	}
 	
 	@Override
@@ -64,28 +46,41 @@ public class AccountDetailsPresenterImpl extends BasePresenterImpl implements Ac
 	{
 		HandlerRegistration registration;
 		
-		registration = eventBus.addHandler(AccountDetailsEvent.TYPE, this);
-		eventBusRegistration.put(AccountDetailsEvent.TYPE, registration);
+		registration = eventBus.addHandler(ReceiveAccountDetailsEvent.TYPE, this);
+		eventBusRegistration.put(ReceiveAccountDetailsEvent.TYPE, registration);
 		
 		registration = eventBus.addHandler(TriggerChangePasswordWindowEvent.TYPE, this);
 		eventBusRegistration.put(TriggerChangePasswordWindowEvent.TYPE, registration);
 		
+		registration = eventBus.addHandler(ReceiveLoginEvent.TYPE, this);
+		eventBusRegistration.put(ReceiveLoginEvent.TYPE, registration);
 	}
 	
 	@Override
-	public void go(HasWidgets container) {
+	public void go(HasWidgets container)
+	{
+		view.setFirstName(userInfo.getUsersFirstName());
+		view.setLastName(userInfo.getUsersLastName());
+		view.setUserName(userInfo.getUsersUserName());
+		view.setWpiIdInChar(userInfo.getUsersWpiId());
+		view.setEmail(userInfo.getUsersEmail());
+		view.setAccountType(userInfo.getUserRolesRoleName());
+		view.setAccountState(Integer.parseInt(userInfo.getUsersAccountState()));
+		
 		changePasswordPresenter.go(view.getChangePasswordPopupPanel().getViewRootPanel());
 		container.clear();
 		container.add(view.getWidgetContainer());
 	}
 
 	@Override
-	public AccountDetailsView getView() {
+	public AccountDetailsView getView()
+	{
 		return view;
 	}
 	
 	@Override
-	public IndexPresenter getParentPresenter(){
+	public IndexPresenter getParentPresenter()
+	{
 		return parentPresenter;
 	}
 	
@@ -96,20 +91,22 @@ public class AccountDetailsPresenterImpl extends BasePresenterImpl implements Ac
 	}
 	
 	@Override
-	public String getUserType() {
-		return this.userRole.getRoleName();
+	public String getUserType()
+	{
+		return userInfo.getUserRolesRoleName();
 	}
 	
 	@Override
-	public void onAccountDetails(AccountDetailsEvent evt) {
-		this.go(this.parentPresenter.getView().getViewRootPanel());
-		
-		view.setFirstName(user.getFirstName());
-		view.setLastName(user.getLastName());
-		view.setUserName(user.getUserName());
-		view.setWpiIdInChar(user.getWpiId().toString());
-		view.setEmail(user.getEmail());
-		view.setAccountType(userRole.getRoleName());
+	public void onReceiveAccountDetails(ReceiveAccountDetailsEvent evt)
+	{
+		HasWidgets container = evt.getContainer();
+		ReceiveAccountDetailsAction rada = evt.getAction();
+
+		userInfo = rada.getUserInfo();//Injector.INSTANCE.getGlobalData().getUserInfo();
+
+		go(container);
+		parentPresenter.showMenuBar();
+		parentPresenter.hideLoadScreen();
 	}
 	
 	// event:
@@ -119,7 +116,7 @@ public class AccountDetailsPresenterImpl extends BasePresenterImpl implements Ac
 		if (!changePasswordInProgress) {
 			view.getChangePasswordButton().setEnabled(false);
 			// parentPresenter.showLoadScreen();
-			int id = user.getId();
+			int id = userInfo.getUsersId();
 			triggerChangePasswordWindow(id);	
 		}
 		else {
@@ -135,5 +132,18 @@ public class AccountDetailsPresenterImpl extends BasePresenterImpl implements Ac
 			eventBus.fireEvent(tcpwe);
 			view.getChangePasswordButton().setEnabled(true);
 		}
+	}
+	
+	@Override
+	public void onReceiveLogin(ReceiveLoginEvent evt)
+	{
+		HasWidgets container = evt.getContainer();
+		ReceiveLoginAction rla = evt.getAction();
+
+		userInfo = rla.getUserInfo();//Injector.INSTANCE.getGlobalData().getUserInfo();
+
+		go(container);
+		parentPresenter.showMenuBar();
+		parentPresenter.hideLoadScreen();
 	}
 }

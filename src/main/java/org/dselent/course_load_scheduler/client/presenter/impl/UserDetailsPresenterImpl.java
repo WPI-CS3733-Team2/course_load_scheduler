@@ -2,7 +2,7 @@ package org.dselent.course_load_scheduler.client.presenter.impl;
 
 import org.dselent.course_load_scheduler.client.view.UserDetailsView;
 
-import org.dselent.course_load_scheduler.client.model.User;
+import org.dselent.course_load_scheduler.client.model.UserInfo;
 
 import com.google.gwt.event.shared.HandlerRegistration;
 import com.google.gwt.user.client.ui.HasWidgets;
@@ -13,15 +13,17 @@ import org.dselent.course_load_scheduler.client.action.UserSearchPageAction;
 import org.dselent.course_load_scheduler.client.event.TerminateAccountEvent;
 import org.dselent.course_load_scheduler.client.event.UserDetailsPageEvent;
 import org.dselent.course_load_scheduler.client.event.UserSearchPageEvent;
+import org.dselent.course_load_scheduler.client.event.ReceiveTerminatedAccountEvent;
 import org.dselent.course_load_scheduler.client.presenter.IndexPresenter;
 import org.dselent.course_load_scheduler.client.presenter.UserDetailsPresenter;
+import com.google.gwt.user.client.ui.HasWidgets;
 
 public class UserDetailsPresenterImpl extends BasePresenterImpl implements UserDetailsPresenter{
 	
 	//Maybe give this a user model as a field so it can show its details on initialization
 	private UserDetailsView view;
 	private IndexPresenter parentPresenter;
-	private User user;
+	private UserInfo userInfo;
 	private boolean accountDeletionInProgress; 
 	
 	@Inject
@@ -72,6 +74,9 @@ public class UserDetailsPresenterImpl extends BasePresenterImpl implements UserD
 		
 		registration = eventBus.addHandler(UserDetailsPageEvent.TYPE, this);
 		eventBusRegistration.put(UserDetailsPageEvent.TYPE, registration);
+		
+		registration = eventBus.addHandler(ReceiveTerminatedAccountEvent.TYPE, this);
+		eventBusRegistration.put(ReceiveTerminatedAccountEvent.TYPE, registration);
 		
 	}
 	
@@ -163,6 +168,7 @@ public class UserDetailsPresenterImpl extends BasePresenterImpl implements UserD
 	}
 	
 	private void fireTerminateAccountEvent(String userId) {
+		//HasWidgets container = parentPresenter.getView().getViewRootPanel();
 		Integer intId = Integer.parseInt(userId);
 		TerminateAccountAction taa = new TerminateAccountAction(intId);
 		TerminateAccountEvent tae = new TerminateAccountEvent(taa);
@@ -170,20 +176,30 @@ public class UserDetailsPresenterImpl extends BasePresenterImpl implements UserD
 	}
 	
 	@Override
+	public void onTerminateAccount(TerminateAccountEvent evt) {
+		parentPresenter.hideLoadScreen();
+		view.getTerminateAccountButton().setEnabled(true);
+		accountDeletionInProgress = false;
+		view.showErrorMessages("Account deletion successful.");
+		backToSearch();
+	}
+	
+	@Override
 	public void onUserDetailsPage(UserDetailsPageEvent evt) {
 		this.go(parentPresenter.getView().getViewRootPanel());
 		
-		User displayedUser = evt.getAction().getUser();
+		userInfo = evt.getAction().getUserInfo();
 		
-		view.getUserIdBox().setText(Integer.toString(displayedUser.getId()));
-		view.getWpiIdBox().setText(Integer.toString(displayedUser.getWpiId()));
-		view.getUserNameBox().setText(displayedUser.getUserName());
-		view.getFirstNameBox().setText(displayedUser.getFirstName());
-		view.getLastNameBox().setText(displayedUser.getLastName());
-		view.getEmailBox().setText(displayedUser.getEmail());
-		view.getAccountStateBox().setText(Integer.toString(displayedUser.getUserStateId()));
+		view.getUserIdBox().setText(Integer.toString(userInfo.getUsersId()));
+		view.getWpiIdBox().setText(userInfo.getUsersWpiId());
+		view.getUserNameBox().setText(userInfo.getUsersUserName());
+		view.getFirstNameBox().setText(userInfo.getUsersFirstName());
+		view.getLastNameBox().setText(userInfo.getUsersLastName());
+		view.getEmailBox().setText(userInfo.getUsersEmail());
+		view.getAccountStateBox().setText(userInfo.getUsersAccountState());
 		
 		//Temporary; placeholder until role can be retrieved from server/other model
-		view.getUserRoleBox().setText("2");
+		//view.getUserRoleBox().setText(userInfo.getUserRolesRoleName());
+		view.getUserRoleBox().setText("Unknown.");
 	}
 }

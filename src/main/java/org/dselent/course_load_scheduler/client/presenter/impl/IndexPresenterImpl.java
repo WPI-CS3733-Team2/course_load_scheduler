@@ -4,28 +4,31 @@ import javax.inject.Inject;
 
 import org.dselent.course_load_scheduler.client.action.ViewCourseAction;
 import org.dselent.course_load_scheduler.client.action.ViewScheduleNavigationAction;
-import org.dselent.course_load_scheduler.client.event.AccountDetailsEvent;
+import org.dselent.course_load_scheduler.client.event.SendAccountDetailsEvent;
 import org.dselent.course_load_scheduler.client.event.AdminCourseEvent;
 import org.dselent.course_load_scheduler.client.event.CreateScheduleNavigationEvent;
+import org.dselent.course_load_scheduler.client.event.CreateUserEvent;
 import org.dselent.course_load_scheduler.client.event.FacultyCourseEvent;
 import org.dselent.course_load_scheduler.client.event.FacultyCourseNavigationEvent;
+import org.dselent.course_load_scheduler.client.event.InvalidAccountDetailsEvent;
 import org.dselent.course_load_scheduler.client.event.RequestInboxNavigationEvent;
 import org.dselent.course_load_scheduler.client.event.SearchScheduleNavigationEvent;
+import org.dselent.course_load_scheduler.client.event.InvalidEvent;
 import org.dselent.course_load_scheduler.client.action.CreateScheduleNavigationAction;
 import org.dselent.course_load_scheduler.client.action.FacultyCourseNavigationAction;
+import org.dselent.course_load_scheduler.client.action.InvalidAccountDetailsAction;
 import org.dselent.course_load_scheduler.client.action.RequestInboxNavigationAction;
 import org.dselent.course_load_scheduler.client.action.SearchScheduleNavigationAction;
-import org.dselent.course_load_scheduler.client.action.UserDetailsPageAction;
+import org.dselent.course_load_scheduler.client.action.SendAccountDetailsAction;
 import org.dselent.course_load_scheduler.client.action.UserSearchPageAction;
 import org.dselent.course_load_scheduler.client.event.UserSearchPageEvent;
 import org.dselent.course_load_scheduler.client.event.ViewScheduleNavigationEvent;
 import org.dselent.course_load_scheduler.client.gin.Injector;
+import org.dselent.course_load_scheduler.client.model.User;
 import org.dselent.course_load_scheduler.client.presenter.IndexPresenter;
 import org.dselent.course_load_scheduler.client.view.IndexView;
-import org.dselent.course_load_scheduler.client.view.impl.FacultyCourseMappingViewImpl;
-
-import com.google.gwt.core.client.GWT;
 import com.google.gwt.dom.client.Style;
+import com.google.gwt.event.shared.HandlerRegistration;
 import com.google.gwt.user.client.Command;
 import com.google.gwt.user.client.ui.HasWidgets;
 
@@ -42,9 +45,12 @@ public class IndexPresenterImpl extends BasePresenterImpl implements IndexPresen
 		
 		view.setAccountCommand(new Command() {
 			@Override
-			public void execute() {	
-				UserDetailsPageAction udpa = new UserDetailsPageAction();
-				AccountDetailsEvent ade = new AccountDetailsEvent(udpa);
+			public void execute() {
+				// TODO disable all buttons
+				showLoadScreen();
+				int userId = Injector.INSTANCE.getGlobalData().getUserInfo().getUsersId();
+				SendAccountDetailsAction add = new SendAccountDetailsAction(userId);
+				SendAccountDetailsEvent ade = new SendAccountDetailsEvent(add, getView().getViewRootPanel());
 				eventBus.fireEvent(ade);
 			}
 		});
@@ -134,6 +140,19 @@ public class IndexPresenterImpl extends BasePresenterImpl implements IndexPresen
 	}
 	
 	@Override
+	public void init() {
+		bind();
+	}
+	
+	@Override
+	public void bind() {
+		HandlerRegistration registration;
+		
+		registration = eventBus.addHandler(InvalidEvent.TYPE, this);
+		eventBusRegistration.put(InvalidEvent.TYPE, registration);
+	}
+	
+	@Override
 	public void go(HasWidgets container)
 	{
 		container.clear();
@@ -162,6 +181,30 @@ public class IndexPresenterImpl extends BasePresenterImpl implements IndexPresen
 		view.getGlassLoadingPanel().getElement().getStyle().setVisibility(Style.Visibility.HIDDEN);
 	}
 	
+	@Override
+	public void showMenuBar()
+	{
+		view.getNavigationMenu().getElement().getStyle().setVisibility(Style.Visibility.VISIBLE);
+	}
+	
+	@Override
+	public void hideMenuBar()
+	{
+		view.getNavigationMenu().getElement().getStyle().setVisibility(Style.Visibility.HIDDEN);
+	}
+	
+	
+	@Override
+	public void onInvalidAccountDetails(InvalidAccountDetailsEvent evt)
+	{
+		hideLoadScreen();
+
+		// TODO ENABLE BUTTONS (currently not disabled anyway)
+		
+		InvalidAccountDetailsAction iada = evt.getAction();
+		view.showErrorMessages(iada.toString());
+	}
+	
 	private class CustomCommand implements Command {
 
 		IndexView view;
@@ -176,5 +219,11 @@ public class IndexPresenterImpl extends BasePresenterImpl implements IndexPresen
 			
 		}
 		
+	}
+	
+	//Generic error messages for a response failure.
+	@Override
+	public void onInvalid(InvalidEvent evt) {
+		view.showErrorMessages("Action could not be completed.");
 	}
 }

@@ -7,7 +7,6 @@ import org.dselent.course_load_scheduler.client.exceptions.StatusCodeException;
 import org.dselent.course_load_scheduler.client.utils.JSONHelper;
 import org.dselent.course_load_scheduler.client.utils.ToStringHelper;
 
-import com.google.gwt.core.client.GWT;
 import com.google.gwt.http.client.Request;
 import com.google.gwt.http.client.RequestBuilder;
 import com.google.gwt.http.client.RequestCallback;
@@ -42,12 +41,14 @@ public class NetworkRequest implements RequestCallback
 
 	public NetworkRequest(String url, AsyncCallback<JSONValue> callback, JSONValue requestData)
 	{
-		String allUrl = NetworkRequestStrings.SERVER_LOCATION + NetworkRequestStrings.BASE_REQUEST + url;
+		String allUrl = ServerString.SERVER_LOCATION + NetworkRequestStrings.BASE_REQUEST + url;
 		requestBuilder = new RequestBuilder(RequestBuilder.POST, allUrl);
 		
 		requestBuilder.setHeader("Content-Type","application/json");
 		requestBuilder.setTimeoutMillis(DEFAULT_TIMEOUT_SECONDS * 1000);
 		requestBuilder.setCallback(this);
+		
+		System.out.println(requestData.toString());
     
 		this.callback = callback;
 		this.requestData = requestData;
@@ -56,13 +57,13 @@ public class NetworkRequest implements RequestCallback
 	public void send()
 	{
 		String json = requestData.toString();
-
+		
 		// Since the server expects a non-empty json payload, we'll only
 		// send if that was the case.
 		if (!isRequestEmpty(json))
 		{
 			requestBuilder.setRequestData(json);
-
+			
 			try
 			{
 				requestBuilder.send();
@@ -114,18 +115,17 @@ public class NetworkRequest implements RequestCallback
 			{
 				try
 				{
-					responseData = JSONParser.parseStrict(responseText);  
+					responseData = JSONParser.parseStrict(responseText);
 				}
 				catch(JSONException e)
 				{
 					throw JSONHelper.getInvalidJSONException(responseText, e);
 				}
-          
 				callback.onSuccess(responseData);
 			} 	    
 			else
-			{
-				callback.onFailure(makeStatusCodeException(responseText));  	    
+			{  	
+				callback.onFailure(makeStatusCodeException(responseText)); 
 			}
 		}
 		catch(Throwable t)

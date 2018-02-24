@@ -74,8 +74,6 @@ public class Course extends Model
 		return result;
 	}
 
-	
-
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)
@@ -112,21 +110,13 @@ public class Course extends Model
 			return false;
 		return true;
 	}
-	
 
 	@Override
 	public String toString() {
-		return "FacultyCourse [id="
-				+ id
-				+ ", courseName="
-				+ courseName
-				+ ", courseNumber="
-				+ courseNumber
-				+ ", frequency="
-				+ frequency
-				+ ", sections="
-				+ sections
-				+ "]";
+		return "Course [id=" + id + ", courseName=" + courseName + ", courseNumber=" + courseNumber + ", frequency="
+				+ frequency + ", sections=" + sections + "]";
 	}
+
 	
+
 }

@@ -5,6 +5,7 @@ import org.dselent.course_load_scheduler.client.presenter.IndexPresenter;
 import com.google.gwt.user.client.Command;
 import com.google.gwt.user.client.ui.HTMLPanel;
 import com.google.gwt.user.client.ui.Image;
+import com.google.gwt.user.client.ui.MenuBar;
 import com.google.gwt.user.client.ui.MenuItem;
 import com.google.gwt.user.client.ui.PopupPanel;
 
@@ -41,4 +42,7 @@ public interface IndexView extends BaseView<IndexPresenter>
 	MenuItem getFacultyCourseMenuItem();
 	void setFacultyCourseMenuItem(MenuItem facultyCourseMenuItem);
 	public void setFacultyCourseCommand(Command command);
+	public MenuBar getNavigationMenu();
+	void showErrorMessages(String errorMessages);
+
 }

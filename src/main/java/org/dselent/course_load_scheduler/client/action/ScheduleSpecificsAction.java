@@ -9,7 +9,7 @@ import org.dselent.course_load_scheduler.client.model.Schedule;
  * @author dselent
  *
  */
-public class ScheduleSpecificsAction 
+public class ScheduleSpecificsAction extends Action
 {
 	private Schedule schedule;
 	

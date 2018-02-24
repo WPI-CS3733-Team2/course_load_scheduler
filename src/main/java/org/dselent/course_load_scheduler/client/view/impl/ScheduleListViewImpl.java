@@ -87,9 +87,7 @@ public class ScheduleListViewImpl extends BaseViewImpl<ScheduleListPresenter> im
 	}
 	
 	public void onSelectClicked(int index) {
-		int size = presenter.getSchedules().size();
-		Schedule schedule = presenter.getSchedules().get(index);
-		presenter.viewSpecifics(schedule);
+		presenter.viewSpecifics(index);
 	}
 	
 }
