@@ -16,6 +16,8 @@ public class User extends Model
 	private String lastName;
 	private String email;
 	private Integer userStateId;
+	private String userState;
+	private Integer roleId;
 	private Date createdAt;
 	private Date updatedAt;
 
@@ -83,7 +85,7 @@ public class User extends Model
 		this.email = email;
 	}
 
-
+	//Has both user state and user state ID for now.
 	public Integer getUserStateId()
 	{
 		return userStateId;
@@ -92,6 +94,26 @@ public class User extends Model
 	public void setUserStateId(Integer userStateId)
 	{
 		this.userStateId = userStateId;
+	}
+	
+	public String getUserState()
+	{
+		return userState;
+	}
+
+	public void setUserState(String userState)
+	{
+		this.userState = userState;
+	}
+	
+	public Integer getRoleId()
+	{
+		return roleId;
+	}
+
+	public void setRoleId(Integer roleId)
+	{
+		this.roleId = roleId;
 	}
 
 	public Date getCreatedAt()
@@ -129,7 +151,7 @@ public class User extends Model
 		result = prime * result + ((lastName == null) ? 0 : lastName.hashCode());
 		result = prime * result + ((updatedAt == null) ? 0 : updatedAt.hashCode());
 		result = prime * result + ((userName == null) ? 0 : userName.hashCode());
-		result = prime * result + ((userStateId == null) ? 0 : userStateId.hashCode());
+		result = prime * result + ((userState == null) ? 0 : userState.hashCode());
 		return result;
 	}
 
@@ -237,14 +259,14 @@ public class User extends Model
 		{
 			return false;
 		}
-		if (userStateId == null)
+		if (userState == null)
 		{
-			if (other.userStateId != null)
+			if (other.userState != null)
 			{
 				return false;
 			}
 		}
-		else if (!userStateId.equals(other.userStateId))
+		else if (!userState.equals(other.userState))
 		{
 			return false;
 		}
@@ -268,8 +290,8 @@ public class User extends Model
 		builder.append(lastName);
 		builder.append(", email=");
 		builder.append(email);
-		builder.append(", userStateId=");
-		builder.append(userStateId);
+		builder.append(", userState=");
+		builder.append(userState);
 		builder.append(", createdAt=");
 		builder.append(createdAt);
 		builder.append(", updatedAt=");

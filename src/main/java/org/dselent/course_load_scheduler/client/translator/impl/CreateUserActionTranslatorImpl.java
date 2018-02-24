@@ -33,7 +33,7 @@ public class CreateUserActionTranslatorImpl implements ActionTranslator<CreateUs
 	@Override
 	public ReceiveCreatedUserAction translateToAction(JSONObject json) {
 		JSONValue jsonObject = json.get("success");
-		JSONObject userObject = jsonObject.isArray().get(0).isObject();
+		//JSONObject userObject = jsonObject.isArray().get(0).isObject();
 		
 		ReceiveCreatedUserAction action = new ReceiveCreatedUserAction();
 		

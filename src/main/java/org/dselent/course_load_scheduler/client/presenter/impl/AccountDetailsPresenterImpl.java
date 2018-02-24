@@ -45,6 +45,7 @@ public class AccountDetailsPresenterImpl extends BasePresenterImpl implements Ac
 		user.setLastName("Jones");
 		user.setEmail("jjones1990@wpi.edu");
 		user.setUserStateId(1);
+		user.setUserState("Active");
 		userRole.setId(1);
 		userRole.setRoleName("Faculty");
 		usersRolesLink.setUserId(user.getId());

@@ -58,17 +58,15 @@ public class SearchUserActionTranslatorImpl implements ActionTranslator<SearchUs
 		//Iterate through json array
 		for(int i = 0;i<jsonObject.isArray().size();i++) {
 			
-			Integer id = JSONHelper.getIntValue(jsonObject.isArray().get(i).isObject(), JSONHelper.convertKeyName(ReceiveUserSearchResultsKeys.ID));
-			String wpiIdString = JSONHelper.getStringValue(jsonObject.isArray().get(i).isObject(), JSONHelper.convertKeyName(ReceiveUserSearchResultsKeys.WPI_ID));
-			String userName = JSONHelper.getStringValue(jsonObject.isArray().get(i).isObject(), JSONHelper.convertKeyName(ReceiveUserSearchResultsKeys.USER_NAME));
-			String firstName = JSONHelper.getStringValue(jsonObject.isArray().get(i).isObject(), JSONHelper.convertKeyName(ReceiveUserSearchResultsKeys.FIRST_NAME));
-			String lastName = JSONHelper.getStringValue(jsonObject.isArray().get(i).isObject(), JSONHelper.convertKeyName(ReceiveUserSearchResultsKeys.LAST_NAME));
-			String email = JSONHelper.getStringValue(jsonObject.isArray().get(i).isObject(), JSONHelper.convertKeyName(ReceiveUserSearchResultsKeys.EMAIL));
-			//Integer userStateId = JSONHelper.getIntValue(userObject, JSONHelper.convertKeyName(ReceiveUserSearchResultsKeys.ACCOUNT_STATE));
-			/*Boolean deleted = JSONHelper.getBooleanValue(jsonObject.isArray().get(i).isObject(), JSONHelper.convertKeyName(ReceiveUserSearchResultsKeys.DELETED));
-			System.out.println("Deleted: " + deleted.toString());
-			Integer roleId = JSONHelper.getIntValue(jsonObject.isArray().get(i).isObject(), JSONHelper.convertKeyName(ReceiveUserSearchResultsKeys.ROLE_ID));
-			System.out.println("Role ID: " + roleId.toString());*/
+			Integer id = JSONHelper.getIntValue(jsonObject.isArray().get(i).isObject(), JSONHelper.convertKeyName(ReceiveUserSearchResultsKeys.USERS_ID));
+			String wpiIdString = JSONHelper.getStringValue(jsonObject.isArray().get(i).isObject(), JSONHelper.convertKeyName(ReceiveUserSearchResultsKeys.USERS_WPI_ID));
+			String userName = JSONHelper.getStringValue(jsonObject.isArray().get(i).isObject(), JSONHelper.convertKeyName(ReceiveUserSearchResultsKeys.USERS_USER_NAME));
+			String firstName = JSONHelper.getStringValue(jsonObject.isArray().get(i).isObject(), JSONHelper.convertKeyName(ReceiveUserSearchResultsKeys.USERS_FIRST_NAME));
+			String lastName = JSONHelper.getStringValue(jsonObject.isArray().get(i).isObject(), JSONHelper.convertKeyName(ReceiveUserSearchResultsKeys.USERS_LAST_NAME));
+			String email = JSONHelper.getStringValue(jsonObject.isArray().get(i).isObject(), JSONHelper.convertKeyName(ReceiveUserSearchResultsKeys.USERS_EMAIL));
+			//String userState = JSONHelper.getStringValue(jsonObject.isArray().get(i).isObject(), JSONHelper.convertKeyName(ReceiveUserSearchResultsKeys.USERS_ACCOUNT_STATE));
+			Integer roleId = JSONHelper.getIntValue(jsonObject.isArray().get(i).isObject(), JSONHelper.convertKeyName(ReceiveUserSearchResultsKeys.USER_ROLES_ID));
+			/*System.out.println("Role ID: " + roleId.toString());*/
 			// TODO look into time conversion more
 			// put into JSONHelper?
 			
@@ -81,11 +79,11 @@ public class SearchUserActionTranslatorImpl implements ActionTranslator<SearchUs
 			user.setFirstName(firstName);
 			user.setLastName(lastName);
 			user.setEmail(email);
-			//user.setUserStateId(userStateId); //Commented out while the response returns null.
-			//user.setDeleted(deleted);
-			//user.setRoleId(roleId);
+			//user.setUserState(userState);
+			user.setUserState("1");
+			//user.setDeleted(deleted); //Commented out while the response returns null.
+			user.setRoleId(roleId);
 			//Temporary
-			user.setUserStateId(1);
 			user.setCreatedAt(new Date());
 			user.setUpdatedAt(new Date());
 			

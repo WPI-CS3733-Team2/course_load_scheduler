@@ -13,6 +13,7 @@ import org.dselent.course_load_scheduler.client.action.UserSearchPageAction;
 import org.dselent.course_load_scheduler.client.event.TerminateAccountEvent;
 import org.dselent.course_load_scheduler.client.event.UserDetailsPageEvent;
 import org.dselent.course_load_scheduler.client.event.UserSearchPageEvent;
+import org.dselent.course_load_scheduler.client.event.ReceiveTerminatedAccountEvent;
 import org.dselent.course_load_scheduler.client.presenter.IndexPresenter;
 import org.dselent.course_load_scheduler.client.presenter.UserDetailsPresenter;
 import com.google.gwt.user.client.ui.HasWidgets;
@@ -73,6 +74,9 @@ public class UserDetailsPresenterImpl extends BasePresenterImpl implements UserD
 		
 		registration = eventBus.addHandler(UserDetailsPageEvent.TYPE, this);
 		eventBusRegistration.put(UserDetailsPageEvent.TYPE, registration);
+		
+		registration = eventBus.addHandler(ReceiveTerminatedAccountEvent.TYPE, this);
+		eventBusRegistration.put(ReceiveTerminatedAccountEvent.TYPE, registration);
 		
 	}
 	
@@ -164,11 +168,20 @@ public class UserDetailsPresenterImpl extends BasePresenterImpl implements UserD
 	}
 	
 	private void fireTerminateAccountEvent(String userId) {
-		HasWidgets container = parentPresenter.getView().getViewRootPanel();
+		//HasWidgets container = parentPresenter.getView().getViewRootPanel();
 		Integer intId = Integer.parseInt(userId);
 		TerminateAccountAction taa = new TerminateAccountAction(intId);
-		TerminateAccountEvent tae = new TerminateAccountEvent(taa,container);
+		TerminateAccountEvent tae = new TerminateAccountEvent(taa);
 		eventBus.fireEvent(tae);
+	}
+	
+	@Override
+	public void onTerminateAccount(TerminateAccountEvent evt) {
+		parentPresenter.hideLoadScreen();
+		view.getTerminateAccountButton().setEnabled(true);
+		accountDeletionInProgress = false;
+		view.showErrorMessages("Account deletion successful.");
+		backToSearch();
 	}
 	
 	@Override
@@ -183,9 +196,9 @@ public class UserDetailsPresenterImpl extends BasePresenterImpl implements UserD
 		view.getFirstNameBox().setText(displayedUser.getFirstName());
 		view.getLastNameBox().setText(displayedUser.getLastName());
 		view.getEmailBox().setText(displayedUser.getEmail());
-		view.getAccountStateBox().setText(Integer.toString(displayedUser.getUserStateId()));
+		view.getAccountStateBox().setText(displayedUser.getUserState());
 		
 		//Temporary; placeholder until role can be retrieved from server/other model
-		view.getUserRoleBox().setText("2");
+		view.getUserRoleBox().setText(Integer.toString(displayedUser.getRoleId()));
 	}
 }

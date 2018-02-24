@@ -15,12 +15,14 @@ import org.dselent.course_load_scheduler.client.event.SearchUserEvent;
 import org.dselent.course_load_scheduler.client.callback.SearchUserCallback;
 import org.dselent.course_load_scheduler.client.action.TerminateAccountAction;
 import org.dselent.course_load_scheduler.client.event.TerminateAccountEvent;
+import org.dselent.course_load_scheduler.client.callback.TerminateAccountCallback;
 import org.dselent.course_load_scheduler.client.network.NetworkRequest;
 import org.dselent.course_load_scheduler.client.network.NetworkRequestStrings;
 import org.dselent.course_load_scheduler.client.service.UserService;
 import org.dselent.course_load_scheduler.client.translator.impl.LoginActionTranslatorImpl;
 import org.dselent.course_load_scheduler.client.translator.impl.CreateUserActionTranslatorImpl;
 import org.dselent.course_load_scheduler.client.translator.impl.SearchUserActionTranslatorImpl;
+import org.dselent.course_load_scheduler.client.translator.impl.TerminateAccountActionTranslatorImpl;
 
 
 import com.google.gwt.event.shared.HandlerRegistration;
@@ -53,6 +55,9 @@ public class UserServiceImpl extends BaseServiceImpl implements UserService
 		
 		registration = eventBus.addHandler(SearchUserEvent.TYPE, this);
 		eventBusRegistration.put(SearchUserEvent.TYPE, registration);
+		
+		registration = eventBus.addHandler(TerminateAccountEvent.TYPE, this);
+		eventBusRegistration.put(TerminateAccountEvent.TYPE, registration);
 	}
 	
 	@Override
@@ -102,6 +107,12 @@ public class UserServiceImpl extends BaseServiceImpl implements UserService
 	@Override
 	public void onTerminateAccount(TerminateAccountEvent evt) {
 		TerminateAccountAction action = evt.getAction();
+		TerminateAccountActionTranslatorImpl terminateAccountActionTranslator = new TerminateAccountActionTranslatorImpl();
+		JSONObject json = terminateAccountActionTranslator.translateToJson(action);
+		TerminateAccountCallback terminateAccountCallback = new TerminateAccountCallback(eventBus);
+		
+		NetworkRequest request = new NetworkRequest(NetworkRequestStrings.DELETEUSER, terminateAccountCallback, json);
+		request.send();
 	}
 	
 	

@@ -15,4 +15,5 @@ public interface UserDetailsView extends BaseView<UserDetailsPresenter>{
 	TextBox getEmailBox();
 	TextBox getAccountStateBox();
 	TextBox getUserRoleBox();
+	void showErrorMessages(String errorMessages);
 }

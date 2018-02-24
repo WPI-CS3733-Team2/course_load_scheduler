@@ -133,7 +133,6 @@ public class UserSearchPresenterImpl extends BasePresenterImpl implements UserSe
 	}
 	
 	//fires "Search User" event
-	//Currently this doesn't do anything; it needs to communicate with the server
 	private void searchUserEventFire(String query) {
 		Integer searchBy = view.getSearchBy().getSelectedIndex();
 		//HasWidgets container = parentPresenter.getView().getViewRootPanel();
@@ -216,6 +215,12 @@ public class UserSearchPresenterImpl extends BasePresenterImpl implements UserSe
 		fillTable(userList);*/
 	}
 	
+	//Clears results table
+	public void clearTable() {
+		users = new ArrayList<User>();
+		fillTable(users);
+	}
+	
 	@Override
 	public void onReceiveUserSearchResults(ReceiveUserSearchResultsEvent evt) {
 		view.getSearchUserButton().setEnabled(true);
@@ -243,6 +248,9 @@ public class UserSearchPresenterImpl extends BasePresenterImpl implements UserSe
 	@Override
 	public void onUserSearchPage(UserSearchPageEvent evt) {
 		this.go(parentPresenter.getView().getViewRootPanel());
+		//Clears table when the user navigates to this page.
+		//It might be better to only clear the table after a user has been deleted.
+		clearTable();
 	}
 	
 	

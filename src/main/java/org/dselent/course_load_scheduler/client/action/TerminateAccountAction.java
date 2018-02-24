@@ -6,4 +6,8 @@ public class TerminateAccountAction extends Action{
 	public TerminateAccountAction(Integer userId) {
 		this.userId = userId;
 	}
+	
+	public Integer getUserId() {
+		return userId;
+	}
 }

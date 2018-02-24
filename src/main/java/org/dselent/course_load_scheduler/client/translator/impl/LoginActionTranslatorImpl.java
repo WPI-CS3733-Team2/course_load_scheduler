@@ -43,7 +43,7 @@ public class LoginActionTranslatorImpl implements ActionTranslator<SendLoginActi
 		String firstName = JSONHelper.getStringValue(userObject, JSONHelper.convertKeyName(ReceiveLoginKeys.FIRST_NAME));
 		String lastName = JSONHelper.getStringValue(userObject, JSONHelper.convertKeyName(ReceiveLoginKeys.LAST_NAME));
 		String email = JSONHelper.getStringValue(userObject, JSONHelper.convertKeyName(ReceiveLoginKeys.EMAIL));
-		Integer userStateId = JSONHelper.getIntValue(userObject, JSONHelper.convertKeyName(ReceiveLoginKeys.USER_STATE_ID));
+		//Integer userStateId = JSONHelper.getIntValue(userObject, JSONHelper.convertKeyName(ReceiveLoginKeys.USER_STATE_ID));
 		Long createdAt = JSONHelper.getLongValue(userObject, JSONHelper.convertKeyName(ReceiveLoginKeys.CREATED_AT));
 		Long updatedAt = JSONHelper.getLongValue(userObject, JSONHelper.convertKeyName(ReceiveLoginKeys.UPDATED_AT));
 		
@@ -56,7 +56,8 @@ public class LoginActionTranslatorImpl implements ActionTranslator<SendLoginActi
 		user.setFirstName(firstName);
 		user.setLastName(lastName);
 		user.setEmail(email);
-		user.setUserStateId(userStateId);
+		//Commenting out until user state issue is sorted out.
+		//user.setUserState(userStateId);
 		user.setCreatedAt(new Date(createdAt));
 		user.setUpdatedAt(new Date(updatedAt));
 		
