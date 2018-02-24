@@ -7,6 +7,7 @@ import org.dselent.course_load_scheduler.client.action.ReceiveCreatedUserAction;
 import org.dselent.course_load_scheduler.client.action.ReceiveUserSearchResultsAction;
 import org.dselent.course_load_scheduler.client.translator.ActionTranslator;
 import org.dselent.course_load_scheduler.client.model.User;
+import org.dselent.course_load_scheduler.client.model.UserInfo;
 import org.dselent.course_load_scheduler.client.receive.jsonkeys.ReceiveUserSearchResultsKeys;
 import org.dselent.course_load_scheduler.client.utils.JSONHelper;
 
@@ -54,7 +55,7 @@ public class SearchUserActionTranslatorImpl implements ActionTranslator<SearchUs
 		JSONValue jsonObject = json.get("success");
 		//JSONObject userObject = jsonObject.isArray().get(0).isObject();
 		
-		List<User> userList = new ArrayList<User>();
+		List<UserInfo> userList = new ArrayList<UserInfo>();
 		//Iterate through json array
 		for(int i = 0;i<jsonObject.isArray().size();i++) {
 			
@@ -70,24 +71,24 @@ public class SearchUserActionTranslatorImpl implements ActionTranslator<SearchUs
 			// TODO look into time conversion more
 			// put into JSONHelper?
 			
-			Integer wpiId = Integer.parseInt(wpiIdString);
+			//Integer wpiId = Integer.parseInt(wpiIdString);
 			
-			User user = new User();
-			user.setId(id);
-			user.setWpiId(wpiId);
-			user.setUserName(userName);
-			user.setFirstName(firstName);
-			user.setLastName(lastName);
-			user.setEmail(email);
+			UserInfo userInfo = new UserInfo();
+			userInfo.setUsersId(id);
+			userInfo.setUsersWpiId(wpiIdString);
+			userInfo.setUsersUserName(userName);
+			userInfo.setUsersFirstName(firstName);
+			userInfo.setUsersLastName(lastName);
+			userInfo.setUsersEmail(email);
 			//user.setUserState(userState);
-			user.setUserState("1");
+			userInfo.setUsersAccountState("1");
 			//user.setDeleted(deleted); //Commented out while the response returns null.
-			user.setRoleId(roleId);
+			userInfo.setUserRolesId(roleId);
 			//Temporary
-			user.setCreatedAt(new Date());
-			user.setUpdatedAt(new Date());
+			userInfo.setUsersCreatedAt(new Date());
+			userInfo.setUsersUpdatedAt(new Date());
 			
-			userList.add(user);
+			userList.add(userInfo);
 		}
 		
 		ReceiveUserSearchResultsAction action = new ReceiveUserSearchResultsAction(userList);

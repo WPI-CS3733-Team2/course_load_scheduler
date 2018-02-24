@@ -4,6 +4,7 @@ package org.dselent.course_load_scheduler.client.view.impl;
 import org.dselent.course_load_scheduler.client.view.UserSearchView;
 import org.dselent.course_load_scheduler.client.model.Schedule;
 import org.dselent.course_load_scheduler.client.model.User;
+import org.dselent.course_load_scheduler.client.model.UserInfo;
 import org.dselent.course_load_scheduler.client.presenter.UserSearchPresenter;
 
 import com.google.gwt.cell.client.ButtonCell;
@@ -36,7 +37,7 @@ public class UserSearchViewImpl extends BaseViewImpl<UserSearchPresenter> implem
 	@UiField Label viewUsersLabel;
 	@UiField Label searchByLabel;
 	@UiField ListBox searchByListBox;
-	@UiField CellTable<User> userTable;
+	@UiField CellTable<UserInfo> userTable;
 
 	interface UserSearchViewUiBinder extends UiBinder<Widget, UserSearchViewImpl> {
 	}
@@ -69,7 +70,7 @@ public class UserSearchViewImpl extends BaseViewImpl<UserSearchPresenter> implem
 	}
 	
 	@Override
-	public CellTable<User> getUserTable(){
+	public CellTable<UserInfo> getUserTable(){
 		return userTable;
 	}
 
@@ -109,24 +110,24 @@ public class UserSearchViewImpl extends BaseViewImpl<UserSearchPresenter> implem
 	
 	//Shows search results
 	public void initColumns() {
-		TextColumn<User> userNameColumn = new TextColumn<User>() {
+		TextColumn<UserInfo> userNameColumn = new TextColumn<UserInfo>() {
 			@Override
-			public String getValue(User user) {
-				return user.getUserName();
+			public String getValue(UserInfo userInfo) {
+				return userInfo.getUsersUserName();
 			}
 		};
 		userNameColumn.setSortable(true);
 		this.userTable.addColumn(userNameColumn, "Name");
 		ButtonCell buttonCell = new ButtonCell();
-		Column<User, String> buttonColumn = new Column<User, String>(buttonCell) {
+		Column<UserInfo, String> buttonColumn = new Column<UserInfo, String>(buttonCell) {
 		  @Override
-		  public String getValue(User user) {
+		  public String getValue(UserInfo userInfo) {
 		    return "Select";
 		  }
 		};
-		buttonColumn.setFieldUpdater(new FieldUpdater<User, String>() {
+		buttonColumn.setFieldUpdater(new FieldUpdater<UserInfo, String>() {
 	        @Override
-	        public void update(int index, User user, String value) {
+	        public void update(int index, UserInfo user, String value) {
 	            onSelectClicked(index);
 	        }
 	    });
@@ -136,7 +137,7 @@ public class UserSearchViewImpl extends BaseViewImpl<UserSearchPresenter> implem
 	//Navigates to appropriate user details page
 	public void onSelectClicked(int index) {
 		int size = presenter.getUsers().size();
-		User user = presenter.getUsers().get(index);
-		presenter.viewUserDetails(user);
+		UserInfo userInfo = presenter.getUsers().get(index);
+		presenter.viewUserDetails(userInfo);
 	}
 }

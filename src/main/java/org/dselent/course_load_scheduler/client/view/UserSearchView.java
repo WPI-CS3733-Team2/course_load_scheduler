@@ -1,6 +1,7 @@
 package org.dselent.course_load_scheduler.client.view;
 
 import org.dselent.course_load_scheduler.client.model.User;
+import org.dselent.course_load_scheduler.client.model.UserInfo;
 import org.dselent.course_load_scheduler.client.presenter.UserSearchPresenter;
 
 import com.google.gwt.user.cellview.client.CellTable;
@@ -14,7 +15,7 @@ public interface UserSearchView extends BaseView<UserSearchPresenter> {
 	Button getSearchUserButton();
 	void showErrorMessages(String errorMessages);
 	ListBox getSearchBy();
-	CellTable<User> getUserTable();
+	CellTable<UserInfo> getUserTable();
 	//void setScheduleTable(CellTable<User> userTable);
 	void initColumns();
 	/*private static UserSearchViewUiBinder uiBinder = GWT.create(UserSearchViewUiBinder.class);

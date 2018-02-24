@@ -225,14 +225,14 @@ public class UserCreatePresenterImpl extends BasePresenterImpl implements UserCr
 		view.showErrorMessages("User creation successful.");
 	}
 	
-	@Override
+	/*@Override
 	public void onInvalidLogin(InvalidLoginEvent evt) {
 		parentPresenter.hideLoadScreen();
 		view.getFinalizeCreateButton().setEnabled(true);
 		creationInProgress = false;
 		view.showErrorMessages("ERROR: User creation unsuccessful.");
 		//System.out.println(evt.getAction().getReason(0));
-	}
+	}*/
 	
 	//The problem is not related to firing the event.
 	/*@Override

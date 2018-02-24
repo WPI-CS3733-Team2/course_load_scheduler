@@ -30,7 +30,7 @@ public class UserSearchPresenterImpl extends BasePresenterImpl implements UserSe
 	private UserSearchView view;
 	private IndexPresenter parentPresenter;
 	private boolean searchInProgress; //keeps track of whether system is currently searching
-	private List<User> users;
+	private List<UserInfo> users;
 	
 	@Inject
 	public UserSearchPresenterImpl(IndexPresenter parentPresenter, UserSearchView view)
@@ -92,7 +92,7 @@ public class UserSearchPresenterImpl extends BasePresenterImpl implements UserSe
 	}
 	
 	@Override
-	public List<User> getUsers() {
+	public List<UserInfo> getUsers() {
 		return users;
 	}
 	
@@ -173,7 +173,7 @@ public class UserSearchPresenterImpl extends BasePresenterImpl implements UserSe
 	}*/
 	
 	//Fills table with search results
-	public void fillTable(List<User> users) {
+	public void fillTable(List<UserInfo> users) {
 		view.getUserTable().setRowData(users);
 	}
 	
@@ -188,7 +188,7 @@ public class UserSearchPresenterImpl extends BasePresenterImpl implements UserSe
 		
 		//view.initColumns();
 		//Obtain this from 
-		UserInfo userInfo = new UserInfo(); // TODO get from event?
+		/*UserInfo userInfo = new UserInfo(); // TODO get from event?
 		userInfo.setUsersId(1);
 		userInfo.setUsersWpiId("111111111");
 		userInfo.setUsersFirstName("jjones");
@@ -219,7 +219,7 @@ public class UserSearchPresenterImpl extends BasePresenterImpl implements UserSe
 	
 	//Clears results table
 	public void clearTable() {
-		users = new ArrayList<User>();
+		users = new ArrayList<UserInfo>();
 		fillTable(users);
 	}
 	
@@ -233,8 +233,8 @@ public class UserSearchPresenterImpl extends BasePresenterImpl implements UserSe
 	}
 	
 	@Override
-	public void viewUserDetails(User user) {
-		UserDetailsPageAction udpa = new UserDetailsPageAction(user);
+	public void viewUserDetails(UserInfo userInfo) {
+		UserDetailsPageAction udpa = new UserDetailsPageAction(userInfo);
 		/*udpa.getUser().setId(1);
 		udpa.getUser().setWpiId(111111111);
 		udpa.getUser().setUserName("jjones");

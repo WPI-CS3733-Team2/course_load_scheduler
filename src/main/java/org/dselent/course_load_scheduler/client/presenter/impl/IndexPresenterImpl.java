@@ -7,10 +7,12 @@ import org.dselent.course_load_scheduler.client.action.ViewScheduleNavigationAct
 import org.dselent.course_load_scheduler.client.event.AccountDetailsEvent;
 import org.dselent.course_load_scheduler.client.event.AdminCourseEvent;
 import org.dselent.course_load_scheduler.client.event.CreateScheduleNavigationEvent;
+import org.dselent.course_load_scheduler.client.event.CreateUserEvent;
 import org.dselent.course_load_scheduler.client.event.FacultyCourseEvent;
 import org.dselent.course_load_scheduler.client.event.FacultyCourseNavigationEvent;
 import org.dselent.course_load_scheduler.client.event.RequestInboxNavigationEvent;
 import org.dselent.course_load_scheduler.client.event.SearchScheduleNavigationEvent;
+import org.dselent.course_load_scheduler.client.event.InvalidEvent;
 import org.dselent.course_load_scheduler.client.action.CreateScheduleNavigationAction;
 import org.dselent.course_load_scheduler.client.action.FacultyCourseNavigationAction;
 import org.dselent.course_load_scheduler.client.action.RequestInboxNavigationAction;
@@ -24,6 +26,7 @@ import org.dselent.course_load_scheduler.client.model.User;
 import org.dselent.course_load_scheduler.client.presenter.IndexPresenter;
 import org.dselent.course_load_scheduler.client.view.IndexView;
 import com.google.gwt.dom.client.Style;
+import com.google.gwt.event.shared.HandlerRegistration;
 import com.google.gwt.user.client.Command;
 import com.google.gwt.user.client.ui.HasWidgets;
 
@@ -132,6 +135,19 @@ public class IndexPresenterImpl extends BasePresenterImpl implements IndexPresen
 	}
 	
 	@Override
+	public void init() {
+		bind();
+	}
+	
+	@Override
+	public void bind() {
+		HandlerRegistration registration;
+		
+		registration = eventBus.addHandler(InvalidEvent.TYPE, this);
+		eventBusRegistration.put(InvalidEvent.TYPE, registration);
+	}
+	
+	@Override
 	public void go(HasWidgets container)
 	{
 		container.clear();
@@ -186,5 +202,11 @@ public class IndexPresenterImpl extends BasePresenterImpl implements IndexPresen
 			
 		}
 		
+	}
+	
+	//Generic error messages for a response failure.
+	@Override
+	public void onInvalid(InvalidEvent evt) {
+		view.showErrorMessages("Action could not be completed.");
 	}
 }

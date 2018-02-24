@@ -1,7 +1,9 @@
 package org.dselent.course_load_scheduler.client.callback;
 
+import org.dselent.course_load_scheduler.client.action.InvalidAction;
 import org.dselent.course_load_scheduler.client.action.InvalidLoginAction;
 import org.dselent.course_load_scheduler.client.action.ReceiveTerminatedAccountAction;
+import org.dselent.course_load_scheduler.client.event.InvalidEvent;
 import org.dselent.course_load_scheduler.client.event.InvalidLoginEvent;
 import org.dselent.course_load_scheduler.client.event.ReceiveTerminatedAccountEvent;
 import org.dselent.course_load_scheduler.client.translator.impl.TerminateAccountActionTranslatorImpl;
@@ -45,8 +47,11 @@ public class TerminateAccountCallback extends Callback<JSONValue>{
 		}
 
 		//Not sure if we need an invalid event for this.
-		InvalidLoginAction ila = new InvalidLoginAction(sb.toString());
-		InvalidLoginEvent ile = new InvalidLoginEvent(ila);
-		eventBus.fireEvent(ile);
+		//InvalidLoginAction ila = new InvalidLoginAction(sb.toString());
+		//InvalidLoginEvent ile = new InvalidLoginEvent(ila);
+
+		InvalidAction ia = new InvalidAction(sb.toString());
+		InvalidEvent ie = new InvalidEvent(ia);
+		eventBus.fireEvent(ie);
 	}
 }
