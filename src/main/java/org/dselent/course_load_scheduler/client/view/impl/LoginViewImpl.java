@@ -13,6 +13,8 @@ import com.google.gwt.user.client.ui.Label;
 import com.google.gwt.user.client.ui.TextBox;
 import com.google.gwt.user.client.ui.VerticalPanel;
 import com.google.gwt.user.client.ui.Widget;
+import com.google.gwt.uibinder.client.UiHandler;
+import com.google.gwt.event.dom.client.ClickEvent;
 
 
 public class LoginViewImpl extends BaseViewImpl<LoginPresenter> implements LoginView
@@ -97,4 +99,7 @@ public class LoginViewImpl extends BaseViewImpl<LoginPresenter> implements Login
 		return loginPanel;
 	}
 
+	@UiHandler("loginButton")
+	void onLoginButtonClick(ClickEvent event) {
+	}
 }

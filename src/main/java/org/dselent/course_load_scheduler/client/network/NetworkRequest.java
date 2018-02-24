@@ -15,6 +15,7 @@ import com.google.gwt.http.client.Response;
 import com.google.gwt.json.client.JSONException;
 import com.google.gwt.json.client.JSONParser;
 import com.google.gwt.json.client.JSONValue;
+import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.rpc.AsyncCallback;
 
 /**
@@ -55,13 +56,13 @@ public class NetworkRequest implements RequestCallback
 	public void send()
 	{
 		String json = requestData.toString();
-
+		
 		// Since the server expects a non-empty json payload, we'll only
 		// send if that was the case.
 		if (!isRequestEmpty(json))
 		{
 			requestBuilder.setRequestData(json);
-
+			
 			try
 			{
 				requestBuilder.send();
@@ -113,18 +114,17 @@ public class NetworkRequest implements RequestCallback
 			{
 				try
 				{
-					responseData = JSONParser.parseStrict(responseText);  
+					responseData = JSONParser.parseStrict(responseText);
 				}
 				catch(JSONException e)
 				{
 					throw JSONHelper.getInvalidJSONException(responseText, e);
 				}
-          
 				callback.onSuccess(responseData);
 			} 	    
 			else
-			{  	    
-				callback.onFailure(makeStatusCodeException(responseText));  	    
+			{  	
+				callback.onFailure(makeStatusCodeException(responseText)); 
 			}
 		}
 		catch(Throwable t)

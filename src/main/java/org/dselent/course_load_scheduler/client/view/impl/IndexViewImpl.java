@@ -206,4 +206,5 @@ public class IndexViewImpl extends BaseViewImpl<IndexPresenter> implements Index
 	{
 		return mainPanel;
 	}
+	
 }

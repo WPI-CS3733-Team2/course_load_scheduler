@@ -2,5 +2,6 @@
 /war/course_load_scheduler
 /.settings
 /war/WEB-INF/deploy
+/war/WEB-INF/classes
 /.gwt
 .gwt/.gwt-log
