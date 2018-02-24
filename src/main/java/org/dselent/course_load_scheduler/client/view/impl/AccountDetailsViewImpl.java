@@ -79,7 +79,8 @@ public class AccountDetailsViewImpl extends BaseViewImpl<AccountDetailsPresenter
 	}
 
 	@Override
-	public void setPresenter(AccountDetailsPresenter presenter) {
+	public void setPresenter(AccountDetailsPresenter presenter)
+	{
 		this.presenter = presenter;
 		
 	}
@@ -109,12 +110,14 @@ public class AccountDetailsViewImpl extends BaseViewImpl<AccountDetailsPresenter
 	}
 	
 	@Override
-	public void setAccountType(String acctType) {
+	public void setAccountType(String acctType)
+	{
 		this.accountType.setText(acctType);
 	}
 	
 	@Override
-	public void setAccountState(int acctStateInt) {
+	public void setAccountState(int acctStateInt)
+	{
 		if (acctStateInt == 0) {
 			this.accountState.setText("Inactive");
 		} 
@@ -153,7 +156,8 @@ public class AccountDetailsViewImpl extends BaseViewImpl<AccountDetailsPresenter
 	}
 	
 	@UiHandler("toChangePasswordButton")
-	void onToChangePasswordButtonClick(ClickEvent event) {
+	void onToChangePasswordButtonClick(ClickEvent event)
+	{
 		presenter.toChangePassword();
 	}
 	
