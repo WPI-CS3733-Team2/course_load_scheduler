@@ -15,6 +15,7 @@ import org.dselent.course_load_scheduler.client.event.UserDetailsPageEvent;
 import org.dselent.course_load_scheduler.client.event.UserSearchPageEvent;
 import org.dselent.course_load_scheduler.client.presenter.IndexPresenter;
 import org.dselent.course_load_scheduler.client.presenter.UserDetailsPresenter;
+import com.google.gwt.user.client.ui.HasWidgets;
 
 public class UserDetailsPresenterImpl extends BasePresenterImpl implements UserDetailsPresenter{
 	
@@ -163,9 +164,10 @@ public class UserDetailsPresenterImpl extends BasePresenterImpl implements UserD
 	}
 	
 	private void fireTerminateAccountEvent(String userId) {
+		HasWidgets container = parentPresenter.getView().getViewRootPanel();
 		Integer intId = Integer.parseInt(userId);
 		TerminateAccountAction taa = new TerminateAccountAction(intId);
-		TerminateAccountEvent tae = new TerminateAccountEvent(taa);
+		TerminateAccountEvent tae = new TerminateAccountEvent(taa,container);
 		eventBus.fireEvent(tae);
 	}
 	

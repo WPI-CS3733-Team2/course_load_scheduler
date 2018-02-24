@@ -24,6 +24,7 @@ import org.dselent.course_load_scheduler.client.event.ViewScheduleNavigationEven
 import org.dselent.course_load_scheduler.client.gin.Injector;
 import org.dselent.course_load_scheduler.client.model.Course;
 import org.dselent.course_load_scheduler.client.model.Model;
+import org.dselent.course_load_scheduler.client.model.User;
 import org.dselent.course_load_scheduler.client.presenter.IndexPresenter;
 import org.dselent.course_load_scheduler.client.view.IndexView;
 import com.google.gwt.dom.client.Style;
@@ -44,7 +45,8 @@ public class IndexPresenterImpl extends BasePresenterImpl implements IndexPresen
 		view.setAccountCommand(new Command() {
 			@Override
 			public void execute() {	
-				UserDetailsPageAction udpa = new UserDetailsPageAction();
+				//Changed constructor; may want to make one for no specified user
+				UserDetailsPageAction udpa = new UserDetailsPageAction(new User());
 				AccountDetailsEvent ade = new AccountDetailsEvent(udpa);
 				eventBus.fireEvent(ade);
 			}

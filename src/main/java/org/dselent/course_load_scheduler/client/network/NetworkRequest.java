@@ -47,6 +47,8 @@ public class NetworkRequest implements RequestCallback
 		requestBuilder.setHeader("Content-Type","application/json");
 		requestBuilder.setTimeoutMillis(DEFAULT_TIMEOUT_SECONDS * 1000);
 		requestBuilder.setCallback(this);
+		
+		System.out.println(requestData.toString());
     
 		this.callback = callback;
 		this.requestData = requestData;

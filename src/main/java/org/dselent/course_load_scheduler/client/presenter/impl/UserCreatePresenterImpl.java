@@ -5,6 +5,8 @@ import org.dselent.course_load_scheduler.client.action.UserSearchPageAction;
 import org.dselent.course_load_scheduler.client.event.CreateUserEvent;
 import org.dselent.course_load_scheduler.client.event.UserSearchPageEvent;
 import org.dselent.course_load_scheduler.client.event.UserCreatePageEvent;
+import org.dselent.course_load_scheduler.client.event.ReceiveCreatedUserEvent;
+import org.dselent.course_load_scheduler.client.event.InvalidLoginEvent;
 import org.dselent.course_load_scheduler.client.exceptions.EmptyStringException;
 import org.dselent.course_load_scheduler.client.presenter.IndexPresenter;
 import org.dselent.course_load_scheduler.client.presenter.UserCreatePresenter;
@@ -77,6 +79,15 @@ public class UserCreatePresenterImpl extends BasePresenterImpl implements UserCr
 		
 		registration = eventBus.addHandler(UserCreatePageEvent.TYPE, this);
 		eventBusRegistration.put(UserCreatePageEvent.TYPE, registration);
+		
+		registration = eventBus.addHandler(ReceiveCreatedUserEvent.TYPE, this);
+		eventBusRegistration.put(ReceiveCreatedUserEvent.TYPE, registration);
+		
+		//Change to generic "invalid" event later
+		//That, or make an invalid event for each request, or at least give the invalid event different
+		// types. As things are, it reacts every time there's a failure.
+		registration = eventBus.addHandler(InvalidLoginEvent.TYPE, this);
+		eventBusRegistration.put(InvalidLoginEvent.TYPE, registration);
 	}
 	
 	//Initiates the "create user" action
@@ -91,7 +102,8 @@ public class UserCreatePresenterImpl extends BasePresenterImpl implements UserCr
 			//Retrieves selected index from list box
 			//May have to adjust depending on which indices correspond to which individual roles in
 			// our final database
-			Integer userRole = view.getUserRole().getSelectedIndex();
+			//Adds 1 to index to correspond with database
+			Integer userRole = view.getUserRole().getSelectedIndex() + 1;
 			String wpiId = view.getWpiIdBox().getText();
 			String userName = view.getUsernameBox().getText();
 			String firstName = view.getFirstNameBox().getText();
@@ -155,6 +167,7 @@ public class UserCreatePresenterImpl extends BasePresenterImpl implements UserCr
 			
 			if(validUser && validWpiId){
 				//Create user
+				createUserEventFire(userRole,Integer.parseInt(wpiId), userName, firstName, lastName, email);
 				
 			}else{
 				parentPresenter.hideLoadScreen();
@@ -175,6 +188,7 @@ public class UserCreatePresenterImpl extends BasePresenterImpl implements UserCr
 	}
 	
 	private void createUserEventFire(Integer userRole, Integer wpiId, String userName, String firstName, String lastName, String email) {
+		//HasWidgets container = parentPresenter.getView().getViewRootPanel();
 		CreateUserAction cua = new CreateUserAction();
 		//May need a more effective way to do this
 		cua.setUserRole(userRole);
@@ -183,6 +197,8 @@ public class UserCreatePresenterImpl extends BasePresenterImpl implements UserCr
 		cua.setFirstName(firstName);
 		cua.setLastName(lastName);
 		cua.setEmail(email);
+		System.out.println("WPI ID:" + cua.getWpiId().toString());
+		//CreateUserEvent cue = new CreateUserEvent(cua,container);
 		CreateUserEvent cue = new CreateUserEvent(cua);
 		eventBus.fireEvent(cue);
 	}
@@ -200,4 +216,30 @@ public class UserCreatePresenterImpl extends BasePresenterImpl implements UserCr
 		public void onUserCreatePage(UserCreatePageEvent evt) {
 			this.go(parentPresenter.getView().getViewRootPanel());
 		}
+	
+	@Override
+	public void onReceiveCreatedUser(ReceiveCreatedUserEvent evt) {
+		parentPresenter.hideLoadScreen();
+		view.getFinalizeCreateButton().setEnabled(true);
+		creationInProgress = false;
+		view.showErrorMessages("User creation successful.");
+	}
+	
+	@Override
+	public void onInvalidLogin(InvalidLoginEvent evt) {
+		parentPresenter.hideLoadScreen();
+		view.getFinalizeCreateButton().setEnabled(true);
+		creationInProgress = false;
+		view.showErrorMessages("ERROR: User creation unsuccessful.");
+		//System.out.println(evt.getAction().getReason(0));
+	}
+	
+	//The problem is not related to firing the event.
+	/*@Override
+	public void onCreateUser(CreateUserEvent evt) {
+		parentPresenter.hideLoadScreen();
+		view.getFinalizeCreateButton().setEnabled(true);
+		creationInProgress = false;
+		view.showErrorMessages("Create user event fired.");
+	}*/
 }
