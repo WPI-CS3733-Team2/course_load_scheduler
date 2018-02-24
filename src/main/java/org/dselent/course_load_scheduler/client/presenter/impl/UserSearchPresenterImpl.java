@@ -198,7 +198,7 @@ public class UserSearchPresenterImpl extends BasePresenterImpl implements UserSe
 		userInfo.setUsersAccountState("1");
 		UserDetailsPageAction udpa = new UserDetailsPageAction(userInfo);
 		UserDetailsPageEvent udpe = new UserDetailsPageEvent(udpa);
-		eventBus.fireEvent(udpe);*/
+		eventBus.fireEvent(udpe);
 		
 		//Button detailsButton = new Button();
 		
@@ -234,7 +234,7 @@ public class UserSearchPresenterImpl extends BasePresenterImpl implements UserSe
 	
 	@Override
 	public void viewUserDetails(User user) {
-		UserDetailsPageAction udpa = new UserDetailsPageAction(user);
+		//UserDetailsPageAction udpa = new UserDetailsPageAction(user);
 		/*udpa.getUser().setId(1);
 		udpa.getUser().setWpiId(111111111);
 		udpa.getUser().setUserName("jjones");
@@ -242,8 +242,8 @@ public class UserSearchPresenterImpl extends BasePresenterImpl implements UserSe
 		udpa.getUser().setLastName("Jones");
 		udpa.getUser().setEmail("jjones1990@wpi.edu");
 		udpa.getUser().setUserStateId(1);*/
-		UserDetailsPageEvent udpe = new UserDetailsPageEvent(udpa);
-		eventBus.fireEvent(udpe);
+		//UserDetailsPageEvent udpe = new UserDetailsPageEvent(udpa);
+		//eventBus.fireEvent(udpe);
 	}
 	
 	// Navigate to this page

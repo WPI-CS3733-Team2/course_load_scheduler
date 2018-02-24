@@ -7,6 +7,7 @@ import com.google.gwt.core.client.GWT;
 import com.google.gwt.uibinder.client.UiBinder;
 import com.google.gwt.uibinder.client.UiField;
 import com.google.gwt.user.client.Command;
+import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.ui.HTMLPanel;
 import com.google.gwt.user.client.ui.HasWidgets;
 import com.google.gwt.user.client.ui.Image;
@@ -211,4 +212,9 @@ public class IndexViewImpl extends BaseViewImpl<IndexPresenter> implements Index
 		return mainPanel;
 	}
 	
+	@Override
+	public void showErrorMessages(String errorMessages)
+	{
+		Window.alert(errorMessages);
+	}
 }

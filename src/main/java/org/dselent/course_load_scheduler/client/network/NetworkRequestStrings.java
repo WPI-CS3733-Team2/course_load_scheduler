@@ -5,6 +5,7 @@ public final class NetworkRequestStrings
 	public static final String SERVER_LOCATION = "http://localhost:8081/";
 	public static final String BASE_REQUEST = "course_load_scheduler/";
 	public static String LOGIN = "user/login";
+	public static String ACCOUNT_DETAILS = "user/account_details";
 	public static String LOAD_PENDING_REQUEST_LIST = "request/view_pending_requests";
 	public static String REGISTER = "user/register";
 	public static String CHANGE_REQUEST_STATE = "request/change_request_state";

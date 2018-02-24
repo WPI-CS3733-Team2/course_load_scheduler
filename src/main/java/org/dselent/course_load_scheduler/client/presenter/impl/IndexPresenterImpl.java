@@ -4,18 +4,20 @@ import javax.inject.Inject;
 
 import org.dselent.course_load_scheduler.client.action.ViewCourseAction;
 import org.dselent.course_load_scheduler.client.action.ViewScheduleNavigationAction;
-import org.dselent.course_load_scheduler.client.event.AccountDetailsEvent;
+import org.dselent.course_load_scheduler.client.event.SendAccountDetailsEvent;
 import org.dselent.course_load_scheduler.client.event.AdminCourseEvent;
 import org.dselent.course_load_scheduler.client.event.CreateScheduleNavigationEvent;
 import org.dselent.course_load_scheduler.client.event.FacultyCourseEvent;
 import org.dselent.course_load_scheduler.client.event.FacultyCourseNavigationEvent;
+import org.dselent.course_load_scheduler.client.event.InvalidAccountDetailsEvent;
 import org.dselent.course_load_scheduler.client.event.RequestInboxNavigationEvent;
 import org.dselent.course_load_scheduler.client.event.SearchScheduleNavigationEvent;
 import org.dselent.course_load_scheduler.client.action.CreateScheduleNavigationAction;
 import org.dselent.course_load_scheduler.client.action.FacultyCourseNavigationAction;
+import org.dselent.course_load_scheduler.client.action.InvalidAccountDetailsAction;
 import org.dselent.course_load_scheduler.client.action.RequestInboxNavigationAction;
 import org.dselent.course_load_scheduler.client.action.SearchScheduleNavigationAction;
-import org.dselent.course_load_scheduler.client.action.UserDetailsPageAction;
+import org.dselent.course_load_scheduler.client.action.SendAccountDetailsAction;
 import org.dselent.course_load_scheduler.client.action.UserSearchPageAction;
 import org.dselent.course_load_scheduler.client.event.UserSearchPageEvent;
 import org.dselent.course_load_scheduler.client.event.ViewScheduleNavigationEvent;
@@ -40,10 +42,13 @@ public class IndexPresenterImpl extends BasePresenterImpl implements IndexPresen
 		
 		view.setAccountCommand(new Command() {
 			@Override
-			public void execute() {	
-				//UserDetailsPageAction udpa = new UserDetailsPageAction();
-				//AccountDetailsEvent ade = new AccountDetailsEvent(udpa);
-				//eventBus.fireEvent(ade);
+			public void execute() {
+				// TODO disable all buttons
+				showLoadScreen();
+				int userId = Injector.INSTANCE.getGlobalData().getUserInfo().getUsersId();
+				SendAccountDetailsAction add = new SendAccountDetailsAction(userId);
+				SendAccountDetailsEvent ade = new SendAccountDetailsEvent(add, getView().getViewRootPanel());
+				eventBus.fireEvent(ade);
 			}
 		});
 		
@@ -170,6 +175,18 @@ public class IndexPresenterImpl extends BasePresenterImpl implements IndexPresen
 	public void hideMenuBar()
 	{
 		view.getNavigationMenu().getElement().getStyle().setVisibility(Style.Visibility.HIDDEN);
+	}
+	
+	
+	@Override
+	public void onInvalidAccountDetails(InvalidAccountDetailsEvent evt)
+	{
+		hideLoadScreen();
+
+		// TODO ENABLE BUTTONS (currently not disabled anyway)
+		
+		InvalidAccountDetailsAction iada = evt.getAction();
+		view.showErrorMessages(iada.toString());
 	}
 	
 	private class CustomCommand implements Command {
