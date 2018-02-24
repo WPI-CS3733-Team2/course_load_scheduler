@@ -185,6 +185,6 @@ public class UserDetailsPresenterImpl extends BasePresenterImpl implements UserD
 		view.getAccountStateBox().setText(userInfo.getUsersAccountState());
 		
 		//Temporary; placeholder until role can be retrieved from server/other model
-		view.getUserRoleBox().setText("2");
+		view.getUserRoleBox().setText(userInfo.getUserRolesRoleName());
 	}
 }

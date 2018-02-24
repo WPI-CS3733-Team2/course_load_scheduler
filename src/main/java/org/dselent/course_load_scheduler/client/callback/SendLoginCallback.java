@@ -4,6 +4,8 @@ import org.dselent.course_load_scheduler.client.action.InvalidLoginAction;
 import org.dselent.course_load_scheduler.client.action.ReceiveLoginAction;
 import org.dselent.course_load_scheduler.client.event.InvalidLoginEvent;
 import org.dselent.course_load_scheduler.client.event.ReceiveLoginEvent;
+import org.dselent.course_load_scheduler.client.gin.Injector;
+import org.dselent.course_load_scheduler.client.model.GlobalData;
 import org.dselent.course_load_scheduler.client.translator.impl.LoginActionTranslatorImpl;
 import org.dselent.course_load_scheduler.client.utils.JSONHelper;
 
@@ -28,6 +30,10 @@ public class SendLoginCallback extends DisplayCallback<JSONValue>
 			JSONObject json = JSONHelper.getObjectValue(result);
 			LoginActionTranslatorImpl loginActionTranslator = new LoginActionTranslatorImpl();
 			ReceiveLoginAction action = loginActionTranslator.translateToAction(json);
+			
+			// inject global data object to be populated with the user info from the login
+			GlobalData globalData = Injector.INSTANCE.getGlobalData();
+			globalData.setUserInfo(action.getUserInfo());
 	
 			ReceiveLoginEvent event = new ReceiveLoginEvent(action, getContainer());
 			eventBus.fireEvent(event);
