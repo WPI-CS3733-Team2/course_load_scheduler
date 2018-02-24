@@ -4,8 +4,10 @@ import org.dselent.course_load_scheduler.client.presenter.LoginPresenter;
 import org.dselent.course_load_scheduler.client.view.LoginView;
 
 import com.google.gwt.core.client.GWT;
+import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.uibinder.client.UiBinder;
 import com.google.gwt.uibinder.client.UiField;
+import com.google.gwt.uibinder.client.UiHandler;
 import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.ui.Button;
 import com.google.gwt.user.client.ui.HasWidgets;
@@ -13,6 +15,8 @@ import com.google.gwt.user.client.ui.Label;
 import com.google.gwt.user.client.ui.TextBox;
 import com.google.gwt.user.client.ui.VerticalPanel;
 import com.google.gwt.user.client.ui.Widget;
+import com.google.gwt.uibinder.client.UiHandler;
+import com.google.gwt.event.dom.client.ClickEvent;
 
 
 public class LoginViewImpl extends BaseViewImpl<LoginPresenter> implements LoginView
@@ -97,4 +101,10 @@ public class LoginViewImpl extends BaseViewImpl<LoginPresenter> implements Login
 		return loginPanel;
 	}
 
+	@UiHandler("loginButton")
+
+	void onloginButtonClicked(ClickEvent evt)
+	{
+		presenter.login();
+	}
 }

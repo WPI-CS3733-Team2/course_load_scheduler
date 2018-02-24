@@ -101,7 +101,7 @@ public class FacultyCourseMappingViewImpl extends BaseViewImpl<FacultyCourseMapp
 		TextColumn<FacultyCourse> coursesColumn = new TextColumn<FacultyCourse>() {
 			@Override
 			public String getValue(FacultyCourse faculty) {
-				return faculty.makePresenterString();
+				return faculty.getCourseAssignment();
 			}
 		};
 		//firstNameColumn.setSortable(true);

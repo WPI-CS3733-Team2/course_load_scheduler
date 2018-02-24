@@ -1,15 +1,18 @@
 package org.dselent.course_load_scheduler.client.action;
 
-import org.dselent.course_load_scheduler.client.model.User;
+import org.dselent.course_load_scheduler.client.model.UserInfo;
 
-public class UserDetailsPageAction {
-	private User user;
+public class UserDetailsPageAction extends Action
+{
+	private UserInfo userInfo;
 	
-	public UserDetailsPageAction(User user) {
-		this.user = user;
+	public UserDetailsPageAction(UserInfo userInfo)
+	{
+		this.userInfo = userInfo;
 	}
 	
-	public User getUser() {
-		return user;
+	public UserInfo getUserInfo()
+	{
+		return userInfo;
 	}
 }

@@ -61,6 +61,10 @@ public class IndexViewImpl extends BaseViewImpl<IndexPresenter> implements Index
 	public void setFacultyCourseCommand(Command cmd) {
 		this.facultyCourseMenuItem.setScheduledCommand(cmd);
 	}
+	
+	public MenuBar getNavigationMenu() {
+		return navigationMenu;
+	}
 
 	public MenuItem getAccountMenuItem() {
 		return accountMenuItem;
@@ -206,4 +210,5 @@ public class IndexViewImpl extends BaseViewImpl<IndexPresenter> implements Index
 	{
 		return mainPanel;
 	}
+	
 }

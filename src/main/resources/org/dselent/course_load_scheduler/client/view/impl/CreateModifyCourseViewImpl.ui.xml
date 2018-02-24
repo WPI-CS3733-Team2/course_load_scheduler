@@ -66,14 +66,6 @@
 								<g:TextBox ui:field="popTextBox"/>
 							</g:customCell>
 						</g:row>
-						<g:row>
-							<g:customCell>
-								<g:Label text="Frequency: "/>
-							</g:customCell>
-							<g:customCell>
-								<g:TextBox ui:field="freqTextBox"/>
-							</g:customCell>
-						</g:row>
 					</g:Grid>
 				</g:customCell>
 			</g:row>

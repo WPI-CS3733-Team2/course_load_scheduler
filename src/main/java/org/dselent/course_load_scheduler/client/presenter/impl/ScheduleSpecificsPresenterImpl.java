@@ -5,14 +5,21 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import org.dselent.course_load_scheduler.client.action.ReceiveScheduleSpecificsAction;
 import org.dselent.course_load_scheduler.client.action.ScheduleSpecificsAction;
+import org.dselent.course_load_scheduler.client.event.ReceiveScheduleSpecificsEvent;
 import org.dselent.course_load_scheduler.client.event.ScheduleSpecificsEvent;
 import org.dselent.course_load_scheduler.client.model.Calendar;
+import org.dselent.course_load_scheduler.client.model.Course;
 import org.dselent.course_load_scheduler.client.model.Schedule;
+import org.dselent.course_load_scheduler.client.model.Section;
+import org.dselent.course_load_scheduler.client.model.User;
 import org.dselent.course_load_scheduler.client.presenter.IndexPresenter;
 import org.dselent.course_load_scheduler.client.presenter.ScheduleSpecificsPresenter;
+import org.dselent.course_load_scheduler.client.utils.Pair;
 import org.dselent.course_load_scheduler.client.view.ScheduleSpecificsView;
 
+import com.google.gwt.core.client.GWT;
 import com.google.gwt.event.shared.HandlerRegistration;
 import com.google.gwt.user.client.ui.HasWidgets;
 import com.google.inject.Inject;
@@ -23,7 +30,7 @@ public class ScheduleSpecificsPresenterImpl extends BasePresenterImpl implements
 	private IndexPresenter parentPresenter;
 	private ScheduleSpecificsView view;
 	private Schedule schedule = new Schedule();
-	private List<Calendar> calendars = new ArrayList<Calendar>();
+	private List<Pair<Calendar, String>> calendarCoursePairs = new ArrayList<Pair<Calendar, String>>();
 
 	@Inject
 	public ScheduleSpecificsPresenterImpl(IndexPresenter parentPresenter, ScheduleSpecificsView view)
@@ -31,38 +38,11 @@ public class ScheduleSpecificsPresenterImpl extends BasePresenterImpl implements
 		this.view = view;
 		this.parentPresenter = parentPresenter;
 		view.setPresenter(this);
-		this.insertText();
-		Calendar calendar1 = new Calendar();
-		calendar1.setId(1);
-		calendar1.setYear(2018);
-		calendar1.setSemester("A");
-		calendar1.setDays("MR");
-		calendar1.setStart_time("9:00");
-		calendar1.setEnd_time("10:50");
-		calendars.add(calendar1);
-		
-		Calendar calendar2 = new Calendar();
-		calendar2.setId(1);
-		calendar2.setYear(2018);
-		calendar2.setSemester("C");
-		calendar2.setDays("WTF");
-		calendar2.setStart_time("9:00");
-		calendar2.setEnd_time("10:50");
-		calendars.add(calendar2);
-		
-		Calendar calendar3 = new Calendar();
-		calendar3.setId(1);
-		calendar3.setYear(2018);
-		calendar3.setSemester("B");
-		calendar3.setDays("R");
-		calendar3.setStart_time("9:00");
-		calendar3.setEnd_time("10:50");
-		calendars.add(calendar3);
-	
 	}
 	
-	public void insertText() {
-		view.getReport().setValue("Schedule Name : *from database* \r\n \r\n Courses: *from database* \r\n \r\n Assigned Faculty: *from database*");
+	public void insertText(String scheduleName, String facultyName) {
+		String presenterString = "Schedule Name: " + scheduleName + " Assigned Faculty: " + facultyName;
+		view.getReport().setValue(presenterString);
 	}
 	
 	@Override
@@ -76,8 +56,8 @@ public class ScheduleSpecificsPresenterImpl extends BasePresenterImpl implements
 	{
 		HandlerRegistration registration;
 		
-		registration = eventBus.addHandler(ScheduleSpecificsEvent.TYPE, this);
-		eventBusRegistration.put(ScheduleSpecificsEvent.TYPE, registration);
+		registration = eventBus.addHandler(ReceiveScheduleSpecificsEvent.TYPE, this);
+		eventBusRegistration.put(ReceiveScheduleSpecificsEvent.TYPE, registration);
 	}
 		
 	@Override
@@ -199,7 +179,6 @@ public class ScheduleSpecificsPresenterImpl extends BasePresenterImpl implements
 		view.clearGrid();
 		
 		int tabIndex = view.getCalendarTabs().getSelectedTab();
-		List<Calendar> thisSemester = new ArrayList<Calendar>();
 		
 		Map<String, Integer> tabMap = new HashMap<String,Integer>();
 		tabMap.put("A", 0);
@@ -209,21 +188,38 @@ public class ScheduleSpecificsPresenterImpl extends BasePresenterImpl implements
 		tabMap.put("F", 4);
 		tabMap.put("S", 5);
 		
-		for (Calendar cal : calendars) {
+		for (Pair<Calendar, String> calStr : calendarCoursePairs) {
+			Calendar cal = calStr.getValue1();
+			String str = calStr.getValue2();
 			if (tabMap.get(cal.getSemester()) == tabIndex) {
-				thisSemester.add(cal);
+				fillCalendar(cal, str);
 			}
-		}
-		for (Calendar cal : thisSemester) {
-			fillCalendar(cal, "This will be filled from the database");
 		}
 	}
 	
 	@Override
-	public void onScheduleSpecifics(ScheduleSpecificsEvent evt)
+	public void onReceiveScheduleSpecifics(ReceiveScheduleSpecificsEvent evt)
 	{
-		ScheduleSpecificsAction ssa = evt.getAction();
+		calendarCoursePairs.clear();
+		ReceiveScheduleSpecificsAction ssa = evt.getAction();
+		User user = ssa.getUser();
+		String facultyName = user.getFirstName() + " " + user.getLastName();
 		schedule = ssa.getSchedule();
+		List<Course> courseList = ssa.getModels();
+		this.insertText(schedule.getScheduleName(), facultyName);
+		GWT.log("HELLLLLLLLLLLLLLLLLLLLLLLLLLOOOOOOOOOOOOOOOOOOOOOOOOOO");
+		for(Course course : courseList) {
+			List<Section> sectionList = course.getSections();
+			for(Section section : sectionList) {
+				Calendar calendar = section.getCalendar();
+				String courseDetails = course.getCourseName() + " " + calendar.getSemester() + " " + section.getSectionName();
+				Pair<Calendar, String> calendarCourse = new Pair<Calendar, String>(calendar, courseDetails);
+				calendarCoursePairs.add(calendarCourse);
+				GWT.log("CALENDAR COURSE PAIR ADDED: " + calendarCourse.toString());
+			}
+		}
+		GWT.log(calendarCoursePairs.toString());
+		this.updateGrid();
 		this.go(parentPresenter.getView().getViewRootPanel());
 	}
 	

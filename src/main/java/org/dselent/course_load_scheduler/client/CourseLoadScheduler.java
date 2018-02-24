@@ -1,8 +1,6 @@
 package org.dselent.course_load_scheduler.client;
 
 import org.dselent.course_load_scheduler.client.gin.Injector;
-import org.dselent.course_load_scheduler.client.presenter.impl.ExamplePresenterImpl;
-import org.dselent.course_load_scheduler.client.presenter.ChangePasswordPresenter;
 import org.dselent.course_load_scheduler.client.presenter.impl.AccountDetailsPresenterImpl;
 import org.dselent.course_load_scheduler.client.presenter.impl.AdminCoursePresenterImpl;
 import org.dselent.course_load_scheduler.client.presenter.impl.CreateModifyCoursePresenterImpl;
@@ -16,10 +14,17 @@ import org.dselent.course_load_scheduler.client.presenter.impl.UserCreatePresent
 import org.dselent.course_load_scheduler.client.presenter.impl.UserDetailsPresenterImpl;
 import org.dselent.course_load_scheduler.client.presenter.impl.ConfirmSchedulePresenterImpl;
 import org.dselent.course_load_scheduler.client.presenter.impl.IndexPresenterImpl;
+import org.dselent.course_load_scheduler.client.presenter.impl.LoginPresenterImpl;
 import org.dselent.course_load_scheduler.client.presenter.impl.RequestCoursePresenterImpl;
+import org.dselent.course_load_scheduler.client.presenter.impl.RequestInboxPresenterImpl;
 import org.dselent.course_load_scheduler.client.presenter.impl.ScheduleListPresenterImpl;
 import org.dselent.course_load_scheduler.client.presenter.impl.ScheduleSpecificsPresenterImpl;
 import org.dselent.course_load_scheduler.client.presenter.impl.SearchSchedulePresenterImpl;
+import org.dselent.course_load_scheduler.client.service.impl.RequestServiceImpl;
+import org.dselent.course_load_scheduler.client.service.impl.FacultyCourseMappingServiceImpl;
+import org.dselent.course_load_scheduler.client.service.impl.FacultyCourseServiceImpl;
+import org.dselent.course_load_scheduler.client.service.impl.ScheduleListServiceImpl;
+import org.dselent.course_load_scheduler.client.service.impl.ScheduleSpecificsServiceImpl;
 import org.dselent.course_load_scheduler.client.service.impl.UserServiceImpl;
 import org.dselent.course_load_scheduler.client.view.IndexView;
 
@@ -49,17 +54,35 @@ public class CourseLoadScheduler implements EntryPoint
 		
 		indexPresenter.go(root);
 		
-		ExamplePresenterImpl examplePresenter = injector.getExamplePresenter();
-		examplePresenter.init();
+		//ExamplePresenterImpl examplePresenter = injector.getExamplePresenter();
+		//examplePresenter.init();
 		
 		UserServiceImpl userService = injector.getUserService();
 		userService.init();
+		
 
+		RequestServiceImpl requestService = injector.getRequestService();
+		requestService.init();
+
+		FacultyCourseServiceImpl facultyCourseService = injector.getFacultyCourseService();
+		facultyCourseService.init();
+
+
+		ScheduleListServiceImpl scheduleListService = injector.getScheduleListService();
+		scheduleListService.init();
+		
+		ScheduleSpecificsServiceImpl scheduleSpecificsService = injector.getScheduleSpecificsService();
+		scheduleSpecificsService.init();
+		
 		AccountDetailsPresenterImpl accountPresenter = injector.getAccountDetailsPresenter();
-		accountPresenter.init();
+		accountPresenter.init();	
+		
+		FacultyCourseMappingServiceImpl facultyCourseMappingService = injector.getFacultyCourseMappingService();
+		facultyCourseMappingService.init();
 		
 		FacultyCoursePresenterImpl facultyCoursePresenter = injector.getFacultyCoursePresenter();
 		facultyCoursePresenter.init();
+
 		
 		AdminCoursePresenterImpl adminCoursePresenter = injector.getAdminCoursePresenter();
 		adminCoursePresenter.init();
@@ -102,11 +125,16 @@ public class CourseLoadScheduler implements EntryPoint
 		
 		FacultyCourseMappingPresenterImpl facultyCourseMappingPresenter = injector.getFacultyCourseMappingPresenter();
 		facultyCourseMappingPresenter.init();
+		
+		RequestInboxPresenterImpl requestInboxPresenter = injector.getRequestInboxPresenter();
+		requestInboxPresenter.init();
 
+		LoginPresenterImpl loginPresenter = injector.getLoginPresenter();
+		loginPresenter.init();
 
 		// indexPresenter.go(RootPanel.get("indexContainer"));
 		indexPresenter.go(root);
-		accountPresenter.go(indexView.getViewRootPanel());
+		loginPresenter.go(indexView.getViewRootPanel());
 		
 		//ChangePasswordPresenter changePasswordPresenter = injector.getChangePasswordPresenter();
 		//changePasswordPresenter.init();

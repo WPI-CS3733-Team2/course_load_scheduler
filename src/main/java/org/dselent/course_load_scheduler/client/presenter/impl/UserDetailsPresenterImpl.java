@@ -2,7 +2,7 @@ package org.dselent.course_load_scheduler.client.presenter.impl;
 
 import org.dselent.course_load_scheduler.client.view.UserDetailsView;
 
-import org.dselent.course_load_scheduler.client.model.User;
+import org.dselent.course_load_scheduler.client.model.UserInfo;
 
 import com.google.gwt.event.shared.HandlerRegistration;
 import com.google.gwt.user.client.ui.HasWidgets;
@@ -23,7 +23,7 @@ public class UserDetailsPresenterImpl extends BasePresenterImpl implements UserD
 	//Maybe give this a user model as a field so it can show its details on initialization
 	private UserDetailsView view;
 	private IndexPresenter parentPresenter;
-	private User user;
+	private UserInfo userInfo;
 	private boolean accountDeletionInProgress; 
 	
 	@Inject
@@ -188,17 +188,17 @@ public class UserDetailsPresenterImpl extends BasePresenterImpl implements UserD
 	public void onUserDetailsPage(UserDetailsPageEvent evt) {
 		this.go(parentPresenter.getView().getViewRootPanel());
 		
-		User displayedUser = evt.getAction().getUser();
+		userInfo = evt.getAction().getUserInfo();
 		
-		view.getUserIdBox().setText(Integer.toString(displayedUser.getId()));
-		view.getWpiIdBox().setText(Integer.toString(displayedUser.getWpiId()));
-		view.getUserNameBox().setText(displayedUser.getUserName());
-		view.getFirstNameBox().setText(displayedUser.getFirstName());
-		view.getLastNameBox().setText(displayedUser.getLastName());
-		view.getEmailBox().setText(displayedUser.getEmail());
-		view.getAccountStateBox().setText(displayedUser.getUserState());
+		view.getUserIdBox().setText(Integer.toString(userInfo.getUsersId()));
+		view.getWpiIdBox().setText(userInfo.getUsersWpiId());
+		view.getUserNameBox().setText(userInfo.getUsersUserName());
+		view.getFirstNameBox().setText(userInfo.getUsersFirstName());
+		view.getLastNameBox().setText(userInfo.getUsersLastName());
+		view.getEmailBox().setText(userInfo.getUsersEmail());
+		view.getAccountStateBox().setText(userInfo.getUsersAccountState());
 		
 		//Temporary; placeholder until role can be retrieved from server/other model
-		view.getUserRoleBox().setText(Integer.toString(displayedUser.getRoleId()));
+		view.getUserRoleBox().setText(userInfo.getUserRolesRoleName());
 	}
 }

@@ -5,29 +5,33 @@ import org.dselent.course_load_scheduler.client.presenter.RequestInboxPresenter;
 
 
 import com.google.gwt.core.client.GWT;
+import com.google.gwt.user.client.ui.Label;
 import com.google.gwt.uibinder.client.UiBinder;
 import com.google.gwt.user.client.ui.HasWidgets;
+import com.google.gwt.user.client.ui.InlineLabel;
 import com.google.gwt.user.client.ui.VerticalPanel;
 import com.google.gwt.user.client.ui.Widget;
 import com.google.gwt.uibinder.client.UiField;
 import com.google.gwt.user.client.ui.Button;
+import com.google.gwt.user.client.ui.FlexTable;
 import com.google.gwt.uibinder.client.UiHandler;
 import com.google.gwt.event.dom.client.ClickEvent;
 
 public class RequestInboxViewImpl extends BaseViewImpl<RequestInboxPresenter> implements RequestInboxView {
-
+	
 	private static RequestInboxViewImplUiBinder uiBinder = GWT.create(RequestInboxViewImplUiBinder.class);
 	@UiField VerticalPanel RequestInboxPanel;
 	@UiField Button ApproveButton;
 	@UiField Button DenyButton;
 	@UiField Button DeleteButton;
-	@UiField Button request1Button;
-	@UiField Button request2Button;
-	@UiField Button request3Button;
-	@UiField Button request4Button;
-	@UiField Button request5Button;
-	@UiField Button request6Button;
-	@UiField Button request7Button;
+	@UiField FlexTable RequestListFlexTable;
+	
+	@UiField Label detailCourseLabel;
+	@UiField Label detailSectionLabel;
+	@UiField Label detailFacultyIdLabel;
+	@UiField Label detailRequestIdLabel;
+	@UiField Label detailMessageLabel;
+	
 
 
 	interface RequestInboxViewImplUiBinder extends UiBinder<Widget, RequestInboxViewImpl> {
@@ -51,21 +55,51 @@ public class RequestInboxViewImpl extends BaseViewImpl<RequestInboxPresenter> im
 	public Button getDeleteButton() {
 		return DeleteButton;
 	}
+	
+	@Override
+	public FlexTable getRequestListFlexTable() {
+		return this.RequestListFlexTable;
+	}
+	// setter fcns
+	@Override
+	public void setDetailCourseLabel(String text) {
+		this.detailCourseLabel.setText(text);
+	}
+	
+	@Override
+	public void setDetailSectionLabel(String text) {
+		this.detailSectionLabel.setText(text);
+	}
+	
+	@Override
+	public void setDetailFacultyIdLabel(String text) {
+		this.detailFacultyIdLabel.setText(text);
+	}
+	
+	@Override
+	public void setDetailRequestIdLabel(String text) {
+		this.detailRequestIdLabel.setText(text);
+	}
+	
+	@Override
+	public void setDetailMessageLabel(String text) {
+		this.detailMessageLabel.setText(text);
+	}
+	//
 
 	@UiHandler("ApproveButton")
 	void onApproveButtonClick(ClickEvent event) {
+		presenter.onClickChangeStateButton(1);
 	}
 	
 	@UiHandler("DenyButton")
 	void onDenyButtonClick(ClickEvent event) {
+		presenter.onClickChangeStateButton(2);
 	}
 	
 	@UiHandler("DeleteButton")
 	void onDeleteButtonClick(ClickEvent event) {
-	}
-	
-	@UiHandler("request1Button")
-	void onRequest1ButtonClick(ClickEvent event){
+		presenter.onClickChangeStateButton(4);
 	}
 
 	@Override

@@ -19,6 +19,7 @@ import org.dselent.course_load_scheduler.client.event.UserCreatePageEvent;
 import org.dselent.course_load_scheduler.client.event.UserDetailsPageEvent;
 import org.dselent.course_load_scheduler.client.event.ReceiveUserSearchResultsEvent;
 import org.dselent.course_load_scheduler.client.exceptions.EmptyStringException;
+import org.dselent.course_load_scheduler.client.model.UserInfo;
 import org.dselent.course_load_scheduler.client.model.User;
 import org.dselent.course_load_scheduler.client.presenter.IndexPresenter;
 import org.dselent.course_load_scheduler.client.presenter.UserSearchPresenter;
@@ -187,14 +188,15 @@ public class UserSearchPresenterImpl extends BasePresenterImpl implements UserSe
 		
 		//view.initColumns();
 		//Obtain this from 
-		/*UserDetailsPageAction udpa = new UserDetailsPageAction();
-		udpa.getUser().setId(1);
-		udpa.getUser().setWpiId(111111111);
-		udpa.getUser().setUserName("jjones");
-		udpa.getUser().setFirstName("Jimmy");
-		udpa.getUser().setLastName("Jones");
-		udpa.getUser().setEmail("jjones1990@wpi.edu");
-		udpa.getUser().setUserStateId(1);
+		UserInfo userInfo = new UserInfo(); // TODO get from event?
+		userInfo.setUsersId(1);
+		userInfo.setUsersWpiId("111111111");
+		userInfo.setUsersFirstName("jjones");
+		userInfo.setUsersFirstName("Jimmy");
+		userInfo.setUsersLastName("Jones");
+		userInfo.setUsersEmail("jjones1990@wpi.edu");
+		userInfo.setUsersAccountState("1");
+		UserDetailsPageAction udpa = new UserDetailsPageAction(userInfo);
 		UserDetailsPageEvent udpe = new UserDetailsPageEvent(udpa);
 		eventBus.fireEvent(udpe);*/
 		
@@ -244,14 +246,13 @@ public class UserSearchPresenterImpl extends BasePresenterImpl implements UserSe
 		eventBus.fireEvent(udpe);
 	}
 	
-	//Navigate to this page
+	// Navigate to this page
 	@Override
-	public void onUserSearchPage(UserSearchPageEvent evt) {
+	public void onUserSearchPage(UserSearchPageEvent evt)
+	{
 		this.go(parentPresenter.getView().getViewRootPanel());
 		//Clears table when the user navigates to this page.
 		//It might be better to only clear the table after a user has been deleted.
 		clearTable();
 	}
-	
-	
 }

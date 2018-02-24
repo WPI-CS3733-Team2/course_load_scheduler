@@ -2,8 +2,7 @@ package org.dselent.course_load_scheduler.client.event;
 
 import org.dselent.course_load_scheduler.client.action.UserDetailsPageAction;
 import org.dselent.course_load_scheduler.client.event_handler.AccountDetailsEventHandler;
-
-import com.google.gwt.event.shared.GwtEvent;
+import com.google.gwt.user.client.ui.HasWidgets;
 
 /**
  * Events are "fired" and sent on the event bus to be sent to an applicable event handler
@@ -12,20 +11,13 @@ import com.google.gwt.event.shared.GwtEvent;
  * @author dselent
  *
  */
-public class AccountDetailsEvent extends GwtEvent<AccountDetailsEventHandler>
+public class AccountDetailsEvent extends DisplayEvent<UserDetailsPageAction, AccountDetailsEventHandler>
 {
 	public static Type<AccountDetailsEventHandler> TYPE = new Type<AccountDetailsEventHandler>();
 	
-	private UserDetailsPageAction action;
-	
-	public AccountDetailsEvent(UserDetailsPageAction action)
+	public AccountDetailsEvent(HasWidgets container)
 	{
-		this.action = action;
-	}
-	
-	public UserDetailsPageAction getAction()
-	{
-		return action;
+		super(null, container);
 	}
 	
 	/*

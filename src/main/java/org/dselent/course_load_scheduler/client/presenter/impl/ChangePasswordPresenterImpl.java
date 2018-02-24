@@ -77,10 +77,10 @@ public class ChangePasswordPresenterImpl extends BasePresenterImpl implements Ch
 	
 	@Override
 	public void onTriggerChangePasswordWindow(TriggerChangePasswordWindowEvent evt) {
-		boolean testVar;
-		testVar = view.getChangePasswordPopupPanel().isVisible();
+		// boolean testVar;
+		// testVar = view.getChangePasswordPopupPanel().isVisible();
 		view.showWindow();
-		testVar = view.getChangePasswordPopupPanel().isVisible();
+		// testVar = view.getChangePasswordPopupPanel().isVisible();
 		TriggerChangePasswordWindowAction action = evt.getAction();
 		this.userId = action.getUserId();
 		//view.showErrorMessages("debug3");
@@ -171,15 +171,9 @@ public class ChangePasswordPresenterImpl extends BasePresenterImpl implements Ch
 	// 2. toGoBack: click the go back button, the pop-up window disappears and returns account detail page.
 	@Override
 	public void goBack() {
-		if(confirmChangePasswordInProgress) {
-			confirmChangePasswordInProgress = false;
-			view.getBackButton().setEnabled(false);
-			view.getChangePasswordPopupPanel().getElement().getStyle().setVisibility(Style.Visibility.HIDDEN);
-			
-		}
-		else {
-			view.showErrorMessages("Unknown Error 4 in ChangePasswordPresenterImpl.java. Please refresh the webpage.");
-		}
+		confirmChangePasswordInProgress = false;
+		// view.getBackButton().setEnabled(false);
+		view.getChangePasswordPopupPanel().getElement().getStyle().setVisibility(Style.Visibility.HIDDEN);
 	}
 	
 	// 3. onInvalidChangePassword

@@ -8,7 +8,7 @@
 		position: absolute;
 		width:500px;
 		height:250px;
-		margin-left:250px;
+		margin-left:0px;
 	}
 
 	.left
@@ -65,9 +65,9 @@
 	.accountDetails-text
 	{
 		font-family:Times New Roman;
-		font-size:14px;
+		font-size:20px;
 		font-weight: normal;
-		float:right;
+		float:left;
 	 }
 	 
 	.warning-label
@@ -129,7 +129,7 @@
 		background-color: rgb(172,43,55);
 	}
 	
-	.grid_inbox_tab {
+	.grid_inbox {
 		border-style:solid;
 		border-width:2px;
     	border-radius: 10px;
@@ -140,17 +140,17 @@
 	}
 
 	.listBox {
-		margin-top:20px;
-		margin-bottom:20px;
+		margin-top:10px;
+		margin-left:10px;
 	}
 
 	</ui:style>
 	<g:HTMLPanel>
 	<g:VerticalPanel ui:field="RequestInboxPanel" addStyleNames="{style.accountDetails-panel},{style.center}" horizontalAlignment="center" width="1028px" height="547px">
-		<g:Grid addStyleNames="{style.grid_inbox_tab}">
+		<g:Grid addStyleNames="{style.grid_inbox}">
 			<g:row>
 				<g:customCell>
-					<g:Label ui:field="viewLabel" width="59px">Inbox(0)</g:Label>
+					<g:Label ui:field="viewLabel" width="59px">Inbox</g:Label>
 				</g:customCell>
 				<g:customCell>
 					<g:Button text="Approve" ui:field="ApproveButton" addStyleNames="{style.button_request},{style.button_pos},{style.button_type}" width="92px"></g:Button>
@@ -166,52 +166,25 @@
 		<g:Grid>
 			<g:row>
 				<g:customCell>
-					<g:ScrollPanel>
-						<g:Grid width="214px" height="100%">
-							<g:row>
-								<g:customCell>
-									<g:Button text="REQUEST" ui:field="request1Button" addStyleNames="{style.button_request},{style.button_type}"></g:Button>
-								</g:customCell>
-							</g:row>
-							<g:row>
-								<g:customCell>
-									<g:Button text="REQUEST" ui:field="request2Button" addStyleNames="{style.button_request},{style.button_type}"></g:Button>
-								</g:customCell>
-							</g:row>
-							<g:row>
-								<g:customCell>
-									<g:Button text="REQUEST" ui:field="request3Button" addStyleNames="{style.button_request},{style.button_type}"></g:Button>
-								</g:customCell>
-							</g:row>
-							<g:row>
-								<g:customCell>
-									<g:Button text="REQUEST" ui:field="request4Button" addStyleNames="{style.button_request},{style.button_type}"></g:Button>
-								</g:customCell>
-							</g:row>
-							<g:row>
-								<g:customCell>
-									<g:Button text="REQUEST" ui:field="request5Button" addStyleNames="{style.button_request},{style.button_type}"></g:Button>
-								</g:customCell>
-							</g:row>
-							<g:row>
-								<g:customCell>
-									<g:Button text="REQUEST" ui:field="request6Button" addStyleNames="{style.button_request},{style.button_type}"></g:Button>
-								</g:customCell>
-							</g:row>
-							<g:row>
-								<g:customCell>
-									<g:Button text="REQUEST" ui:field="request7Button" addStyleNames="{style.button_request},{style.button_type}"></g:Button>
-								</g:customCell>
-							</g:row>
-						</g:Grid>
-					</g:ScrollPanel>
-				</g:customCell>
-				<g:customCell>
-					<g:Frame url="http://www.google.com" height="303px" width="758px">
-						
-					</g:Frame>
+					<g:FlexTable ui:field="RequestListFlexTable" addStyleNames="{style.listBox}">
+					</g:FlexTable>
 				</g:customCell>
 				
+				<g:customCell>
+					<g:VerticalPanel height="380px" width="758px">
+						<g:Label addStyleNames="{style.accountDetails-text}">Request: Course CS </g:Label>
+						<g:Label ui:field="detailCourseLabel" addStyleNames="{style.accountDetails-text}"> </g:Label>
+						<g:Label addStyleNames="{style.accountDetails-text}">Section: </g:Label>
+						<g:Label ui:field="detailSectionLabel" addStyleNames="{style.accountDetails-text}"> </g:Label>
+						<g:Label addStyleNames="{style.accountDetails-text}">User: </g:Label>
+						<g:Label ui:field="detailFacultyIdLabel" addStyleNames="{style.accountDetails-text}"> </g:Label>
+						<g:Label addStyleNames="{style.accountDetails-text}">Request ID: </g:Label>
+						<g:Label ui:field="detailRequestIdLabel" addStyleNames="{style.accountDetails-text}"> </g:Label>
+						<g:Label addStyleNames="{style.accountDetails-text}">======================================</g:Label>
+						<g:Label addStyleNames="{style.accountDetails-text}">Request Message: </g:Label>
+						<g:Label ui:field="detailMessageLabel" addStyleNames="{style.accountDetails-text}"> </g:Label>
+					</g:VerticalPanel>
+				</g:customCell>
 			</g:row>
 		</g:Grid>	
 	

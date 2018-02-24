@@ -110,7 +110,6 @@ public class CreateModifyCoursePresenterImpl extends BasePresenterImpl implement
 		String crn = view.getCrnTextBox().getText();
 		String type = view.getTypeTextBox().getText();
 		String expectedPop = view.getPopTextBox().getText();
-		String freq = view.getFreqTextBox().getText();
 		
 		List<String> invalidReasonList = new ArrayList<>();
 		
@@ -119,7 +118,6 @@ public class CreateModifyCoursePresenterImpl extends BasePresenterImpl implement
 			checkEmptyString(crn);
 			checkEmptyString(type);
 			checkEmptyString(expectedPop);
-			checkEmptyString(freq);
 			checkDuplicateCrn(Integer.parseInt(crn), sections);
 		}
 		catch(EmptyStringException e) {
@@ -136,7 +134,6 @@ public class CreateModifyCoursePresenterImpl extends BasePresenterImpl implement
 			section.setCrn(Integer.parseInt(crn));
 			section.setType(type);
 			section.setExpectedPopulation(Integer.parseInt(expectedPop));
-			section.setFrequency(Integer.parseInt(freq));
 			
 			clearSectionForm();
 			currentSections.add(section);
@@ -201,7 +198,7 @@ public class CreateModifyCoursePresenterImpl extends BasePresenterImpl implement
 	public void createModifyCourseCancel() {
 		clearForm();
 
-		ViewCourseAction vca = new ViewCourseAction(new ArrayList<Course>());
+		ViewCourseAction vca = new ViewCourseAction();
 		AdminCourseEvent ace = new AdminCourseEvent(vca);
 		eventBus.fireEvent(ace);
 	}
@@ -234,7 +231,7 @@ public class CreateModifyCoursePresenterImpl extends BasePresenterImpl implement
 			
 			clearForm();
 			
-			ViewCourseAction vca = new ViewCourseAction(new ArrayList<Course>());
+			ViewCourseAction vca = new ViewCourseAction();
 			AdminCourseEvent ace = new AdminCourseEvent(vca);
 			eventBus.fireEvent(ace);
 		}
@@ -271,7 +268,6 @@ public class CreateModifyCoursePresenterImpl extends BasePresenterImpl implement
 		view.setCrnTextBoxText("");
 		view.setTypeTextBoxText("");
 		view.setPopTextBoxText("");
-		view.setFreqTextBoxText("");
 	}
 		
 }

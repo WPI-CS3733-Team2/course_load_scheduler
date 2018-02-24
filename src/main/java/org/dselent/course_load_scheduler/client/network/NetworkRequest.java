@@ -41,7 +41,7 @@ public class NetworkRequest implements RequestCallback
 
 	public NetworkRequest(String url, AsyncCallback<JSONValue> callback, JSONValue requestData)
 	{
-		String allUrl = NetworkRequestStrings.SERVER_LOCATION + NetworkRequestStrings.BASE_REQUEST + url;
+		String allUrl = ServerString.SERVER_LOCATION + NetworkRequestStrings.BASE_REQUEST + url;
 		requestBuilder = new RequestBuilder(RequestBuilder.POST, allUrl);
 		
 		requestBuilder.setHeader("Content-Type","application/json");
@@ -57,13 +57,13 @@ public class NetworkRequest implements RequestCallback
 	public void send()
 	{
 		String json = requestData.toString();
-
+		
 		// Since the server expects a non-empty json payload, we'll only
 		// send if that was the case.
 		if (!isRequestEmpty(json))
 		{
 			requestBuilder.setRequestData(json);
-
+			
 			try
 			{
 				requestBuilder.send();
@@ -115,22 +115,21 @@ public class NetworkRequest implements RequestCallback
 			{
 				try
 				{
-					responseData = JSONParser.parseStrict(responseText);  
+					responseData = JSONParser.parseStrict(responseText);
 				}
 				catch(JSONException e)
 				{
 					throw JSONHelper.getInvalidJSONException(responseText, e);
 				}
-          
 				callback.onSuccess(responseData);
 			} 	    
 			else
-			{  	    
-				callback.onFailure(makeStatusCodeException(responseText));  	    
+			{  	
+				callback.onFailure(makeStatusCodeException(responseText)); 
 			}
 		}
 		catch(Throwable t)
-		{      
+		{
 			callback.onFailure(t);
 		}
 	}
