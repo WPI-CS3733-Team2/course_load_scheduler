@@ -46,6 +46,7 @@ import org.dselent.course_load_scheduler.client.view.impl.ExampleViewImpl;
 import org.dselent.course_load_scheduler.client.service.impl.FacultyCourseServiceImpl;
 import org.dselent.course_load_scheduler.client.service.impl.FacultyCourseMappingServiceImpl;
 import org.dselent.course_load_scheduler.client.service.impl.ScheduleListServiceImpl;
+import org.dselent.course_load_scheduler.client.service.impl.ScheduleSpecificsServiceImpl;
 import org.dselent.course_load_scheduler.client.service.impl.UserServiceImpl;
 
 import com.google.gwt.core.client.GWT;
@@ -124,5 +125,6 @@ public interface Injector extends Ginjector
     public FacultyCourseServiceImpl	getFacultyCourseService();
     public FacultyCourseMappingServiceImpl getFacultyCourseMappingService();
     public ScheduleListServiceImpl getScheduleListService();
+    public ScheduleSpecificsServiceImpl getScheduleSpecificsService();
 
 }

@@ -35,6 +35,7 @@ import org.dselent.course_load_scheduler.client.event.ViewScheduleNavigationEven
 import org.dselent.course_load_scheduler.client.event.UserCreatePageEvent;
 import org.dselent.course_load_scheduler.client.event.UserDetailsPageEvent;
 import org.dselent.course_load_scheduler.client.event.ReceiveLoginEvent;
+import org.dselent.course_load_scheduler.client.event.ReceiveScheduleSpecificsEvent;
 import org.dselent.course_load_scheduler.client.event.ReceiveViewScheduleNavigationEvent;
 
 /**
@@ -58,7 +59,7 @@ public abstract class EventHandlerAdapter implements InvalidLoginEventHandler, S
 		CreateScheduleNavigationEventHandler, SearchScheduleNavigationEventHandler, ViewScheduleNavigationEventHandler,
 		FacultyCourseNavigationEventHandler, AccountDetailsEventHandler, RequestInboxNavigationEventHandler, 
 		ReceiveLoginEventHandler, ReceiveFacultyCourseEventHandler, FacultySectionEventHandler,
-		ReceiveFacultyCourseNavigationEventHandler, ReceiveViewScheduleNavigationEventHandler {
+		ReceiveFacultyCourseNavigationEventHandler, ReceiveViewScheduleNavigationEventHandler, ReceiveScheduleSpecificsEventHandler {
 
 	@Override
 	public void onInvalidLogin(InvalidLoginEvent evt) {}
@@ -167,4 +168,7 @@ public abstract class EventHandlerAdapter implements InvalidLoginEventHandler, S
 	
 	@Override
 	public void onReceiveViewScheduleNavigation(ReceiveViewScheduleNavigationEvent evt) {}
+	
+	@Override
+	public void onReceiveScheduleSpecifics(ReceiveScheduleSpecificsEvent evt) {}
 }

@@ -13,6 +13,7 @@ public class Section extends Model
 	private Integer courseId;
 	private Integer calendarId;
 	private Integer scheduleId;
+	
 	public Integer getId() {
 		return id;
 	}

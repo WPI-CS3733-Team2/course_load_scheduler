@@ -91,7 +91,7 @@ public class ScheduleListPresenterImpl extends BasePresenterImpl implements Sche
 	public void viewSpecifics(int index) {
 		Schedule schedule = schedulesList.get(index);
 		ScheduleSpecificsAction ssa = new ScheduleSpecificsAction(schedule);
-		ScheduleSpecificsEvent sse = new ScheduleSpecificsEvent(ssa);
+		ScheduleSpecificsEvent sse = new ScheduleSpecificsEvent(ssa, parentPresenter.getView().getViewRootPanel());
 		eventBus.fireEvent(sse);
 	}
 	

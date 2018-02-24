@@ -1,6 +1,7 @@
 package org.dselent.course_load_scheduler.client.service.impl;
 
 import org.dselent.course_load_scheduler.client.action.ScheduleSpecificsAction;
+import org.dselent.course_load_scheduler.client.callback.ScheduleSpecificsCallback;
 import org.dselent.course_load_scheduler.client.event.ScheduleSpecificsEvent;
 import org.dselent.course_load_scheduler.client.network.NetworkRequest;
 import org.dselent.course_load_scheduler.client.network.NetworkRequestStrings;
@@ -40,9 +41,9 @@ public class ScheduleSpecificsServiceImpl extends BaseServiceImpl implements Sch
 		
 		ScheduleSpecificsTranslatorImpl scheduleSpecificsTranslator = new ScheduleSpecificsTranslatorImpl();
 		JSONObject json = scheduleSpecificsTranslator.translateToJson(action);
-		ViewScheduleNavigationCallback viewScheduleNavigationCallback = new ViewScheduleNavigationCallback(eventBus, evt.getContainer());
+		ScheduleSpecificsCallback scheduleSpecificsNavigationCallback = new ScheduleSpecificsCallback(eventBus, evt.getContainer(), action.getSchedule());
 	
-		NetworkRequest request = new NetworkRequest(NetworkRequestStrings.SCHEDULE_SPECIFICS, viewScheduleNavigationCallback, json);
+		NetworkRequest request = new NetworkRequest(NetworkRequestStrings.SCHEDULE_SPECIFICS, scheduleSpecificsNavigationCallback, json);
 		request.send();
 	}
 	
