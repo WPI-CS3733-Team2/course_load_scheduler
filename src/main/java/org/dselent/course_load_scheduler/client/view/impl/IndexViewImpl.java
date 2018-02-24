@@ -217,8 +217,4 @@ public class IndexViewImpl extends BaseViewImpl<IndexPresenter> implements Index
 	{
 		Window.alert(errorMessages);
 	}
-<<<<<<< HEAD
-	
-=======
->>>>>>> d8d159e862ceea382e913f95a5a5c96c89928ad0
 }
