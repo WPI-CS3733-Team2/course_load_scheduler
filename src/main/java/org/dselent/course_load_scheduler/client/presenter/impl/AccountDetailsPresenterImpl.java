@@ -137,6 +137,7 @@ public class AccountDetailsPresenterImpl extends BasePresenterImpl implements Ac
 		userInfo = rla.getUserInfo();
 
 		go(container);
+		parentPresenter.showMenuBar();
 		parentPresenter.hideLoadScreen();
 	}
 }
