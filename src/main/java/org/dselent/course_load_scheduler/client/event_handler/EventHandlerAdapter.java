@@ -11,6 +11,7 @@ import org.dselent.course_load_scheduler.client.event.RequestCourseEvent;
 import org.dselent.course_load_scheduler.client.event.RequestInboxNavigationEvent;
 import org.dselent.course_load_scheduler.client.event.ScheduleSpecificsEvent;
 import org.dselent.course_load_scheduler.client.event.SendChangePasswordEvent;
+import org.dselent.course_load_scheduler.client.event.ReceiveLoginEvent;
 import org.dselent.course_load_scheduler.client.event.SendLoginEvent;
 import org.dselent.course_load_scheduler.client.event.TerminateAccountEvent;
 import org.dselent.course_load_scheduler.client.event.TriggerChangePasswordWindowEvent;

@@ -108,78 +108,80 @@ public class FacultyCoursePresenterImpl extends BasePresenterImpl implements Fac
 		}
 
 		for (int i = 0; i < courses.size(); i++) {
-			DecoratorPanel coursePanel = new DecoratorPanel();
-			Grid layout = new Grid(1, 3);
+			if (courses.get(i).getSections().size() > 0) {
+				DecoratorPanel coursePanel = new DecoratorPanel();
+				Grid layout = new Grid(1, 3);
 
-			FlowPanel courseInfoPanel = new FlowPanel();
+				FlowPanel courseInfoPanel = new FlowPanel();
 
-			VerticalPanel courseName = new VerticalPanel();
-			courseName.add(new Label(courses.get(i).getCourseName()));
+				VerticalPanel courseName = new VerticalPanel();
+				courseName.add(new Label(courses.get(i).getCourseName()));
 
-			VerticalPanel courseNumber = new VerticalPanel();
-			courseNumber.add(new Label(courses.get(i).getCourseNumber()));
+				VerticalPanel courseNumber = new VerticalPanel();
+				courseNumber.add(new Label(courses.get(i).getCourseNumber()));
 
-			courseInfoPanel.add(courseName);
-			courseInfoPanel.add(courseNumber);
-			courseInfoPanel.setWidth("100px");
+				courseInfoPanel.add(courseName);
+				courseInfoPanel.add(courseNumber);
+				courseInfoPanel.setWidth("100px");
 
-			CellTable<Section> courseSections = new CellTable<Section>();
+				CellTable<Section> courseSections = new CellTable<Section>();
 
-			TextColumn<Section> nameColumn = new TextColumn<Section>() {
-				@Override
-				public String getValue(Section object) {
-					return object.getSectionName();
-				}
-			};
-			courseSections.addColumn(nameColumn, "Name");
+				TextColumn<Section> nameColumn = new TextColumn<Section>() {
+					@Override
+					public String getValue(Section object) {
+						return object.getSectionName();
+					}
+				};
+				courseSections.addColumn(nameColumn, "Name");
 
-			TextColumn<Section> crnColumn = new TextColumn<Section>() {
-				@Override
-				public String getValue(Section object) {
-					return Integer.toString(object.getCrn());
-				}
-			};
-			courseSections.addColumn(crnColumn, "CRN");
+				TextColumn<Section> crnColumn = new TextColumn<Section>() {
+					@Override
+					public String getValue(Section object) {
+						return Integer.toString(object.getCrn());
+					}
+				};
+				courseSections.addColumn(crnColumn, "CRN");
 
-			TextColumn<Section> typeColumn = new TextColumn<Section>() {
-				@Override
-				public String getValue(Section object) {
-					return object.getType();
-				}
-			};
-			courseSections.addColumn(typeColumn, "Type");
+				TextColumn<Section> typeColumn = new TextColumn<Section>() {
+					@Override
+					public String getValue(Section object) {
+						return object.getType();
+					}
+				};
+				courseSections.addColumn(typeColumn, "Type");
 
-			TextColumn<Section> populationColumn = new TextColumn<Section>() {
-				@Override
-				public String getValue(Section object) {
-					return Integer.toString(object.getExpectedPopulation());
-				}
-			};
-			courseSections.addColumn(populationColumn, "Population");
+				TextColumn<Section> populationColumn = new TextColumn<Section>() {
+					@Override
+					public String getValue(Section object) {
+						return Integer.toString(object.getExpectedPopulation());
+					}
+				};
+				courseSections.addColumn(populationColumn, "Population");
 
-			courseSections.setRowCount(courses.get(i).getSections().size(), true);
-			courseSections.setRowData(0, courses.get(i).getSections());
-			courseSections.setWidth("500px");
+				courseSections.setRowCount(courses.get(i).getSections().size(), true);
+				courseSections.setRowData(0, courses.get(i).getSections());
+				courseSections.setWidth("500px");
 
-			Button requestCourseButton = new Button("Request");
-			requestCourseButton.addClickHandler(new CustomClickHandler(courses.get(i)) {
-				
-				@Override
-				public void onClick(ClickEvent event) {
-					RequestCourseAction rca = new RequestCourseAction(course);
-					RequestCourseEvent rce = new RequestCourseEvent(rca);
-					eventBus.fireEvent(rce);
-				}
-			});
+				Button requestCourseButton = new Button("Request");
+				requestCourseButton.addClickHandler(new CustomClickHandler(courses.get(i)) {
 
-			layout.setWidget(0, 0, courseInfoPanel);
-			layout.setWidget(0, 1, courseSections);
-			layout.setWidget(0, 2, requestCourseButton);
+					@Override
+					public void onClick(ClickEvent event) {
+						RequestCourseAction rca = new RequestCourseAction(course);
+						RequestCourseEvent rce = new RequestCourseEvent(rca);
+						eventBus.fireEvent(rce);
+					}
+				});
 
-			coursePanel.add(layout);
-			coursePanel.setWidth("650px");
+				layout.setWidget(0, 0, courseInfoPanel);
+				layout.setWidget(0, 1, courseSections);
+				layout.setWidget(0, 2, requestCourseButton);
 
-			view.addCourseToGrid(coursePanel);
+				coursePanel.add(layout);
+				coursePanel.setWidth("650px");
+
+				view.addCourseToGrid(coursePanel);
+			}
 		}
 	}
 	

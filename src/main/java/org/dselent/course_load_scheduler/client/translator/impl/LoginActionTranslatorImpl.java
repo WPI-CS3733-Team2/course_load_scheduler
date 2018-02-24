@@ -4,7 +4,7 @@ import java.util.Date;
 
 import org.dselent.course_load_scheduler.client.action.ReceiveLoginAction;
 import org.dselent.course_load_scheduler.client.action.SendLoginAction;
-import org.dselent.course_load_scheduler.client.model.User;
+import org.dselent.course_load_scheduler.client.model.UserInfo;
 import org.dselent.course_load_scheduler.client.receive.jsonkeys.ReceiveLoginKeys;
 import org.dselent.course_load_scheduler.client.send.jsonkeys.SendLoginKeys;
 import org.dselent.course_load_scheduler.client.translator.ActionTranslator;
@@ -36,35 +36,40 @@ public class LoginActionTranslatorImpl implements ActionTranslator<SendLoginActi
 		// sent timestamps as epoch seconds (long)
 		
 		JSONValue jsonObject = json.get("success");
-		JSONObject userObject = jsonObject.isArray().get(0).isObject();
+		JSONObject userObject = jsonObject.isObject();
 		
-		Integer id = JSONHelper.getIntValue(userObject, JSONHelper.convertKeyName(ReceiveLoginKeys.ID));
-		String userName = JSONHelper.getStringValue(userObject, JSONHelper.convertKeyName(ReceiveLoginKeys.USER_NAME));
-		String firstName = JSONHelper.getStringValue(userObject, JSONHelper.convertKeyName(ReceiveLoginKeys.FIRST_NAME));
-		String lastName = JSONHelper.getStringValue(userObject, JSONHelper.convertKeyName(ReceiveLoginKeys.LAST_NAME));
-		String email = JSONHelper.getStringValue(userObject, JSONHelper.convertKeyName(ReceiveLoginKeys.EMAIL));
-		Integer userStateId = JSONHelper.getIntValue(userObject, JSONHelper.convertKeyName(ReceiveLoginKeys.USER_STATE_ID));
-		Long createdAt = JSONHelper.getLongValue(userObject, JSONHelper.convertKeyName(ReceiveLoginKeys.CREATED_AT));
-		Long updatedAt = JSONHelper.getLongValue(userObject, JSONHelper.convertKeyName(ReceiveLoginKeys.UPDATED_AT));
+		Integer usersId = JSONHelper.getIntValue(userObject, JSONHelper.convertKeyName(ReceiveLoginKeys.USERS_ID));
+		String usersWpiId = JSONHelper.getStringValue(userObject, JSONHelper.convertKeyName(ReceiveLoginKeys.USERS_WPI_ID));
+		String usersUserName = JSONHelper.getStringValue(userObject, JSONHelper.convertKeyName(ReceiveLoginKeys.USERS_USER_NAME));
+		String usersFirstName = JSONHelper.getStringValue(userObject, JSONHelper.convertKeyName(ReceiveLoginKeys.USERS_FIRST_NAME));
+		String usersLastName = JSONHelper.getStringValue(userObject, JSONHelper.convertKeyName(ReceiveLoginKeys.USERS_LAST_NAME));
+		String usersEmail = JSONHelper.getStringValue(userObject, JSONHelper.convertKeyName(ReceiveLoginKeys.USERS_EMAIL));
+		String usersAccountState = JSONHelper.getStringValue(userObject, JSONHelper.convertKeyName(ReceiveLoginKeys.USERS_ACCOUNT_STATE));
+		Long usersCreatedAt = JSONHelper.getLongValue(userObject, JSONHelper.convertKeyName(ReceiveLoginKeys.USERS_CREATED_AT));
+		Long usersUpdatedAt = JSONHelper.getLongValue(userObject, JSONHelper.convertKeyName(ReceiveLoginKeys.USERS_UPDATED_AT));
 		
-		// TODO look into time conversion more
-		// put into JSONHelper?
+		Integer facultyId = JSONHelper.getIntValue(userObject, JSONHelper.convertKeyName(ReceiveLoginKeys.FACULTY_ID));
 		
-		User user = new User();
-		user.setId(id);
-		user.setUserName(userName);
-		user.setFirstName(firstName);
-		user.setLastName(lastName);
-		user.setEmail(email);
-		user.setUserStateId(userStateId);
-		user.setCreatedAt(new Date(createdAt));
-		user.setUpdatedAt(new Date(updatedAt));
+		Integer userRolesId = JSONHelper.getIntValue(userObject, JSONHelper.convertKeyName(ReceiveLoginKeys.USER_ROLES_ID));
+		String userRolesRoleName = JSONHelper.getStringValue(userObject, JSONHelper.convertKeyName(ReceiveLoginKeys.USER_ROLES_ROLE_NAME));
+				
+		UserInfo userInfo = new UserInfo();
 		
-		// possibly use builder pattern if it is a lot of data
-		ReceiveLoginAction action = new ReceiveLoginAction(user);	
+		userInfo.setUsersId(usersId);
+		userInfo.setUsersWpiId(usersWpiId);
+		userInfo.setUsersUserName(usersUserName);
+		userInfo.setUsersFirstName(usersFirstName);
+		userInfo.setUsersLastName(usersLastName);
+		userInfo.setUsersEmail(usersEmail);
+		userInfo.setUsersAccountState(usersAccountState);
+		userInfo.setUsersCreatedAt(new Date(usersCreatedAt));
+		userInfo.setUsersUpdatedAt(new Date(usersUpdatedAt));
+		userInfo.setFacultyId(facultyId);
+		userInfo.setUserRolesId(userRolesId);
+		userInfo.setUserRolesRoleName(userRolesRoleName);
+
+		ReceiveLoginAction action = new ReceiveLoginAction(userInfo);	
 	
 		return action;
 	}
-
-
 }

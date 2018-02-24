@@ -1,7 +1,6 @@
 package org.dselent.course_load_scheduler.client;
 
 import org.dselent.course_load_scheduler.client.gin.Injector;
-import org.dselent.course_load_scheduler.client.presenter.impl.ExamplePresenterImpl;
 import org.dselent.course_load_scheduler.client.presenter.impl.AccountDetailsPresenterImpl;
 import org.dselent.course_load_scheduler.client.presenter.impl.AdminCoursePresenterImpl;
 import org.dselent.course_load_scheduler.client.presenter.impl.CreateModifyCoursePresenterImpl;
@@ -15,6 +14,7 @@ import org.dselent.course_load_scheduler.client.presenter.impl.UserCreatePresent
 import org.dselent.course_load_scheduler.client.presenter.impl.UserDetailsPresenterImpl;
 import org.dselent.course_load_scheduler.client.presenter.impl.ConfirmSchedulePresenterImpl;
 import org.dselent.course_load_scheduler.client.presenter.impl.IndexPresenterImpl;
+import org.dselent.course_load_scheduler.client.presenter.impl.LoginPresenterImpl;
 import org.dselent.course_load_scheduler.client.presenter.impl.RequestCoursePresenterImpl;
 import org.dselent.course_load_scheduler.client.presenter.impl.ScheduleListPresenterImpl;
 import org.dselent.course_load_scheduler.client.presenter.impl.ScheduleSpecificsPresenterImpl;
@@ -52,8 +52,8 @@ public class CourseLoadScheduler implements EntryPoint
 		
 		indexPresenter.go(root);
 		
-		ExamplePresenterImpl examplePresenter = injector.getExamplePresenter();
-		examplePresenter.init();
+		//ExamplePresenterImpl examplePresenter = injector.getExamplePresenter();
+		//examplePresenter.init();
 		
 		UserServiceImpl userService = injector.getUserService();
 		userService.init();
@@ -118,11 +118,13 @@ public class CourseLoadScheduler implements EntryPoint
 		
 		FacultyCourseMappingPresenterImpl facultyCourseMappingPresenter = injector.getFacultyCourseMappingPresenter();
 		facultyCourseMappingPresenter.init();
-
+		
+		LoginPresenterImpl loginPresenter = injector.getLoginPresenter();
+		loginPresenter.init();
 
 		// indexPresenter.go(RootPanel.get("indexContainer"));
 		indexPresenter.go(root);
-		accountPresenter.go(indexView.getViewRootPanel());
+		loginPresenter.go(indexView.getViewRootPanel());
 		
 		//ChangePasswordPresenter changePasswordPresenter = injector.getChangePasswordPresenter();
 		//changePasswordPresenter.init();
