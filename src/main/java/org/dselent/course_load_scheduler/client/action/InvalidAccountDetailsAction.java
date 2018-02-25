@@ -18,10 +18,10 @@ public class InvalidAccountDetailsAction extends Action
 	}
 	
 	public InvalidAccountDetailsAction(String reason)
-	 {
+	{
 		reasonList = new ArrayList<>();
 		reasonList.add(reason);
-	 }
+	}
 
 	public boolean addReasons(List<String> reasonList)
 	{

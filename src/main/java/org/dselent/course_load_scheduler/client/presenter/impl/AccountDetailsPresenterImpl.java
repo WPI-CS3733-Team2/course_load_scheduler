@@ -6,10 +6,8 @@ import org.dselent.course_load_scheduler.client.presenter.IndexPresenter;
 import org.dselent.course_load_scheduler.client.view.AccountDetailsView;
 import org.dselent.course_load_scheduler.client.action.ReceiveAccountDetailsAction;
 import org.dselent.course_load_scheduler.client.action.ReceiveLoginAction;
-import org.dselent.course_load_scheduler.client.action.TriggerChangePasswordWindowAction;
 import org.dselent.course_load_scheduler.client.event.ReceiveAccountDetailsEvent;
 import org.dselent.course_load_scheduler.client.event.ReceiveLoginEvent;
-import org.dselent.course_load_scheduler.client.event.TriggerChangePasswordWindowEvent;
 import org.dselent.course_load_scheduler.client.model.UserInfo;
 
 import com.google.gwt.event.shared.HandlerRegistration;
@@ -38,6 +36,7 @@ public class AccountDetailsPresenterImpl extends BasePresenterImpl implements Ac
 	public void init()
 	{
 		changePasswordPresenter.init();
+		changePasswordPresenter.setParentPresenter(this);
 		bind();
 	}
 
@@ -48,9 +47,6 @@ public class AccountDetailsPresenterImpl extends BasePresenterImpl implements Ac
 		
 		registration = eventBus.addHandler(ReceiveAccountDetailsEvent.TYPE, this);
 		eventBusRegistration.put(ReceiveAccountDetailsEvent.TYPE, registration);
-		
-		registration = eventBus.addHandler(TriggerChangePasswordWindowEvent.TYPE, this);
-		eventBusRegistration.put(TriggerChangePasswordWindowEvent.TYPE, registration);
 		
 		registration = eventBus.addHandler(ReceiveLoginEvent.TYPE, this);
 		eventBusRegistration.put(ReceiveLoginEvent.TYPE, registration);
@@ -95,43 +91,37 @@ public class AccountDetailsPresenterImpl extends BasePresenterImpl implements Ac
 	{
 		return userInfo.getUserRolesRoleName();
 	}
-	
+		
 	@Override
-	public void onReceiveAccountDetails(ReceiveAccountDetailsEvent evt)
+	public void showChangePasswordPopup()
 	{
-		HasWidgets container = evt.getContainer();
-		ReceiveAccountDetailsAction rada = evt.getAction();
-
-		userInfo = rada.getUserInfo();//Injector.INSTANCE.getGlobalData().getUserInfo();
-
-		go(container);
-		parentPresenter.showMenuBar();
-		parentPresenter.hideLoadScreen();
-	}
-	
-	// event:
-	// 1. toChangePassword: click the change password button, then the pop up windows about changing password shows.
-	@Override
-	public void toChangePassword(){
-		if (!changePasswordInProgress) {
-			view.getChangePasswordButton().setEnabled(false);
-			// parentPresenter.showLoadScreen();
-			int id = userInfo.getUsersId();
-			triggerChangePasswordWindow(id);	
-		}
-		else {
-			view.showErrorMessage("Unknown Error 3 from AccountDetailsPresenterImpl.java. Please refresh the webpage.");
-		}
-	}
-	
-	private void triggerChangePasswordWindow(int userId) {
-		if(!changePasswordInProgress) {
+		if (!changePasswordInProgress)
+		{
 			changePasswordInProgress = true;
-			TriggerChangePasswordWindowAction tcpwa = new TriggerChangePasswordWindowAction(userId);
-			TriggerChangePasswordWindowEvent tcpwe = new TriggerChangePasswordWindowEvent(tcpwa);
-			eventBus.fireEvent(tcpwe);
-			view.getChangePasswordButton().setEnabled(true);
+			view.getChangePasswordButton().setEnabled(false);
+			int userId = userInfo.getUsersId();
+			changePasswordPresenter.showChangePasswordPopup(userId);
 		}
+	}
+	
+	@Override
+	public void hideChangePasswordPopup()
+	{
+		changePasswordPresenter.hideChangePasswordPopup();
+		changePasswordInProgress = false;
+		view.getChangePasswordButton().setEnabled(true);
+	}
+	
+	@Override
+	public void showLoadScreen()
+	{
+		parentPresenter.showLoadScreen();
+	}
+	
+	@Override
+	public void hideLoadScreen()
+	{
+		parentPresenter.hideLoadScreen();
 	}
 	
 	@Override
@@ -141,6 +131,19 @@ public class AccountDetailsPresenterImpl extends BasePresenterImpl implements Ac
 		ReceiveLoginAction rla = evt.getAction();
 
 		userInfo = rla.getUserInfo();//Injector.INSTANCE.getGlobalData().getUserInfo();
+
+		go(container);
+		parentPresenter.showMenuBar();
+		parentPresenter.hideLoadScreen();
+	}
+	
+	@Override
+	public void onReceiveAccountDetails(ReceiveAccountDetailsEvent evt)
+	{
+		HasWidgets container = evt.getContainer();
+		ReceiveAccountDetailsAction rada = evt.getAction();
+
+		userInfo = rada.getUserInfo();//Injector.INSTANCE.getGlobalData().getUserInfo();
 
 		go(container);
 		parentPresenter.showMenuBar();

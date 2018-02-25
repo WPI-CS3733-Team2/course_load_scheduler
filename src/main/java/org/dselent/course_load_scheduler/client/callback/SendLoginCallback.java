@@ -63,7 +63,7 @@ public class SendLoginCallback extends DisplayCallback<JSONValue>
 			sb.append("\n");
 		}
 
-		InvalidLoginAction ila = new InvalidLoginAction(sb.toString());
+		InvalidLoginAction ila = new InvalidLoginAction(/*sb.toString()*/caught.getMessage());
 		InvalidLoginEvent ile = new InvalidLoginEvent(ila);
 		eventBus.fireEvent(ile);
 	}

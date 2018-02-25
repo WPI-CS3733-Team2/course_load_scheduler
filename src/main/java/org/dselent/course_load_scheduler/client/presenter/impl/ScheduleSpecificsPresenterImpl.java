@@ -6,9 +6,7 @@ import java.util.List;
 import java.util.Map;
 
 import org.dselent.course_load_scheduler.client.action.ReceiveScheduleSpecificsAction;
-import org.dselent.course_load_scheduler.client.action.ScheduleSpecificsAction;
 import org.dselent.course_load_scheduler.client.event.ReceiveScheduleSpecificsEvent;
-import org.dselent.course_load_scheduler.client.event.ScheduleSpecificsEvent;
 import org.dselent.course_load_scheduler.client.model.Calendar;
 import org.dselent.course_load_scheduler.client.model.Course;
 import org.dselent.course_load_scheduler.client.model.Schedule;
@@ -19,7 +17,6 @@ import org.dselent.course_load_scheduler.client.presenter.ScheduleSpecificsPrese
 import org.dselent.course_load_scheduler.client.utils.Pair;
 import org.dselent.course_load_scheduler.client.view.ScheduleSpecificsView;
 
-import com.google.gwt.core.client.GWT;
 import com.google.gwt.event.shared.HandlerRegistration;
 import com.google.gwt.user.client.ui.HasWidgets;
 import com.google.inject.Inject;
@@ -207,7 +204,6 @@ public class ScheduleSpecificsPresenterImpl extends BasePresenterImpl implements
 		schedule = ssa.getSchedule();
 		List<Course> courseList = ssa.getModels();
 		this.insertText(schedule.getScheduleName(), facultyName);
-		GWT.log("HELLLLLLLLLLLLLLLLLLLLLLLLLLOOOOOOOOOOOOOOOOOOOOOOOOOO");
 		for(Course course : courseList) {
 			List<Section> sectionList = course.getSections();
 			for(Section section : sectionList) {
@@ -215,10 +211,8 @@ public class ScheduleSpecificsPresenterImpl extends BasePresenterImpl implements
 				String courseDetails = course.getCourseName() + " " + calendar.getSemester() + " " + section.getSectionName();
 				Pair<Calendar, String> calendarCourse = new Pair<Calendar, String>(calendar, courseDetails);
 				calendarCoursePairs.add(calendarCourse);
-				GWT.log("CALENDAR COURSE PAIR ADDED: " + calendarCourse.toString());
 			}
 		}
-		GWT.log(calendarCoursePairs.toString());
 		this.updateGrid();
 		this.go(parentPresenter.getView().getViewRootPanel());
 	}

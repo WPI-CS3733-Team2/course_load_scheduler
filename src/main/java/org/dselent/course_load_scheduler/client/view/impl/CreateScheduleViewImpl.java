@@ -8,6 +8,9 @@ import org.dselent.course_load_scheduler.client.view.CreateScheduleView;
 
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.event.dom.client.ClickEvent;
+import com.google.gwt.event.dom.client.KeyCodes;
+import com.google.gwt.event.dom.client.KeyDownEvent;
+import com.google.gwt.event.dom.client.KeyDownHandler;
 import com.google.gwt.uibinder.client.UiBinder;
 import com.google.gwt.uibinder.client.UiField;
 import com.google.gwt.uibinder.client.UiHandler;
@@ -41,6 +44,13 @@ public class CreateScheduleViewImpl extends BaseViewImpl<CreateSchedulePresenter
 
 	public CreateScheduleViewImpl() {
 		initWidget(uiBinder.createAndBindUi(this));
+		searchTextBox.addKeyDownHandler(new KeyDownHandler() {
+	        public void onKeyDown(KeyDownEvent event) {
+	            if (event.getNativeKeyCode() == KeyCodes.KEY_ENTER) {
+	              presenter.results();
+	            }
+	          }
+	        });
 	}
 
 	@Override
@@ -90,18 +100,20 @@ public class CreateScheduleViewImpl extends BaseViewImpl<CreateSchedulePresenter
 		}
 	}
 	
-	public List<String> getCheckedCourses() {
-		List<String> checkedCourses = new ArrayList<String>();
+	public List<Integer> getCheckedCourses() {
+		List<Integer> checkedCourses = new ArrayList<Integer>();
+		int i = 0;
 		for (Widget widget : coursesVerticalPanel) {
 			if (widget instanceof CheckBox){
 			    CheckBox checkBox = (CheckBox) widget;
 			    if (checkBox.getValue()) {
-			    	checkedCourses.add(checkBox.getText());
+			    	checkedCourses.add(i);
 			    }
+			    i++;
 			}
 		}
 		return checkedCourses;
-	}
+	} 
 
 	@UiHandler("nextButton")
 	public void onButtonClick(ClickEvent event) {

@@ -1,7 +1,6 @@
 package org.dselent.course_load_scheduler.client.service.impl;
 
 import org.dselent.course_load_scheduler.client.action.SearchScheduleAction;
-import org.dselent.course_load_scheduler.client.action.SearchScheduleNavigationAction;
 import org.dselent.course_load_scheduler.client.action.ViewScheduleNavigationAction;
 import org.dselent.course_load_scheduler.client.callback.ViewScheduleNavigationCallback;
 import org.dselent.course_load_scheduler.client.event.CreateScheduleEvent;
@@ -12,7 +11,6 @@ import org.dselent.course_load_scheduler.client.network.NetworkRequestStrings;
 import org.dselent.course_load_scheduler.client.service.ScheduleListService;
 import org.dselent.course_load_scheduler.client.translator.impl.ViewScheduleNavigationActionTranslatorImpl;
 
-import com.google.gwt.core.client.GWT;
 import com.google.gwt.event.shared.HandlerRegistration;
 import com.google.gwt.json.client.JSONObject;
 

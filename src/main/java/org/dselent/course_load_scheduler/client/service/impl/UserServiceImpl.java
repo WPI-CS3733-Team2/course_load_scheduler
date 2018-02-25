@@ -1,10 +1,13 @@
 package org.dselent.course_load_scheduler.client.service.impl;
 
 import org.dselent.course_load_scheduler.client.action.SendAccountDetailsAction;
+import org.dselent.course_load_scheduler.client.action.SendChangePasswordAction;
 import org.dselent.course_load_scheduler.client.action.SendLoginAction;
 import org.dselent.course_load_scheduler.client.callback.AccountDetailsCallback;
+import org.dselent.course_load_scheduler.client.callback.ChangePasswordCallback;
 import org.dselent.course_load_scheduler.client.callback.SendLoginCallback;
 import org.dselent.course_load_scheduler.client.event.SendAccountDetailsEvent;
+import org.dselent.course_load_scheduler.client.event.SendChangePasswordEvent;
 import org.dselent.course_load_scheduler.client.event.SendLoginEvent;
 import org.dselent.course_load_scheduler.client.action.CreateUserAction;
 import org.dselent.course_load_scheduler.client.callback.CreateUserCallback;
@@ -19,6 +22,7 @@ import org.dselent.course_load_scheduler.client.network.NetworkRequest;
 import org.dselent.course_load_scheduler.client.network.NetworkRequestStrings;
 import org.dselent.course_load_scheduler.client.service.UserService;
 import org.dselent.course_load_scheduler.client.translator.impl.AccountDetailsActionTranslatorImpl;
+import org.dselent.course_load_scheduler.client.translator.impl.ChangePasswordActionTranslatorImpl;
 import org.dselent.course_load_scheduler.client.translator.impl.LoginActionTranslatorImpl;
 import org.dselent.course_load_scheduler.client.translator.impl.CreateUserActionTranslatorImpl;
 import org.dselent.course_load_scheduler.client.translator.impl.SearchUserActionTranslatorImpl;
@@ -51,6 +55,9 @@ public class UserServiceImpl extends BaseServiceImpl implements UserService
 		
 		registration = eventBus.addHandler(SendAccountDetailsEvent.TYPE, this);
 		eventBusRegistration.put(SendAccountDetailsEvent.TYPE, registration);
+		
+		registration = eventBus.addHandler(SendChangePasswordEvent.TYPE, this);
+		eventBusRegistration.put(SendChangePasswordEvent.TYPE, registration);
 		
 		registration = eventBus.addHandler(CreateUserEvent.TYPE, this);
 		eventBusRegistration.put(CreateUserEvent.TYPE, registration);
@@ -130,5 +137,15 @@ public class UserServiceImpl extends BaseServiceImpl implements UserService
 		request.send();
 	}
 	
-	
+	@Override
+	public void onSendChangePassword(SendChangePasswordEvent evt)
+	{
+		SendChangePasswordAction action = evt.getAction();
+		ChangePasswordActionTranslatorImpl changePasswordActionTranslator = new ChangePasswordActionTranslatorImpl();
+		JSONObject json = changePasswordActionTranslator.translateToJson(action);
+		ChangePasswordCallback changePasswordCallback = new ChangePasswordCallback(eventBus);
+		
+		NetworkRequest request = new NetworkRequest(NetworkRequestStrings.CHANGE_PASSWORD, changePasswordCallback, json);
+		request.send();
+	}
 }

@@ -1,12 +1,14 @@
 package org.dselent.course_load_scheduler.client.presenter.impl;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 import org.dselent.course_load_scheduler.client.action.CreateScheduleSelectCoursesAction;
-import org.dselent.course_load_scheduler.client.event.CreateScheduleNavigationEvent;
+import org.dselent.course_load_scheduler.client.action.SearchSpecificCourseAction;
 import org.dselent.course_load_scheduler.client.event.CreateScheduleSelectCoursesEvent;
+import org.dselent.course_load_scheduler.client.event.ReceiveCreateScheduleNavigationEvent;
+import org.dselent.course_load_scheduler.client.event.SearchSpecificCourseEvent;
+import org.dselent.course_load_scheduler.client.model.Calendar;
 import org.dselent.course_load_scheduler.client.model.Course;
 import org.dselent.course_load_scheduler.client.model.Section;
 import org.dselent.course_load_scheduler.client.presenter.CreateSchedulePresenter;
@@ -21,6 +23,8 @@ public class CreateSchedulePresenterImpl extends BasePresenterImpl implements Cr
 {
 	private IndexPresenter parentPresenter;
 	private CreateScheduleView view;
+	private List<Course> courses = new ArrayList<Course>();
+	private List <Section> sections = new ArrayList<Section>();
 	
 	@Inject
 	public CreateSchedulePresenterImpl(IndexPresenter parentPresenter, CreateScheduleView view)
@@ -28,8 +32,6 @@ public class CreateSchedulePresenterImpl extends BasePresenterImpl implements Cr
 		this.view = view;
 		this.parentPresenter = parentPresenter;
 		view.setPresenter(this);
-		List<String> names = Arrays.asList("Course1", "Course2", "Course3");
-		view.addCourses(names);
 	}
 	
 	@Override
@@ -41,8 +43,8 @@ public class CreateSchedulePresenterImpl extends BasePresenterImpl implements Cr
 	public void bind(){
 		HandlerRegistration registration;
 		
-		registration = eventBus.addHandler(CreateScheduleNavigationEvent.TYPE, this);
-		eventBusRegistration.put(CreateScheduleNavigationEvent.TYPE, registration);
+		registration = eventBus.addHandler(ReceiveCreateScheduleNavigationEvent.TYPE, this);
+		eventBusRegistration.put(ReceiveCreateScheduleNavigationEvent.TYPE, registration);
 	}
 	
 	@Override
@@ -68,26 +70,33 @@ public class CreateSchedulePresenterImpl extends BasePresenterImpl implements Cr
 		this.parentPresenter = parentPresenter;
 	}
 	
-	public void goToNextPage(List<String> courseNames){
-		List<Course> courseList = new ArrayList<Course>();
-		//pull from database instead of this
-		for(String name: courseNames) {
-			Course course = new Course();
-			course.setCourseName(name);
-			course.setCourseNumber("3733");
-			List<Section> sectionList = new ArrayList<Section>();
-			Section section = new Section();
-			section.setSectionName("Test Section");
-			section.setCrn(45678);
-			section.setType("Lecture");
-			section.setExpectedPopulation(50);
-			sectionList.add(section);
-			sectionList.add(section);
-			course.setSections(sectionList);
-			courseList.add(course);
+	public void goToNextPage(List<Integer> indexes){
+		List<Course> checkedCourses = new ArrayList<Course>();
+		for (Integer num : indexes) {
+			Section section = sections.get(num);
+			for (Course course : courses) {
+				if (course.getSections().contains(section)) {
+					checkedCourses.add(course);
+				}
+			}
 		}
-		fireCreateScheduleSelectCourses(courseList);
+		
+		fireCreateScheduleSelectCourses(checkedCourses);
 	}
+	
+	public void fillAvailableCourses(List<Course> courseList) {
+		List<String> presentableCourseNames = new ArrayList<String>();
+		for(Course course : courseList) {
+			List<Section> sectionList = course.getSections();
+			for(Section section : sectionList) {
+				Calendar calendar = section.getCalendar();
+				String courseDetails = course.getCourseName() + " " + course.getCourseNumber() + " " + calendar.getSemester() + " " + section.getSectionName();
+				presentableCourseNames.add(courseDetails);
+			}
+		}
+		view.addCourses(presentableCourseNames);
+	}
+	
 	
 	public void fireCreateScheduleSelectCourses(List<Course> courseList) {
 		CreateScheduleSelectCoursesAction cssca = new CreateScheduleSelectCoursesAction(courseList);
@@ -95,8 +104,26 @@ public class CreateSchedulePresenterImpl extends BasePresenterImpl implements Cr
 		eventBus.fireEvent(cssce);
 	}
 	
+	public void results() {
+		view.getCoursesVerticalPanel().clear();
+		final String searchTerm = view.getSearchTextBox().getText().trim();
+		SearchSpecificCourseAction ssca = new SearchSpecificCourseAction(searchTerm);
+		SearchSpecificCourseEvent ssce = new SearchSpecificCourseEvent(ssca, parentPresenter.getView().getViewRootPanel());
+		eventBus.fireEvent(ssce);
+	}	
+	
 	@Override
-	public void onCreateScheduleNavigation(CreateScheduleNavigationEvent evt) {
+	public void onReceiveCreateScheduleNavigation(ReceiveCreateScheduleNavigationEvent evt) {
+		courses.clear();
+		sections.clear();
+		view.getCoursesVerticalPanel().clear();
+		courses = evt.getAction().getModels();
+		for (Course course: courses) {
+			for (Section section: course.getSections()) {
+				sections.add(section);
+			}
+		}
+		fillAvailableCourses(courses);
 		this.go(parentPresenter.getView().getViewRootPanel());
 	}
 

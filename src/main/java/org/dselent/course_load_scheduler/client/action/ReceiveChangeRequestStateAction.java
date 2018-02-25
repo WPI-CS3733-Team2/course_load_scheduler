@@ -1,7 +1,5 @@
 package org.dselent.course_load_scheduler.client.action;
 
-import java.util.List;
-
 public class ReceiveChangeRequestStateAction extends Action{
 	private Integer affectedRows;
 	

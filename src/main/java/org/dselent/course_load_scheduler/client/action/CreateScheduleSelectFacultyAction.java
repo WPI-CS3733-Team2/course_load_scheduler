@@ -3,7 +3,7 @@ package org.dselent.course_load_scheduler.client.action;
 import org.dselent.course_load_scheduler.client.model.Course;
 import java.util.List;
 
-public class CreateScheduleSelectFacultyAction {
+public class CreateScheduleSelectFacultyAction extends Action{
 	private List<Course> courses;
 	
 	public CreateScheduleSelectFacultyAction(List<Course> courses){
