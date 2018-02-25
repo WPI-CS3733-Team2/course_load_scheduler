@@ -7,6 +7,7 @@ import org.dselent.course_load_scheduler.client.action.SendLoginAction;
 import org.dselent.course_load_scheduler.client.errorstring.InvalidLoginStrings;
 import org.dselent.course_load_scheduler.client.event.InvalidLoginEvent;
 import org.dselent.course_load_scheduler.client.event.SendLoginEvent;
+import org.dselent.course_load_scheduler.client.event.LoginNavigationEvent;
 import org.dselent.course_load_scheduler.client.exceptions.EmptyStringException;
 import org.dselent.course_load_scheduler.client.presenter.IndexPresenter;
 import org.dselent.course_load_scheduler.client.presenter.LoginPresenter;
@@ -44,6 +45,9 @@ public class LoginPresenterImpl extends BasePresenterImpl implements LoginPresen
 		
 		registration = eventBus.addHandler(InvalidLoginEvent.TYPE, this);
 		eventBusRegistration.put(InvalidLoginEvent.TYPE, registration);
+		
+		registration = eventBus.addHandler(LoginNavigationEvent.TYPE, this);
+		eventBusRegistration.put(LoginNavigationEvent.TYPE, registration);
 	}
 		
 	@Override
@@ -161,5 +165,10 @@ public class LoginPresenterImpl extends BasePresenterImpl implements LoginPresen
 		
 		InvalidLoginAction ila = evt.getAction();
 		view.showErrorMessages(ila.toString());
+	}
+	
+	@Override
+	public void onLoginNavigation(LoginNavigationEvent evt) {
+		this.go(parentPresenter.getView().getViewRootPanel());
 	}
 }

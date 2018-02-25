@@ -50,7 +50,7 @@ public class TerminateAccountCallback extends Callback<JSONValue>{
 		//InvalidLoginAction ila = new InvalidLoginAction(sb.toString());
 		//InvalidLoginEvent ile = new InvalidLoginEvent(ila);
 
-		InvalidAction ia = new InvalidAction(sb.toString());
+		InvalidAction ia = new InvalidAction(caught.getMessage());
 		InvalidEvent ie = new InvalidEvent(ia);
 		eventBus.fireEvent(ie);
 	}

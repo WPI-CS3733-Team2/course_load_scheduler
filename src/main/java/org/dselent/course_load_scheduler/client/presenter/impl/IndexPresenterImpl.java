@@ -216,7 +216,7 @@ public class IndexPresenterImpl extends BasePresenterImpl implements IndexPresen
 	//Generic error messages for a response failure.
 	@Override
 	public void onInvalid(InvalidEvent evt) {
-		view.showErrorMessages("Action could not be completed.");
+		view.showErrorMessages("Error: " + evt.getAction().toString());
 	}
 	
 	@Override

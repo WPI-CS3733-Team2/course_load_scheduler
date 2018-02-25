@@ -45,6 +45,7 @@ import org.dselent.course_load_scheduler.client.event.UserCreatePageEvent;
 import org.dselent.course_load_scheduler.client.event.UserDetailsPageEvent;
 import org.dselent.course_load_scheduler.client.event.ReceivePendingRequestListEvent;
 import org.dselent.course_load_scheduler.client.event.LoadPendingRequestListEvent;
+import org.dselent.course_load_scheduler.client.event.LoginNavigationEvent;
 import org.dselent.course_load_scheduler.client.event.ReceiveScheduleSpecificsEvent;
 import org.dselent.course_load_scheduler.client.event.ReceiveSelectFacultyEvent;
 import org.dselent.course_load_scheduler.client.event.ReceiveViewScheduleNavigationEvent;
@@ -52,6 +53,7 @@ import org.dselent.course_load_scheduler.client.event.ReceiveCreatedUserEvent;
 import org.dselent.course_load_scheduler.client.event.ReceiveUserSearchResultsEvent;
 import org.dselent.course_load_scheduler.client.event.ReceiveTerminatedAccountEvent;
 import org.dselent.course_load_scheduler.client.event.InvalidEvent;
+import org.dselent.course_load_scheduler.client.event.LoginNavigationEvent;
 
 /**
  * Adapter class for convenience All classes that need to implement an event
@@ -80,7 +82,7 @@ public abstract class EventHandlerAdapter
 		ReceiveViewScheduleNavigationEventHandler, ReceiveScheduleSpecificsEventHandler, InvalidEventHandler,
 		SendAccountDetailsEventHandler, ReceiveAccountDetailsEventHandler, InvalidAccountDetailsEventHandler,
 		AdminSectionEventHandler, ReceiveAdminCourseEventHandler, ReceiveCreateScheduleNavigationEventHandler,
-		ReceiveSelectFacultyEventHandler, ReceiveChangePasswordEventHandler {
+		ReceiveSelectFacultyEventHandler, ReceiveChangePasswordEventHandler, LoginNavigationEventHandler {
 
 
 
@@ -238,4 +240,7 @@ public abstract class EventHandlerAdapter
 
 	@Override
 	public void onInvalid(InvalidEvent evt) {}
+	
+	@Override
+	public void onLoginNavigation(LoginNavigationEvent evt) {}
 }
