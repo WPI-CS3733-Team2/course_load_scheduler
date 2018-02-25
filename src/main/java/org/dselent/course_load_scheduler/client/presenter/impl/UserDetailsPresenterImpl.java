@@ -196,10 +196,13 @@ public class UserDetailsPresenterImpl extends BasePresenterImpl implements UserD
 		view.getFirstNameBox().setText(userInfo.getUsersFirstName());
 		view.getLastNameBox().setText(userInfo.getUsersLastName());
 		view.getEmailBox().setText(userInfo.getUsersEmail());
-		view.getAccountStateBox().setText(userInfo.getUsersAccountState());
+		view.getUserRoleBox().setText(userInfo.getUserRolesRoleName());
 		
-		//Temporary; placeholder until role can be retrieved from server/other model
-		//view.getUserRoleBox().setText(userInfo.getUserRolesRoleName());
-		view.getUserRoleBox().setText("Unknown.");
+		if(Integer.parseInt(userInfo.getUsersAccountState()) == 1) {
+			view.getAccountStateBox().setText("active");
+		}else {
+			view.getAccountStateBox().setText("inactive");
+		}
+		
 	}
 }

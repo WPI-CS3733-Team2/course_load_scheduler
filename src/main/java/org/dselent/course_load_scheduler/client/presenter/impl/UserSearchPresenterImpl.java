@@ -135,9 +135,9 @@ public class UserSearchPresenterImpl extends BasePresenterImpl implements UserSe
 	
 	//fires "Search User" event
 	private void searchUserEventFire(String query) {
-		Integer searchBy = view.getSearchBy().getSelectedIndex();
+		//Integer searchBy = view.getSearchBy().getSelectedIndex();
 		//HasWidgets container = parentPresenter.getView().getViewRootPanel();
-		SearchUserAction sua = new SearchUserAction(query, searchBy);
+		SearchUserAction sua = new SearchUserAction(query);
 		SearchUserEvent sue = new SearchUserEvent(sua);
 		eventBus.fireEvent(sue);
 	}
@@ -242,8 +242,8 @@ public class UserSearchPresenterImpl extends BasePresenterImpl implements UserSe
 		udpa.getUser().setLastName("Jones");
 		udpa.getUser().setEmail("jjones1990@wpi.edu");
 		udpa.getUser().setUserStateId(1);*/
-		//UserDetailsPageEvent udpe = new UserDetailsPageEvent(udpa);
-		//eventBus.fireEvent(udpe);
+		UserDetailsPageEvent udpe = new UserDetailsPageEvent(udpa);
+		eventBus.fireEvent(udpe);
 	}
 	
 	// Navigate to this page

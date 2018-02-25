@@ -16,6 +16,7 @@ import com.google.gwt.user.client.ui.Widget;
 import com.google.gwt.uibinder.client.UiField;
 import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.ui.Button;
+import com.google.gwt.user.client.ui.Grid;
 import com.google.gwt.uibinder.client.UiHandler;
 import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.user.client.ui.TextBox;
@@ -26,19 +27,21 @@ import com.google.gwt.user.client.ui.ListBox;
 import com.google.gwt.user.cellview.client.CellTable;
 import com.google.gwt.user.cellview.client.Column;
 import com.google.gwt.user.cellview.client.TextColumn;
+import com.google.gwt.user.client.ui.ScrollPanel;
 
 public class UserSearchViewImpl extends BaseViewImpl<UserSearchPresenter> implements UserSearchView{
 	private static UserSearchViewUiBinder uiBinder = GWT.create(UserSearchViewUiBinder.class);
-	@UiField Button searchUser;
-	@UiField TextBox searchUserBox;
 	@UiField VerticalPanel searchPanel;
-	@UiField HorizontalPanel searchBarPanel;
-	@UiField Button createUser;
 	@UiField Label viewUsersLabel;
+	@UiField HorizontalPanel searchBarPanel;
+	@UiField TextBox searchUserBox;
+	@UiField Button searchUser;
 	@UiField Label searchByLabel;
 	@UiField ListBox searchByListBox;
+	@UiField Button createUser;
 	@UiField CellTable<UserInfo> userTable;
-
+	@UiField ScrollPanel userScroll;
+	
 	interface UserSearchViewUiBinder extends UiBinder<Widget, UserSearchViewImpl> {
 	}
 
@@ -73,12 +76,6 @@ public class UserSearchViewImpl extends BaseViewImpl<UserSearchPresenter> implem
 	public CellTable<UserInfo> getUserTable(){
 		return userTable;
 	}
-
-	//Starts user search
-	@UiHandler("searchUser")
-	void onSearchUserClick(ClickEvent event) {
-		presenter.searchUser();
-	}
 	
 	@Override
 	public void setPresenter(UserSearchPresenter presenter)
@@ -103,8 +100,13 @@ public class UserSearchViewImpl extends BaseViewImpl<UserSearchPresenter> implem
 	{
 		return searchPanel;
 	}
+	
+	@UiHandler("searchUser")
+	void onReturnToSearchButtonClick(ClickEvent event) {
+		presenter.searchUser();
+	}
 	@UiHandler("createUser")
-	void onCreateUserClick(ClickEvent event) {
+	void onCreateUserButtonClick(ClickEvent event) {
 		presenter.toCreateUsers();
 	}
 	
@@ -136,7 +138,7 @@ public class UserSearchViewImpl extends BaseViewImpl<UserSearchPresenter> implem
 	
 	//Navigates to appropriate user details page
 	public void onSelectClicked(int index) {
-		int size = presenter.getUsers().size();
+		//int size = presenter.getUsers().size();
 		UserInfo userInfo = presenter.getUsers().get(index);
 		presenter.viewUserDetails(userInfo);
 	}
