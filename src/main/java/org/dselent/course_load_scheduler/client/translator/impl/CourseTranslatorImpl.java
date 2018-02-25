@@ -15,7 +15,7 @@ import org.dselent.course_load_scheduler.client.utils.JSONHelper;
 import com.google.gwt.json.client.JSONObject;
 import com.google.gwt.json.client.JSONValue;
 
-public class FacultyCourseTranslatorImpl implements ActionTranslator<ViewCourseAction, ViewSectionAction>
+public class CourseTranslatorImpl implements ActionTranslator<ViewCourseAction, ViewSectionAction>
 {
 	@Override
 	public JSONObject translateToJson(ViewCourseAction action)

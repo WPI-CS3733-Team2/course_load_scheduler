@@ -6,6 +6,7 @@ import org.dselent.course_load_scheduler.client.event.InvalidSubmitCourseEvent;
 import org.dselent.course_load_scheduler.client.event.InvalidSubmitRequestEvent;
 import org.dselent.course_load_scheduler.client.event.ModifyCourseEvent;
 import org.dselent.course_load_scheduler.client.event.ReceiveAccountDetailsEvent;
+import org.dselent.course_load_scheduler.client.event.ReceiveAdminCourseEvent;
 import org.dselent.course_load_scheduler.client.event.ReceiveChangeRequestStateEvent;
 import org.dselent.course_load_scheduler.client.event.ReceiveFacultyCourseEvent;
 import org.dselent.course_load_scheduler.client.event.ReceiveFacultyCourseNavigationEvent;
@@ -27,6 +28,7 @@ import org.dselent.course_load_scheduler.client.event.InvalidAccountDetailsEvent
 import org.dselent.course_load_scheduler.client.event.InvalidAddSectionEvent;
 import org.dselent.course_load_scheduler.client.event.SendAccountDetailsEvent;
 import org.dselent.course_load_scheduler.client.event.AdminCourseEvent;
+import org.dselent.course_load_scheduler.client.event.AdminSectionEvent;
 import org.dselent.course_load_scheduler.client.event.ConfirmSchedulePageEvent;
 import org.dselent.course_load_scheduler.client.event.CreateScheduleEvent;
 import org.dselent.course_load_scheduler.client.event.CreateScheduleNavigationEvent;
@@ -74,7 +76,7 @@ public abstract class EventHandlerAdapter implements InvalidLoginEventHandler, S
 		ReceiveTerminatedAccountEventHandler, FacultySectionEventHandler, ReceiveFacultyCourseNavigationEventHandler, 
 		ReceiveViewScheduleNavigationEventHandler, ReceiveScheduleSpecificsEventHandler, InvalidEventHandler,
 		SendAccountDetailsEventHandler, ReceiveAccountDetailsEventHandler,
-		InvalidAccountDetailsEventHandler
+		InvalidAccountDetailsEventHandler, AdminSectionEventHandler, ReceiveAdminCourseEventHandler
 {
 
 
@@ -203,9 +205,15 @@ public abstract class EventHandlerAdapter implements InvalidLoginEventHandler, S
 
 	@Override
 	public void onReceiveFacultyCourse(ReceiveFacultyCourseEvent evt) {}
+	
+	@Override
+	public void onReceiveAdminCourse(ReceiveAdminCourseEvent evt) {}
 
 	@Override
 	public void onFacultySection(FacultySectionEvent evt) {}
+	
+	@Override
+	public void onAdminSection(AdminSectionEvent evt) {}
 	
 	@Override
 	public void onReceiveFacultyCourseNavigation(ReceiveFacultyCourseNavigationEvent evt) {}

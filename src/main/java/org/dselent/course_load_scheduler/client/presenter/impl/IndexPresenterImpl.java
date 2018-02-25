@@ -97,7 +97,7 @@ public class IndexPresenterImpl extends BasePresenterImpl implements IndexPresen
 				
 				if (userRole.equals("Admin") || testing) {
 					ViewCourseAction vca = new ViewCourseAction();
-					AdminCourseEvent ace = new AdminCourseEvent(vca);
+					AdminCourseEvent ace = new AdminCourseEvent(vca, container);
 					eventBus.fireEvent(ace);
 				} 
 				else {
