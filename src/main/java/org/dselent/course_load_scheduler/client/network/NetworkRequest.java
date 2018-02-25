@@ -138,10 +138,10 @@ public class NetworkRequest implements RequestCallback
 	private StatusCodeException makeStatusCodeException(String responseText)
 	{
 		String message = new StringBuilder("Unexpected response from network request: ")
-				.append(ToStringHelper.variableToString("responseStatus", ToStringHelper.arrayToString(failedStatusList, ", ")))
+				//.append(ToStringHelper.variableToString("responseStatus", ToStringHelper.arrayToString(failedStatusList, ", ")))
 				.append(ToStringHelper.variableToString("responseText", responseText))
-				.append(ToStringHelper.variableToString("url", this.requestBuilder.getUrl()))
-				.append(ToStringHelper.variableToString("payload", this.requestData.toString()))
+				//.append(ToStringHelper.variableToString("url", this.requestBuilder.getUrl()))
+				//.append(ToStringHelper.variableToString("payload", this.requestData.toString()))
 				.toString();
     
 		return new StatusCodeException(message);    

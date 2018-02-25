@@ -222,7 +222,7 @@
 			</g:row>
 		</g:Grid>
 			
-		<g:Button ui:field="toChangePasswordButton" addStyleNames="{style.accountDetails-button}">Change Password</g:Button>
+		<g:Button ui:field="changePasswordButton" addStyleNames="{style.accountDetails-button}">Change Password</g:Button>
 				
 		</g:VerticalPanel>
 	</g:VerticalPanel>

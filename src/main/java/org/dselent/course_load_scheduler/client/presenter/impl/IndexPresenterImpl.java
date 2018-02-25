@@ -7,7 +7,6 @@ import org.dselent.course_load_scheduler.client.action.ViewScheduleNavigationAct
 import org.dselent.course_load_scheduler.client.event.SendAccountDetailsEvent;
 import org.dselent.course_load_scheduler.client.event.AdminCourseEvent;
 import org.dselent.course_load_scheduler.client.event.CreateScheduleNavigationEvent;
-import org.dselent.course_load_scheduler.client.event.CreateUserEvent;
 import org.dselent.course_load_scheduler.client.event.FacultyCourseEvent;
 import org.dselent.course_load_scheduler.client.event.FacultyCourseNavigationEvent;
 import org.dselent.course_load_scheduler.client.event.InvalidAccountDetailsEvent;
@@ -24,7 +23,6 @@ import org.dselent.course_load_scheduler.client.action.UserSearchPageAction;
 import org.dselent.course_load_scheduler.client.event.UserSearchPageEvent;
 import org.dselent.course_load_scheduler.client.event.ViewScheduleNavigationEvent;
 import org.dselent.course_load_scheduler.client.gin.Injector;
-import org.dselent.course_load_scheduler.client.model.User;
 import org.dselent.course_load_scheduler.client.presenter.IndexPresenter;
 import org.dselent.course_load_scheduler.client.view.IndexView;
 import com.google.gwt.dom.client.Style;
@@ -77,8 +75,9 @@ public class IndexPresenterImpl extends BasePresenterImpl implements IndexPresen
 		view.setCreateScheduleCommand(new Command() {
 			@Override
 			public void execute() {	
+				HasWidgets container = getView().getViewRootPanel();
 				CreateScheduleNavigationAction csna = new CreateScheduleNavigationAction();
-				CreateScheduleNavigationEvent csne = new CreateScheduleNavigationEvent(csna);
+				CreateScheduleNavigationEvent csne = new CreateScheduleNavigationEvent(csna, container);
 				eventBus.fireEvent(csne); 
 				
 			}
@@ -129,6 +128,7 @@ public class IndexPresenterImpl extends BasePresenterImpl implements IndexPresen
 		view.setFacultyCourseCommand(new Command() {
 			@Override
 			public void execute() {
+				showLoadScreen();
 				HasWidgets container = getView().getViewRootPanel();
 				FacultyCourseNavigationAction fcna = new FacultyCourseNavigationAction();
 				FacultyCourseNavigationEvent fcne = new FacultyCourseNavigationEvent(fcna, container);

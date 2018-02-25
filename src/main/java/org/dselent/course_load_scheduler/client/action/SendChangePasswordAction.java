@@ -1,26 +1,30 @@
 package org.dselent.course_load_scheduler.client.action;
 
-public class SendChangePasswordAction 
+public class SendChangePasswordAction extends Action
 {
 	private String currentPassword;
 	private String newPassword;
 	private int userId;
 	
-	public SendChangePasswordAction(int userId, String currentPassword, String newPassword) {
+	public SendChangePasswordAction(int userId, String currentPassword, String newPassword)
+	{
 		this.userId = userId;
 		this.currentPassword = currentPassword;
 		this.newPassword = newPassword;
 	}
 	
-	public int getUserId() {
+	public int getUserId()
+	{
 		return userId;
 	}
 	
-	public String getCurrentPassword() {
+	public String getCurrentPassword()
+	{
 		return currentPassword;
 	}
 	
-	public String getNewPassword() {
+	public String getNewPassword()
+	{
 		return newPassword;
 	}
 	

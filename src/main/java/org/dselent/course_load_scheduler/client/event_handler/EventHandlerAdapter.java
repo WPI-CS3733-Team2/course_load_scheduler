@@ -6,7 +6,9 @@ import org.dselent.course_load_scheduler.client.event.InvalidSubmitCourseEvent;
 import org.dselent.course_load_scheduler.client.event.InvalidSubmitRequestEvent;
 import org.dselent.course_load_scheduler.client.event.ModifyCourseEvent;
 import org.dselent.course_load_scheduler.client.event.ReceiveAccountDetailsEvent;
+import org.dselent.course_load_scheduler.client.event.ReceiveChangePasswordEvent;
 import org.dselent.course_load_scheduler.client.event.ReceiveChangeRequestStateEvent;
+import org.dselent.course_load_scheduler.client.event.ReceiveCreateScheduleNavigationEvent;
 import org.dselent.course_load_scheduler.client.event.ReceiveFacultyCourseEvent;
 import org.dselent.course_load_scheduler.client.event.ReceiveFacultyCourseNavigationEvent;
 import org.dselent.course_load_scheduler.client.event.RequestCourseEvent;
@@ -17,7 +19,6 @@ import org.dselent.course_load_scheduler.client.event.SendChangeRequestStateEven
 import org.dselent.course_load_scheduler.client.event.ReceiveLoginEvent;
 import org.dselent.course_load_scheduler.client.event.SendLoginEvent;
 import org.dselent.course_load_scheduler.client.event.TerminateAccountEvent;
-import org.dselent.course_load_scheduler.client.event.TriggerChangePasswordWindowEvent;
 import org.dselent.course_load_scheduler.client.event.SearchUserEvent;
 import org.dselent.course_load_scheduler.client.event.CreateUserEvent;
 import org.dselent.course_load_scheduler.client.event.FacultyCourseEvent;
@@ -35,6 +36,7 @@ import org.dselent.course_load_scheduler.client.event.CreateScheduleSelectFacult
 import org.dselent.course_load_scheduler.client.event.SearchCourseEvent;
 import org.dselent.course_load_scheduler.client.event.SearchScheduleEvent;
 import org.dselent.course_load_scheduler.client.event.SearchScheduleNavigationEvent;
+import org.dselent.course_load_scheduler.client.event.SearchSpecificCourseEvent;
 import org.dselent.course_load_scheduler.client.event.UserSearchPageEvent;
 import org.dselent.course_load_scheduler.client.event.ViewScheduleNavigationEvent;
 import org.dselent.course_load_scheduler.client.event.UserCreatePageEvent;
@@ -42,6 +44,7 @@ import org.dselent.course_load_scheduler.client.event.UserDetailsPageEvent;
 import org.dselent.course_load_scheduler.client.event.ReceivePendingRequestListEvent;
 import org.dselent.course_load_scheduler.client.event.LoadPendingRequestListEvent;
 import org.dselent.course_load_scheduler.client.event.ReceiveScheduleSpecificsEvent;
+import org.dselent.course_load_scheduler.client.event.ReceiveSelectFacultyEvent;
 import org.dselent.course_load_scheduler.client.event.ReceiveViewScheduleNavigationEvent;
 import org.dselent.course_load_scheduler.client.event.ReceiveCreatedUserEvent;
 import org.dselent.course_load_scheduler.client.event.ReceiveUserSearchResultsEvent;
@@ -60,7 +63,7 @@ import org.dselent.course_load_scheduler.client.event.InvalidEvent;
  */
 public abstract class EventHandlerAdapter implements InvalidLoginEventHandler, SendLoginEventHandler,
 		SearchUserEventHandler, CreateUserEventHandler, TerminateAccountEventHandler, CreateScheduleEventHandler,
-		InvalidChangePasswordEventHandler, SendChangePasswordEventHandler, TriggerChangePasswordWindowEventHandler,
+		InvalidChangePasswordEventHandler, SendChangePasswordEventHandler,
 		ModifyCourseEventHandler, SearchCourseEventHandler, AdminCourseEventHandler, FacultyCourseEventHandler,
 		InvalidAddSectionEventHandler, InvalidSubmitCourseEventHandler, UserSearchPageEventHandler,
 		UserCreatePageEventHandler, UserDetailsPageEventHandler, ConfirmSchedulePageEventHandler,
@@ -71,11 +74,10 @@ public abstract class EventHandlerAdapter implements InvalidLoginEventHandler, S
 		ReceiveLoginEventHandler, LoadPendingRequestListEventHandler, ReceivePendingRequestListEventHandler, 
 		ReceiveCreatedUserEventHandler, ReceiveUserSearchResultsEventHandler,
 		SendChangeRequestStateEventHandler, ReceiveChangeRequestStateEventHandler,ReceiveFacultyCourseEventHandler,
-		ReceiveTerminatedAccountEventHandler, FacultySectionEventHandler, ReceiveFacultyCourseNavigationEventHandler, 
-		ReceiveViewScheduleNavigationEventHandler, ReceiveScheduleSpecificsEventHandler, InvalidEventHandler,
-		SendAccountDetailsEventHandler, ReceiveAccountDetailsEventHandler,
-		InvalidAccountDetailsEventHandler
-{
+		FacultySectionEventHandler, ReceiveFacultyCourseNavigationEventHandler, ReceiveViewScheduleNavigationEventHandler,
+		ReceiveScheduleSpecificsEventHandler, ReceiveCreateScheduleNavigationEventHandler, ReceiveSelectFacultyEventHandler,
+		ReceiveTerminatedAccountEventHandler, InvalidEventHandler, SendAccountDetailsEventHandler, ReceiveAccountDetailsEventHandler,
+		InvalidAccountDetailsEventHandler, ReceiveChangePasswordEventHandler{
 
 
 
@@ -96,9 +98,6 @@ public abstract class EventHandlerAdapter implements InvalidLoginEventHandler, S
 	
 	@Override
 	public void onCreateSchedule(CreateScheduleEvent evt) {}
-	
-	@Override
-	public void onTriggerChangePasswordWindow(TriggerChangePasswordWindowEvent evt) {}
 	
 	@Override
 	public void onSendChangePassword(SendChangePasswordEvent evt){}
@@ -173,6 +172,9 @@ public abstract class EventHandlerAdapter implements InvalidLoginEventHandler, S
 	public void onReceiveAccountDetails(ReceiveAccountDetailsEvent evt) {}
 	
 	@Override
+	public void onReceiveChangePassword(ReceiveChangePasswordEvent evt) {}
+	
+	@Override
 	public void onInvalidAccountDetails(InvalidAccountDetailsEvent evt) {}
 	
 	@Override
@@ -216,6 +218,15 @@ public abstract class EventHandlerAdapter implements InvalidLoginEventHandler, S
 	@Override
 	public void onReceiveScheduleSpecifics(ReceiveScheduleSpecificsEvent evt) {}
 	
+	@Override
+	public void onReceiveCreateScheduleNavigation(ReceiveCreateScheduleNavigationEvent evt) {}
+	
+	@Override
+	public void onSearchSpecificCourse(SearchSpecificCourseEvent evt) {}
+	
+	@Override
+	public void onReceiveSelectFaculty(ReceiveSelectFacultyEvent evt) {}
+
 	@Override
 	public void onInvalid(InvalidEvent evt) {}
 }

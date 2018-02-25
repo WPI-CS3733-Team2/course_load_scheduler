@@ -1,7 +1,6 @@
 package org.dselent.course_load_scheduler.client.translator.impl;
 
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 import org.dselent.course_load_scheduler.client.action.LoadPendingRequestListAction;
@@ -29,7 +28,7 @@ public class LoadPendingRequestListActionTranslatorImpl implements ActionTransla
 	{		
 		JSONValue jsonObject = json.get("success");
 		JSONArray requestListObject = jsonObject.isArray().get(0).isArray();
-		List<Request> requestList = new ArrayList();
+		List<Request> requestList = new ArrayList<Request>();
 		int jsonSize = requestListObject.size();
 		for (int i = 0; i < jsonSize; i++) {
 			JSONObject requestObject = JSONHelper.getObjectValue(requestListObject.get(i).isObject());

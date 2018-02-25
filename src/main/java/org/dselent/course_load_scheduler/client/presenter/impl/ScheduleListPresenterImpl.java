@@ -22,7 +22,7 @@ public class ScheduleListPresenterImpl extends BasePresenterImpl implements Sche
 {
 	private IndexPresenter parentPresenter;
 	private ScheduleListView view;
-	private List<Schedule> schedulesList = new ArrayList();
+	private List<Schedule> schedulesList = new ArrayList<Schedule>();
 
 	@Inject
 	public ScheduleListPresenterImpl(IndexPresenter parentPresenter, ScheduleListView view)
@@ -97,11 +97,6 @@ public class ScheduleListPresenterImpl extends BasePresenterImpl implements Sche
 	
 	@Override
 	public void onSearchSchedule(SearchScheduleEvent evt) {
-		this.go(parentPresenter.getView().getViewRootPanel());
-	}
-	
-	@Override
-	public void onCreateSchedule(CreateScheduleEvent evt) {
 		this.go(parentPresenter.getView().getViewRootPanel());
 	}
 	

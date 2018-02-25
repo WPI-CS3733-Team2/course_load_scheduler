@@ -33,12 +33,7 @@ public class ScheduleSpecificsTranslatorImpl implements ActionTranslator<Schedul
 	
 	@Override
 	public ReceiveScheduleSpecificsAction translateToAction(JSONObject json)
-	{		
-		// null values will not have their keys sent back from the sever
-		// this will throw an exception here
-		// you may choose to handle the exception as you wish
-		
-		// sent timestamps as epoch seconds (long)
+	{
 		
 		JSONValue jsonObject = json.get("success");
 		JSONObject userObject = jsonObject.isArray().get(0).isObject();
@@ -52,9 +47,6 @@ public class ScheduleSpecificsTranslatorImpl implements ActionTranslator<Schedul
 		Long createdAt = JSONHelper.getLongValue(userObject, JSONHelper.convertKeyName(ReceiveScheduleSpecificsKeys.CREATED_AT));
 		Long updatedAt = JSONHelper.getLongValue(userObject, JSONHelper.convertKeyName(ReceiveScheduleSpecificsKeys.UPDATED_AT));
 		JSONArray coursesAssigned = JSONHelper.getArrayValue(userObject, JSONHelper.convertKeyName(ReceiveScheduleSpecificsKeys.COURSES_ASSIGNED));
-		
-		// TODO look into time conversion more
-		// put into JSONHelper?
 		
 		User user = new User();
 		user.setId(id);
@@ -79,8 +71,8 @@ public class ScheduleSpecificsTranslatorImpl implements ActionTranslator<Schedul
 
 			List<Section> sectionsList = new ArrayList<Section>();
 			
-			for(int j = 0; i < sectionsOfCourse.isArray().size(); i++) {
-				JSONObject sectionObject = sectionsOfCourse.isArray().get(i).isObject();
+			for(int j = 0; j < sectionsOfCourse.isArray().size(); j++) {
+				JSONObject sectionObject = sectionsOfCourse.isArray().get(j).isObject();
 				
 				Section section= new Section();
 				Integer sectionId = Integer.parseInt(sectionObject.get("id").toString().replace("\"", ""));
@@ -107,6 +99,7 @@ public class ScheduleSpecificsTranslatorImpl implements ActionTranslator<Schedul
 				calendar.setEnd_time(end_time);
 								
 				section.setId(sectionId);
+				section.setCrn(crn);
 				section.setSectionName(sectionName);
 				section.setType(type);
 				section.setExpectedPopulation(expected_population);

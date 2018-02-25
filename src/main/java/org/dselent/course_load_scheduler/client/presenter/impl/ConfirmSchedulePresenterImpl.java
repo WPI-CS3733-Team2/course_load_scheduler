@@ -2,8 +2,8 @@ package org.dselent.course_load_scheduler.client.presenter.impl;
 
 import org.dselent.course_load_scheduler.client.presenter.IndexPresenter;
 
+import java.util.ArrayList;
 import java.util.List;
-import java.util.ListIterator;
 
 import org.dselent.course_load_scheduler.client.action.CreateScheduleAction;
 import org.dselent.course_load_scheduler.client.event.CreateScheduleEvent;
@@ -12,9 +12,11 @@ import org.dselent.course_load_scheduler.client.exceptions.EmptyStringException;
 import org.dselent.course_load_scheduler.client.presenter.ConfirmSchedulePresenter;
 import org.dselent.course_load_scheduler.client.view.ConfirmScheduleView;
 import org.dselent.course_load_scheduler.client.model.Schedule;
+import org.dselent.course_load_scheduler.client.model.Section;
+import org.dselent.course_load_scheduler.client.model.User;
+import org.dselent.course_load_scheduler.client.model.Calendar;
 import org.dselent.course_load_scheduler.client.model.Course;
 
-import com.google.gwt.core.client.GWT;
 import com.google.gwt.event.shared.HandlerRegistration;
 
 import com.google.gwt.user.client.ui.HasWidgets;
@@ -24,7 +26,9 @@ public class ConfirmSchedulePresenterImpl extends BasePresenterImpl implements C
 	private IndexPresenter parentPresenter;
 	private ConfirmScheduleView view;
 	private boolean scheduleCreationInProgress;
-	private List<Course> courses;
+	private List<Course> courses = new ArrayList<Course>();
+	private Integer facultyId = 0;
+	private List<Integer> sectionIds = new ArrayList<Integer>();
 	
 	@Inject
 	public ConfirmSchedulePresenterImpl(IndexPresenter parentPresenter, ConfirmScheduleView view)
@@ -82,21 +86,15 @@ public class ConfirmSchedulePresenterImpl extends BasePresenterImpl implements C
 	//Uses data provided in previous pages
 	@Override
 	public void createSchedule() {
-		//Create schedule
-		//Should use schedule model
 		if(!scheduleCreationInProgress)
 		{
 			scheduleCreationInProgress = true;
 			view.getConfirmScheduleButton().setEnabled(false);
-			//parentPresenter.showLoadScreen();
+			parentPresenter.showLoadScreen();
 			
 			String scheduleName = view.getScheduleNameBox().getText();
-			//String password = view.getPasswordTextBox().getText();
 			
 			boolean validScheduleName = true;
-			//boolean validPassword = true;
-
-			//List<String> invalidReasonList = new ArrayList<>();
 			
 			try
 			{
@@ -104,24 +102,17 @@ public class ConfirmSchedulePresenterImpl extends BasePresenterImpl implements C
 			}
 			catch(EmptyStringException e)
 			{
-				//invalidReasonList.add(InvalidLoginStrings.NULL_USER_NAME);
 				validScheduleName = false;
 			}
 
 			
 			if(validScheduleName)
 			{
-				//Create schedule
-				//Will need data collected from other events/presenters to do this
-				
-				//Replace with existing schedule model from other pages
-				Schedule tempSchedule = new Schedule();
-				tempSchedule.setScheduleName(scheduleName);
-				createScheduleEventFire(tempSchedule);
+				createScheduleEventFire(facultyId, scheduleName, sectionIds);
 			}
 			else
 			{
-				//parentPresenter.hideLoadScreen();
+				parentPresenter.hideLoadScreen();
 				view.getConfirmScheduleButton().setEnabled(true);
 				scheduleCreationInProgress = false;
 				
@@ -129,6 +120,7 @@ public class ConfirmSchedulePresenterImpl extends BasePresenterImpl implements C
 				view.showErrorMessages("Schedule name cannot be left empty.");
 			}
 		}
+		parentPresenter.hideLoadScreen();
 	}
 	
 	private void checkEmptyString(String string) throws EmptyStringException
@@ -139,9 +131,9 @@ public class ConfirmSchedulePresenterImpl extends BasePresenterImpl implements C
 		}
 	}
 	
-	private void createScheduleEventFire(Schedule schedule) {
-		CreateScheduleAction csa = new CreateScheduleAction(schedule);
-		CreateScheduleEvent cse = new CreateScheduleEvent(csa);
+	private void createScheduleEventFire(Integer facultyId, String scheduleName, List<Integer> sectionIds) {
+		CreateScheduleAction csa = new CreateScheduleAction(facultyId, scheduleName, sectionIds);
+		CreateScheduleEvent cse = new CreateScheduleEvent(csa, parentPresenter.getView().getViewRootPanel());
 		eventBus.fireEvent(cse);
 	}
 	
@@ -149,19 +141,25 @@ public class ConfirmSchedulePresenterImpl extends BasePresenterImpl implements C
 	//Displays schedule information
 	@Override
 	public void onConfirmSchedulePage(ConfirmSchedulePageEvent evt) {
-		this.go(parentPresenter.getView().getViewRootPanel());
-		String faculty = "Faculty: " + evt.getAction().getFaculty() + "\n";
-		ListIterator<Course> iterator = evt.getAction().getCourses().listIterator(0);
+		courses.clear();
+		sectionIds.clear();
+		facultyId = evt.getAction().getFacultyId();
+		User user = evt.getAction().getUser();
+		String faculty = "Faculty: " + user.getFirstName() + " " + user.getLastName() + "\n";
+		List<Course> courses = evt.getAction().getCourses();
 		String courseList = "Courses: ";
-		Course course;
-		while(iterator.hasNext()) {
-			course = iterator.next();
-			courseList = courseList.concat(course.getCourseName() + " " + course.getCourseNumber().toString());
-			if(iterator.hasNext()) {
-				courseList = courseList.concat(", ");
+		List<String> presentableCourseNames = new ArrayList<String>();
+		for(Course course : courses) {
+			List<Section> sectionList = course.getSections();
+			for(Section section : sectionList) {
+				sectionIds.add(section.getId());
+				Calendar calendar = section.getCalendar();
+				String courseDetails = course.getCourseName() + " " + course.getCourseNumber() + " " + calendar.getSemester() + " " + section.getSectionName();
+				presentableCourseNames.add(courseDetails);
 			}
 		}
-		String informationString = faculty.concat(courseList);
+		String informationString = faculty +  courseList + presentableCourseNames.toString();
 		view.getCourseInformationBox().setText(informationString);
+		this.go(parentPresenter.getView().getViewRootPanel());
 	}
 }

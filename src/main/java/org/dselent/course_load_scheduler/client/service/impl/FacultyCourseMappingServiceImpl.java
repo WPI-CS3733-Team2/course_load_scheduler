@@ -2,15 +2,12 @@ package org.dselent.course_load_scheduler.client.service.impl;
 
 import org.dselent.course_load_scheduler.client.action.FacultyCourseNavigationAction;
 import org.dselent.course_load_scheduler.client.callback.FacultyCourseNavigationCallback;
-import org.dselent.course_load_scheduler.client.callback.SendLoginCallback;
 import org.dselent.course_load_scheduler.client.event.FacultyCourseNavigationEvent;
 import org.dselent.course_load_scheduler.client.network.NetworkRequest;
 import org.dselent.course_load_scheduler.client.network.NetworkRequestStrings;
 import org.dselent.course_load_scheduler.client.service.FacultyCourseMappingService;
 import org.dselent.course_load_scheduler.client.translator.impl.FacultyCourseNavigationActionTranslatorImpl;
-import org.dselent.course_load_scheduler.client.translator.impl.LoginActionTranslatorImpl;
 
-import com.google.gwt.core.client.GWT;
 import com.google.gwt.event.shared.HandlerRegistration;
 import com.google.gwt.json.client.JSONObject;
 

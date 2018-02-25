@@ -2,36 +2,24 @@ package org.dselent.course_load_scheduler.client.event;
 
 import org.dselent.course_load_scheduler.client.action.CreateScheduleSelectFacultyAction;
 import org.dselent.course_load_scheduler.client.event_handler.CreateScheduleSelectFacultyEventHandler;
+import com.google.gwt.user.client.ui.HasWidgets;
 
-import com.google.gwt.event.shared.GwtEvent;
-
-public class CreateScheduleSelectFacultyEvent extends GwtEvent<CreateScheduleSelectFacultyEventHandler>{
+public class CreateScheduleSelectFacultyEvent extends DisplayEvent<CreateScheduleSelectFacultyAction, CreateScheduleSelectFacultyEventHandler>{
 	public static Type<CreateScheduleSelectFacultyEventHandler> TYPE = new Type<CreateScheduleSelectFacultyEventHandler>();
+
 	
-	private CreateScheduleSelectFacultyAction action;
-	
-	public CreateScheduleSelectFacultyEvent(CreateScheduleSelectFacultyAction action)
+	public CreateScheduleSelectFacultyEvent(CreateScheduleSelectFacultyAction action, HasWidgets container)
 	{
-		this.action = action;
+		super(action,container);
 	}
 	
-	public CreateScheduleSelectFacultyAction getAction()
-	{
-		return action;
-	}
 	
-	/*
-	 * 
-	 */
 	@Override
 	public Type<CreateScheduleSelectFacultyEventHandler> getAssociatedType()
 	{
 		return TYPE;
 	}
 
-	/*
-	 * 
-	 */
 	@Override
 	protected void dispatch(CreateScheduleSelectFacultyEventHandler handler)
 	{

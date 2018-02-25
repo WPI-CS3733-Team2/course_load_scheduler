@@ -49,7 +49,8 @@ public class ChangePasswordViewImpl extends BaseViewImpl<ChangePasswordPresenter
 
 	private ChangePasswordPresenter presenter;
 	
-	public ChangePasswordViewImpl() {
+	public ChangePasswordViewImpl()
+	{
 		initWidget(uiBinder.createAndBindUi(this));
 	}
 		

@@ -16,6 +16,7 @@ import com.google.gwt.user.client.ui.Widget;
 import com.google.gwt.user.client.ui.VerticalPanel;
 import com.google.gwt.user.client.ui.Label;
 import com.google.gwt.user.client.ui.RadioButton;
+import com.google.gwt.user.client.ui.ScrollPanel;
 
 public class CreateScheduleAddFacultyViewImpl extends BaseViewImpl<CreateScheduleAddFacultyPresenter> implements CreateScheduleAddFacultyView {
 
@@ -29,6 +30,8 @@ public class CreateScheduleAddFacultyViewImpl extends BaseViewImpl<CreateSchedul
 		initWidget(uiBinder.createAndBindUi(this));
 	}
 
+	@UiField VerticalPanel innerVerticalPanel;
+	@UiField ScrollPanel scrollPanel;
 	@UiField VerticalPanel verticalPanel;
 	@UiField Label facultyLabel;
 	@UiField Button nextPageButton;
@@ -43,6 +46,14 @@ public class CreateScheduleAddFacultyViewImpl extends BaseViewImpl<CreateSchedul
 		initWidget(uiBinder.createAndBindUi(this));
 	}
 
+	public ScrollPanel getScrollPanel() {
+		return scrollPanel;
+	}
+
+	public void setScrollPanel(ScrollPanel scrollPanel) {
+		this.scrollPanel = scrollPanel;
+	}
+	
 	public VerticalPanel getVerticalPanel() {
 		return verticalPanel;
 	}
@@ -51,6 +62,15 @@ public class CreateScheduleAddFacultyViewImpl extends BaseViewImpl<CreateSchedul
 		this.verticalPanel = verticalPanel;
 	}
 
+	public VerticalPanel getInnerVerticalPanel() {
+		return innerVerticalPanel;
+	}
+
+	public void setInnerVerticalPanel(VerticalPanel innerVerticalPanel) {
+		this.innerVerticalPanel = innerVerticalPanel;
+	}
+
+	
 	public Label getFacultyLabel() {
 		return facultyLabel;
 	}
@@ -88,19 +108,21 @@ public class CreateScheduleAddFacultyViewImpl extends BaseViewImpl<CreateSchedul
 	public void addFaculty(List<String> names) {
 		for (String name : names) {
 			RadioButton radioButton = new RadioButton("facultyMember", name);
-			verticalPanel.add(radioButton);
+			innerVerticalPanel.add(radioButton);
 		}
 	}
 	
 	@Override
-	public String getCheckedFaculty() {
-		String checkedFaculty = new String();
-		for (Widget widget : verticalPanel) {
+	public Integer getCheckedFaculty() {
+		Integer checkedFaculty = -1;
+		int i = 0;
+		for (Widget widget : innerVerticalPanel) {
 			if (widget instanceof RadioButton){
 			    RadioButton radioButton = (RadioButton) widget;
 			    if (radioButton.getValue()) {
-			    	checkedFaculty = radioButton.getText();
+			    	checkedFaculty = i;
 			    }
+				i++;
 			}
 		}
 		return checkedFaculty;
@@ -108,7 +130,7 @@ public class CreateScheduleAddFacultyViewImpl extends BaseViewImpl<CreateSchedul
 	
 	@UiHandler("nextPageButton")
 	void onButtonClick(ClickEvent event) {
-		if(getCheckedFaculty() == "") {
+		if(getCheckedFaculty() == -1) {
 			showErrorMessages("Must select a faculty.");
 		}else {
 			presenter.fireConfirmSchedulePage();
