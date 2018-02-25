@@ -4,12 +4,12 @@ import org.dselent.course_load_scheduler.client.presenter.AccountDetailsPresente
 import org.dselent.course_load_scheduler.client.presenter.ChangePasswordPresenter;
 import org.dselent.course_load_scheduler.client.presenter.IndexPresenter;
 import org.dselent.course_load_scheduler.client.view.AccountDetailsView;
+import org.dselent.course_load_scheduler.client.action.ReceiveAccountDetailsAction;
 import org.dselent.course_load_scheduler.client.action.ReceiveLoginAction;
 import org.dselent.course_load_scheduler.client.action.TriggerChangePasswordWindowAction;
-import org.dselent.course_load_scheduler.client.event.AccountDetailsEvent;
+import org.dselent.course_load_scheduler.client.event.ReceiveAccountDetailsEvent;
 import org.dselent.course_load_scheduler.client.event.ReceiveLoginEvent;
 import org.dselent.course_load_scheduler.client.event.TriggerChangePasswordWindowEvent;
-import org.dselent.course_load_scheduler.client.gin.Injector;
 import org.dselent.course_load_scheduler.client.model.UserInfo;
 
 import com.google.gwt.event.shared.HandlerRegistration;
@@ -46,8 +46,8 @@ public class AccountDetailsPresenterImpl extends BasePresenterImpl implements Ac
 	{
 		HandlerRegistration registration;
 		
-		registration = eventBus.addHandler(AccountDetailsEvent.TYPE, this);
-		eventBusRegistration.put(AccountDetailsEvent.TYPE, registration);
+		registration = eventBus.addHandler(ReceiveAccountDetailsEvent.TYPE, this);
+		eventBusRegistration.put(ReceiveAccountDetailsEvent.TYPE, registration);
 		
 		registration = eventBus.addHandler(TriggerChangePasswordWindowEvent.TYPE, this);
 		eventBusRegistration.put(TriggerChangePasswordWindowEvent.TYPE, registration);
@@ -65,6 +65,7 @@ public class AccountDetailsPresenterImpl extends BasePresenterImpl implements Ac
 		view.setWpiIdInChar(userInfo.getUsersWpiId());
 		view.setEmail(userInfo.getUsersEmail());
 		view.setAccountType(userInfo.getUserRolesRoleName());
+		view.setAccountState(Integer.parseInt(userInfo.getUsersAccountState()));
 		
 		changePasswordPresenter.go(view.getChangePasswordPopupPanel().getViewRootPanel());
 		container.clear();
@@ -96,11 +97,15 @@ public class AccountDetailsPresenterImpl extends BasePresenterImpl implements Ac
 	}
 	
 	@Override
-	public void onAccountDetails(AccountDetailsEvent evt)
+	public void onReceiveAccountDetails(ReceiveAccountDetailsEvent evt)
 	{
 		HasWidgets container = evt.getContainer();
+		ReceiveAccountDetailsAction rada = evt.getAction();
+
+		userInfo = rada.getUserInfo();//Injector.INSTANCE.getGlobalData().getUserInfo();
 
 		go(container);
+		parentPresenter.showMenuBar();
 		parentPresenter.hideLoadScreen();
 	}
 	
@@ -135,7 +140,7 @@ public class AccountDetailsPresenterImpl extends BasePresenterImpl implements Ac
 		HasWidgets container = evt.getContainer();
 		ReceiveLoginAction rla = evt.getAction();
 
-		userInfo = Injector.INSTANCE.getGlobalData().getUserInfo();//rla.getUserInfo();
+		userInfo = rla.getUserInfo();//Injector.INSTANCE.getGlobalData().getUserInfo();
 
 		go(container);
 		parentPresenter.showMenuBar();

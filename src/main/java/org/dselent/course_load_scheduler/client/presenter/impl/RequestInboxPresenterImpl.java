@@ -51,6 +51,7 @@ public class RequestInboxPresenterImpl extends BasePresenterImpl implements Requ
 		//exampleTest();
 	}
 
+	/*
 	public void exampleTest() {
 		List<Request> requestList = new ArrayList<Request>();
 		Request r1 = new Request();
@@ -82,6 +83,7 @@ public class RequestInboxPresenterImpl extends BasePresenterImpl implements Requ
 		requestList.add(r3);
 		loadFlexTable(requestList);
 	}
+	*/
 	
 	@Override
 	public void bind()
@@ -124,6 +126,7 @@ public class RequestInboxPresenterImpl extends BasePresenterImpl implements Requ
 	public void onRequestInboxNavigation(RequestInboxNavigationEvent evt)
 	{
 		this.go(parentPresenter.getView().getViewRootPanel());
+		loadRequestList();
 	}
 	
 	public void loadRequestList() {

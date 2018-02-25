@@ -10,6 +10,7 @@ import com.google.gwt.user.client.ui.Widget;
 import com.google.gwt.uibinder.client.UiField;
 import com.google.gwt.user.client.ui.VerticalPanel;
 import com.google.gwt.user.client.ui.Label;
+import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.ui.Button;
 import com.google.gwt.uibinder.client.UiHandler;
 import com.google.gwt.event.dom.client.ClickEvent;
@@ -90,6 +91,12 @@ public class UserDetailsViewImpl extends BaseViewImpl<UserDetailsPresenter> impl
 	@Override
 	public TextBox getUserRoleBox() {
 		return userRoleBox;
+	}
+	
+	@Override
+	public void showErrorMessages(String errorMessages)
+	{
+		Window.alert(errorMessages);
 	}
 	
 	@Override

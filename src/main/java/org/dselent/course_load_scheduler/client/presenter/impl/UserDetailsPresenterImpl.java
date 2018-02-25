@@ -13,8 +13,10 @@ import org.dselent.course_load_scheduler.client.action.UserSearchPageAction;
 import org.dselent.course_load_scheduler.client.event.TerminateAccountEvent;
 import org.dselent.course_load_scheduler.client.event.UserDetailsPageEvent;
 import org.dselent.course_load_scheduler.client.event.UserSearchPageEvent;
+import org.dselent.course_load_scheduler.client.event.ReceiveTerminatedAccountEvent;
 import org.dselent.course_load_scheduler.client.presenter.IndexPresenter;
 import org.dselent.course_load_scheduler.client.presenter.UserDetailsPresenter;
+import com.google.gwt.user.client.ui.HasWidgets;
 
 public class UserDetailsPresenterImpl extends BasePresenterImpl implements UserDetailsPresenter{
 	
@@ -72,6 +74,9 @@ public class UserDetailsPresenterImpl extends BasePresenterImpl implements UserD
 		
 		registration = eventBus.addHandler(UserDetailsPageEvent.TYPE, this);
 		eventBusRegistration.put(UserDetailsPageEvent.TYPE, registration);
+		
+		registration = eventBus.addHandler(ReceiveTerminatedAccountEvent.TYPE, this);
+		eventBusRegistration.put(ReceiveTerminatedAccountEvent.TYPE, registration);
 		
 	}
 	
@@ -163,6 +168,7 @@ public class UserDetailsPresenterImpl extends BasePresenterImpl implements UserD
 	}
 	
 	private void fireTerminateAccountEvent(String userId) {
+		//HasWidgets container = parentPresenter.getView().getViewRootPanel();
 		Integer intId = Integer.parseInt(userId);
 		TerminateAccountAction taa = new TerminateAccountAction(intId);
 		TerminateAccountEvent tae = new TerminateAccountEvent(taa);
@@ -170,8 +176,16 @@ public class UserDetailsPresenterImpl extends BasePresenterImpl implements UserD
 	}
 	
 	@Override
-	public void onUserDetailsPage(UserDetailsPageEvent evt)
-	{
+	public void onTerminateAccount(TerminateAccountEvent evt) {
+		parentPresenter.hideLoadScreen();
+		view.getTerminateAccountButton().setEnabled(true);
+		accountDeletionInProgress = false;
+		view.showErrorMessages("Account deletion successful.");
+		backToSearch();
+	}
+	
+	@Override
+	public void onUserDetailsPage(UserDetailsPageEvent evt) {
 		this.go(parentPresenter.getView().getViewRootPanel());
 		
 		userInfo = evt.getAction().getUserInfo();
@@ -185,6 +199,7 @@ public class UserDetailsPresenterImpl extends BasePresenterImpl implements UserD
 		view.getAccountStateBox().setText(userInfo.getUsersAccountState());
 		
 		//Temporary; placeholder until role can be retrieved from server/other model
-		view.getUserRoleBox().setText(userInfo.getUserRolesRoleName());
+		//view.getUserRoleBox().setText(userInfo.getUserRolesRoleName());
+		view.getUserRoleBox().setText("Unknown.");
 	}
 }

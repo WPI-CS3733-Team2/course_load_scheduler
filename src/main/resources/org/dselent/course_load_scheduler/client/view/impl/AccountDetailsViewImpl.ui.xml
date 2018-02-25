@@ -149,7 +149,7 @@
 				</g:customCell>
 						
 				<g:customCell>
-					<g:Label ui:field="userName" addStyleNames="{style.accountDetails-label}">mj</g:Label>
+					<g:Label ui:field="userName" addStyleNames="{style.accountDetails-label}">Unknown</g:Label>
 				</g:customCell>
 				<g:cell height="10px" width="10px"/>
 			</g:row>
@@ -160,7 +160,7 @@
 				</g:customCell>
 						
 				<g:customCell>
-					<g:Label ui:field="accountType" addStyleNames="{style.accountDetails-label}">Faculty</g:Label>
+					<g:Label ui:field="accountType" addStyleNames="{style.accountDetails-label}">Unknown</g:Label>
 				</g:customCell>
 				<g:cell height="10px" width="30px"/>
 			</g:row>
@@ -171,7 +171,7 @@
 				</g:customCell>
 						
 				<g:customCell>
-					<g:Label ui:field="accountState" addStyleNames="{style.accountDetails-label}">Active</g:Label>
+					<g:Label ui:field="accountState" addStyleNames="{style.accountDetails-label}">Unknown</g:Label>
 				</g:customCell>
 				<g:cell height="10px" width="30px"/>
 			</g:row>
@@ -193,12 +193,12 @@
 				</g:customCell>
 						
 				<g:customCell>
-					<g:Label ui:field="firstName" addStyleNames="{style.accountDetails-label}">Michael</g:Label>
+					<g:Label ui:field="firstName" addStyleNames="{style.accountDetails-label}">Unknown</g:Label>
 				</g:customCell>
 				
 				
 				<g:customCell>
-					<g:Label ui:field="lastName" addStyleNames="{style.accountDetails-label}">Jackson</g:Label>
+					<g:Label ui:field="lastName" addStyleNames="{style.accountDetails-label}">Unknown</g:Label>
 				</g:customCell>
 				<g:cell height="80px" width="80px"/>
 				<g:cell height="10px" width="10px"/>
@@ -216,7 +216,7 @@
 				</g:customCell>
 						
 				<g:customCell>
-					<g:Label ui:field="email" addStyleNames="{style.accountDetails-label}">mj@wpi.edu</g:Label>
+					<g:Label ui:field="email" addStyleNames="{style.accountDetails-label}">Unknown</g:Label>
 				</g:customCell>
 				<g:cell height="10px" width="30px"/>
 			</g:row>

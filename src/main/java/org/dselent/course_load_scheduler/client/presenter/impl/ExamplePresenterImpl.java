@@ -1,8 +1,6 @@
 package org.dselent.course_load_scheduler.client.presenter.impl;
 
-import org.dselent.course_load_scheduler.client.action.UserDetailsPageAction;
-import org.dselent.course_load_scheduler.client.event.AccountDetailsEvent;
-import org.dselent.course_load_scheduler.client.gin.Injector;
+import org.dselent.course_load_scheduler.client.event.SendAccountDetailsEvent;
 import org.dselent.course_load_scheduler.client.model.UserInfo;
 import org.dselent.course_load_scheduler.client.presenter.ExamplePresenter;
 import org.dselent.course_load_scheduler.client.view.ExampleView;
@@ -34,8 +32,8 @@ public class ExamplePresenterImpl extends BasePresenterImpl implements ExamplePr
 	{
 		HandlerRegistration registration;
 		
-		registration = eventBus.addHandler(AccountDetailsEvent.TYPE, this);
-		eventBusRegistration.put(AccountDetailsEvent.TYPE, registration);
+		registration = eventBus.addHandler(SendAccountDetailsEvent.TYPE, this);
+		eventBusRegistration.put(SendAccountDetailsEvent.TYPE, registration);
 	}
 		
 	@Override
@@ -60,8 +58,9 @@ public class ExamplePresenterImpl extends BasePresenterImpl implements ExamplePr
 		return view;
 	}
 	
+	/*
 	@Override
-	public void onAccountDetails(AccountDetailsEvent evt)
+	public void onAccountDetails(SendAccountDetailsEvent evt)
 	{
 		HasWidgets container = evt.getContainer();
 		UserDetailsPageAction udpa = evt.getAction();
@@ -75,5 +74,6 @@ public class ExamplePresenterImpl extends BasePresenterImpl implements ExamplePr
 		// hide loading screen
 		Injector.INSTANCE.getIndexPresenter().hideLoadScreen();
 	}
+	*/
 
 }

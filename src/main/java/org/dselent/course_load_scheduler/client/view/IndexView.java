@@ -43,5 +43,6 @@ public interface IndexView extends BaseView<IndexPresenter>
 	void setFacultyCourseMenuItem(MenuItem facultyCourseMenuItem);
 	public void setFacultyCourseCommand(Command command);
 	public MenuBar getNavigationMenu();
+	void showErrorMessages(String errorMessages);
 
 }

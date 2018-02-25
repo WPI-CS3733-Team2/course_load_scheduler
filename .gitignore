@@ -5,3 +5,4 @@
 /war/WEB-INF/classes
 /.gwt
 .gwt/.gwt-log
+war/WEB-INF/lib/gwt-servlet.jar

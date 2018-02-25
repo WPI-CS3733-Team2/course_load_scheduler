@@ -1,6 +1,6 @@
 package org.dselent.course_load_scheduler.client.action;
 
-public class CreateUserAction {
+public class CreateUserAction extends Action{
 	Integer userRole;
 	Integer wpiId;
 	String userName;
@@ -44,6 +44,26 @@ public class CreateUserAction {
 	}
 	public void setEmail(String email) {
 		this.email = email;
+	}
+	
+	@Override
+	public String toString()
+	{
+		StringBuilder builder = new StringBuilder();
+		builder.append("CreateUserAction [userRole=");
+		builder.append(userRole.toString());
+		builder.append(", wpiId=");
+		builder.append(wpiId.toString());
+		builder.append(", userName=");
+		builder.append(userName);
+		builder.append(", firstName=");
+		builder.append(firstName);
+		builder.append(", lastName=");
+		builder.append(lastName);
+		builder.append(", email=");
+		builder.append(email);
+		builder.append("]");
+		return builder.toString();
 	}
 	
 	

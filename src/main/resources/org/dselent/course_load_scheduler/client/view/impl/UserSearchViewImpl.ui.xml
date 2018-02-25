@@ -1,6 +1,7 @@
 <!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
 <ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
-	xmlns:g="urn:import:com.google.gwt.user.client.ui">
+	xmlns:g="urn:import:com.google.gwt.user.client.ui" 
+	xmlns:c="urn:import:com.google.gwt.user.cellview.client">
 	<ui:style>
 	
 	</ui:style>
@@ -14,10 +15,25 @@
 				<g:Cell verticalAlignment="ALIGN_MIDDLE" width="62px" height="">
 					<g:Button width="62px" ui:field="searchUser" text="Search"/>
 				</g:Cell>
+				<g:Cell verticalAlignment="ALIGN_MIDDLE">
+					<g:Label text=" By:" ui:field="searchByLabel" horizontalAlignment="ALIGN_LEFT" width="22px" height="18px"/>
+				</g:Cell>
+				<g:Cell verticalAlignment="ALIGN_MIDDLE">
+					<g:ListBox visibleItemCount="1" ui:field="searchByListBox">
+					<g:item value='1'>WPI ID</g:item>
+					<g:item value='2'>Username</g:item>
+					<g:item value='3'>First name</g:item>
+					<g:item value='4'>Last name</g:item>
+					<g:item value='5'>Email</g:item>
+				</g:ListBox>
+				</g:Cell>
 				<g:Cell horizontalAlignment="ALIGN_RIGHT" verticalAlignment="ALIGN_MIDDLE">
 					<g:Button ui:field="createUser" text="Create User"/>
 				</g:Cell>
 			</g:HorizontalPanel>
+			<g:ScrollPanel>
+				<c:CellTable ui:field="userTable" />
+			</g:ScrollPanel>
 		</g:VerticalPanel>
 	</g:HTMLPanel>
 </ui:UiBinder> 
