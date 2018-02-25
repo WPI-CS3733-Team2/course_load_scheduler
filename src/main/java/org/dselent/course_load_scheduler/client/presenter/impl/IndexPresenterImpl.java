@@ -31,6 +31,7 @@ import org.dselent.course_load_scheduler.client.model.UserInfo;
 import com.google.gwt.dom.client.Style;
 import com.google.gwt.event.shared.HandlerRegistration;
 import com.google.gwt.user.client.Command;
+import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.ui.HasWidgets;
 
 
@@ -86,20 +87,21 @@ public class IndexPresenterImpl extends BasePresenterImpl implements IndexPresen
 			}
 		});
 		
-		view.setCoursesCommand(new CustomCommand(view) {
+		view.setCoursesCommand(new Command() {
 			@Override
 			public void execute() {
+				showLoadScreen();
 				final Injector injector = Injector.INSTANCE;
 				
-				String userRole = injector.getAccountDetailsPresenter().getUserType();
+				String userRole = injector.getGlobalData().getUserInfo().getUserRolesRoleName();
 				
 				// Used to simulate being an admin
 				boolean testing = false;
-				HasWidgets container = view.getViewRootPanel();
+				HasWidgets container = getView().getViewRootPanel();
 				
-				if (userRole.equals("Admin") || testing) {
+				if (userRole.equalsIgnoreCase("Admin") || testing) {
 					ViewCourseAction vca = new ViewCourseAction();
-					AdminCourseEvent ace = new AdminCourseEvent(vca);
+					AdminCourseEvent ace = new AdminCourseEvent(vca, container);
 					eventBus.fireEvent(ace);
 				} 
 				else {
@@ -211,22 +213,6 @@ public class IndexPresenterImpl extends BasePresenterImpl implements IndexPresen
 		view.showErrorMessages(iada.toString());
 	}
 	
-	private class CustomCommand implements Command {
-
-		IndexView view;
-		
-		public CustomCommand(IndexView view) {
-			this.view = view;
-		}
-		
-		@Override
-		public void execute() {
-			// TODO Auto-generated method stub
-			
-		}
-		
-	}
-	
 	//Generic error messages for a response failure.
 	@Override
 	public void onInvalid(InvalidEvent evt) {
@@ -242,6 +228,10 @@ public class IndexPresenterImpl extends BasePresenterImpl implements IndexPresen
 		if(userInfo.getUserRolesId() == 2) {
 			view.getUsersMenuItem().setVisible(false);
 			view.getUsersMenuItem().setEnabled(false);
+			view.getCreateScheduleMenuItem().setVisible(false);
+			view.getCreateScheduleMenuItem().setEnabled(false);
+			view.getFacultyCourseMenuItem().setVisible(false);
+			view.getFacultyCourseMenuItem().setEnabled(false);
 		}
 	}
 }

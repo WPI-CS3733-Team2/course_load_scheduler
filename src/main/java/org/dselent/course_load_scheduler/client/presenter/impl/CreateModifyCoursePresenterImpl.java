@@ -89,6 +89,7 @@ public class CreateModifyCoursePresenterImpl extends BasePresenterImpl implement
 	@Override
 	public void onModifyCourse(ModifyCourseEvent evt) {
 		this.go(parentPresenter.getView().getViewRootPanel());
+		clearForm();
 		
 		Course course = evt.getAction().getCourse();
 		if(course != null) {
@@ -196,10 +197,9 @@ public class CreateModifyCoursePresenterImpl extends BasePresenterImpl implement
 	
 	@Override
 	public void createModifyCourseCancel() {
-		clearForm();
-
+		HasWidgets container = parentPresenter.getView().getViewRootPanel();
 		ViewCourseAction vca = new ViewCourseAction();
-		AdminCourseEvent ace = new AdminCourseEvent(vca);
+		AdminCourseEvent ace = new AdminCourseEvent(vca, container);
 		eventBus.fireEvent(ace);
 	}
 	
@@ -229,10 +229,9 @@ public class CreateModifyCoursePresenterImpl extends BasePresenterImpl implement
 			
 			//TODO: Send to database
 			
-			clearForm();
-			
+			HasWidgets container = parentPresenter.getView().getViewRootPanel();
 			ViewCourseAction vca = new ViewCourseAction();
-			AdminCourseEvent ace = new AdminCourseEvent(vca);
+			AdminCourseEvent ace = new AdminCourseEvent(vca, container);
 			eventBus.fireEvent(ace);
 		}
 		else {

@@ -23,8 +23,8 @@
 			</g:row>
 			<g:row/>
 		</g:Grid>
-		<g:Grid ui:field="allCoursesGrid" width="700px" height="23px">
-			<g:row/>
-		</g:Grid>
+		<g:ScrollPanel width="800px" height="500px">
+			<g:Grid width="700px" ui:field="allCoursesGrid"/>
+		</g:ScrollPanel>
 	</g:HTMLPanel>
 </ui:UiBinder> 

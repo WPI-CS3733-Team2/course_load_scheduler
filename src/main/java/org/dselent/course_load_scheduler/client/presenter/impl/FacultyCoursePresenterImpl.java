@@ -4,12 +4,13 @@ package org.dselent.course_load_scheduler.client.presenter.impl;
 import java.util.List;
 
 import org.dselent.course_load_scheduler.client.action.RequestCourseAction;
-import org.dselent.course_load_scheduler.client.action.SearchCourseAction;
+import org.dselent.course_load_scheduler.client.action.ViewCourseAction;
 import org.dselent.course_load_scheduler.client.action.ViewSectionAction;
+import org.dselent.course_load_scheduler.client.event.FacultyCourseEvent;
 import org.dselent.course_load_scheduler.client.event.FacultySectionEvent;
 import org.dselent.course_load_scheduler.client.event.ReceiveFacultyCourseEvent;
 import org.dselent.course_load_scheduler.client.event.RequestCourseEvent;
-import org.dselent.course_load_scheduler.client.event.SearchCourseEvent;
+import org.dselent.course_load_scheduler.client.event.InvalidSearchCourseEvent;
 import org.dselent.course_load_scheduler.client.exceptions.EmptyStringException;
 import org.dselent.course_load_scheduler.client.model.Course;
 import org.dselent.course_load_scheduler.client.model.Section;
@@ -66,8 +67,8 @@ public class FacultyCoursePresenterImpl extends BasePresenterImpl implements Fac
 		registration = eventBus.addHandler(ReceiveFacultyCourseEvent.TYPE, this);
 		eventBusRegistration.put(ReceiveFacultyCourseEvent.TYPE, registration);
 		
-		registration = eventBus.addHandler(SearchCourseEvent.TYPE, this);
-		eventBusRegistration.put(SearchCourseEvent.TYPE, registration);
+		registration = eventBus.addHandler(InvalidSearchCourseEvent.TYPE, this);
+		eventBusRegistration.put(InvalidSearchCourseEvent.TYPE, registration);
 		
 	}
 
@@ -91,6 +92,10 @@ public class FacultyCoursePresenterImpl extends BasePresenterImpl implements Fac
 	
 	@Override
 	public void onReceiveFacultyCourse(ReceiveFacultyCourseEvent evt) {
+		parentPresenter.hideLoadScreen();
+		view.getSearchCourseButton().setEnabled(true);
+		searchInProgress = false;
+		
 		this.go(parentPresenter.getView().getViewRootPanel());
 		view.clearAllCoursesGrid();
 		
@@ -192,20 +197,22 @@ public class FacultyCoursePresenterImpl extends BasePresenterImpl implements Fac
 			parentPresenter.showLoadScreen();
 			view.getSearchCourseButton().setEnabled(false);
 			
-			String courseQuery = view.getSearchCourseTextBox().getText();
+			String courseQuery = view.getSearchCourseTextBox().getText().toUpperCase();
 			
 			boolean validQuery = true;
 			
 			try 
 			{
 				checkEmptyString(courseQuery);
+				searchCourseEventFire(courseQuery);
 			}
 			catch(EmptyStringException e)
 			{
 				validQuery = false;
+				searchCourseEventFire(null);
 			}
 			
-			if(validQuery){
+			/*if(validQuery){
 				//Search for courses
 				searchCourseEventFire(courseQuery);
 			}else {
@@ -216,7 +223,7 @@ public class FacultyCoursePresenterImpl extends BasePresenterImpl implements Fac
 				
 				view.showErrorMessages("Query cannot be empty.");
 				
-			}
+			}*/
 		}
 	}
 	
@@ -229,18 +236,18 @@ public class FacultyCoursePresenterImpl extends BasePresenterImpl implements Fac
 	}
 	
 	private void searchCourseEventFire(String query) {
-		SearchCourseAction sca = new SearchCourseAction(query);
-		SearchCourseEvent sce = new SearchCourseEvent(sca);
-		eventBus.fireEvent(sce);
+		ViewCourseAction vca = new ViewCourseAction(query, null);
+		FacultyCourseEvent fce = new FacultyCourseEvent(vca, parentPresenter.getView().getViewRootPanel());
+		eventBus.fireEvent(fce);
 	}
 	
 	@Override
-	public void onSearchCourse(SearchCourseEvent evt) {
+	public void onInvalidSearchCourse(InvalidSearchCourseEvent evt) {
 		parentPresenter.hideLoadScreen();
 		view.getSearchCourseButton().setEnabled(true);
 		searchInProgress = false;
 		
-		view.showErrorMessages("Course search to be implemented.");
+		view.showErrorMessages("There is no course of that name!");
 	}
 	
 	private class CustomClickHandler implements ClickHandler {

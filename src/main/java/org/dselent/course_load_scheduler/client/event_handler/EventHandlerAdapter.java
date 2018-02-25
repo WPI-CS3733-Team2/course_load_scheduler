@@ -6,6 +6,7 @@ import org.dselent.course_load_scheduler.client.event.InvalidSubmitCourseEvent;
 import org.dselent.course_load_scheduler.client.event.InvalidSubmitRequestEvent;
 import org.dselent.course_load_scheduler.client.event.ModifyCourseEvent;
 import org.dselent.course_load_scheduler.client.event.ReceiveAccountDetailsEvent;
+import org.dselent.course_load_scheduler.client.event.ReceiveAdminCourseEvent;
 import org.dselent.course_load_scheduler.client.event.ReceiveChangePasswordEvent;
 import org.dselent.course_load_scheduler.client.event.ReceiveChangeRequestStateEvent;
 import org.dselent.course_load_scheduler.client.event.ReceiveCreateScheduleNavigationEvent;
@@ -28,12 +29,13 @@ import org.dselent.course_load_scheduler.client.event.InvalidAccountDetailsEvent
 import org.dselent.course_load_scheduler.client.event.InvalidAddSectionEvent;
 import org.dselent.course_load_scheduler.client.event.SendAccountDetailsEvent;
 import org.dselent.course_load_scheduler.client.event.AdminCourseEvent;
+import org.dselent.course_load_scheduler.client.event.AdminSectionEvent;
 import org.dselent.course_load_scheduler.client.event.ConfirmSchedulePageEvent;
 import org.dselent.course_load_scheduler.client.event.CreateScheduleEvent;
 import org.dselent.course_load_scheduler.client.event.CreateScheduleNavigationEvent;
 import org.dselent.course_load_scheduler.client.event.CreateScheduleSelectCoursesEvent;
 import org.dselent.course_load_scheduler.client.event.CreateScheduleSelectFacultyEvent;
-import org.dselent.course_load_scheduler.client.event.SearchCourseEvent;
+import org.dselent.course_load_scheduler.client.event.InvalidSearchCourseEvent;
 import org.dselent.course_load_scheduler.client.event.SearchScheduleEvent;
 import org.dselent.course_load_scheduler.client.event.SearchScheduleNavigationEvent;
 import org.dselent.course_load_scheduler.client.event.SearchSpecificCourseEvent;
@@ -61,23 +63,24 @@ import org.dselent.course_load_scheduler.client.event.InvalidEvent;
  * 
  * 
  */
-public abstract class EventHandlerAdapter implements InvalidLoginEventHandler, SendLoginEventHandler,
-		SearchUserEventHandler, CreateUserEventHandler, TerminateAccountEventHandler, CreateScheduleEventHandler,
-		InvalidChangePasswordEventHandler, SendChangePasswordEventHandler,
-		ModifyCourseEventHandler, SearchCourseEventHandler, AdminCourseEventHandler, FacultyCourseEventHandler,
-		InvalidAddSectionEventHandler, InvalidSubmitCourseEventHandler, UserSearchPageEventHandler,
-		UserCreatePageEventHandler, UserDetailsPageEventHandler, ConfirmSchedulePageEventHandler,
-		SearchScheduleEventHandler, ScheduleSpecificsEventHandler, CreateScheduleSelectCoursesEventHandler, 
-		CreateScheduleSelectFacultyEventHandler, RequestCourseEventHandler, InvalidSubmitRequestEventHandler,
-		CreateScheduleNavigationEventHandler, SearchScheduleNavigationEventHandler, ViewScheduleNavigationEventHandler,
-		FacultyCourseNavigationEventHandler, RequestInboxNavigationEventHandler, 
-		ReceiveLoginEventHandler, LoadPendingRequestListEventHandler, ReceivePendingRequestListEventHandler, 
-		ReceiveCreatedUserEventHandler, ReceiveUserSearchResultsEventHandler,
-		SendChangeRequestStateEventHandler, ReceiveChangeRequestStateEventHandler,ReceiveFacultyCourseEventHandler,
-		FacultySectionEventHandler, ReceiveFacultyCourseNavigationEventHandler, ReceiveViewScheduleNavigationEventHandler,
-		ReceiveScheduleSpecificsEventHandler, ReceiveCreateScheduleNavigationEventHandler, ReceiveSelectFacultyEventHandler,
-		ReceiveTerminatedAccountEventHandler, InvalidEventHandler, SendAccountDetailsEventHandler, ReceiveAccountDetailsEventHandler,
-		InvalidAccountDetailsEventHandler, ReceiveChangePasswordEventHandler{
+public abstract class EventHandlerAdapter
+		implements InvalidLoginEventHandler, SendLoginEventHandler, SearchUserEventHandler, CreateUserEventHandler,
+		TerminateAccountEventHandler, CreateScheduleEventHandler, InvalidChangePasswordEventHandler,
+		SendChangePasswordEventHandler, ModifyCourseEventHandler, InvalidSearchCourseEventHandler,
+		AdminCourseEventHandler, FacultyCourseEventHandler, InvalidAddSectionEventHandler,
+		InvalidSubmitCourseEventHandler, UserSearchPageEventHandler, UserCreatePageEventHandler,
+		UserDetailsPageEventHandler, ConfirmSchedulePageEventHandler, SearchScheduleEventHandler,
+		ScheduleSpecificsEventHandler, CreateScheduleSelectCoursesEventHandler, CreateScheduleSelectFacultyEventHandler,
+		RequestCourseEventHandler, InvalidSubmitRequestEventHandler, CreateScheduleNavigationEventHandler,
+		SearchScheduleNavigationEventHandler, ViewScheduleNavigationEventHandler, FacultyCourseNavigationEventHandler,
+		RequestInboxNavigationEventHandler, ReceiveLoginEventHandler, LoadPendingRequestListEventHandler,
+		ReceivePendingRequestListEventHandler, ReceiveCreatedUserEventHandler, ReceiveUserSearchResultsEventHandler,
+		SendChangeRequestStateEventHandler, ReceiveChangeRequestStateEventHandler, ReceiveFacultyCourseEventHandler,
+		ReceiveTerminatedAccountEventHandler, FacultySectionEventHandler, ReceiveFacultyCourseNavigationEventHandler,
+		ReceiveViewScheduleNavigationEventHandler, ReceiveScheduleSpecificsEventHandler, InvalidEventHandler,
+		SendAccountDetailsEventHandler, ReceiveAccountDetailsEventHandler, InvalidAccountDetailsEventHandler,
+		AdminSectionEventHandler, ReceiveAdminCourseEventHandler, ReceiveCreateScheduleNavigationEventHandler,
+		ReceiveSelectFacultyEventHandler, ReceiveChangePasswordEventHandler {
 
 
 
@@ -112,7 +115,7 @@ public abstract class EventHandlerAdapter implements InvalidLoginEventHandler, S
 	public void onFacultyCourse(FacultyCourseEvent evt) {}
 	
 	@Override
-	public void onSearchCourse(SearchCourseEvent evt) {}
+	public void onInvalidSearchCourse(InvalidSearchCourseEvent evt) {}
 
 	@Override
 	public void onAdminCourse(AdminCourseEvent evt) {}
@@ -205,9 +208,15 @@ public abstract class EventHandlerAdapter implements InvalidLoginEventHandler, S
 
 	@Override
 	public void onReceiveFacultyCourse(ReceiveFacultyCourseEvent evt) {}
+	
+	@Override
+	public void onReceiveAdminCourse(ReceiveAdminCourseEvent evt) {}
 
 	@Override
 	public void onFacultySection(FacultySectionEvent evt) {}
+	
+	@Override
+	public void onAdminSection(AdminSectionEvent evt) {}
 	
 	@Override
 	public void onReceiveFacultyCourseNavigation(ReceiveFacultyCourseNavigationEvent evt) {}
