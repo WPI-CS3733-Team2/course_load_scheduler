@@ -243,6 +243,10 @@ public class IndexPresenterImpl extends BasePresenterImpl implements IndexPresen
 		if(userInfo.getUserRolesId() == 2) {
 			view.getUsersMenuItem().setVisible(false);
 			view.getUsersMenuItem().setEnabled(false);
+			view.getCreateScheduleMenuItem().setVisible(false);
+			view.getCreateScheduleMenuItem().setEnabled(false);
+			view.getFacultyCourseMenuItem().setVisible(false);
+			view.getFacultyCourseMenuItem().setEnabled(false);
 		}
 	}
 }
