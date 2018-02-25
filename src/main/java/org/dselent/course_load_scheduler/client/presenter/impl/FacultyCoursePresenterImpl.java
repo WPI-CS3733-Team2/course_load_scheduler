@@ -4,7 +4,6 @@ package org.dselent.course_load_scheduler.client.presenter.impl;
 import java.util.List;
 
 import org.dselent.course_load_scheduler.client.action.RequestCourseAction;
-import org.dselent.course_load_scheduler.client.action.InvalidSearchCourseAction;
 import org.dselent.course_load_scheduler.client.action.ViewCourseAction;
 import org.dselent.course_load_scheduler.client.action.ViewSectionAction;
 import org.dselent.course_load_scheduler.client.event.FacultyCourseEvent;

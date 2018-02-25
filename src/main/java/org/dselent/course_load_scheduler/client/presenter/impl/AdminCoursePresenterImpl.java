@@ -1,18 +1,14 @@
 package org.dselent.course_load_scheduler.client.presenter.impl;
 
 
-import java.util.ArrayList;
 import java.util.List;
 
 import org.dselent.course_load_scheduler.client.action.ModifyCourseAction;
 import org.dselent.course_load_scheduler.client.action.ViewSectionAction;
 import org.dselent.course_load_scheduler.client.action.InvalidSearchCourseAction;
-import org.dselent.course_load_scheduler.client.event.AdminCourseEvent;
 import org.dselent.course_load_scheduler.client.event.AdminSectionEvent;
-import org.dselent.course_load_scheduler.client.event.FacultySectionEvent;
 import org.dselent.course_load_scheduler.client.event.ModifyCourseEvent;
 import org.dselent.course_load_scheduler.client.event.ReceiveAdminCourseEvent;
-import org.dselent.course_load_scheduler.client.event.ReceiveFacultyCourseEvent;
 import org.dselent.course_load_scheduler.client.event.InvalidSearchCourseEvent;
 import org.dselent.course_load_scheduler.client.exceptions.EmptyStringException;
 import org.dselent.course_load_scheduler.client.model.Course;

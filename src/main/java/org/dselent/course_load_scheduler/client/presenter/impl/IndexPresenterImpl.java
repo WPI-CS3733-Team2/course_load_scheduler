@@ -87,16 +87,17 @@ public class IndexPresenterImpl extends BasePresenterImpl implements IndexPresen
 			}
 		});
 		
-		view.setCoursesCommand(new CustomCommand(view) {
+		view.setCoursesCommand(new Command() {
 			@Override
 			public void execute() {
+				showLoadScreen();
 				final Injector injector = Injector.INSTANCE;
 				
 				String userRole = injector.getGlobalData().getUserInfo().getUserRolesRoleName();
 				
 				// Used to simulate being an admin
 				boolean testing = false;
-				HasWidgets container = view.getViewRootPanel();
+				HasWidgets container = getView().getViewRootPanel();
 				
 				if (userRole.equalsIgnoreCase("Admin") || testing) {
 					ViewCourseAction vca = new ViewCourseAction();
@@ -210,22 +211,6 @@ public class IndexPresenterImpl extends BasePresenterImpl implements IndexPresen
 		
 		InvalidAccountDetailsAction iada = evt.getAction();
 		view.showErrorMessages(iada.toString());
-	}
-	
-	private class CustomCommand implements Command {
-
-		IndexView view;
-		
-		public CustomCommand(IndexView view) {
-			this.view = view;
-		}
-		
-		@Override
-		public void execute() {
-			// TODO Auto-generated method stub
-			
-		}
-		
 	}
 	
 	//Generic error messages for a response failure.
