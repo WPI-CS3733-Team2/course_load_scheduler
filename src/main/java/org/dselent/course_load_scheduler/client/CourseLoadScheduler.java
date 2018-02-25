@@ -64,8 +64,8 @@ public class CourseLoadScheduler implements EntryPoint
 		RequestServiceImpl requestService = injector.getRequestService();
 		requestService.init();
 
-		CourseServiceImpl facultyCourseService = injector.getFacultyCourseService();
-		facultyCourseService.init();
+		CourseServiceImpl courseService = injector.getCourseService();
+		courseService.init();
 
 		ScheduleCreationServiceImpl scheduleCreationService = injector.getScheduleCreationService();
 		scheduleCreationService.init();

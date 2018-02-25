@@ -125,7 +125,7 @@ public interface Injector extends Ginjector
     //services
     public UserServiceImpl getUserService();
     public RequestServiceImpl getRequestService();
-    public CourseServiceImpl	getFacultyCourseService();
+    public CourseServiceImpl	getCourseService();
     public FacultyCourseMappingServiceImpl getFacultyCourseMappingService();
     public ScheduleListServiceImpl getScheduleListService();
     public ScheduleSpecificsServiceImpl getScheduleSpecificsService();

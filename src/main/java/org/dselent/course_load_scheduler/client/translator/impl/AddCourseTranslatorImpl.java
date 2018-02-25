@@ -36,18 +36,15 @@ public class AddCourseTranslatorImpl implements ActionTranslator<AddCourseAction
 		// sent timestamps as epoch seconds (long)
 		
 		JSONValue jsonValue = json.get("success");
-		JSONObject jsonObject = jsonValue.isArray().get(0).isObject();
+		JSONObject jsonObject = jsonValue.isObject();
 		
 		int id = JSONHelper.getIntValue(jsonObject, JSONHelper.convertKeyName(AddCourseKeys.ID));
-		String name = JSONHelper.getStringValue(jsonObject, JSONHelper.convertKeyName(AddCourseKeys.NAME));
+/*		String name = JSONHelper.getStringValue(jsonObject, JSONHelper.convertKeyName(AddCourseKeys.NAME));
 		String number = JSONHelper.getStringValue(jsonObject, JSONHelper.convertKeyName(AddCourseKeys.NUMBER));
 		int freq = JSONHelper.getIntValue(jsonObject, JSONHelper.convertKeyName(AddCourseKeys.FREQUENCY));
 		
-		Course course = new Course();
+*/		Course course = new Course();
 		course.setId(id);
-		course.setCourseName(name);
-		course.setCourseNumber(number);
-		course.setFrequency(freq);
 		
 		// possibly use builder pattern if it is a lot of data
 		ReceiveAddCourseAction action = new ReceiveAddCourseAction(course);	

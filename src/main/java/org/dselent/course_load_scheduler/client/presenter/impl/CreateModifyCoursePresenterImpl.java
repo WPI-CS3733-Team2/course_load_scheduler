@@ -5,14 +5,19 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.dselent.course_load_scheduler.client.action.AddCourseAction;
+import org.dselent.course_load_scheduler.client.action.AddSectionsAction;
+import org.dselent.course_load_scheduler.client.action.InvalidAddCourseAction;
 import org.dselent.course_load_scheduler.client.action.InvalidAddModifyCourseAction;
 import org.dselent.course_load_scheduler.client.action.ViewCourseAction;
 import org.dselent.course_load_scheduler.client.errorstring.InvalidAddModifyCourseStrings;
 import org.dselent.course_load_scheduler.client.event.AddCourseEvent;
+import org.dselent.course_load_scheduler.client.event.AddSectionsEvent;
 import org.dselent.course_load_scheduler.client.event.AdminCourseEvent;
+import org.dselent.course_load_scheduler.client.event.InvalidAddCourseEvent;
 import org.dselent.course_load_scheduler.client.event.InvalidAddSectionEvent;
 import org.dselent.course_load_scheduler.client.event.InvalidSubmitCourseEvent;
 import org.dselent.course_load_scheduler.client.event.ModifyCourseEvent;
+import org.dselent.course_load_scheduler.client.event.ReceiveAddCourseEvent;
 import org.dselent.course_load_scheduler.client.exceptions.DuplicateCRNException;
 import org.dselent.course_load_scheduler.client.exceptions.EmptyArrayException;
 import org.dselent.course_load_scheduler.client.exceptions.EmptyStringException;
@@ -24,6 +29,7 @@ import org.dselent.course_load_scheduler.client.presenter.IndexPresenter;
 import org.dselent.course_load_scheduler.client.view.CreateModifyCourseView;
 
 import com.google.gwt.event.shared.HandlerRegistration;
+import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.ui.HasWidgets;
 import com.google.gwt.view.client.ListDataProvider;
 import com.google.gwt.view.client.SingleSelectionModel;
@@ -71,6 +77,9 @@ public class CreateModifyCoursePresenterImpl extends BasePresenterImpl implement
 		
 		registration = eventBus.addHandler(InvalidSubmitCourseEvent.TYPE, this);
 		eventBusRegistration.put(InvalidSubmitCourseEvent.TYPE, registration);
+
+		registration = eventBus.addHandler(InvalidAddCourseEvent.TYPE, this);
+		eventBusRegistration.put(InvalidAddCourseEvent.TYPE, registration);
 		
 		registration = eventBus.addHandler(InvalidAddSectionEvent.TYPE, this);
 		eventBusRegistration.put(InvalidAddSectionEvent.TYPE, registration);
@@ -80,6 +89,9 @@ public class CreateModifyCoursePresenterImpl extends BasePresenterImpl implement
 		
 		registration = eventBus.addHandler(AddCourseEvent.TYPE, this);
 		eventBusRegistration.put(AddCourseEvent.TYPE, registration);
+		
+		registration = eventBus.addHandler(ReceiveAddCourseEvent.TYPE, this);
+		eventBusRegistration.put(ReceiveAddCourseEvent.TYPE, registration);
 	}
 
 	@Override
@@ -269,16 +281,33 @@ public class CreateModifyCoursePresenterImpl extends BasePresenterImpl implement
 			else {
 				// TODO: implement modify
 			}
-
-			ViewCourseAction vca = new ViewCourseAction();
-			AdminCourseEvent ace = new AdminCourseEvent(vca, container);
-			eventBus.fireEvent(ace);
 		}
 		else {
 			InvalidAddModifyCourseAction iamca = new InvalidAddModifyCourseAction(invalidReasonList);
 			InvalidSubmitCourseEvent isce = new InvalidSubmitCourseEvent(iamca);
 			eventBus.fireEvent(isce);
 		}
+	}
+	
+	@Override
+	public void onInvalidAddCourse(InvalidAddCourseEvent evt) {
+		parentPresenter.hideLoadScreen();
+		InvalidAddCourseAction iamca = evt.getAction();
+		view.showErrorMessages(iamca.toString());
+	}
+	
+	@Override
+	public void onReceiveAddCourse(ReceiveAddCourseEvent evt) {
+		HasWidgets container = parentPresenter.getView().getViewRootPanel();
+
+		int courseId = evt.getAction().getCourse().getId();
+		for(int i = 0; i < currentSections.size(); i++) {
+			currentSections.get(i).setCourseId(courseId);
+		}
+		Window.alert(currentSections.toString());
+		AddSectionsAction vca = new AddSectionsAction(currentSections);
+		AddSectionsEvent ace = new AddSectionsEvent(vca, container);
+		eventBus.fireEvent(ace);
 	}
 	
 	@Override
