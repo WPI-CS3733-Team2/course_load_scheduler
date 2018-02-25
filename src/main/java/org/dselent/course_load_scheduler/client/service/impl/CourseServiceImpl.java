@@ -1,11 +1,14 @@
 package org.dselent.course_load_scheduler.client.service.impl;
 
+import org.dselent.course_load_scheduler.client.action.AddCourseAction;
 import org.dselent.course_load_scheduler.client.action.ViewCourseAction;
 import org.dselent.course_load_scheduler.client.action.ViewSectionAction;
+import org.dselent.course_load_scheduler.client.callback.AddCourseCallback;
 import org.dselent.course_load_scheduler.client.callback.ViewAdminCourseCallback;
 import org.dselent.course_load_scheduler.client.callback.ViewAdminSectionCallback;
 import org.dselent.course_load_scheduler.client.callback.ViewFacultyCourseCallback;
 import org.dselent.course_load_scheduler.client.callback.ViewFacultySectionCallback;
+import org.dselent.course_load_scheduler.client.event.AddCourseEvent;
 import org.dselent.course_load_scheduler.client.event.AdminCourseEvent;
 import org.dselent.course_load_scheduler.client.event.AdminSectionEvent;
 import org.dselent.course_load_scheduler.client.event.FacultyCourseEvent;
@@ -13,6 +16,7 @@ import org.dselent.course_load_scheduler.client.event.FacultySectionEvent;
 import org.dselent.course_load_scheduler.client.network.NetworkRequest;
 import org.dselent.course_load_scheduler.client.network.NetworkRequestStrings;
 import org.dselent.course_load_scheduler.client.service.CourseService;
+import org.dselent.course_load_scheduler.client.translator.impl.AddCourseTranslatorImpl;
 import org.dselent.course_load_scheduler.client.translator.impl.CourseTranslatorImpl;
 import org.dselent.course_load_scheduler.client.translator.impl.SectionTranslatorImpl;
 
@@ -48,6 +52,9 @@ public class CourseServiceImpl extends BaseServiceImpl implements CourseService
 
 		registration = eventBus.addHandler(AdminSectionEvent.TYPE, this);
 		eventBusRegistration.put(AdminSectionEvent.TYPE, registration);
+		
+		registration = eventBus.addHandler(AddCourseEvent.TYPE, this);
+		eventBusRegistration.put(AddCourseEvent.TYPE, registration);
 	}
 	
 	@Override
@@ -97,4 +104,26 @@ public class CourseServiceImpl extends BaseServiceImpl implements CourseService
 		NetworkRequest request = new NetworkRequest(NetworkRequestStrings.VIEW_SECTIONS, courseCallback, json);
 		request.send();
 	}
+	
+	@Override
+	public void onAddCourse(AddCourseEvent evt) {
+		AddCourseAction action = evt.getAction();
+		AddCourseTranslatorImpl addCourseTranslator = new AddCourseTranslatorImpl();
+		JSONObject json = addCourseTranslator.translateToJson(action);
+		AddCourseCallback addCourseCallback = new AddCourseCallback(eventBus, evt.getContainer());
+		
+		NetworkRequest request = new NetworkRequest(NetworkRequestStrings.ADD_COURSE, addCourseCallback, json);
+		request.send();
+	}
+	
+	/*@Override
+	public void onAddSections(AddSectionEvent evt) {
+		AddSectionsAction action = evt.getAction();
+		AddSectionsTranslatorImpl addSectionsTranslator = new AddSectionsTranslatorImpl();
+		JSONObject json = addSectionsTranslator.translateToJson(action);
+		AddSectionsCallback addSectionsCallback = new AddSectionsCallback(eventBus, evt.getContainer());
+		
+		NetworkRequest request = new NetworkRequest(NetworkRequestStrings.ADD_SECTIONS, addSectionsCallback, json);
+		request.send();
+	}*/
 }

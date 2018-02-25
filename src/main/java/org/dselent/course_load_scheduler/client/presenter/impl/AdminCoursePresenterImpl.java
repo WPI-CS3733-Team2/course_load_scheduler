@@ -240,6 +240,7 @@ public class AdminCoursePresenterImpl extends BasePresenterImpl implements Admin
 			modifyCourseButton.addClickHandler(new CustomClickHandler(thisCourse) {
 				@Override
 				public void onClick(ClickEvent event) {
+					parentPresenter.showLoadScreen();
 					ModifyCourseAction mca = new ModifyCourseAction(course);
 					ModifyCourseEvent mce = new ModifyCourseEvent(mca);
 					eventBus.fireEvent(mce);
@@ -260,6 +261,7 @@ public class AdminCoursePresenterImpl extends BasePresenterImpl implements Admin
 	
 	@Override
 	public void addCourse() {
+		parentPresenter.showLoadScreen();
 		ModifyCourseAction mca = new ModifyCourseAction(null);
 		ModifyCourseEvent mce = new ModifyCourseEvent(mca);
 		eventBus.fireEvent(mce);

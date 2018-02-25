@@ -28,6 +28,7 @@ import org.dselent.course_load_scheduler.client.event.FacultySectionEvent;
 import org.dselent.course_load_scheduler.client.event.InvalidAccountDetailsEvent;
 import org.dselent.course_load_scheduler.client.event.InvalidAddSectionEvent;
 import org.dselent.course_load_scheduler.client.event.SendAccountDetailsEvent;
+import org.dselent.course_load_scheduler.client.event.AddCourseEvent;
 import org.dselent.course_load_scheduler.client.event.AdminCourseEvent;
 import org.dselent.course_load_scheduler.client.event.AdminSectionEvent;
 import org.dselent.course_load_scheduler.client.event.ConfirmSchedulePageEvent;
@@ -82,7 +83,7 @@ public abstract class EventHandlerAdapter
 		ReceiveViewScheduleNavigationEventHandler, ReceiveScheduleSpecificsEventHandler, InvalidEventHandler,
 		SendAccountDetailsEventHandler, ReceiveAccountDetailsEventHandler, InvalidAccountDetailsEventHandler,
 		AdminSectionEventHandler, ReceiveAdminCourseEventHandler, ReceiveCreateScheduleNavigationEventHandler,
-		ReceiveSelectFacultyEventHandler, ReceiveChangePasswordEventHandler, LoginNavigationEventHandler {
+		ReceiveSelectFacultyEventHandler, ReceiveChangePasswordEventHandler, AddCourseEventHandler, LoginNavigationEventHandler {
 
 
 
@@ -240,6 +241,9 @@ public abstract class EventHandlerAdapter
 
 	@Override
 	public void onInvalid(InvalidEvent evt) {}
+	
+	@Override
+	public void onAddCourse(AddCourseEvent evt) {}
 	
 	@Override
 	public void onLoginNavigation(LoginNavigationEvent evt) {}

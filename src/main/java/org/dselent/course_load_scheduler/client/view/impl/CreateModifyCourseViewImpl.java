@@ -37,6 +37,8 @@ public class CreateModifyCourseViewImpl extends BaseViewImpl<CreateModifyCourseP
 	@UiField
 	TextBox courseNumberTextBox;
 	@UiField
+	TextBox frequencyTextBox;
+	@UiField
 	TextBox sectionNameTextBox;
 	@UiField
 	TextBox crnTextBox;
@@ -44,6 +46,16 @@ public class CreateModifyCourseViewImpl extends BaseViewImpl<CreateModifyCourseP
 	TextBox typeTextBox;
 	@UiField
 	TextBox popTextBox;
+	@UiField
+	TextBox yearTextBox;
+	@UiField
+	TextBox termTextBox;
+	@UiField
+	TextBox startTimeTextBox;
+	@UiField
+	TextBox endTimeTextBox;
+	@UiField
+	TextBox daysTextBox;
 	@UiField
 	HTMLPanel createModifyPanel;
 	@UiField
@@ -110,6 +122,18 @@ public class CreateModifyCourseViewImpl extends BaseViewImpl<CreateModifyCourseP
 	public void setCourseNumberTextBoxText(String text) {
 		this.courseNumberTextBox.setText(text);
 	}
+	
+	public TextBox getFrequencyTextBox() {
+		return frequencyTextBox;
+	}
+
+	public void setFrequencyTextBox(TextBox frequencyTextBox) {
+		this.frequencyTextBox = frequencyTextBox;
+	}
+	
+	public void setFrequencyTextBoxText(String text) {
+		this.frequencyTextBox.setText(text);
+	}
 
 	public TextBox getSectionNameTextBox() {
 		return sectionNameTextBox;
@@ -158,6 +182,47 @@ public class CreateModifyCourseViewImpl extends BaseViewImpl<CreateModifyCourseP
 	public void setPopTextBoxText(String text) {
 		this.popTextBox.setText(text);
 	}
+	
+	public TextBox getYearTextBox() {
+		return yearTextBox;
+	}
+
+	public void setYearTextBoxText(String text) {
+		this.yearTextBox.setText(text);
+	}
+
+	public TextBox getTermTextBox() {
+		return termTextBox;
+	}
+
+	public void setTermTextBoxText(String text) {
+		this.termTextBox.setText(text);
+	}
+
+	public TextBox getStartTimeTextBox() {
+		return startTimeTextBox;
+	}
+
+	public void setStartTimeTextBoxText(String text) {
+		this.startTimeTextBox.setText(text);
+	}
+
+	public TextBox getEndTimeTextBox() {
+		return endTimeTextBox;
+	}
+
+	public void setEndTimeTextBoxText(String text) {
+		this.endTimeTextBox.setText(text);
+	}
+
+	public TextBox getDaysTextBox() {
+		return daysTextBox;
+	}
+
+	public void setDaysTextBoxText(String text) {
+		this.daysTextBox.setText(text);
+	}
+
 
 	public CreateModifyCourseViewImpl() {
 		initWidget(uiBinder.createAndBindUi(this));

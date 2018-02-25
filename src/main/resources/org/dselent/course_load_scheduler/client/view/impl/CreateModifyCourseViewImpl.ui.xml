@@ -20,6 +20,12 @@
 				<g:customCell>
 					<g:TextBox ui:field="courseNumberTextBox" />
 				</g:customCell>
+				<g:customCell>
+					<g:Label text="Frequency:" />
+				</g:customCell>
+				<g:customCell>
+					<g:TextBox ui:field="frequencyTextBox" />
+				</g:customCell>
 			</g:row>
 			<g:row />
 		</g:Grid>
@@ -41,6 +47,18 @@
 							<g:customCell>
 								<g:TextBox ui:field="sectionNameTextBox"/>
 							</g:customCell>
+							<g:customCell>
+								<g:Label text="Year:"/>
+							</g:customCell>
+							<g:customCell>
+								<g:TextBox ui:field="yearTextBox"/>
+							</g:customCell>
+							<g:customCell>
+								<g:Label text="Days (M, T, W, R, F):"/>
+							</g:customCell>
+							<g:customCell>
+								<g:TextBox ui:field="daysTextBox"/>
+							</g:customCell>
 						</g:row>
 						<g:row>
 							<g:customCell>
@@ -48,6 +66,12 @@
 							</g:customCell>
 							<g:customCell>
 								<g:TextBox ui:field="crnTextBox"/>
+							</g:customCell>
+							<g:customCell>
+								<g:Label text="Semester/Term:"/>
+							</g:customCell>
+							<g:customCell>
+								<g:TextBox ui:field="termTextBox"/>
 							</g:customCell>
 						</g:row>
 						<g:row>
@@ -57,6 +81,12 @@
 							<g:customCell>
 								<g:TextBox ui:field="typeTextBox"/>
 							</g:customCell>
+							<g:customCell>
+								<g:Label text="Start Time:"/>
+							</g:customCell>
+							<g:customCell>
+								<g:TextBox ui:field="startTimeTextBox"/>
+							</g:customCell>
 						</g:row>
 						<g:row>
 							<g:customCell>
@@ -64,6 +94,12 @@
 							</g:customCell>
 							<g:customCell>
 								<g:TextBox ui:field="popTextBox"/>
+							</g:customCell>
+							<g:customCell>
+								<g:Label text="End Time:"/>
+							</g:customCell>
+							<g:customCell>
+								<g:TextBox ui:field="endTimeTextBox"/>
 							</g:customCell>
 						</g:row>
 					</g:Grid>
@@ -74,7 +110,7 @@
 			<g:Grid>
 				<g:row>
 					<g:customCell>
-						<g:FlowPanel height="151px">
+						<g:FlowPanel height="250px">
 							<p1:CellTable ui:field="sectionTable" height="50px"/>
 						</g:FlowPanel>
 					</g:customCell>
