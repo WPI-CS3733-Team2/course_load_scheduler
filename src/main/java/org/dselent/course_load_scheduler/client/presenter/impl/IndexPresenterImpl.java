@@ -128,6 +128,7 @@ public class IndexPresenterImpl extends BasePresenterImpl implements IndexPresen
 		view.setFacultyCourseCommand(new Command() {
 			@Override
 			public void execute() {
+				showLoadScreen();
 				HasWidgets container = getView().getViewRootPanel();
 				FacultyCourseNavigationAction fcna = new FacultyCourseNavigationAction();
 				FacultyCourseNavigationEvent fcne = new FacultyCourseNavigationEvent(fcna, container);
