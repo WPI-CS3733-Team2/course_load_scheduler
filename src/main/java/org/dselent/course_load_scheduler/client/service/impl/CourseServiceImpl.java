@@ -42,6 +42,12 @@ public class CourseServiceImpl extends BaseServiceImpl implements CourseService
 
 		registration = eventBus.addHandler(FacultySectionEvent.TYPE, this);
 		eventBusRegistration.put(FacultySectionEvent.TYPE, registration);
+		
+		registration = eventBus.addHandler(AdminCourseEvent.TYPE, this);
+		eventBusRegistration.put(AdminCourseEvent.TYPE, registration);
+
+		registration = eventBus.addHandler(AdminSectionEvent.TYPE, this);
+		eventBusRegistration.put(AdminSectionEvent.TYPE, registration);
 	}
 	
 	@Override

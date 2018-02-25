@@ -28,6 +28,7 @@ import org.dselent.course_load_scheduler.client.view.IndexView;
 import com.google.gwt.dom.client.Style;
 import com.google.gwt.event.shared.HandlerRegistration;
 import com.google.gwt.user.client.Command;
+import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.ui.HasWidgets;
 
 
@@ -88,13 +89,13 @@ public class IndexPresenterImpl extends BasePresenterImpl implements IndexPresen
 			public void execute() {
 				final Injector injector = Injector.INSTANCE;
 				
-				String userRole = injector.getAccountDetailsPresenter().getUserType();
+				String userRole = injector.getGlobalData().getUserInfo().getUserRolesRoleName();
 				
 				// Used to simulate being an admin
 				boolean testing = false;
 				HasWidgets container = view.getViewRootPanel();
 				
-				if (userRole.equals("Admin") || testing) {
+				if (userRole.equalsIgnoreCase("Admin") || testing) {
 					ViewCourseAction vca = new ViewCourseAction();
 					AdminCourseEvent ace = new AdminCourseEvent(vca, container);
 					eventBus.fireEvent(ace);
