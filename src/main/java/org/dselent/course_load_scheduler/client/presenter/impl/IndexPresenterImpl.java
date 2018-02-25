@@ -22,9 +22,12 @@ import org.dselent.course_load_scheduler.client.action.SendAccountDetailsAction;
 import org.dselent.course_load_scheduler.client.action.UserSearchPageAction;
 import org.dselent.course_load_scheduler.client.event.UserSearchPageEvent;
 import org.dselent.course_load_scheduler.client.event.ViewScheduleNavigationEvent;
+import org.dselent.course_load_scheduler.client.action.ReceiveLoginAction;
+import org.dselent.course_load_scheduler.client.event.ReceiveLoginEvent;
 import org.dselent.course_load_scheduler.client.gin.Injector;
 import org.dselent.course_load_scheduler.client.presenter.IndexPresenter;
 import org.dselent.course_load_scheduler.client.view.IndexView;
+import org.dselent.course_load_scheduler.client.model.UserInfo;
 import com.google.gwt.dom.client.Style;
 import com.google.gwt.event.shared.HandlerRegistration;
 import com.google.gwt.user.client.Command;
@@ -151,6 +154,9 @@ public class IndexPresenterImpl extends BasePresenterImpl implements IndexPresen
 		
 		registration = eventBus.addHandler(InvalidEvent.TYPE, this);
 		eventBusRegistration.put(InvalidEvent.TYPE, registration);
+		
+		registration = eventBus.addHandler(ReceiveLoginEvent.TYPE, this);
+		eventBusRegistration.put(ReceiveLoginEvent.TYPE, registration);
 	}
 	
 	@Override
@@ -226,5 +232,17 @@ public class IndexPresenterImpl extends BasePresenterImpl implements IndexPresen
 	@Override
 	public void onInvalid(InvalidEvent evt) {
 		view.showErrorMessages("Action could not be completed.");
+	}
+	
+	@Override
+	public void onReceiveLogin(ReceiveLoginEvent evt) {
+		ReceiveLoginAction rla = evt.getAction();
+
+		UserInfo userInfo = rla.getUserInfo();//Injector.INSTANCE.getGlobalData().getUserInfo();
+		
+		if(userInfo.getUserRolesId() == 2) {
+			view.getUsersMenuItem().setVisible(false);
+			view.getUsersMenuItem().setEnabled(false);
+		}
 	}
 }
