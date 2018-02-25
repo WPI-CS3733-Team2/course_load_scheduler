@@ -1,14 +1,15 @@
 package org.dselent.course_load_scheduler.client.presenter.impl;
 
 
-import java.util.ArrayList;
 import java.util.List;
 
 import org.dselent.course_load_scheduler.client.action.ModifyCourseAction;
-import org.dselent.course_load_scheduler.client.action.SearchCourseAction;
-import org.dselent.course_load_scheduler.client.event.AdminCourseEvent;
+import org.dselent.course_load_scheduler.client.action.ViewSectionAction;
+import org.dselent.course_load_scheduler.client.action.InvalidSearchCourseAction;
+import org.dselent.course_load_scheduler.client.event.AdminSectionEvent;
 import org.dselent.course_load_scheduler.client.event.ModifyCourseEvent;
-import org.dselent.course_load_scheduler.client.event.SearchCourseEvent;
+import org.dselent.course_load_scheduler.client.event.ReceiveAdminCourseEvent;
+import org.dselent.course_load_scheduler.client.event.InvalidSearchCourseEvent;
 import org.dselent.course_load_scheduler.client.exceptions.EmptyStringException;
 import org.dselent.course_load_scheduler.client.model.Course;
 import org.dselent.course_load_scheduler.client.model.Section;
@@ -34,6 +35,7 @@ import com.google.inject.Inject;
 public class AdminCoursePresenterImpl extends BasePresenterImpl implements AdminCoursePresenter
 {
 	
+	List<Course> courses;
 	private AdminCourseView view;
 	private IndexPresenter parentPresenter;
 	boolean searchInProgress;
@@ -58,11 +60,14 @@ public class AdminCoursePresenterImpl extends BasePresenterImpl implements Admin
 	{
 		HandlerRegistration registration;
 		
-		registration = eventBus.addHandler(AdminCourseEvent.TYPE, this);
-		eventBusRegistration.put(AdminCourseEvent.TYPE, registration);
+		registration = eventBus.addHandler(AdminSectionEvent.TYPE, this);
+		eventBusRegistration.put(AdminSectionEvent.TYPE, registration);
 		
-		registration = eventBus.addHandler(SearchCourseEvent.TYPE, this);
-		eventBusRegistration.put(SearchCourseEvent.TYPE, registration);
+		registration = eventBus.addHandler(ReceiveAdminCourseEvent.TYPE, this);
+		eventBusRegistration.put(ReceiveAdminCourseEvent.TYPE, registration);
+		
+		registration = eventBus.addHandler(InvalidSearchCourseEvent.TYPE, this);
+		eventBusRegistration.put(InvalidSearchCourseEvent.TYPE, registration);
 	}
 
 	@Override
@@ -132,56 +137,48 @@ public class AdminCoursePresenterImpl extends BasePresenterImpl implements Admin
 	}
 	
 	private void searchCourseEventFire(String query) {
-		SearchCourseAction sca = new SearchCourseAction(query);
-		SearchCourseEvent sce = new SearchCourseEvent(sca);
+		InvalidSearchCourseAction sca = new InvalidSearchCourseAction();
+		InvalidSearchCourseEvent sce = new InvalidSearchCourseEvent(sca);
 		eventBus.fireEvent(sce);
 	}
 	
 	@Override
-	public void onSearchCourse(SearchCourseEvent evt) {
+	public void onInvalidSearchCourse(InvalidSearchCourseEvent evt) {
+		/*parentPresenter.hideLoadScreen();
+		view.getSearchCourseButton().setEnabled(true);
+		searchInProgress = false;
+		
+		view.showErrorMessages("Course search to be implemented.");*/
+	}
+	
+	@Override
+	public void onAdminSection(AdminSectionEvent evt)
+	{
+		ViewSectionAction action = evt.getAction();
+		courses = action.getAllCourses();
+	}
+	
+	@Override
+	public void onReceiveAdminCourse(ReceiveAdminCourseEvent evt) {
 		parentPresenter.hideLoadScreen();
 		view.getSearchCourseButton().setEnabled(true);
 		searchInProgress = false;
 		
-		view.showErrorMessages("Course search to be implemented.");
-	}
-	
-	@Override
-	public void onAdminCourse(AdminCourseEvent evt) {
 		this.go(parentPresenter.getView().getViewRootPanel());
 		view.clearAllCoursesGrid();
 		
-		List<Section> sections = new ArrayList<>();
-		List<Course> courses = new ArrayList<>();
+		List<Section> sections = evt.getAction().getAllSections();
+		int courseId = sections.get(0).getCourseId();
+		int currentCourse = 0;
+		for (int i = 0; i < sections.size(); i++) {
+			Section section = sections.get(i);
+			if (section.getCourseId() != courseId)  {
+				currentCourse++;
+				courseId = section.getCourseId();
+			}
 
-		Section section1 = new Section();
-		section1.setSectionName("C01");
-		section1.setCrn(12345);
-		section1.setType("Lecture");
-		section1.setExpectedPopulation(50);
-
-		Section section2 = new Section();
-		section2.setSectionName("C02");
-		section2.setCrn(12346);
-		section2.setType("Lab");
-		section2.setExpectedPopulation(50);
-
-		sections.add(section1);
-		sections.add(section2);
-
-		Course course1 = new Course();
-		course1.setCourseName("Software Engineering");
-		course1.setCourseNumber("3733");
-		course1.setSections(sections);
-		
-		Course course2 = new Course();
-		course2.setCourseName("Testing");
-		course2.setCourseNumber("1234");
-		course2.setSections(sections);
-
-		courses.add(course1);
-		courses.add(course1);
-		courses.add(course2);
+			courses.get(currentCourse).addSection(section);
+		}
 
 		for (int i = 0; i < courses.size(); i++) {
 			DecoratorPanel coursePanel = new DecoratorPanel();
@@ -243,6 +240,7 @@ public class AdminCoursePresenterImpl extends BasePresenterImpl implements Admin
 			modifyCourseButton.addClickHandler(new CustomClickHandler(thisCourse) {
 				@Override
 				public void onClick(ClickEvent event) {
+					parentPresenter.showLoadScreen();
 					ModifyCourseAction mca = new ModifyCourseAction(course);
 					ModifyCourseEvent mce = new ModifyCourseEvent(mca);
 					eventBus.fireEvent(mce);
@@ -263,6 +261,7 @@ public class AdminCoursePresenterImpl extends BasePresenterImpl implements Admin
 	
 	@Override
 	public void addCourse() {
+		parentPresenter.showLoadScreen();
 		ModifyCourseAction mca = new ModifyCourseAction(null);
 		ModifyCourseEvent mce = new ModifyCourseEvent(mca);
 		eventBus.fireEvent(mce);

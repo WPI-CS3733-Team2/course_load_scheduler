@@ -6,7 +6,7 @@
 	
 	</ui:style>
 	<g:HTMLPanel width="450" height="300">
-		<g:VerticalPanel ui:field="searchPanel" height="94px" width="641px">
+		<g:VerticalPanel ui:field="searchPanel">
 			<g:Label text="View Users" width="621px" height="46px" horizontalAlignment="ALIGN_CENTER" styleName="pageTitle" ui:field="viewUsersLabel"/>
 			<g:HorizontalPanel ui:field="searchBarPanel" width="644px">
 				<g:Cell width="173px" height="34">
@@ -16,10 +16,10 @@
 					<g:Button width="62px" ui:field="searchUser" text="Search"/>
 				</g:Cell>
 				<g:Cell verticalAlignment="ALIGN_MIDDLE">
-					<g:Label text=" By:" ui:field="searchByLabel" horizontalAlignment="ALIGN_LEFT" width="22px" height="18px"/>
+					<g:Label text=" By:" ui:field="searchByLabel" horizontalAlignment="ALIGN_LEFT" width="22px" height="18px" visible="false"/>
 				</g:Cell>
 				<g:Cell verticalAlignment="ALIGN_MIDDLE">
-					<g:ListBox visibleItemCount="1" ui:field="searchByListBox">
+					<g:ListBox visibleItemCount="1" ui:field="searchByListBox" visible="false" enabled="false">
 					<g:item value='1'>WPI ID</g:item>
 					<g:item value='2'>Username</g:item>
 					<g:item value='3'>First name</g:item>
@@ -31,7 +31,7 @@
 					<g:Button ui:field="createUser" text="Create User"/>
 				</g:Cell>
 			</g:HorizontalPanel>
-			<g:ScrollPanel>
+			<g:ScrollPanel width="621px" height="400px" ui:field="userScroll">
 				<c:CellTable ui:field="userTable" />
 			</g:ScrollPanel>
 		</g:VerticalPanel>

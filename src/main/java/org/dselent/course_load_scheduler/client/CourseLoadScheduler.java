@@ -23,7 +23,7 @@ import org.dselent.course_load_scheduler.client.presenter.impl.SearchSchedulePre
 import org.dselent.course_load_scheduler.client.service.impl.RequestServiceImpl;
 import org.dselent.course_load_scheduler.client.service.impl.ScheduleCreationServiceImpl;
 import org.dselent.course_load_scheduler.client.service.impl.FacultyCourseMappingServiceImpl;
-import org.dselent.course_load_scheduler.client.service.impl.FacultyCourseServiceImpl;
+import org.dselent.course_load_scheduler.client.service.impl.CourseServiceImpl;
 import org.dselent.course_load_scheduler.client.service.impl.ScheduleListServiceImpl;
 import org.dselent.course_load_scheduler.client.service.impl.ScheduleSpecificsServiceImpl;
 import org.dselent.course_load_scheduler.client.service.impl.UserServiceImpl;
@@ -64,7 +64,7 @@ public class CourseLoadScheduler implements EntryPoint
 		RequestServiceImpl requestService = injector.getRequestService();
 		requestService.init();
 
-		FacultyCourseServiceImpl facultyCourseService = injector.getFacultyCourseService();
+		CourseServiceImpl facultyCourseService = injector.getFacultyCourseService();
 		facultyCourseService.init();
 
 		ScheduleCreationServiceImpl scheduleCreationService = injector.getScheduleCreationService();

@@ -1,7 +1,7 @@
 package org.dselent.course_load_scheduler.client.presenter.impl;
 
 import org.dselent.course_load_scheduler.client.view.UserDetailsView;
-
+import org.dselent.course_load_scheduler.client.model.GlobalData;
 import org.dselent.course_load_scheduler.client.model.UserInfo;
 
 import com.google.gwt.event.shared.HandlerRegistration;
@@ -10,13 +10,17 @@ import com.google.inject.Inject;
 
 import org.dselent.course_load_scheduler.client.action.TerminateAccountAction;
 import org.dselent.course_load_scheduler.client.action.UserSearchPageAction;
+import org.dselent.course_load_scheduler.client.action.LoginNavigationAction;
 import org.dselent.course_load_scheduler.client.event.TerminateAccountEvent;
 import org.dselent.course_load_scheduler.client.event.UserDetailsPageEvent;
 import org.dselent.course_load_scheduler.client.event.UserSearchPageEvent;
+import org.dselent.course_load_scheduler.client.event.LoginNavigationEvent;
+import org.dselent.course_load_scheduler.client.gin.Injector;
 import org.dselent.course_load_scheduler.client.event.ReceiveTerminatedAccountEvent;
 import org.dselent.course_load_scheduler.client.presenter.IndexPresenter;
 import org.dselent.course_load_scheduler.client.presenter.UserDetailsPresenter;
 import com.google.gwt.user.client.ui.HasWidgets;
+import com.google.gwt.user.client.Window;
 
 public class UserDetailsPresenterImpl extends BasePresenterImpl implements UserDetailsPresenter{
 	
@@ -123,6 +127,9 @@ public class UserDetailsPresenterImpl extends BasePresenterImpl implements UserD
 			parentPresenter.showLoadScreen();
 			
 			String userId = view.getUserIdBox().getText();
+			
+			fireTerminateAccountEvent(userId);
+			
 			//String password = view.getPasswordTextBox().getText();
 			
 			/*boolean validUserName = true;
@@ -163,7 +170,7 @@ public class UserDetailsPresenterImpl extends BasePresenterImpl implements UserD
 			
 			//Since the user information will be supplied from the server, this shouldn't need a case for
 			// invalid input, but it might be a good idea to implement one anyway.
-			fireTerminateAccountEvent(userId);
+			
 		}
 	}
 	
@@ -181,7 +188,15 @@ public class UserDetailsPresenterImpl extends BasePresenterImpl implements UserD
 		view.getTerminateAccountButton().setEnabled(true);
 		accountDeletionInProgress = false;
 		view.showErrorMessages("Account deletion successful.");
-		backToSearch();
+		GlobalData globalData = Injector.INSTANCE.getGlobalData();
+		if(globalData.getUserInfo().getUsersId() == Integer.parseInt(view.getUserIdBox().getText())) {
+			LoginNavigationAction lna = new LoginNavigationAction();
+			LoginNavigationEvent lne = new LoginNavigationEvent(lna);
+			eventBus.fireEvent(lne);
+		}else {
+			backToSearch();
+		}
+		
 	}
 	
 	@Override
@@ -196,10 +211,13 @@ public class UserDetailsPresenterImpl extends BasePresenterImpl implements UserD
 		view.getFirstNameBox().setText(userInfo.getUsersFirstName());
 		view.getLastNameBox().setText(userInfo.getUsersLastName());
 		view.getEmailBox().setText(userInfo.getUsersEmail());
-		view.getAccountStateBox().setText(userInfo.getUsersAccountState());
+		view.getUserRoleBox().setText(userInfo.getUserRolesRoleName());
 		
-		//Temporary; placeholder until role can be retrieved from server/other model
-		//view.getUserRoleBox().setText(userInfo.getUserRolesRoleName());
-		view.getUserRoleBox().setText("Unknown.");
+		if(Integer.parseInt(userInfo.getUsersAccountState()) == 1) {
+			view.getAccountStateBox().setText("active");
+		}else {
+			view.getAccountStateBox().setText("inactive");
+		}
+		
 	}
 }

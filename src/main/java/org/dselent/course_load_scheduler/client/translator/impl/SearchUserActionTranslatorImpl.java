@@ -1,7 +1,7 @@
 package org.dselent.course_load_scheduler.client.translator.impl;
 
 import org.dselent.course_load_scheduler.client.action.SearchUserAction;
-import org.dselent.course_load_scheduler.client.send.jsonkeys.SendRegisterKeys;
+import org.dselent.course_load_scheduler.client.send.jsonkeys.SendSearchUserKeys;
 import org.dselent.course_load_scheduler.client.action.CreateUserAction;
 import org.dselent.course_load_scheduler.client.action.ReceiveCreatedUserAction;
 import org.dselent.course_load_scheduler.client.action.ReceiveUserSearchResultsAction;
@@ -23,13 +23,13 @@ public class SearchUserActionTranslatorImpl implements ActionTranslator<SearchUs
 	@Override
 	public JSONObject translateToJson(SearchUserAction action) {
 		JSONObject jsonObject = new JSONObject();
-		
+		JSONHelper.putStringValue(jsonObject, JSONHelper.convertKeyName(SendSearchUserKeys.QUERY), action.getQuery());
 		/*JSONHelper.putStringValue(jsonObject, JSONHelper.convertKeyName(SendRegisterKeys.WPI_ID), "");
 		JSONHelper.putStringValue(jsonObject, JSONHelper.convertKeyName(SendRegisterKeys.USER_NAME), "");
 		JSONHelper.putStringValue(jsonObject, JSONHelper.convertKeyName(SendRegisterKeys.FIRST_NAME), "");
 		JSONHelper.putStringValue(jsonObject, JSONHelper.convertKeyName(SendRegisterKeys.LAST_NAME), "");
 		JSONHelper.putStringValue(jsonObject, JSONHelper.convertKeyName(SendRegisterKeys.EMAIL), "");*/
-		switch(action.getSearchBy()) {
+		/*switch(action.getSearchBy()) {
 		case 0:
 			JSONHelper.putStringValue(jsonObject, JSONHelper.convertKeyName(SendRegisterKeys.WPI_ID), action.getQuery());
 			break;
@@ -45,7 +45,7 @@ public class SearchUserActionTranslatorImpl implements ActionTranslator<SearchUs
 		case 4:
 			JSONHelper.putStringValue(jsonObject, JSONHelper.convertKeyName(SendRegisterKeys.EMAIL), action.getQuery());
 			break;
-		}		
+		}*/	
 		
 		return jsonObject;
 	}
@@ -65,8 +65,9 @@ public class SearchUserActionTranslatorImpl implements ActionTranslator<SearchUs
 			String firstName = JSONHelper.getStringValue(jsonObject.isArray().get(i).isObject(), JSONHelper.convertKeyName(ReceiveUserSearchResultsKeys.USERS_FIRST_NAME));
 			String lastName = JSONHelper.getStringValue(jsonObject.isArray().get(i).isObject(), JSONHelper.convertKeyName(ReceiveUserSearchResultsKeys.USERS_LAST_NAME));
 			String email = JSONHelper.getStringValue(jsonObject.isArray().get(i).isObject(), JSONHelper.convertKeyName(ReceiveUserSearchResultsKeys.USERS_EMAIL));
-			//String userState = JSONHelper.getStringValue(jsonObject.isArray().get(i).isObject(), JSONHelper.convertKeyName(ReceiveUserSearchResultsKeys.USERS_ACCOUNT_STATE));
+			String userState = JSONHelper.getStringValue(jsonObject.isArray().get(i).isObject(), JSONHelper.convertKeyName(ReceiveUserSearchResultsKeys.USERS_ACCOUNT_STATE));
 			Integer roleId = JSONHelper.getIntValue(jsonObject.isArray().get(i).isObject(), JSONHelper.convertKeyName(ReceiveUserSearchResultsKeys.USER_ROLES_ID));
+			String roleName = JSONHelper.getStringValue(jsonObject.isArray().get(i).isObject(), JSONHelper.convertKeyName(ReceiveUserSearchResultsKeys.USER_ROLES_ROLE_NAME));
 			/*System.out.println("Role ID: " + roleId.toString());*/
 			// TODO look into time conversion more
 			// put into JSONHelper?
@@ -80,10 +81,10 @@ public class SearchUserActionTranslatorImpl implements ActionTranslator<SearchUs
 			userInfo.setUsersFirstName(firstName);
 			userInfo.setUsersLastName(lastName);
 			userInfo.setUsersEmail(email);
-			//user.setUserState(userState);
-			userInfo.setUsersAccountState("1");
+			userInfo.setUsersAccountState(userState);
 			//user.setDeleted(deleted); //Commented out while the response returns null.
 			userInfo.setUserRolesId(roleId);
+			userInfo.setUserRolesRoleName(roleName);
 			//Temporary
 			userInfo.setUsersCreatedAt(new Date());
 			userInfo.setUsersUpdatedAt(new Date());

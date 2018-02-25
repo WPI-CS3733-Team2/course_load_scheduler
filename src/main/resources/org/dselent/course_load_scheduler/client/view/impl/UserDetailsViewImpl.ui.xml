@@ -27,7 +27,7 @@
 				</g:row>
 				<g:row>
 					<g:customCell>
-						<g:Label text="Role ID: " ui:field="userRoleLabel" horizontalAlignment="ALIGN_RIGHT"/>
+						<g:Label text="Role:" ui:field="userRoleLabel" horizontalAlignment="ALIGN_RIGHT"/>
 					</g:customCell>
 					<g:customCell>
 						<g:TextBox ui:field="userRoleBox" readOnly="true"/>
