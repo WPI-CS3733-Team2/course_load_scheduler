@@ -6,6 +6,7 @@ import org.dselent.course_load_scheduler.client.event.InvalidSubmitCourseEvent;
 import org.dselent.course_load_scheduler.client.event.InvalidSubmitRequestEvent;
 import org.dselent.course_load_scheduler.client.event.ModifyCourseEvent;
 import org.dselent.course_load_scheduler.client.event.ReceiveAccountDetailsEvent;
+import org.dselent.course_load_scheduler.client.event.ReceiveChangePasswordEvent;
 import org.dselent.course_load_scheduler.client.event.ReceiveChangeRequestStateEvent;
 import org.dselent.course_load_scheduler.client.event.ReceiveCreateScheduleNavigationEvent;
 import org.dselent.course_load_scheduler.client.event.ReceiveFacultyCourseEvent;
@@ -76,7 +77,7 @@ public abstract class EventHandlerAdapter implements InvalidLoginEventHandler, S
 		FacultySectionEventHandler, ReceiveFacultyCourseNavigationEventHandler, ReceiveViewScheduleNavigationEventHandler,
 		ReceiveScheduleSpecificsEventHandler, ReceiveCreateScheduleNavigationEventHandler, ReceiveSelectFacultyEventHandler,
 		ReceiveTerminatedAccountEventHandler, InvalidEventHandler, SendAccountDetailsEventHandler, ReceiveAccountDetailsEventHandler,
-		InvalidAccountDetailsEventHandler{
+		InvalidAccountDetailsEventHandler, ReceiveChangePasswordEventHandler{
 
 
 
@@ -169,6 +170,9 @@ public abstract class EventHandlerAdapter implements InvalidLoginEventHandler, S
 	
 	@Override
 	public void onReceiveAccountDetails(ReceiveAccountDetailsEvent evt) {}
+	
+	@Override
+	public void onReceiveChangePassword(ReceiveChangePasswordEvent evt) {}
 	
 	@Override
 	public void onInvalidAccountDetails(InvalidAccountDetailsEvent evt) {}

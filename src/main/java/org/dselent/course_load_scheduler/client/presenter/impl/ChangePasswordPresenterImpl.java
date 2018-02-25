@@ -7,6 +7,7 @@ import org.dselent.course_load_scheduler.client.action.InvalidChangePasswordActi
 import org.dselent.course_load_scheduler.client.action.SendChangePasswordAction;
 import org.dselent.course_load_scheduler.client.errorstring.InvalidChangePasswordStrings;
 import org.dselent.course_load_scheduler.client.event.InvalidChangePasswordEvent;
+import org.dselent.course_load_scheduler.client.event.ReceiveChangePasswordEvent;
 import org.dselent.course_load_scheduler.client.event.SendChangePasswordEvent;
 import org.dselent.course_load_scheduler.client.exceptions.EmptyStringException;
 import org.dselent.course_load_scheduler.client.presenter.AccountDetailsPresenter;
@@ -14,6 +15,7 @@ import org.dselent.course_load_scheduler.client.presenter.ChangePasswordPresente
 import org.dselent.course_load_scheduler.client.view.ChangePasswordView;
 
 import com.google.gwt.event.shared.HandlerRegistration;
+import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.ui.HasWidgets;
 import com.google.inject.Inject;
 
@@ -44,6 +46,10 @@ public class ChangePasswordPresenterImpl extends BasePresenterImpl implements Ch
 		HandlerRegistration registration1;
 		registration1 = eventBus.addHandler(InvalidChangePasswordEvent.TYPE, this);
 		eventBusRegistration.put(InvalidChangePasswordEvent.TYPE, registration1);
+		
+		HandlerRegistration registration2;
+		registration2 = eventBus.addHandler(ReceiveChangePasswordEvent.TYPE, this);
+		eventBusRegistration.put(ReceiveChangePasswordEvent.TYPE, registration2);
 	}
 	
 	@Override
@@ -183,6 +189,7 @@ public class ChangePasswordPresenterImpl extends BasePresenterImpl implements Ch
 	}
 	
 	// 3. onInvalidChangePassword
+	@Override
 	public void onInvalidChangePassword(InvalidChangePasswordEvent evt)
 	{
 		parentPresenter.hideLoadScreen();
@@ -191,5 +198,15 @@ public class ChangePasswordPresenterImpl extends BasePresenterImpl implements Ch
 		
 		InvalidChangePasswordAction icpa = evt.getAction();
 		view.showErrorMessages(icpa.toString());
+	}
+	
+	@Override
+	public void onReceiveChangePassword(ReceiveChangePasswordEvent evt)
+	{
+		parentPresenter.hideLoadScreen();
+		view.getConfirmChangePasswordButton().setEnabled(true);
+		confirmChangePasswordInProgress = false;
+		
+		Window.alert("Password successfully changed");
 	}
 }
