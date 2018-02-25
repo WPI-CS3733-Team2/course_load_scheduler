@@ -74,6 +74,7 @@ public class FacultyCourseMappingPresenterImpl extends BasePresenterImpl impleme
 	public void onReceiveFacultyCourseNavigation(ReceiveFacultyCourseNavigationEvent evt) {
 		List<FacultyCourse> facultyCourseList = evt.getAction().getModels();
 		this.fillCellTable(facultyCourseList);
+		parentPresenter.hideLoadScreen();
 		this.go(parentPresenter.getView().getViewRootPanel());
 	}
 }
