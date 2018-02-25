@@ -1,14 +1,16 @@
 package org.dselent.course_load_scheduler.client.presenter.impl;
 
-import java.util.Arrays;
+import java.util.ArrayList;
 import java.util.List;
 
 import org.dselent.course_load_scheduler.client.action.ConfirmSchedulePageAction;
 import org.dselent.course_load_scheduler.client.event.ConfirmSchedulePageEvent;
-import org.dselent.course_load_scheduler.client.event.CreateScheduleSelectFacultyEvent;
+import org.dselent.course_load_scheduler.client.event.ReceiveSelectFacultyEvent;
 import org.dselent.course_load_scheduler.client.model.Course;
+import org.dselent.course_load_scheduler.client.model.User;
 import org.dselent.course_load_scheduler.client.presenter.CreateScheduleAddFacultyPresenter;
 import org.dselent.course_load_scheduler.client.presenter.IndexPresenter;
+import org.dselent.course_load_scheduler.client.utils.Pair;
 import org.dselent.course_load_scheduler.client.view.CreateScheduleAddFacultyView;
 
 import com.google.gwt.event.shared.HandlerRegistration;
@@ -20,7 +22,8 @@ public class CreateScheduleAddFacultyPresenterImpl extends BasePresenterImpl imp
 {
 	private IndexPresenter parentPresenter;
 	private CreateScheduleAddFacultyView view;
-	private List<Course> courses;
+	private List<Course> courses = new ArrayList<Course>();
+	List<Pair<User, Integer>> pairs = new ArrayList<Pair<User, Integer>>();
 
 	@Inject
 	public CreateScheduleAddFacultyPresenterImpl(IndexPresenter parentPresenter, CreateScheduleAddFacultyView view)
@@ -28,8 +31,6 @@ public class CreateScheduleAddFacultyPresenterImpl extends BasePresenterImpl imp
 		this.view = view;
 		this.parentPresenter = parentPresenter;
 		view.setPresenter(this);
-		List<String> names = Arrays.asList("Faculty1", "Faculty2", "Faculty3");
-		view.addFaculty(names);
 	}
 	
 	@Override
@@ -43,8 +44,8 @@ public class CreateScheduleAddFacultyPresenterImpl extends BasePresenterImpl imp
 	{
 		HandlerRegistration registration;
 		
-		registration = eventBus.addHandler(CreateScheduleSelectFacultyEvent.TYPE, this);
-		eventBusRegistration.put(CreateScheduleSelectFacultyEvent.TYPE, registration);
+		registration = eventBus.addHandler(ReceiveSelectFacultyEvent.TYPE, this);
+		eventBusRegistration.put(ReceiveSelectFacultyEvent.TYPE, registration);
 	}
 		
 	@Override
@@ -73,15 +74,29 @@ public class CreateScheduleAddFacultyPresenterImpl extends BasePresenterImpl imp
 	}
 	
 	public void fireConfirmSchedulePage() {
-		ConfirmSchedulePageAction csa = new ConfirmSchedulePageAction(courses,view.getCheckedFaculty());
+		Integer index = view.getCheckedFaculty();
+		Pair<User, Integer> selectedFacultyMember = pairs.get(index);
+		User user = selectedFacultyMember.getValue1();
+		Integer facultyId = selectedFacultyMember.getValue2();
+		ConfirmSchedulePageAction csa = new ConfirmSchedulePageAction(courses, user, facultyId);
 		ConfirmSchedulePageEvent cse = new ConfirmSchedulePageEvent(csa);
 		eventBus.fireEvent(cse);
 	}
 	
 	@Override
-	public void onCreateScheduleSelectFaculty(CreateScheduleSelectFacultyEvent evt) {
+	public void onReceiveSelectFaculty(ReceiveSelectFacultyEvent evt) {
+		pairs.clear();
+		courses.clear();
+		pairs = evt.getAction().getUserFacultyPairs();
+		List<String> names = new ArrayList<String>();
+		for(Pair<User, Integer> pair : pairs) {
+			User user = pair.getValue1();
+			String name = user.getFirstName() + " " + user.getLastName();
+			names.add(name);
+		}
+		view.addFaculty(names);
+		courses = evt.getAction().getCourseList();
 		this.go(parentPresenter.getView().getViewRootPanel());
-		this.courses = evt.getAction().getCourses();
 	}
 
 }

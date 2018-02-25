@@ -5,13 +5,16 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import org.dselent.course_load_scheduler.client.action.CreateScheduleSelectCoursesAction;
 import org.dselent.course_load_scheduler.client.action.CreateScheduleSelectFacultyAction;
 import org.dselent.course_load_scheduler.client.event.CreateScheduleSelectCoursesEvent;
 import org.dselent.course_load_scheduler.client.event.CreateScheduleSelectFacultyEvent;
 import org.dselent.course_load_scheduler.client.model.Calendar;
 import org.dselent.course_load_scheduler.client.model.Course;
+import org.dselent.course_load_scheduler.client.model.Section;
 import org.dselent.course_load_scheduler.client.presenter.CreateScheduleVisualPresenter;
 import org.dselent.course_load_scheduler.client.presenter.IndexPresenter;
+import org.dselent.course_load_scheduler.client.utils.Pair;
 import org.dselent.course_load_scheduler.client.view.CreateScheduleVisualView;
 
 import com.google.gwt.event.shared.HandlerRegistration;
@@ -23,8 +26,9 @@ public class CreateScheduleVisualPresenterImpl extends BasePresenterImpl impleme
 { 
 	private IndexPresenter parentPresenter;
 	private CreateScheduleVisualView view;
-	private List<Calendar> calendars = new ArrayList<Calendar>();
-	private List<Course> courses;
+	private List<Course> courses = new ArrayList<Course>();
+	private List<Pair<Calendar, String>> calendarCoursePairs = new ArrayList<Pair<Calendar, String>>();
+
 
 	@Inject
 	public CreateScheduleVisualPresenterImpl(IndexPresenter parentPresenter, CreateScheduleVisualView view)
@@ -32,35 +36,6 @@ public class CreateScheduleVisualPresenterImpl extends BasePresenterImpl impleme
 		this.view = view;
 		this.parentPresenter = parentPresenter;
 		view.setPresenter(this);
-		
-		Calendar calendar1 = new Calendar();
-		calendar1.setId(1);
-		calendar1.setYear(2018);
-		calendar1.setSemester("A");
-		calendar1.setDays("MR");
-		calendar1.setStart_time("9:00");
-		calendar1.setEnd_time("10:50");
-		calendars.add(calendar1);
-		this.fillCalendar(calendar1, "Some Course You're Assigned");
-		
-		Calendar calendar2 = new Calendar();
-		calendar2.setId(1);
-		calendar2.setYear(2018);
-		calendar2.setSemester("B");
-		calendar2.setDays("WTF");
-		calendar2.setStart_time("9:00");
-		calendar2.setEnd_time("10:50");
-		calendars.add(calendar2);
-		
-		Calendar calendar3 = new Calendar();
-		calendar3.setId(1);
-		calendar3.setYear(2018);
-		calendar3.setSemester("C");
-		calendar3.setDays("R");
-		calendar3.setStart_time("9:00");
-		calendar3.setEnd_time("10:50");
-		calendars.add(calendar3);
-	
 	}
 	
 	@Override
@@ -206,7 +181,6 @@ public class CreateScheduleVisualPresenterImpl extends BasePresenterImpl impleme
 		view.clearGrid();
 		
 		int tabIndex = view.getCalendarTabs().getSelectedTab();
-		List<Calendar> thisSemester = new ArrayList<Calendar>();
 		
 		Map<String, Integer> tabMap = new HashMap<String,Integer>();
 		tabMap.put("A", 0);
@@ -216,27 +190,38 @@ public class CreateScheduleVisualPresenterImpl extends BasePresenterImpl impleme
 		tabMap.put("F", 4);
 		tabMap.put("S", 5);
 		
-		for (Calendar cal : calendars) {
+		for (Pair<Calendar, String> calStr : calendarCoursePairs) {
+			Calendar cal = calStr.getValue1();
+			String str = calStr.getValue2();
 			if (tabMap.get(cal.getSemester()) == tabIndex) {
-				thisSemester.add(cal);
+				fillCalendar(cal, str);
 			}
-		}
-		for (Calendar cal : thisSemester) {
-			fillCalendar(cal, "This will be filled from the database");
 		}
 	}
 	
 	public void fireCreateScheduleSelectFaculty() {
 		CreateScheduleSelectFacultyAction cssfa = new CreateScheduleSelectFacultyAction(courses);
-		CreateScheduleSelectFacultyEvent cssfe = new CreateScheduleSelectFacultyEvent(cssfa);
+		CreateScheduleSelectFacultyEvent cssfe = new CreateScheduleSelectFacultyEvent(cssfa, parentPresenter.getView().getViewRootPanel());
 		eventBus.fireEvent(cssfe);
 	}
 	
 	@Override
 	public void onCreateScheduleSelectCourses(CreateScheduleSelectCoursesEvent evt) {
-		//List<Course> courseList = evt.getAction().getCourses();
-		courses = evt.getAction().getCourses();
-		//will get calendars from sections from courses
+		courses.clear();
+		calendarCoursePairs.clear();
+		CreateScheduleSelectCoursesAction ssa = evt.getAction(); 
+		List<Course> courseList = ssa.getCourses();
+		for(Course course : courseList) {
+			courses.add(course);
+			List<Section> sectionList = course.getSections();
+			for(Section section : sectionList) {
+				Calendar calendar = section.getCalendar();
+				String courseDetails = course.getCourseName() + " " + calendar.getSemester() + " " + section.getSectionName();
+				Pair<Calendar, String> calendarCourse = new Pair<Calendar, String>(calendar, courseDetails);
+				calendarCoursePairs.add(calendarCourse);
+			}
+		}
+		this.updateGrid();
 		this.go(parentPresenter.getView().getViewRootPanel());
 	}
 }

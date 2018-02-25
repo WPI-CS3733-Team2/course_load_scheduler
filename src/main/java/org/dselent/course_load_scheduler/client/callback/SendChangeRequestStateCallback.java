@@ -1,10 +1,7 @@
 package org.dselent.course_load_scheduler.client.callback;
 
 import org.dselent.course_load_scheduler.client.action.ReceiveChangeRequestStateAction;
-import org.dselent.course_load_scheduler.client.action.ReceiveLoginAction;
 import org.dselent.course_load_scheduler.client.event.ReceiveChangeRequestStateEvent;
-import org.dselent.course_load_scheduler.client.event.ReceiveLoginEvent;
-import org.dselent.course_load_scheduler.client.translator.impl.LoginActionTranslatorImpl;
 import org.dselent.course_load_scheduler.client.translator.impl.SendChangeRequestStateActionTranslatorImpl;
 import org.dselent.course_load_scheduler.client.utils.JSONHelper;
 

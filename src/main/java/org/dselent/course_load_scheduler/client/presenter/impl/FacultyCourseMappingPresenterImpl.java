@@ -1,10 +1,7 @@
 package org.dselent.course_load_scheduler.client.presenter.impl;
 
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
-import org.dselent.course_load_scheduler.client.event.FacultyCourseNavigationEvent;
 import org.dselent.course_load_scheduler.client.event.ReceiveFacultyCourseNavigationEvent;
 import org.dselent.course_load_scheduler.client.model.FacultyCourse;
 import org.dselent.course_load_scheduler.client.presenter.FacultyCourseMappingPresenter;

@@ -1,6 +1,6 @@
 package org.dselent.course_load_scheduler.client.send.jsonkeys;
 
-public enum SendFacultyCourseNavigationKeys
+public enum SendGenericKeys
 {
 	TEST;
 }

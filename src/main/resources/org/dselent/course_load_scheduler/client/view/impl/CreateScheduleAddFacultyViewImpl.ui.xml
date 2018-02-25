@@ -8,15 +8,18 @@
 	</ui:style>
 	<g:HTMLPanel>
 		<g:VerticalPanel ui:field="verticalPanel" width="100%">
+		<g:ScrollPanel ui:field="scrollPanel" width="100%" height="500px">
+		<g:VerticalPanel ui:field="innerVerticalPanel" width="100%"> 
 			<g:Cell width="100%">
 				<g:Label text="Add a Faculty Member to Schedule" ui:field="facultyLabel" horizontalAlignment="ALIGN_CENTER"/>
 			</g:Cell>
 		</g:VerticalPanel>
+		</g:ScrollPanel>
 		<g:HorizontalPanel width="100%">
 				<g:Cell horizontalAlignment="ALIGN_RIGHT">
 					<g:Button ui:field="nextPageButton" text="Next"/>
 				</g:Cell>
 			</g:HorizontalPanel>
-	
+	</g:VerticalPanel>
 	</g:HTMLPanel>
 </ui:UiBinder> 

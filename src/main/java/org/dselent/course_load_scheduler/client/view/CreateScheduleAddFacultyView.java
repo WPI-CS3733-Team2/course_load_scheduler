@@ -7,10 +7,15 @@ import org.dselent.course_load_scheduler.client.presenter.CreateScheduleAddFacul
 
 import com.google.gwt.user.client.ui.Button;
 import com.google.gwt.user.client.ui.Label;
+import com.google.gwt.user.client.ui.ScrollPanel;
 import com.google.gwt.user.client.ui.VerticalPanel;
 
 public interface CreateScheduleAddFacultyView extends BaseView<CreateScheduleAddFacultyPresenter>
 {
+	VerticalPanel getInnerVerticalPanel();
+	void setInnerVerticalPanel(VerticalPanel innerVerticalPanel);
+	ScrollPanel getScrollPanel();
+	void setScrollPanel(ScrollPanel scrollPanel);
 	VerticalPanel getVerticalPanel();
 	void setVerticalPanel(VerticalPanel verticalPanel);
 	Label getFacultyLabel();
@@ -18,6 +23,6 @@ public interface CreateScheduleAddFacultyView extends BaseView<CreateScheduleAdd
 	Button getNextPageButton();
 	void setNextPageButton(Button nextPageButton);
 	void addFaculty(List<String> names);
-	String getCheckedFaculty();
+	Integer getCheckedFaculty();
 	void showErrorMessages(String errorMessages);
 }

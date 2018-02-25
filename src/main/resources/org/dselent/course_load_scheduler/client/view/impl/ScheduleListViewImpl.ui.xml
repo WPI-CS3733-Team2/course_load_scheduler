@@ -5,8 +5,10 @@
 
 	</ui:style>
 	<g:VerticalPanel ui:field="verticalPanel">
-		<g:ScrollPanel>
+		<g:ScrollPanel ui:field="scrollPanel" width="100%" height="500px">
+		<g:VerticalPanel ui:field="innerVerticalPanel" width="100%"> 
 			<c:CellTable ui:field="scheduleTable" />
+		</g:VerticalPanel>
 		</g:ScrollPanel>
 	</g:VerticalPanel>
 </ui:UiBinder> 

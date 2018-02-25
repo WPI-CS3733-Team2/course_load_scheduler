@@ -19,19 +19,13 @@ public class CreateScheduleSelectCoursesEvent extends GwtEvent<CreateScheduleSel
 	{
 		return action;
 	}
-	
-	/*
-	 * 
-	 */
+
 	@Override
 	public Type<CreateScheduleSelectCoursesEventHandler> getAssociatedType()
 	{
 		return TYPE;
 	}
 
-	/*
-	 * 
-	 */
 	@Override
 	protected void dispatch(CreateScheduleSelectCoursesEventHandler handler)
 	{

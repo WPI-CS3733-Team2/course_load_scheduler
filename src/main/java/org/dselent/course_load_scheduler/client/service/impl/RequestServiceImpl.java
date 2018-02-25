@@ -14,7 +14,6 @@ import org.dselent.course_load_scheduler.client.translator.impl.SendChangeReques
 
 import com.google.gwt.event.shared.HandlerRegistration;
 import com.google.gwt.json.client.JSONObject;
-import com.google.gwt.user.client.Window;
 
 public class RequestServiceImpl extends BaseServiceImpl implements RequestService
 {
