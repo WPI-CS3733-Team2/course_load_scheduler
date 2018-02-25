@@ -18,7 +18,6 @@ import org.dselent.course_load_scheduler.client.event.SendChangeRequestStateEven
 import org.dselent.course_load_scheduler.client.event.ReceiveLoginEvent;
 import org.dselent.course_load_scheduler.client.event.SendLoginEvent;
 import org.dselent.course_load_scheduler.client.event.TerminateAccountEvent;
-import org.dselent.course_load_scheduler.client.event.TriggerChangePasswordWindowEvent;
 import org.dselent.course_load_scheduler.client.event.SearchUserEvent;
 import org.dselent.course_load_scheduler.client.event.CreateUserEvent;
 import org.dselent.course_load_scheduler.client.event.FacultyCourseEvent;
@@ -63,7 +62,7 @@ import org.dselent.course_load_scheduler.client.event.InvalidEvent;
  */
 public abstract class EventHandlerAdapter implements InvalidLoginEventHandler, SendLoginEventHandler,
 		SearchUserEventHandler, CreateUserEventHandler, TerminateAccountEventHandler, CreateScheduleEventHandler,
-		InvalidChangePasswordEventHandler, SendChangePasswordEventHandler, TriggerChangePasswordWindowEventHandler,
+		InvalidChangePasswordEventHandler, SendChangePasswordEventHandler,
 		ModifyCourseEventHandler, SearchCourseEventHandler, AdminCourseEventHandler, FacultyCourseEventHandler,
 		InvalidAddSectionEventHandler, InvalidSubmitCourseEventHandler, UserSearchPageEventHandler,
 		UserCreatePageEventHandler, UserDetailsPageEventHandler, ConfirmSchedulePageEventHandler,
@@ -98,9 +97,6 @@ public abstract class EventHandlerAdapter implements InvalidLoginEventHandler, S
 	
 	@Override
 	public void onCreateSchedule(CreateScheduleEvent evt) {}
-	
-	@Override
-	public void onTriggerChangePasswordWindow(TriggerChangePasswordWindowEvent evt) {}
 	
 	@Override
 	public void onSendChangePassword(SendChangePasswordEvent evt){}
