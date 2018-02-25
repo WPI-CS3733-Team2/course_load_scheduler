@@ -40,7 +40,7 @@ public class ChangePasswordCallback extends Callback<JSONValue>
 			sb.append("\n");
 		}
 		
-		InvalidChangePasswordAction icpa = new InvalidChangePasswordAction(sb.toString());
+		InvalidChangePasswordAction icpa = new InvalidChangePasswordAction(caught.getMessage()/*sb.toString()*/);
 		InvalidChangePasswordEvent icpe = new InvalidChangePasswordEvent(icpa);
 		eventBus.fireEvent(icpe);
 	}
