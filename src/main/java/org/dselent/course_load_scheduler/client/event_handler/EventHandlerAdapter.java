@@ -23,6 +23,7 @@ import org.dselent.course_load_scheduler.client.event.SendLoginEvent;
 import org.dselent.course_load_scheduler.client.event.TerminateAccountEvent;
 import org.dselent.course_load_scheduler.client.event.SearchUserEvent;
 import org.dselent.course_load_scheduler.client.event.CreateUserEvent;
+import org.dselent.course_load_scheduler.client.event.FacultyCalendarEvent;
 import org.dselent.course_load_scheduler.client.event.FacultyCourseEvent;
 import org.dselent.course_load_scheduler.client.event.FacultyCourseNavigationEvent;
 import org.dselent.course_load_scheduler.client.event.FacultySectionEvent;
@@ -32,6 +33,7 @@ import org.dselent.course_load_scheduler.client.event.InvalidAddSectionEvent;
 import org.dselent.course_load_scheduler.client.event.SendAccountDetailsEvent;
 import org.dselent.course_load_scheduler.client.event.AddCourseEvent;
 import org.dselent.course_load_scheduler.client.event.AddSectionsEvent;
+import org.dselent.course_load_scheduler.client.event.AdminCalendarEvent;
 import org.dselent.course_load_scheduler.client.event.AdminCourseEvent;
 import org.dselent.course_load_scheduler.client.event.AdminSectionEvent;
 import org.dselent.course_load_scheduler.client.event.ConfirmSchedulePageEvent;
@@ -86,7 +88,8 @@ public abstract class EventHandlerAdapter
 		SendAccountDetailsEventHandler, ReceiveAccountDetailsEventHandler, InvalidAccountDetailsEventHandler,
 		AdminSectionEventHandler, ReceiveAdminCourseEventHandler, ReceiveCreateScheduleNavigationEventHandler,
 		ReceiveSelectFacultyEventHandler, ReceiveChangePasswordEventHandler, AddCourseEventHandler,
-		ReceiveAddCourseEventHandler, AddSectionsEventHandler, InvalidAddCourseEventHandler, LoginNavigationEventHandler
+		ReceiveAddCourseEventHandler, AddSectionsEventHandler, InvalidAddCourseEventHandler, LoginNavigationEventHandler,
+		AdminCalendarEventHandler, FacultyCalendarEventHandler
 		{
 
 
@@ -257,5 +260,12 @@ public abstract class EventHandlerAdapter
 	@Override
 	public void onInvalidAddCourse(InvalidAddCourseEvent evt) {}
 
+	@Override
 	public void onLoginNavigation(LoginNavigationEvent evt) {}
+
+	@Override
+	public void onAdminCalendar(AdminCalendarEvent evt) {}
+
+	@Override
+	public void onFacultyCalendar(FacultyCalendarEvent evt) {}
 }

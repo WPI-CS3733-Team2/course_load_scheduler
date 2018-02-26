@@ -217,6 +217,7 @@ public class RequestCourseViewImpl extends BaseViewImpl<RequestCoursePresenter> 
 				return Integer.toString(object.getExpectedPopulation());
 			}
 		};
+		sectionTable.addColumn(populationColumn, "Population");
 		sectionTable.setWidth("500px");
 	}
 	

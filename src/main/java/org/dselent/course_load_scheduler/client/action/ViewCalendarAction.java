@@ -12,16 +12,16 @@ import org.dselent.course_load_scheduler.client.model.Section;
  * @author dselent
  *
  */
-public class ReceiveSectionsAction extends Action
+public class ViewCalendarAction extends Action
 {
 	private List<Section> sections;
 	
-	public ReceiveSectionsAction()
+	public ViewCalendarAction()
 	{
 		sections = new ArrayList<>();
 	}
 	
-	public ReceiveSectionsAction(List<Section> sections)
+	public ViewCalendarAction(List<Section> sections)
 	{
 		this.sections = sections;
 	}
@@ -56,9 +56,9 @@ public class ReceiveSectionsAction extends Action
 	{
 		StringBuilder sb = new StringBuilder();
 		
-		for(Section section : sections)
+		for(Section course : sections)
 		{
-			sb.append(section);
+			sb.append(course);
 			sb.append("\n");
 		}
 		

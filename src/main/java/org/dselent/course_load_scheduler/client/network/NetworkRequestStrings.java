@@ -16,6 +16,7 @@ public final class NetworkRequestStrings
 	public static String VIEW_COURSES = "course/search_course";
 	public static String DELETEUSER = "user/delete";
 	public static String VIEW_SECTIONS = "section/view_course_sections";
+	public static String VIEW_CALENDARS = "section/view_calendars";
 	//Will have to change if it isn't right
 	public static String CREATESCHEDULE = "schedule/create_schedule";
 	public static String FACULTY_COURSE_MAP = "faculty_course_map/map";

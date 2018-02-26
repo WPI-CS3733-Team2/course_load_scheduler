@@ -4,13 +4,16 @@ package org.dselent.course_load_scheduler.client.presenter.impl;
 import java.util.List;
 
 import org.dselent.course_load_scheduler.client.action.ModifyCourseAction;
+import org.dselent.course_load_scheduler.client.action.ViewCalendarAction;
 import org.dselent.course_load_scheduler.client.action.ViewSectionAction;
 import org.dselent.course_load_scheduler.client.action.InvalidSearchCourseAction;
+import org.dselent.course_load_scheduler.client.event.AdminCalendarEvent;
 import org.dselent.course_load_scheduler.client.event.AdminSectionEvent;
 import org.dselent.course_load_scheduler.client.event.ModifyCourseEvent;
 import org.dselent.course_load_scheduler.client.event.ReceiveAdminCourseEvent;
 import org.dselent.course_load_scheduler.client.event.InvalidSearchCourseEvent;
 import org.dselent.course_load_scheduler.client.exceptions.EmptyStringException;
+import org.dselent.course_load_scheduler.client.model.Calendar;
 import org.dselent.course_load_scheduler.client.model.Course;
 import org.dselent.course_load_scheduler.client.model.Section;
 import org.dselent.course_load_scheduler.client.presenter.AdminCoursePresenter;
@@ -62,6 +65,9 @@ public class AdminCoursePresenterImpl extends BasePresenterImpl implements Admin
 		
 		registration = eventBus.addHandler(AdminSectionEvent.TYPE, this);
 		eventBusRegistration.put(AdminSectionEvent.TYPE, registration);
+		
+		registration = eventBus.addHandler(AdminCalendarEvent.TYPE, this);
+		eventBusRegistration.put(AdminCalendarEvent.TYPE, registration);
 		
 		registration = eventBus.addHandler(ReceiveAdminCourseEvent.TYPE, this);
 		eventBusRegistration.put(ReceiveAdminCourseEvent.TYPE, registration);
@@ -159,14 +165,8 @@ public class AdminCoursePresenterImpl extends BasePresenterImpl implements Admin
 	}
 	
 	@Override
-	public void onReceiveAdminCourse(ReceiveAdminCourseEvent evt) {
-		parentPresenter.hideLoadScreen();
-		view.getSearchCourseButton().setEnabled(true);
-		searchInProgress = false;
-		
-		this.go(parentPresenter.getView().getViewRootPanel());
-		view.clearAllCoursesGrid();
-		
+	public void onAdminCalendar(AdminCalendarEvent evt)
+	{
 		List<Section> sections = evt.getAction().getAllSections();
 		int courseId = sections.get(0).getCourseId();
 		int currentCourse = 0;
@@ -178,6 +178,36 @@ public class AdminCoursePresenterImpl extends BasePresenterImpl implements Admin
 			}
 
 			courses.get(currentCourse).addSection(section);
+		}
+	}
+	
+	@Override
+	public void onReceiveAdminCourse(ReceiveAdminCourseEvent evt) {
+		parentPresenter.hideLoadScreen();
+		view.getSearchCourseButton().setEnabled(true);
+		searchInProgress = false;
+		
+		this.go(parentPresenter.getView().getViewRootPanel());
+		view.clearAllCoursesGrid();
+		
+		List<Calendar> calendars = evt.getAction().getAllCalendars();
+		int courseId = 0;
+		int sectionId = 0;
+		for(int i = 0; i < calendars.size(); i++) {
+			Calendar calendar = calendars.get(i);
+			List<Section> sections = courses.get(courseId).getSections();
+			if(sectionId < sections.size()) {
+				Section section = sections.get(sectionId);
+				section.setCalendar(calendar);
+				sections.set(sectionId, section);
+				courses.get(courseId).setSections(sections);
+				sectionId++;
+			}
+			else {
+				i--;
+				sectionId = 0;
+				courseId++;
+			}
 		}
 
 		for (int i = 0; i < courses.size(); i++) {
