@@ -1,7 +1,7 @@
 package org.dselent.course_load_scheduler.client.callback;
 
-import org.dselent.course_load_scheduler.client.action.ReceiveSectionsAction;
-import org.dselent.course_load_scheduler.client.event.ReceiveAdminCourseEvent;
+import org.dselent.course_load_scheduler.client.action.ViewCalendarAction;
+import org.dselent.course_load_scheduler.client.event.AdminCalendarEvent;
 import org.dselent.course_load_scheduler.client.translator.impl.SectionTranslatorImpl;
 import org.dselent.course_load_scheduler.client.utils.JSONHelper;
 
@@ -21,10 +21,10 @@ public class ViewAdminSectionCallback extends DisplayCallback<JSONValue>
 	public void onSuccess(JSONValue result)
 	{
 		JSONObject json = JSONHelper.getObjectValue(result);
-		SectionTranslatorImpl sectionTranslator = new SectionTranslatorImpl();
-		ReceiveSectionsAction action = sectionTranslator.translateToAction(json);
+		SectionTranslatorImpl facultyCourseTranslator = new SectionTranslatorImpl();
+		ViewCalendarAction action = facultyCourseTranslator.translateToAction(json);
 		
-		ReceiveAdminCourseEvent event = new ReceiveAdminCourseEvent(action, getContainer());
+		AdminCalendarEvent event = new AdminCalendarEvent(action, getContainer());
 		eventBus.fireEvent(event);
 	}
   

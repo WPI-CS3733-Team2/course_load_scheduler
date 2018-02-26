@@ -1,14 +1,14 @@
 package org.dselent.course_load_scheduler.client.event;
 
-import org.dselent.course_load_scheduler.client.action.ReceiveSectionsAction;
+import org.dselent.course_load_scheduler.client.action.ReceiveCalendarsAction;
 import org.dselent.course_load_scheduler.client.event_handler.ReceiveFacultyCourseEventHandler;
 import com.google.gwt.user.client.ui.HasWidgets;
 
-public class ReceiveFacultyCourseEvent extends DisplayEvent<ReceiveSectionsAction, ReceiveFacultyCourseEventHandler>
+public class ReceiveFacultyCourseEvent extends DisplayEvent<ReceiveCalendarsAction, ReceiveFacultyCourseEventHandler>
 {
 	public static Type<ReceiveFacultyCourseEventHandler> TYPE = new Type<ReceiveFacultyCourseEventHandler>();
 	
-	public ReceiveFacultyCourseEvent(ReceiveSectionsAction action, HasWidgets container)
+	public ReceiveFacultyCourseEvent(ReceiveCalendarsAction action, HasWidgets container)
 	{
 		super(action, container);
 	}

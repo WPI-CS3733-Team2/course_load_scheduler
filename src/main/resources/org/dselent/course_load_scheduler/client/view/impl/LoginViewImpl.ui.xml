@@ -171,17 +171,20 @@
 		margin-right:0px;
 		margin-bottom:4px;
 	}
+
+	.login-logo
+	{
+		margin-top:10px;
+		margin-left:0px;
+	}
 	
 </ui:style>
 
-<g:VerticalPanel ui:field="loginPanel" addStyleNames="{style.login-panel} {style.center}" horizontalAlignment="center">
+<g:VerticalPanel ui:field="loginPanel" addStyleNames="{style.login-panel},{style.center}" horizontalAlignment="center">
 	<g:Grid height="37px">
 		<g:row>
 			<g:customCell>
-					<g:Image ui:field="loadingImage" width="100px" height="50px" url="WEB-INF/classes/org/dselent/course_load_scheduler/client/view/images/WPI_logo.png" />
-			</g:customCell>
-			<g:customCell>
-				<g:Image width="400px" height="50px"/>
+					<g:Image ui:field="logo" width="100px" height="50px" addStyleNames="{style.login-logo}" url="src/main/resources/org/dselent/course_load_scheduler/client/view/images/logo.png" />
 			</g:customCell>
 		</g:row>
 	</g:Grid>
