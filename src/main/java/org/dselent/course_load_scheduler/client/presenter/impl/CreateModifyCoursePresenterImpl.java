@@ -8,6 +8,7 @@ import org.dselent.course_load_scheduler.client.action.AddCourseAction;
 import org.dselent.course_load_scheduler.client.action.AddSectionsAction;
 import org.dselent.course_load_scheduler.client.action.InvalidAddCourseAction;
 import org.dselent.course_load_scheduler.client.action.InvalidAddModifyCourseAction;
+import org.dselent.course_load_scheduler.client.action.RemoveSectionsAction;
 import org.dselent.course_load_scheduler.client.action.ViewCourseAction;
 import org.dselent.course_load_scheduler.client.errorstring.InvalidAddModifyCourseStrings;
 import org.dselent.course_load_scheduler.client.event.AddCourseEvent;
@@ -18,6 +19,7 @@ import org.dselent.course_load_scheduler.client.event.InvalidAddSectionEvent;
 import org.dselent.course_load_scheduler.client.event.InvalidSubmitCourseEvent;
 import org.dselent.course_load_scheduler.client.event.CreateModifyCourseEvent;
 import org.dselent.course_load_scheduler.client.event.ReceiveAddCourseEvent;
+import org.dselent.course_load_scheduler.client.event.RemoveSectionsEvent;
 import org.dselent.course_load_scheduler.client.exceptions.DuplicateCRNException;
 import org.dselent.course_load_scheduler.client.exceptions.EmptyArrayException;
 import org.dselent.course_load_scheduler.client.exceptions.EmptyStringException;
@@ -29,7 +31,6 @@ import org.dselent.course_load_scheduler.client.presenter.IndexPresenter;
 import org.dselent.course_load_scheduler.client.view.CreateModifyCourseView;
 
 import com.google.gwt.event.shared.HandlerRegistration;
-import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.ui.HasWidgets;
 import com.google.gwt.view.client.ListDataProvider;
 import com.google.gwt.view.client.SingleSelectionModel;
@@ -309,15 +310,17 @@ public class CreateModifyCoursePresenterImpl extends BasePresenterImpl implement
 			else {
 				if(addedSections.size() > 0) {
 					int courseId = course.getId();
-					for(int i = 0; i < currentSections.size(); i++) {
-						currentSections.get(i).setCourseId(courseId);
+					for(int i = 0; i < addedSections.size(); i++) {
+						addedSections.get(i).setCourseId(courseId);
 					}
-					AddSectionsAction vca = new AddSectionsAction(currentSections);
+					AddSectionsAction vca = new AddSectionsAction(addedSections);
 					AddSectionsEvent ace = new AddSectionsEvent(vca, container);
 					eventBus.fireEvent(ace);
 				}
 				if(removedSections.size() > 0) {
-					// Remove these sections
+					RemoveSectionsAction vca = new RemoveSectionsAction(removedSections);
+					RemoveSectionsEvent ace = new RemoveSectionsEvent(vca, container);
+					eventBus.fireEvent(ace);
 				}
 				// Modify Course
 				

@@ -2,11 +2,13 @@ package org.dselent.course_load_scheduler.client.service.impl;
 
 import org.dselent.course_load_scheduler.client.action.AddCourseAction;
 import org.dselent.course_load_scheduler.client.action.AddSectionsAction;
+import org.dselent.course_load_scheduler.client.action.RemoveSectionsAction;
 import org.dselent.course_load_scheduler.client.action.ViewCalendarAction;
 import org.dselent.course_load_scheduler.client.action.ViewCourseAction;
 import org.dselent.course_load_scheduler.client.action.ViewSectionAction;
 import org.dselent.course_load_scheduler.client.callback.AddCourseCallback;
 import org.dselent.course_load_scheduler.client.callback.AddSectionsCallback;
+import org.dselent.course_load_scheduler.client.callback.RemoveSectionsCallback;
 import org.dselent.course_load_scheduler.client.callback.ViewAdminCalendarCallback;
 import org.dselent.course_load_scheduler.client.callback.ViewAdminCourseCallback;
 import org.dselent.course_load_scheduler.client.callback.ViewAdminSectionCallback;
@@ -21,6 +23,7 @@ import org.dselent.course_load_scheduler.client.event.AdminSectionEvent;
 import org.dselent.course_load_scheduler.client.event.FacultyCalendarEvent;
 import org.dselent.course_load_scheduler.client.event.FacultyCourseEvent;
 import org.dselent.course_load_scheduler.client.event.FacultySectionEvent;
+import org.dselent.course_load_scheduler.client.event.RemoveSectionsEvent;
 import org.dselent.course_load_scheduler.client.network.NetworkRequest;
 import org.dselent.course_load_scheduler.client.network.NetworkRequestStrings;
 import org.dselent.course_load_scheduler.client.service.CourseService;
@@ -28,6 +31,7 @@ import org.dselent.course_load_scheduler.client.translator.impl.AddCourseTransla
 import org.dselent.course_load_scheduler.client.translator.impl.AddSectionsTranslatorImpl;
 import org.dselent.course_load_scheduler.client.translator.impl.CalendarTranslatorImpl;
 import org.dselent.course_load_scheduler.client.translator.impl.CourseTranslatorImpl;
+import org.dselent.course_load_scheduler.client.translator.impl.RemoveSectionsTranslatorImpl;
 import org.dselent.course_load_scheduler.client.translator.impl.SectionTranslatorImpl;
 
 import com.google.gwt.event.shared.HandlerRegistration;
@@ -74,6 +78,9 @@ public class CourseServiceImpl extends BaseServiceImpl implements CourseService
 		
 		registration = eventBus.addHandler(AddSectionsEvent.TYPE, this);
 		eventBusRegistration.put(AddSectionsEvent.TYPE, registration);
+		
+		registration = eventBus.addHandler(RemoveSectionsEvent.TYPE, this);
+		eventBusRegistration.put(RemoveSectionsEvent.TYPE, registration);
 	}
 	
 	@Override
@@ -167,6 +174,17 @@ public class CourseServiceImpl extends BaseServiceImpl implements CourseService
 		AddSectionsCallback addSectionsCallback = new AddSectionsCallback(eventBus, evt.getContainer());
 		
 		NetworkRequest request = new NetworkRequest(NetworkRequestStrings.ADD_SECTIONS, addSectionsCallback, json);
+		request.send();
+	}
+	
+	@Override
+	public void onRemoveSections(RemoveSectionsEvent evt) {
+		RemoveSectionsAction action = evt.getAction();
+		RemoveSectionsTranslatorImpl removeSectionsTranslator = new RemoveSectionsTranslatorImpl();
+		JSONObject json = removeSectionsTranslator.translateToJson(action);
+		RemoveSectionsCallback addSectionsCallback = new RemoveSectionsCallback(eventBus, evt.getContainer());
+		
+		NetworkRequest request = new NetworkRequest(NetworkRequestStrings.REMOVE_SECTIONS, addSectionsCallback, json);
 		request.send();
 	}
 }
