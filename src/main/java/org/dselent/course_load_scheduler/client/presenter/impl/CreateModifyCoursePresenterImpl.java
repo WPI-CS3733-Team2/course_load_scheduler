@@ -43,6 +43,8 @@ public class CreateModifyCoursePresenterImpl extends BasePresenterImpl implement
 	private IndexPresenter parentPresenter;
 
 	private List<Section> currentSections;
+	private List<Section> oldSections;
+	
 	private boolean newCourse;
 	
 	private final ListDataProvider<Section> dataProvider;
@@ -56,6 +58,7 @@ public class CreateModifyCoursePresenterImpl extends BasePresenterImpl implement
 			view.setPresenter(this);
 			
 			this.currentSections = new ArrayList<Section>();
+			this.oldSections = new ArrayList<Section>();
 			
 			dataProvider = new ListDataProvider<Section>(currentSections);
 		    dataProvider.addDataDisplay(view.getSectionTable());
@@ -119,6 +122,7 @@ public class CreateModifyCoursePresenterImpl extends BasePresenterImpl implement
 			view.setCourseNumberTextBoxText(course.getCourseNumber());
 			view.setFrequencyTextBoxText(Integer.toString(course.getFrequency()));
 			currentSections = course.getSections();
+			oldSections = course.getSections();
 			dataProvider.setList(currentSections);
 			dataProvider.refresh();
 		}
@@ -279,7 +283,49 @@ public class CreateModifyCoursePresenterImpl extends BasePresenterImpl implement
 				eventBus.fireEvent(ace);
 			}
 			else {
-				// TODO: implement modify
+				boolean foundInNew = false;
+				boolean foundInOld = false;
+				List<Section> modify = new ArrayList<>();
+				List<Section> add = new ArrayList<>();
+				List<Section> remove = new ArrayList<>();
+				for(int i = 0; i < oldSections.size(); i++) {
+					for(int j = 0; j < sections.size(); j++) {
+						if(oldSections.get(i).getId() == sections.get(j).getId()) {
+							modify.add(oldSections.get(i));
+							foundInNew = true;
+						}
+					}
+					if(!foundInNew) {
+						remove.add(oldSections.get(i));
+					}
+					foundInNew = false;
+				}
+				
+				for(int i = 0; i < sections.size(); i++) {
+					for(int j = 0; j < oldSections.size(); j++) {
+						if(sections.get(i).getId() == oldSections.get(j).getId()) {
+							foundInOld = true;
+						}
+					}
+					if(!foundInOld) {
+						add.add(sections.get(i));
+					}
+					foundInOld = false;
+				}
+				if(add.size() > 0) {
+					// Add these sections
+				}
+				if(remove.size() > 0) {
+					// Remove these sections
+				}
+				if(modify.size() > 0) {
+					// Modify these sections
+				}
+				Window.alert(add.toString());
+				Window.alert(remove.toString());
+				Window.alert(modify.toString());
+
+				// Modify the course
 			}
 		}
 		else {
