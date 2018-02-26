@@ -314,6 +314,10 @@ public class CreateModifyCoursePresenterImpl extends BasePresenterImpl implement
 					// Remove these sections
 				}
 				// Modify Course
+				
+				ViewCourseAction vca = new ViewCourseAction();
+				AdminCourseEvent ace = new AdminCourseEvent(vca, container);
+				eventBus.fireEvent(ace);
 			}
 		}
 		else {
