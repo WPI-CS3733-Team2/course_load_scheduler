@@ -2,6 +2,7 @@ package org.dselent.course_load_scheduler.client.service.impl;
 
 import org.dselent.course_load_scheduler.client.action.AddCourseAction;
 import org.dselent.course_load_scheduler.client.action.AddSectionsAction;
+import org.dselent.course_load_scheduler.client.action.GetCourseNumberAction;
 import org.dselent.course_load_scheduler.client.action.ModifyCourseAction;
 import org.dselent.course_load_scheduler.client.action.RemoveSectionsAction;
 import org.dselent.course_load_scheduler.client.action.ViewCalendarAction;
@@ -9,6 +10,7 @@ import org.dselent.course_load_scheduler.client.action.ViewCourseAction;
 import org.dselent.course_load_scheduler.client.action.ViewSectionAction;
 import org.dselent.course_load_scheduler.client.callback.AddCourseCallback;
 import org.dselent.course_load_scheduler.client.callback.AddSectionsCallback;
+import org.dselent.course_load_scheduler.client.callback.GetCourseNumberCallback;
 import org.dselent.course_load_scheduler.client.callback.ModifyCourseCallback;
 import org.dselent.course_load_scheduler.client.callback.RemoveSectionsCallback;
 import org.dselent.course_load_scheduler.client.callback.ViewAdminCalendarCallback;
@@ -25,6 +27,7 @@ import org.dselent.course_load_scheduler.client.event.AdminSectionEvent;
 import org.dselent.course_load_scheduler.client.event.FacultyCalendarEvent;
 import org.dselent.course_load_scheduler.client.event.FacultyCourseEvent;
 import org.dselent.course_load_scheduler.client.event.FacultySectionEvent;
+import org.dselent.course_load_scheduler.client.event.GetCourseNumberEvent;
 import org.dselent.course_load_scheduler.client.event.ModifyCourseEvent;
 import org.dselent.course_load_scheduler.client.event.RemoveSectionsEvent;
 import org.dselent.course_load_scheduler.client.network.NetworkRequest;
@@ -34,6 +37,7 @@ import org.dselent.course_load_scheduler.client.translator.impl.AddCourseTransla
 import org.dselent.course_load_scheduler.client.translator.impl.AddSectionsTranslatorImpl;
 import org.dselent.course_load_scheduler.client.translator.impl.CalendarTranslatorImpl;
 import org.dselent.course_load_scheduler.client.translator.impl.CourseTranslatorImpl;
+import org.dselent.course_load_scheduler.client.translator.impl.GetCourseNumberTranslatorImpl;
 import org.dselent.course_load_scheduler.client.translator.impl.ModifyCourseTranslatorImpl;
 import org.dselent.course_load_scheduler.client.translator.impl.RemoveSectionsTranslatorImpl;
 import org.dselent.course_load_scheduler.client.translator.impl.SectionTranslatorImpl;
@@ -88,6 +92,9 @@ public class CourseServiceImpl extends BaseServiceImpl implements CourseService
 		
 		registration = eventBus.addHandler(ModifyCourseEvent.TYPE, this);
 		eventBusRegistration.put(ModifyCourseEvent.TYPE, registration);
+		
+		registration = eventBus.addHandler(GetCourseNumberEvent.TYPE, this);
+		eventBusRegistration.put(GetCourseNumberEvent.TYPE, registration);
 	}
 	
 	@Override
@@ -200,9 +207,21 @@ public class CourseServiceImpl extends BaseServiceImpl implements CourseService
 		ModifyCourseAction action = evt.getAction();
 		ModifyCourseTranslatorImpl ModifyCourseTranslator = new ModifyCourseTranslatorImpl();
 		JSONObject json = ModifyCourseTranslator.translateToJson(action);
-		ModifyCourseCallback addSectionsCallback = new ModifyCourseCallback(eventBus, evt.getContainer());
+		ModifyCourseCallback modifyCourseCallback = new ModifyCourseCallback(eventBus, evt.getContainer());
 		
-		NetworkRequest request = new NetworkRequest(NetworkRequestStrings.MODIFY_COURSE, addSectionsCallback, json);
+		NetworkRequest request = new NetworkRequest(NetworkRequestStrings.MODIFY_COURSE, modifyCourseCallback, json);
 		request.send();
 	}
+	
+	@Override
+	public void onGetCourseNumber(GetCourseNumberEvent evt) {
+		GetCourseNumberAction action = evt.getAction();
+		GetCourseNumberTranslatorImpl getCourseNumberTranslator = new GetCourseNumberTranslatorImpl();
+		JSONObject json = getCourseNumberTranslator.translateToJson(action);
+		GetCourseNumberCallback getCourseNumberCallback = new GetCourseNumberCallback(eventBus, evt.getContainer());
+		
+		NetworkRequest request = new NetworkRequest(NetworkRequestStrings.GET_COURSE_NUMBERS, getCourseNumberCallback, json);
+		request.send();
+	}
+	
 }

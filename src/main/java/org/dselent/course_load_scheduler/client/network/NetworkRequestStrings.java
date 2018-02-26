@@ -12,6 +12,8 @@ public final class NetworkRequestStrings
 	public static String USERSEARCH = "user/search_user";
 	public static String ADD_COURSE = "course/create_course";
 	public static String MODIFY_COURSE = "course/modify_course";
+	public static String GET_COURSE_NUMBERS = "course/search_course_numbers";
+	public static String GET_CRNS = "section/search_crns";
 	public static String ADD_SECTIONS = "section/create_sections";
 	public static String REMOVE_SECTIONS = "section/remove_sections";
 	public static String VIEW_COURSES = "course/search_course";
