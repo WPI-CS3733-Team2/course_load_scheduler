@@ -58,6 +58,7 @@ import org.dselent.course_load_scheduler.client.event.LoginNavigationEvent;
 import org.dselent.course_load_scheduler.client.event.ReceiveScheduleSpecificsEvent;
 import org.dselent.course_load_scheduler.client.event.ReceiveSelectFacultyEvent;
 import org.dselent.course_load_scheduler.client.event.ReceiveViewScheduleNavigationEvent;
+import org.dselent.course_load_scheduler.client.event.RemoveSectionsEvent;
 import org.dselent.course_load_scheduler.client.event.ReceiveCreatedUserEvent;
 import org.dselent.course_load_scheduler.client.event.ReceiveUserSearchResultsEvent;
 import org.dselent.course_load_scheduler.client.event.ReceiveTerminatedAccountEvent;
@@ -97,7 +98,8 @@ public abstract class EventHandlerAdapter
 		AdminSectionEventHandler, ReceiveAdminCourseEventHandler, ReceiveCreateScheduleNavigationEventHandler,
 		ReceiveSelectFacultyEventHandler, ReceiveChangePasswordEventHandler, AddCourseEventHandler,
 		ReceiveAddCourseEventHandler, AddSectionsEventHandler, InvalidAddCourseEventHandler,
-		LoginNavigationEventHandler, AdminCalendarEventHandler, FacultyCalendarEventHandler, CreateModifyCourseEventHandler
+		LoginNavigationEventHandler, AdminCalendarEventHandler, FacultyCalendarEventHandler,
+		RemoveSectionsEventHandler, CreateModifyCourseEventHandler
 		{
 
 	@Override
@@ -343,6 +345,10 @@ public abstract class EventHandlerAdapter
 
 	@Override
 	public void onFacultyCalendar(FacultyCalendarEvent evt) {
+	}
+	
+	@Override
+	public void onRemoveSections(RemoveSectionsEvent evt) {
 	}
 	
 	@Override

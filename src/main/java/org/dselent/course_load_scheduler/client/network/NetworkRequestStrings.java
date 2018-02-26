@@ -11,7 +11,9 @@ public final class NetworkRequestStrings
 	public static String CHANGE_REQUEST_STATE = "request/change_request_state";
 	public static String USERSEARCH = "user/search_user";
 	public static String ADD_COURSE = "course/create_course";
+	public static String MODIFY_COURSE = "course/modify_course";
 	public static String ADD_SECTIONS = "section/create_sections";
+	public static String REMOVE_SECTIONS = "section/remove_sections";
 	public static String VIEW_COURSES = "course/search_course";
 	public static String DELETEUSER = "user/delete";
 	public static String VIEW_SECTIONS = "section/view_course_sections";

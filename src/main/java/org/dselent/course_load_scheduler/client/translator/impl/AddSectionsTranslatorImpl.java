@@ -60,7 +60,6 @@ JSONObject jsonObject = new JSONObject();
 		
 		//JSONHelper.putArrayValue(jsonObject, JSONHelper.convertKeyName(ViewSectionKeys.COURSE_IDS), obj);
 		jsonObject.put(JSONHelper.convertKeyName(AddSectionsKeys.SECTIONS), obj);
-		Window.alert(jsonObject.toString());
 		
 		return jsonObject;
 	
