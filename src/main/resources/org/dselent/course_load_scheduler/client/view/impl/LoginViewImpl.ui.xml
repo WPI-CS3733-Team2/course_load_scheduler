@@ -184,7 +184,7 @@
 	<g:Grid height="37px">
 		<g:row>
 			<g:customCell>
-					<g:Image ui:field="logo" width="100px" height="50px" addStyleNames="{style.login-logo}" url="src/main/resources/org/dselent/course_load_scheduler/client/view/images/logo.png" />
+					<g:Image ui:field="logo" width="133px" height="50px" addStyleNames="{style.login-logo}" url="logo.png" />
 			</g:customCell>
 		</g:row>
 	</g:Grid>
