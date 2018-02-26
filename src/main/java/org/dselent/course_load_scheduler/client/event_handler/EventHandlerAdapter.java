@@ -52,9 +52,7 @@ import org.dselent.course_load_scheduler.client.event.UserSearchPageEvent;
 import org.dselent.course_load_scheduler.client.event.ViewScheduleNavigationEvent;
 import org.dselent.course_load_scheduler.client.event.UserCreatePageEvent;
 import org.dselent.course_load_scheduler.client.event.UserDetailsPageEvent;
-import org.dselent.course_load_scheduler.client.event.ReceivePendingRequestListEvent;
 import org.dselent.course_load_scheduler.client.event.ReceiveRequestsDetailsEvent;
-import org.dselent.course_load_scheduler.client.event.LoadPendingRequestListEvent;
 import org.dselent.course_load_scheduler.client.event.LoginNavigationEvent;
 import org.dselent.course_load_scheduler.client.event.ReceiveScheduleSpecificsEvent;
 import org.dselent.course_load_scheduler.client.event.ReceiveSelectFacultyEvent;
@@ -85,8 +83,8 @@ public abstract class EventHandlerAdapter
 		ScheduleSpecificsEventHandler, CreateScheduleSelectCoursesEventHandler, CreateScheduleSelectFacultyEventHandler,
 		RequestCourseEventHandler, InvalidSubmitRequestEventHandler, CreateScheduleNavigationEventHandler,
 		SearchScheduleNavigationEventHandler, ViewScheduleNavigationEventHandler, FacultyCourseNavigationEventHandler,
-		RequestInboxNavigationEventHandler, ReceiveLoginEventHandler, LoadPendingRequestListEventHandler,
-		ReceivePendingRequestListEventHandler, ReceiveCreatedUserEventHandler, ReceiveUserSearchResultsEventHandler,
+		RequestInboxNavigationEventHandler, ReceiveLoginEventHandler,
+		ReceiveCreatedUserEventHandler, ReceiveUserSearchResultsEventHandler,
 		SendChangeRequestStateEventHandler, ReceiveChangeRequestStateEventHandler, ReceiveFacultyCourseEventHandler,
 		ReceiveTerminatedAccountEventHandler, FacultySectionEventHandler, ReceiveFacultyCourseNavigationEventHandler,
 		ReceiveViewScheduleNavigationEventHandler, ReceiveScheduleSpecificsEventHandler, InvalidEventHandler,
@@ -236,16 +234,9 @@ public abstract class EventHandlerAdapter
 	}
 
 	@Override
-	public void onLoadPendingRequestList(LoadPendingRequestListEvent evt) {
-	}
-
-	@Override
 	public void onReceiveCreatedUser(ReceiveCreatedUserEvent evt) {
 	}
 
-	@Override
-	public void onReceivePendingRequestList(ReceivePendingRequestListEvent evt) {
-	}
 
 	@Override
 	public void onReceiveUserSearchResults(ReceiveUserSearchResultsEvent evt) {

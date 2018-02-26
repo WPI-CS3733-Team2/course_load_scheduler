@@ -11,7 +11,6 @@ public interface RequestInboxView extends BaseView<RequestInboxPresenter>{
 	public Button getDeleteButton();
 	FlexTable getRequestListFlexTable();
 	void setDetailCourseLabel(String text);
-	void setDetailSectionLabel(String text);
 	void setDetailFacultyIdLabel(String text);
 	void setDetailRequestIdLabel(String text);
 	void setDetailMessageLabel(String text);

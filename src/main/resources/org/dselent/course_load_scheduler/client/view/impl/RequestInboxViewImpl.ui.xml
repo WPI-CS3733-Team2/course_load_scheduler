@@ -174,8 +174,6 @@
 					<g:VerticalPanel height="380px" width="758px">
 						<g:Label addStyleNames="{style.accountDetails-text}">Request: Course CS </g:Label>
 						<g:Label ui:field="detailCourseLabel" addStyleNames="{style.accountDetails-text}"> </g:Label>
-						<g:Label addStyleNames="{style.accountDetails-text}">Section: </g:Label>
-						<g:Label ui:field="detailSectionLabel" addStyleNames="{style.accountDetails-text}"> </g:Label>
 						<g:Label addStyleNames="{style.accountDetails-text}">User: </g:Label>
 						<g:Label ui:field="detailFacultyIdLabel" addStyleNames="{style.accountDetails-text}"> </g:Label>
 						<g:Label addStyleNames="{style.accountDetails-text}">Request ID: </g:Label>
