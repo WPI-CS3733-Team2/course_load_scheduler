@@ -4,9 +4,12 @@ package org.dselent.course_load_scheduler.client.presenter.impl;
 import java.util.List;
 
 import org.dselent.course_load_scheduler.client.action.ModifyCourseAction;
+import org.dselent.course_load_scheduler.client.action.ViewCourseAction;
 import org.dselent.course_load_scheduler.client.action.ViewSectionAction;
 import org.dselent.course_load_scheduler.client.action.InvalidSearchCourseAction;
+import org.dselent.course_load_scheduler.client.event.AdminCourseEvent;
 import org.dselent.course_load_scheduler.client.event.AdminSectionEvent;
+import org.dselent.course_load_scheduler.client.event.FacultyCourseEvent;
 import org.dselent.course_load_scheduler.client.event.ModifyCourseEvent;
 import org.dselent.course_load_scheduler.client.event.ReceiveAdminCourseEvent;
 import org.dselent.course_load_scheduler.client.event.InvalidSearchCourseEvent;
@@ -137,18 +140,18 @@ public class AdminCoursePresenterImpl extends BasePresenterImpl implements Admin
 	}
 	
 	private void searchCourseEventFire(String query) {
-		InvalidSearchCourseAction sca = new InvalidSearchCourseAction();
-		InvalidSearchCourseEvent sce = new InvalidSearchCourseEvent(sca);
-		eventBus.fireEvent(sce);
+		ViewCourseAction vca = new ViewCourseAction(query, null);
+		AdminCourseEvent ace = new AdminCourseEvent(vca, parentPresenter.getView().getViewRootPanel());
+		eventBus.fireEvent(ace);
 	}
 	
 	@Override
 	public void onInvalidSearchCourse(InvalidSearchCourseEvent evt) {
-		/*parentPresenter.hideLoadScreen();
+		parentPresenter.hideLoadScreen();
 		view.getSearchCourseButton().setEnabled(true);
 		searchInProgress = false;
 		
-		view.showErrorMessages("Course search to be implemented.");*/
+		view.showErrorMessages("There is no course of that name!");
 	}
 	
 	@Override
