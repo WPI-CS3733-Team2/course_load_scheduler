@@ -16,7 +16,7 @@ import org.dselent.course_load_scheduler.client.event.AdminCourseEvent;
 import org.dselent.course_load_scheduler.client.event.InvalidAddCourseEvent;
 import org.dselent.course_load_scheduler.client.event.InvalidAddSectionEvent;
 import org.dselent.course_load_scheduler.client.event.InvalidSubmitCourseEvent;
-import org.dselent.course_load_scheduler.client.event.ModifyCourseEvent;
+import org.dselent.course_load_scheduler.client.event.CreateModifyCourseEvent;
 import org.dselent.course_load_scheduler.client.event.ReceiveAddCourseEvent;
 import org.dselent.course_load_scheduler.client.exceptions.DuplicateCRNException;
 import org.dselent.course_load_scheduler.client.exceptions.EmptyArrayException;
@@ -89,8 +89,8 @@ public class CreateModifyCoursePresenterImpl extends BasePresenterImpl implement
 		registration = eventBus.addHandler(InvalidAddSectionEvent.TYPE, this);
 		eventBusRegistration.put(InvalidAddSectionEvent.TYPE, registration);
 		
-		registration = eventBus.addHandler(ModifyCourseEvent.TYPE, this);
-		eventBusRegistration.put(ModifyCourseEvent.TYPE, registration);
+		registration = eventBus.addHandler(CreateModifyCourseEvent.TYPE, this);
+		eventBusRegistration.put(CreateModifyCourseEvent.TYPE, registration);
 		
 		registration = eventBus.addHandler(AddCourseEvent.TYPE, this);
 		eventBusRegistration.put(AddCourseEvent.TYPE, registration);
@@ -111,7 +111,7 @@ public class CreateModifyCoursePresenterImpl extends BasePresenterImpl implement
 	}
 	
 	@Override
-	public void onModifyCourse(ModifyCourseEvent evt) {
+	public void onCreateModifyCourse(CreateModifyCourseEvent evt) {
 		this.go(parentPresenter.getView().getViewRootPanel());
 		parentPresenter.hideLoadScreen();
 		clearForm();
@@ -308,7 +308,13 @@ public class CreateModifyCoursePresenterImpl extends BasePresenterImpl implement
 			}
 			else {
 				if(addedSections.size() > 0) {
-					// Add these sections
+					int courseId = course.getId();
+					for(int i = 0; i < currentSections.size(); i++) {
+						currentSections.get(i).setCourseId(courseId);
+					}
+					AddSectionsAction vca = new AddSectionsAction(currentSections);
+					AddSectionsEvent ace = new AddSectionsEvent(vca, container);
+					eventBus.fireEvent(ace);
 				}
 				if(removedSections.size() > 0) {
 					// Remove these sections
@@ -342,7 +348,6 @@ public class CreateModifyCoursePresenterImpl extends BasePresenterImpl implement
 		for(int i = 0; i < currentSections.size(); i++) {
 			currentSections.get(i).setCourseId(courseId);
 		}
-		Window.alert(currentSections.toString());
 		AddSectionsAction vca = new AddSectionsAction(currentSections);
 		AddSectionsEvent ace = new AddSectionsEvent(vca, container);
 		eventBus.fireEvent(ace);

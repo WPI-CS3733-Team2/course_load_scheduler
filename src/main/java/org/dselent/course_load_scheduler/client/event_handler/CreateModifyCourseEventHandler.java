@@ -1,5 +1,5 @@
 package org.dselent.course_load_scheduler.client.event_handler;
-import org.dselent.course_load_scheduler.client.event.ModifyCourseEvent;
+import org.dselent.course_load_scheduler.client.event.CreateModifyCourseEvent;
 
 import com.google.gwt.event.shared.EventHandler;
 
@@ -11,7 +11,7 @@ import com.google.gwt.event.shared.EventHandler;
  * @author dselent
  *
  */
-public interface ModifyCourseEventHandler extends EventHandler
+public interface CreateModifyCourseEventHandler extends EventHandler
 {
-	  public void onModifyCourse(ModifyCourseEvent evt);
+	  public void onCreateModifyCourse(CreateModifyCourseEvent evt);
 }
