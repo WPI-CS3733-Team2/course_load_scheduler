@@ -120,8 +120,19 @@ public class Calendar extends Model
 	}
 	@Override
 	public String toString() {
-		return "Calendar [id=" + id + ", year=" + year + ", semester=" + semester + ", days=" + days + ", start_time="
-				+ start_time + ", end_time=" + end_time + "]";
+		String string = "";
+		string += semester;
+		string += " Term ";
+		string += year;
+		string += ", ";
+		string += days;
+		string += " from ";
+		string += start_time;
+		string += "-";
+		string += end_time;
+		return string;
+		/*return "Calendar [id=" + id + ", year=" + year + ", semester=" + semester + ", days=" + days + ", start_time="
+				+ start_time + ", end_time=" + end_time + "]";*/
 	}
 	
 	

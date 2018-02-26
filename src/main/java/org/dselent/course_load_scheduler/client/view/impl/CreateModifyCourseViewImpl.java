@@ -259,6 +259,14 @@ public class CreateModifyCourseViewImpl extends BaseViewImpl<CreateModifyCourseP
 			}
 		};
 		sectionTable.addColumn(populationColumn, "Population");
+		
+		TextColumn<Section> calendarColumn = new TextColumn<Section>() {
+			@Override
+			public String getValue(Section object) {
+				return object.getCalendar().toString();
+			}
+		};
+		sectionTable.addColumn(calendarColumn, "Calendar Info");
 	}
 
 	@UiHandler("removeSectionBtn")

@@ -3,7 +3,7 @@ package org.dselent.course_load_scheduler.client.translator.impl;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.dselent.course_load_scheduler.client.action.ReceiveSectionsAction;
+import org.dselent.course_load_scheduler.client.action.ViewCalendarAction;
 import org.dselent.course_load_scheduler.client.action.ViewSectionAction;
 import org.dselent.course_load_scheduler.client.model.Course;
 import org.dselent.course_load_scheduler.client.model.Section;
@@ -16,7 +16,7 @@ import com.google.gwt.json.client.JSONObject;
 import com.google.gwt.json.client.JSONParser;
 import com.google.gwt.json.client.JSONValue;
 
-public class SectionTranslatorImpl implements ActionTranslator<ViewSectionAction, ReceiveSectionsAction>
+public class SectionTranslatorImpl implements ActionTranslator<ViewSectionAction, ViewCalendarAction>
 {
 	@Override
 	public JSONObject translateToJson(ViewSectionAction action)
@@ -41,7 +41,7 @@ public class SectionTranslatorImpl implements ActionTranslator<ViewSectionAction
 	}
 	
 	@Override
-	public ReceiveSectionsAction translateToAction(JSONObject json)
+	public ViewCalendarAction translateToAction(JSONObject json)
 	{		
 		// null values will not have their keys sent back from the sever
 		// this will throw an exception here
@@ -78,7 +78,7 @@ public class SectionTranslatorImpl implements ActionTranslator<ViewSectionAction
 			sections.add(section);
 		}
 		// possibly use builder pattern if it is a lot of data
-		ReceiveSectionsAction action = new ReceiveSectionsAction(sections);	
+		ViewCalendarAction action = new ViewCalendarAction(sections);	
 	
 		return action;
 	}

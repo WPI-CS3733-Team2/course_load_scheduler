@@ -1,7 +1,8 @@
 package org.dselent.course_load_scheduler.client.callback;
 
-import org.dselent.course_load_scheduler.client.action.ViewCalendarAction;
-import org.dselent.course_load_scheduler.client.event.FacultyCalendarEvent;
+import org.dselent.course_load_scheduler.client.action.ReceiveCalendarsAction;
+import org.dselent.course_load_scheduler.client.event.ReceiveAdminCourseEvent;
+import org.dselent.course_load_scheduler.client.translator.impl.CalendarTranslatorImpl;
 import org.dselent.course_load_scheduler.client.translator.impl.SectionTranslatorImpl;
 import org.dselent.course_load_scheduler.client.utils.JSONHelper;
 
@@ -10,9 +11,9 @@ import com.google.gwt.json.client.JSONObject;
 import com.google.gwt.json.client.JSONValue;
 import com.google.gwt.user.client.ui.HasWidgets;
 
-public class ViewFacultySectionCallback extends DisplayCallback<JSONValue>
+public class ViewAdminCalendarCallback extends DisplayCallback<JSONValue>
 {
-	public ViewFacultySectionCallback(SimpleEventBus eventBus, HasWidgets container)
+	public ViewAdminCalendarCallback(SimpleEventBus eventBus, HasWidgets container)
 	 {
 		super(eventBus, container);
 	 }
@@ -21,10 +22,10 @@ public class ViewFacultySectionCallback extends DisplayCallback<JSONValue>
 	public void onSuccess(JSONValue result)
 	{
 		JSONObject json = JSONHelper.getObjectValue(result);
-		SectionTranslatorImpl facultyCourseTranslator = new SectionTranslatorImpl();
-		ViewCalendarAction action = facultyCourseTranslator.translateToAction(json);
+		CalendarTranslatorImpl calendarTranslator = new CalendarTranslatorImpl();
+		ReceiveCalendarsAction action = calendarTranslator.translateToAction(json);
 		
-		FacultyCalendarEvent event = new FacultyCalendarEvent(action, getContainer());
+		ReceiveAdminCourseEvent event = new ReceiveAdminCourseEvent(action, getContainer());
 		eventBus.fireEvent(event);
 	}
   

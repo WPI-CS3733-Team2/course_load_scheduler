@@ -6,12 +6,14 @@ import java.util.List;
 import org.dselent.course_load_scheduler.client.action.RequestCourseAction;
 import org.dselent.course_load_scheduler.client.action.ViewCourseAction;
 import org.dselent.course_load_scheduler.client.action.ViewSectionAction;
+import org.dselent.course_load_scheduler.client.event.FacultyCalendarEvent;
 import org.dselent.course_load_scheduler.client.event.FacultyCourseEvent;
 import org.dselent.course_load_scheduler.client.event.FacultySectionEvent;
 import org.dselent.course_load_scheduler.client.event.ReceiveFacultyCourseEvent;
 import org.dselent.course_load_scheduler.client.event.RequestCourseEvent;
 import org.dselent.course_load_scheduler.client.event.InvalidSearchCourseEvent;
 import org.dselent.course_load_scheduler.client.exceptions.EmptyStringException;
+import org.dselent.course_load_scheduler.client.model.Calendar;
 import org.dselent.course_load_scheduler.client.model.Course;
 import org.dselent.course_load_scheduler.client.model.Section;
 import org.dselent.course_load_scheduler.client.presenter.FacultyCoursePresenter;
@@ -64,6 +66,9 @@ public class FacultyCoursePresenterImpl extends BasePresenterImpl implements Fac
 		registration = eventBus.addHandler(FacultySectionEvent.TYPE, this);
 		eventBusRegistration.put(FacultySectionEvent.TYPE, registration);
 		
+		registration = eventBus.addHandler(FacultyCalendarEvent.TYPE, this);
+		eventBusRegistration.put(FacultyCalendarEvent.TYPE, registration);
+		
 		registration = eventBus.addHandler(ReceiveFacultyCourseEvent.TYPE, this);
 		eventBusRegistration.put(ReceiveFacultyCourseEvent.TYPE, registration);
 		
@@ -91,14 +96,8 @@ public class FacultyCoursePresenterImpl extends BasePresenterImpl implements Fac
 	}
 	
 	@Override
-	public void onReceiveFacultyCourse(ReceiveFacultyCourseEvent evt) {
-		parentPresenter.hideLoadScreen();
-		view.getSearchCourseButton().setEnabled(true);
-		searchInProgress = false;
-		
-		this.go(parentPresenter.getView().getViewRootPanel());
-		view.clearAllCoursesGrid();
-		
+	public void onFacultyCalendar(FacultyCalendarEvent evt)
+	{
 		List<Section> sections = evt.getAction().getAllSections();
 		int courseId = sections.get(0).getCourseId();
 		int currentCourse = 0;
@@ -108,10 +107,39 @@ public class FacultyCoursePresenterImpl extends BasePresenterImpl implements Fac
 				currentCourse++;
 				courseId = section.getCourseId();
 			}
-
 			courses.get(currentCourse).addSection(section);
 		}
-
+	}
+	
+	@Override
+	public void onReceiveFacultyCourse(ReceiveFacultyCourseEvent evt) {
+		parentPresenter.hideLoadScreen();
+		view.getSearchCourseButton().setEnabled(true);
+		searchInProgress = false;
+		
+		this.go(parentPresenter.getView().getViewRootPanel());
+		view.clearAllCoursesGrid();
+		
+		List<Calendar> calendars = evt.getAction().getAllCalendars();
+		int courseId = 0;
+		int sectionId = 0;
+		for(int i = 0; i < calendars.size(); i++) {
+			Calendar calendar = calendars.get(i);
+			List<Section> sections = courses.get(courseId).getSections();
+			if(sectionId < sections.size()) {
+				Section section = sections.get(sectionId);
+				section.setCalendar(calendar);
+				sections.set(sectionId, section);
+				courses.get(courseId).setSections(sections);
+				sectionId++;
+			}
+			else {
+				i--;
+				sectionId = 0;
+				courseId++;
+			}
+		}
+		
 		for (int i = 0; i < courses.size(); i++) {
 			if (courses.get(i).getSections().size() > 0) {
 				DecoratorPanel coursePanel = new DecoratorPanel();
