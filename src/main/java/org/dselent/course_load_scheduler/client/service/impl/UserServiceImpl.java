@@ -31,6 +31,7 @@ import org.dselent.course_load_scheduler.client.translator.impl.TerminateAccount
 
 import com.google.gwt.event.shared.HandlerRegistration;
 import com.google.gwt.json.client.JSONObject;
+import com.google.gwt.user.client.Window;
 
 public class UserServiceImpl extends BaseServiceImpl implements UserService
 {
@@ -74,9 +75,9 @@ public class UserServiceImpl extends BaseServiceImpl implements UserService
 	{
 		SendLoginAction action = evt.getAction();
 		LoginActionTranslatorImpl loginActionTranslator = new LoginActionTranslatorImpl();
+		
 		JSONObject json = loginActionTranslator.translateToJson(action);
 		SendLoginCallback loginCallback = new SendLoginCallback(eventBus, evt.getContainer());
-		
 		NetworkRequest request = new NetworkRequest(NetworkRequestStrings.LOGIN, loginCallback, json);
 		request.send();
 	}

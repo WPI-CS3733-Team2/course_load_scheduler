@@ -10,11 +10,8 @@ import org.dselent.course_load_scheduler.client.event.ReceiveAddCourseEvent;
 import org.dselent.course_load_scheduler.client.event.ReceiveAdminCourseEvent;
 import org.dselent.course_load_scheduler.client.event.ReceiveChangePasswordEvent;
 import org.dselent.course_load_scheduler.client.event.ReceiveChangeRequestStateEvent;
-<<<<<<< HEAD
 import org.dselent.course_load_scheduler.client.event.ReceiveCreateRequestEvent;
-=======
 import org.dselent.course_load_scheduler.client.event.ReceiveCreateScheduleNavigationEvent;
->>>>>>> f6e1ba439673262c7bb6987017d687b39ba50afd
 import org.dselent.course_load_scheduler.client.event.ReceiveFacultyCourseEvent;
 import org.dselent.course_load_scheduler.client.event.ReceiveFacultyCourseNavigationEvent;
 import org.dselent.course_load_scheduler.client.event.RequestCourseEvent;
@@ -93,7 +90,7 @@ public abstract class EventHandlerAdapter
 		SendAccountDetailsEventHandler, ReceiveAccountDetailsEventHandler,
 		InvalidAccountDetailsEventHandler,
 		SendRequestsDetailsEventHandler, ReceiveRequestsDetailsEventHandler, SendCreateRequestEventHandler,
-		ReceiveCreateRequestEventHandler, InvalidAccountDetailsEventHandler,
+		ReceiveCreateRequestEventHandler,
 		AdminSectionEventHandler, ReceiveAdminCourseEventHandler, ReceiveCreateScheduleNavigationEventHandler,
 		ReceiveSelectFacultyEventHandler, ReceiveChangePasswordEventHandler, AddCourseEventHandler,
 		ReceiveAddCourseEventHandler, AddSectionsEventHandler, InvalidAddCourseEventHandler, LoginNavigationEventHandler

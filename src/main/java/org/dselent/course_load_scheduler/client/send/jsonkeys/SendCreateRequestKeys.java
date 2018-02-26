@@ -5,5 +5,5 @@ public enum SendCreateRequestKeys {
 	REQUEST_TYPE,
 	COURSE_ID,
 	SECTION_ID,
-	DATA
+	DATA;
 }
