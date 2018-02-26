@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<classpath>
+ <classpath>
 	<classpathentry kind="src" path="src/main/java"/>
 	<classpathentry kind="src" path="src/main/resources"/>
 	<classpathentry kind="lib" path="war/WEB-INF/lib/gin-2.1.2.jar"/>
@@ -13,6 +13,6 @@
 	<classpathentry kind="lib" path="war/WEB-INF/lib/javax.inject.jar"/>
 	<classpathentry kind="lib" path="war/WEB-INF/lib/guice-assistedinject-3.0.jar"/>
 	<classpathentry kind="lib" path="war/WEB-INF/lib/aopalliance.jar"/>
-	<classpathentry kind="con" path="com.gwtplugins.gwt.eclipse.core.GWT_CONTAINER/GWT 2.7.0"/>
+	<classpathentry kind="con" path="com.gwtplugins.gwt.eclipse.core.GWT_CONTAINER"/>
 	<classpathentry kind="output" path="war/WEB-INF/classes"/>
 </classpath>
