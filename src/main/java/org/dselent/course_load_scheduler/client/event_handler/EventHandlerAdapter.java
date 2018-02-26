@@ -4,7 +4,7 @@ import org.dselent.course_load_scheduler.client.event.InvalidChangePasswordEvent
 import org.dselent.course_load_scheduler.client.event.InvalidLoginEvent;
 import org.dselent.course_load_scheduler.client.event.InvalidSubmitCourseEvent;
 import org.dselent.course_load_scheduler.client.event.InvalidSubmitRequestEvent;
-import org.dselent.course_load_scheduler.client.event.CreateModifyCourseEvent;
+import org.dselent.course_load_scheduler.client.event.ModifyCourseEvent;
 import org.dselent.course_load_scheduler.client.event.ReceiveAccountDetailsEvent;
 import org.dselent.course_load_scheduler.client.event.ReceiveAddCourseEvent;
 import org.dselent.course_load_scheduler.client.event.ReceiveAdminCourseEvent;
@@ -40,6 +40,7 @@ import org.dselent.course_load_scheduler.client.event.AdminCalendarEvent;
 import org.dselent.course_load_scheduler.client.event.AdminCourseEvent;
 import org.dselent.course_load_scheduler.client.event.AdminSectionEvent;
 import org.dselent.course_load_scheduler.client.event.ConfirmSchedulePageEvent;
+import org.dselent.course_load_scheduler.client.event.CreateModifyCourseEvent;
 import org.dselent.course_load_scheduler.client.event.CreateScheduleEvent;
 import org.dselent.course_load_scheduler.client.event.CreateScheduleNavigationEvent;
 import org.dselent.course_load_scheduler.client.event.CreateScheduleSelectCoursesEvent;
@@ -52,9 +53,7 @@ import org.dselent.course_load_scheduler.client.event.UserSearchPageEvent;
 import org.dselent.course_load_scheduler.client.event.ViewScheduleNavigationEvent;
 import org.dselent.course_load_scheduler.client.event.UserCreatePageEvent;
 import org.dselent.course_load_scheduler.client.event.UserDetailsPageEvent;
-import org.dselent.course_load_scheduler.client.event.ReceivePendingRequestListEvent;
 import org.dselent.course_load_scheduler.client.event.ReceiveRequestsDetailsEvent;
-import org.dselent.course_load_scheduler.client.event.LoadPendingRequestListEvent;
 import org.dselent.course_load_scheduler.client.event.LoginNavigationEvent;
 import org.dselent.course_load_scheduler.client.event.ReceiveScheduleSpecificsEvent;
 import org.dselent.course_load_scheduler.client.event.ReceiveSelectFacultyEvent;
@@ -64,6 +63,7 @@ import org.dselent.course_load_scheduler.client.event.ReceiveCreatedUserEvent;
 import org.dselent.course_load_scheduler.client.event.ReceiveUserSearchResultsEvent;
 import org.dselent.course_load_scheduler.client.event.ReceiveTerminatedAccountEvent;
 import org.dselent.course_load_scheduler.client.event.InvalidEvent;
+import org.dselent.course_load_scheduler.client.event.ModifyCourseEvent;
 
 /**
  * Adapter class for convenience All classes that need to implement an event
@@ -75,28 +75,32 @@ import org.dselent.course_load_scheduler.client.event.InvalidEvent;
  * 
  * 
  */
-public abstract class EventHandlerAdapter implements InvalidLoginEventHandler, SendLoginEventHandler,
-		SearchUserEventHandler, CreateUserEventHandler, TerminateAccountEventHandler, CreateScheduleEventHandler,
-		InvalidChangePasswordEventHandler, SendChangePasswordEventHandler, CreateModifyCourseEventHandler,
-		InvalidSearchCourseEventHandler, AdminCourseEventHandler, FacultyCourseEventHandler,
-		InvalidAddSectionEventHandler, InvalidSubmitCourseEventHandler, UserSearchPageEventHandler,
-		UserCreatePageEventHandler, UserDetailsPageEventHandler, ConfirmSchedulePageEventHandler,
-		SearchScheduleEventHandler, ScheduleSpecificsEventHandler, CreateScheduleSelectCoursesEventHandler,
-		CreateScheduleSelectFacultyEventHandler, RequestCourseEventHandler, InvalidSubmitRequestEventHandler,
-		CreateScheduleNavigationEventHandler, SearchScheduleNavigationEventHandler, ViewScheduleNavigationEventHandler,
-		FacultyCourseNavigationEventHandler, RequestInboxNavigationEventHandler, ReceiveLoginEventHandler,
-		LoadPendingRequestListEventHandler, ReceivePendingRequestListEventHandler, ReceiveCreatedUserEventHandler,
-		ReceiveUserSearchResultsEventHandler, SendChangeRequestStateEventHandler, ReceiveChangeRequestStateEventHandler,
-		ReceiveFacultyCourseEventHandler, ReceiveTerminatedAccountEventHandler, FacultySectionEventHandler,
-		ReceiveFacultyCourseNavigationEventHandler, ReceiveViewScheduleNavigationEventHandler,
-		ReceiveScheduleSpecificsEventHandler, InvalidEventHandler, SendAccountDetailsEventHandler,
-		ReceiveAccountDetailsEventHandler, InvalidAccountDetailsEventHandler, SendRequestsDetailsEventHandler,
-		ReceiveRequestsDetailsEventHandler, SendCreateRequestEventHandler, ReceiveCreateRequestEventHandler,
+
+public abstract class EventHandlerAdapter
+		implements InvalidLoginEventHandler, SendLoginEventHandler, SearchUserEventHandler, CreateUserEventHandler,
+		TerminateAccountEventHandler, CreateScheduleEventHandler, InvalidChangePasswordEventHandler,
+		SendChangePasswordEventHandler, ModifyCourseEventHandler, InvalidSearchCourseEventHandler,
+		AdminCourseEventHandler, FacultyCourseEventHandler, InvalidAddSectionEventHandler,
+		InvalidSubmitCourseEventHandler, UserSearchPageEventHandler, UserCreatePageEventHandler,
+		UserDetailsPageEventHandler, ConfirmSchedulePageEventHandler, SearchScheduleEventHandler,
+		ScheduleSpecificsEventHandler, CreateScheduleSelectCoursesEventHandler, CreateScheduleSelectFacultyEventHandler,
+		RequestCourseEventHandler, InvalidSubmitRequestEventHandler, CreateScheduleNavigationEventHandler,
+		SearchScheduleNavigationEventHandler, ViewScheduleNavigationEventHandler, FacultyCourseNavigationEventHandler,
+		RequestInboxNavigationEventHandler, ReceiveLoginEventHandler,
+		ReceiveCreatedUserEventHandler, ReceiveUserSearchResultsEventHandler,
+		SendChangeRequestStateEventHandler, ReceiveChangeRequestStateEventHandler, ReceiveFacultyCourseEventHandler,
+		ReceiveTerminatedAccountEventHandler, FacultySectionEventHandler, ReceiveFacultyCourseNavigationEventHandler,
+		ReceiveViewScheduleNavigationEventHandler, ReceiveScheduleSpecificsEventHandler, InvalidEventHandler,
+		SendAccountDetailsEventHandler, ReceiveAccountDetailsEventHandler,
+		InvalidAccountDetailsEventHandler,
+		SendRequestsDetailsEventHandler, ReceiveRequestsDetailsEventHandler, SendCreateRequestEventHandler,
+		ReceiveCreateRequestEventHandler,
 		AdminSectionEventHandler, ReceiveAdminCourseEventHandler, ReceiveCreateScheduleNavigationEventHandler,
 		ReceiveSelectFacultyEventHandler, ReceiveChangePasswordEventHandler, AddCourseEventHandler,
 		ReceiveAddCourseEventHandler, AddSectionsEventHandler, InvalidAddCourseEventHandler,
 		LoginNavigationEventHandler, AdminCalendarEventHandler, FacultyCalendarEventHandler,
-		RemoveSectionsEventHandler {
+		RemoveSectionsEventHandler, CreateModifyCourseEventHandler
+		{
 
 	@Override
 	public void onInvalidLogin(InvalidLoginEvent evt) {
@@ -131,7 +135,7 @@ public abstract class EventHandlerAdapter implements InvalidLoginEventHandler, S
 	}
 
 	@Override
-	public void onCreateModifyCourse(CreateModifyCourseEvent evt) {
+	public void onModifyCourse(ModifyCourseEvent evt) {
 	}
 
 	@Override
@@ -235,16 +239,9 @@ public abstract class EventHandlerAdapter implements InvalidLoginEventHandler, S
 	}
 
 	@Override
-	public void onLoadPendingRequestList(LoadPendingRequestListEvent evt) {
-	}
-
-	@Override
 	public void onReceiveCreatedUser(ReceiveCreatedUserEvent evt) {
 	}
 
-	@Override
-	public void onReceivePendingRequestList(ReceivePendingRequestListEvent evt) {
-	}
 
 	@Override
 	public void onReceiveUserSearchResults(ReceiveUserSearchResultsEvent evt) {
@@ -352,5 +349,9 @@ public abstract class EventHandlerAdapter implements InvalidLoginEventHandler, S
 	
 	@Override
 	public void onRemoveSections(RemoveSectionsEvent evt) {
+	}
+	
+	@Override
+	public void onCreateModifyCourse(CreateModifyCourseEvent evt) {
 	}
 }
