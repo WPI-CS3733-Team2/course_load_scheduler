@@ -108,6 +108,7 @@ public class RequestCoursePresenterImpl extends BasePresenterImpl implements Req
 	
 	@Override
 	public void requestCourseCancel() {
+		parentPresenter.showLoadScreen();
 		HasWidgets container = parentPresenter.getView().getViewRootPanel();
 		ViewCourseAction vca = new ViewCourseAction();
 		FacultyCourseEvent fce = new FacultyCourseEvent(vca, container);
@@ -211,6 +212,8 @@ public class RequestCoursePresenterImpl extends BasePresenterImpl implements Req
 			request.setData(requestString);
 			request.setType(requestType);
 			
+			selectionModel.clear();
+			parentPresenter.showLoadScreen();
 			createRequest(request);
 		}
 		else {
