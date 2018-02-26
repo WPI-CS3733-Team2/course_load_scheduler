@@ -4,16 +4,24 @@ package org.dselent.course_load_scheduler.client.presenter.impl;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.dselent.course_load_scheduler.client.action.AddCourseAction;
+import org.dselent.course_load_scheduler.client.action.AddSectionsAction;
+import org.dselent.course_load_scheduler.client.action.InvalidAddCourseAction;
 import org.dselent.course_load_scheduler.client.action.InvalidAddModifyCourseAction;
 import org.dselent.course_load_scheduler.client.action.ViewCourseAction;
 import org.dselent.course_load_scheduler.client.errorstring.InvalidAddModifyCourseStrings;
+import org.dselent.course_load_scheduler.client.event.AddCourseEvent;
+import org.dselent.course_load_scheduler.client.event.AddSectionsEvent;
 import org.dselent.course_load_scheduler.client.event.AdminCourseEvent;
+import org.dselent.course_load_scheduler.client.event.InvalidAddCourseEvent;
 import org.dselent.course_load_scheduler.client.event.InvalidAddSectionEvent;
 import org.dselent.course_load_scheduler.client.event.InvalidSubmitCourseEvent;
 import org.dselent.course_load_scheduler.client.event.ModifyCourseEvent;
+import org.dselent.course_load_scheduler.client.event.ReceiveAddCourseEvent;
 import org.dselent.course_load_scheduler.client.exceptions.DuplicateCRNException;
 import org.dselent.course_load_scheduler.client.exceptions.EmptyArrayException;
 import org.dselent.course_load_scheduler.client.exceptions.EmptyStringException;
+import org.dselent.course_load_scheduler.client.model.Calendar;
 import org.dselent.course_load_scheduler.client.model.Course;
 import org.dselent.course_load_scheduler.client.model.Section;
 import org.dselent.course_load_scheduler.client.presenter.CreateModifyCoursePresenter;
@@ -21,6 +29,7 @@ import org.dselent.course_load_scheduler.client.presenter.IndexPresenter;
 import org.dselent.course_load_scheduler.client.view.CreateModifyCourseView;
 
 import com.google.gwt.event.shared.HandlerRegistration;
+import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.ui.HasWidgets;
 import com.google.gwt.view.client.ListDataProvider;
 import com.google.gwt.view.client.SingleSelectionModel;
@@ -34,6 +43,7 @@ public class CreateModifyCoursePresenterImpl extends BasePresenterImpl implement
 	private IndexPresenter parentPresenter;
 
 	private List<Section> currentSections;
+	private boolean newCourse;
 	
 	private final ListDataProvider<Section> dataProvider;
 	private final SingleSelectionModel<Section> selectionModel;
@@ -67,12 +77,21 @@ public class CreateModifyCoursePresenterImpl extends BasePresenterImpl implement
 		
 		registration = eventBus.addHandler(InvalidSubmitCourseEvent.TYPE, this);
 		eventBusRegistration.put(InvalidSubmitCourseEvent.TYPE, registration);
+
+		registration = eventBus.addHandler(InvalidAddCourseEvent.TYPE, this);
+		eventBusRegistration.put(InvalidAddCourseEvent.TYPE, registration);
 		
 		registration = eventBus.addHandler(InvalidAddSectionEvent.TYPE, this);
 		eventBusRegistration.put(InvalidAddSectionEvent.TYPE, registration);
 		
 		registration = eventBus.addHandler(ModifyCourseEvent.TYPE, this);
 		eventBusRegistration.put(ModifyCourseEvent.TYPE, registration);
+		
+		registration = eventBus.addHandler(AddCourseEvent.TYPE, this);
+		eventBusRegistration.put(AddCourseEvent.TYPE, registration);
+		
+		registration = eventBus.addHandler(ReceiveAddCourseEvent.TYPE, this);
+		eventBusRegistration.put(ReceiveAddCourseEvent.TYPE, registration);
 	}
 
 	@Override
@@ -89,12 +108,16 @@ public class CreateModifyCoursePresenterImpl extends BasePresenterImpl implement
 	@Override
 	public void onModifyCourse(ModifyCourseEvent evt) {
 		this.go(parentPresenter.getView().getViewRootPanel());
+		parentPresenter.hideLoadScreen();
+		clearForm();
 		
+		newCourse = true;
 		Course course = evt.getAction().getCourse();
 		if(course != null) {
+			newCourse = false;
 			view.setCourseNameTextBoxText(course.getCourseName());
 			view.setCourseNumberTextBoxText(course.getCourseNumber());
-			//view.addRowsToSectionTable(course.getSections());
+			view.setFrequencyTextBoxText(Integer.toString(course.getFrequency()));
 			currentSections = course.getSections();
 			dataProvider.setList(currentSections);
 			dataProvider.refresh();
@@ -110,6 +133,11 @@ public class CreateModifyCoursePresenterImpl extends BasePresenterImpl implement
 		String crn = view.getCrnTextBox().getText();
 		String type = view.getTypeTextBox().getText();
 		String expectedPop = view.getPopTextBox().getText();
+		String year = view.getYearTextBox().getText();
+		String days = view.getDaysTextBox().getText();
+		String term = view.getTermTextBox().getText();
+		String startTime = view.getStartTimeTextBox().getText();
+		String endTime = view.getEndTimeTextBox().getText();
 		
 		List<String> invalidReasonList = new ArrayList<>();
 		
@@ -118,6 +146,11 @@ public class CreateModifyCoursePresenterImpl extends BasePresenterImpl implement
 			checkEmptyString(crn);
 			checkEmptyString(type);
 			checkEmptyString(expectedPop);
+			checkEmptyString(year);
+			checkEmptyString(days);
+			checkEmptyString(term);
+			checkEmptyString(startTime);
+			checkEmptyString(endTime);
 			checkDuplicateCrn(Integer.parseInt(crn), sections);
 		}
 		catch(EmptyStringException e) {
@@ -129,11 +162,18 @@ public class CreateModifyCoursePresenterImpl extends BasePresenterImpl implement
 		
 		if(invalidReasonList.size() == 0)
 		{
-
+			Calendar calendar = new Calendar();
+			calendar.setDays(days);
+			calendar.setYear(Integer.parseInt(year));
+			calendar.setSemester(term);
+			calendar.setStart_time(startTime);
+			calendar.setEnd_time(endTime);
+			
 			section.setSectionName(sectionName);
 			section.setCrn(Integer.parseInt(crn));
 			section.setType(type);
 			section.setExpectedPopulation(Integer.parseInt(expectedPop));
+			section.setCalendar(calendar);
 			
 			clearSectionForm();
 			currentSections.add(section);
@@ -196,10 +236,10 @@ public class CreateModifyCoursePresenterImpl extends BasePresenterImpl implement
 	
 	@Override
 	public void createModifyCourseCancel() {
-		clearForm();
-
+		parentPresenter.showLoadScreen();
+		HasWidgets container = parentPresenter.getView().getViewRootPanel();
 		ViewCourseAction vca = new ViewCourseAction();
-		AdminCourseEvent ace = new AdminCourseEvent(vca);
+		AdminCourseEvent ace = new AdminCourseEvent(vca, container);
 		eventBus.fireEvent(ace);
 	}
 	
@@ -209,6 +249,7 @@ public class CreateModifyCoursePresenterImpl extends BasePresenterImpl implement
 		
 		String courseName = view.getCourseNameTextBox().getText();
 		String courseNumber = view.getCourseNumberTextBox().getText();
+		String frequency = view.getFrequencyTextBox().getText();
 		List<Section> sections = dataProvider.getList();
 		
 		List<String> invalidReasonList = new ArrayList<>();
@@ -216,6 +257,7 @@ public class CreateModifyCoursePresenterImpl extends BasePresenterImpl implement
 		try {
 			checkEmptyString(courseName);
 			checkEmptyString(courseNumber);
+			checkEmptyString(frequency);
 			checkEmptyArray(sections);
 		}
 		catch (EmptyStringException | EmptyArrayException e) {
@@ -223,23 +265,49 @@ public class CreateModifyCoursePresenterImpl extends BasePresenterImpl implement
 		}
 		
 		if(invalidReasonList.size() == 0) {
+			parentPresenter.showLoadScreen();
 			course.setCourseName(courseName);
 			course.setCourseNumber(courseNumber);
+			course.setFrequency(Integer.parseInt(frequency));
 			course.setSections(sections);
 			
-			//TODO: Send to database
+			HasWidgets container = parentPresenter.getView().getViewRootPanel();
 			
-			clearForm();
-			
-			ViewCourseAction vca = new ViewCourseAction();
-			AdminCourseEvent ace = new AdminCourseEvent(vca);
-			eventBus.fireEvent(ace);
+			if(newCourse) {
+				AddCourseAction vca = new AddCourseAction(course);
+				AddCourseEvent ace = new AddCourseEvent(vca, container);
+				eventBus.fireEvent(ace);
+			}
+			else {
+				// TODO: implement modify
+			}
 		}
 		else {
 			InvalidAddModifyCourseAction iamca = new InvalidAddModifyCourseAction(invalidReasonList);
 			InvalidSubmitCourseEvent isce = new InvalidSubmitCourseEvent(iamca);
 			eventBus.fireEvent(isce);
 		}
+	}
+	
+	@Override
+	public void onInvalidAddCourse(InvalidAddCourseEvent evt) {
+		parentPresenter.hideLoadScreen();
+		InvalidAddCourseAction iamca = evt.getAction();
+		view.showErrorMessages(iamca.toString());
+	}
+	
+	@Override
+	public void onReceiveAddCourse(ReceiveAddCourseEvent evt) {
+		HasWidgets container = parentPresenter.getView().getViewRootPanel();
+
+		int courseId = evt.getAction().getCourse().getId();
+		for(int i = 0; i < currentSections.size(); i++) {
+			currentSections.get(i).setCourseId(courseId);
+		}
+		Window.alert(currentSections.toString());
+		AddSectionsAction vca = new AddSectionsAction(currentSections);
+		AddSectionsEvent ace = new AddSectionsEvent(vca, container);
+		eventBus.fireEvent(ace);
 	}
 	
 	@Override
@@ -253,6 +321,7 @@ public class CreateModifyCoursePresenterImpl extends BasePresenterImpl implement
 	public void clearForm() {
 		view.setCourseNameTextBoxText("");
 		view.setCourseNumberTextBoxText("");
+		view.setFrequencyTextBoxText("");
 		clearSectionForm();
 		currentSections.clear();
 		dataProvider.getList().clear();
@@ -268,6 +337,11 @@ public class CreateModifyCoursePresenterImpl extends BasePresenterImpl implement
 		view.setCrnTextBoxText("");
 		view.setTypeTextBoxText("");
 		view.setPopTextBoxText("");
+		view.setYearTextBoxText("");
+		view.setDaysTextBoxText("");
+		view.setTermTextBoxText("");
+		view.setStartTimeTextBoxText("");
+		view.setEndTimeTextBoxText("");
 	}
 		
 }

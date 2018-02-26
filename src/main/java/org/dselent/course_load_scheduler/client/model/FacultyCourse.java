@@ -1,6 +1,5 @@
 package org.dselent.course_load_scheduler.client.model;
 
-import java.util.List;
 
 
 public class FacultyCourse extends Model

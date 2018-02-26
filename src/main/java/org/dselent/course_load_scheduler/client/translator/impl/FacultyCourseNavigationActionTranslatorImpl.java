@@ -1,21 +1,15 @@
 package org.dselent.course_load_scheduler.client.translator.impl;
 
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 import org.dselent.course_load_scheduler.client.action.FacultyCourseNavigationAction;
 import org.dselent.course_load_scheduler.client.action.ReceiveFacultyCourseNavigationAction;
-import org.dselent.course_load_scheduler.client.action.ReceiveLoginAction;
-import org.dselent.course_load_scheduler.client.action.SendLoginAction;
 import org.dselent.course_load_scheduler.client.model.FacultyCourse;
-import org.dselent.course_load_scheduler.client.model.User;
-import org.dselent.course_load_scheduler.client.receive.jsonkeys.ReceiveLoginKeys;
-import org.dselent.course_load_scheduler.client.send.jsonkeys.SendFacultyCourseNavigationKeys;
+import org.dselent.course_load_scheduler.client.send.jsonkeys.SendGenericKeys;
 import org.dselent.course_load_scheduler.client.translator.ActionTranslator;
 import org.dselent.course_load_scheduler.client.utils.JSONHelper;
 
-import com.google.gwt.core.client.GWT;
 import com.google.gwt.json.client.JSONArray;
 import com.google.gwt.json.client.JSONObject;
 import com.google.gwt.json.client.JSONValue;
@@ -27,7 +21,7 @@ public class FacultyCourseNavigationActionTranslatorImpl implements ActionTransl
 	{
 		JSONObject jsonObject = new JSONObject();
 		
-		JSONHelper.putStringValue(jsonObject, JSONHelper.convertKeyName(SendFacultyCourseNavigationKeys.TEST), action.getTest());
+		JSONHelper.putStringValue(jsonObject, JSONHelper.convertKeyName(SendGenericKeys.TEST), action.getTest());
 		
 		return jsonObject;
 	}
@@ -42,7 +36,7 @@ public class FacultyCourseNavigationActionTranslatorImpl implements ActionTransl
 		// sent timestamps as epoch seconds (long)
 		
 		JSONValue jsonObject = json.get("success");
-		List<FacultyCourse> facultyCourseList = new ArrayList();
+		List<FacultyCourse> facultyCourseList = new ArrayList<FacultyCourse>();
 		
 		JSONArray facultyCourseArray = jsonObject.isArray();
 		for (int i = 0; i < facultyCourseArray.size(); i++) {

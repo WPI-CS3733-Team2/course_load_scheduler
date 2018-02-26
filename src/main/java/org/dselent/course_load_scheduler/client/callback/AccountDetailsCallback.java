@@ -56,7 +56,7 @@ public class AccountDetailsCallback extends DisplayCallback<JSONValue>
 			sb.append("\n");
 		}
 
-		InvalidAccountDetailsAction iada = new InvalidAccountDetailsAction(sb.toString());
+		InvalidAccountDetailsAction iada = new InvalidAccountDetailsAction(/*sb.toString()*/caught.getMessage());
 		InvalidAccountDetailsEvent iade = new InvalidAccountDetailsEvent(iada);
 		eventBus.fireEvent(iade);
 	}

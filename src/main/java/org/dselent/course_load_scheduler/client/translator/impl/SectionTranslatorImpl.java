@@ -16,7 +16,7 @@ import com.google.gwt.json.client.JSONObject;
 import com.google.gwt.json.client.JSONParser;
 import com.google.gwt.json.client.JSONValue;
 
-public class FacultySectionTranslatorImpl implements ActionTranslator<ViewSectionAction, ReceiveSectionsAction>
+public class SectionTranslatorImpl implements ActionTranslator<ViewSectionAction, ReceiveSectionsAction>
 {
 	@Override
 	public JSONObject translateToJson(ViewSectionAction action)

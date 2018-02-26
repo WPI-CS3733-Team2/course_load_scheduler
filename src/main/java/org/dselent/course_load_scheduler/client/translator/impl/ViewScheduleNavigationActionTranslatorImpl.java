@@ -1,7 +1,6 @@
 package org.dselent.course_load_scheduler.client.translator.impl;
 
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 import org.dselent.course_load_scheduler.client.action.ReceiveViewScheduleNavigationAction;
@@ -12,7 +11,6 @@ import org.dselent.course_load_scheduler.client.send.jsonkeys.SendScheduleListKe
 import org.dselent.course_load_scheduler.client.translator.ActionTranslator;
 import org.dselent.course_load_scheduler.client.utils.JSONHelper;
 
-import com.google.gwt.core.client.GWT;
 import com.google.gwt.json.client.JSONArray;
 import com.google.gwt.json.client.JSONObject;
 import com.google.gwt.json.client.JSONValue;
@@ -45,7 +43,7 @@ public class ViewScheduleNavigationActionTranslatorImpl implements ActionTransla
 	{		
 		
 		JSONValue jsonObject = json.get("success");
-		List<Schedule> scheduleList = new ArrayList();
+		List<Schedule> scheduleList = new ArrayList<Schedule>();
 		
 		JSONArray scheduleArray = jsonObject.isArray();
 		for (int i = 0; i < scheduleArray.size(); i++) {

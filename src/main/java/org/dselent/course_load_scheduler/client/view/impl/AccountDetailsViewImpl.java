@@ -60,7 +60,7 @@ public class AccountDetailsViewImpl extends BaseViewImpl<AccountDetailsPresenter
 	Label email;
 	
 	@UiField
-	Button toChangePasswordButton;
+	Button changePasswordButton;
 	
 	@UiField
 	HTMLPanel accountDetailsPanel;
@@ -86,26 +86,31 @@ public class AccountDetailsViewImpl extends BaseViewImpl<AccountDetailsPresenter
 	}
 
 	@Override
-	public Widget getWidgetContainer() {
+	public Widget getWidgetContainer()
+	{
 		return this;
 	}
 
 	@Override
-	public HasWidgets getViewRootPanel() {
+	public HasWidgets getViewRootPanel()
+	{
 		return accountDetailsPanel;
 	}
 	
-	public ChangePasswordViewImpl getChangePasswordPopupPanel() {
+	public ChangePasswordViewImpl getChangePasswordPopupPanel()
+	{
 		return changePasswordPopupPanel;
 	}
 
 	@Override
-	public Button getChangePasswordButton() {
-		return toChangePasswordButton;
+	public Button getChangePasswordButton()
+	{
+		return changePasswordButton;
 	}
 	
 	@Override
-	public void setUserName(String username) {
+	public void setUserName(String username)
+	{
 		this.userName.setText(username);
 	}
 	
@@ -118,47 +123,55 @@ public class AccountDetailsViewImpl extends BaseViewImpl<AccountDetailsPresenter
 	@Override
 	public void setAccountState(int acctStateInt)
 	{
-		if (acctStateInt == 0) {
+		if (acctStateInt == 0)
+		{
 			this.accountState.setText("Inactive");
 		} 
-		else if (acctStateInt == 1) {
+		else if (acctStateInt == 1)
+		{
 			this.accountState.setText("Active");
 		}
-		else {
+		else
+		{
 			this.accountState.setText("Unknown");
 		}
 		
 	}
 	
 	@Override
-	public void setWpiIdInChar(String wpiIdChar) {
+	public void setWpiIdInChar(String wpiIdChar)
+	{
 		this.wpiId.setText(wpiIdChar);
 	}
 	
 	@Override
-	public void setFirstName (String firstName) {
+	public void setFirstName (String firstName)
+	{
 		this.firstName.setText(firstName);
 	}
 	
 	@Override
-	public void setLastName (String lastName) {
+	public void setLastName (String lastName)
+	{
 		this.lastName.setText(lastName);
 	}
 	
 	@Override
-	public void setEmail (String email) {
+	public void setEmail (String email)
+	{
 		this.email.setText(email);
 	}
 	
 	@Override
-	public void showErrorMessage(String msg) {
+	public void showErrorMessage(String msg)
+	{
 		Window.alert(msg);
 	}
 	
-	@UiHandler("toChangePasswordButton")
-	void onToChangePasswordButtonClick(ClickEvent event)
+	@UiHandler("changePasswordButton")
+	void onChangePasswordButtonClick(ClickEvent event)
 	{
-		presenter.toChangePassword();
+		presenter.showChangePasswordPopup();
 	}
 	
 }

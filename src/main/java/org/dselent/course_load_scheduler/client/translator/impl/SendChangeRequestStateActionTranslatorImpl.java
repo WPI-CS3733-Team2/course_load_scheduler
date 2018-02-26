@@ -1,18 +1,14 @@
 package org.dselent.course_load_scheduler.client.translator.impl;
 
-import java.util.List;
 
 import org.dselent.course_load_scheduler.client.action.ReceiveChangeRequestStateAction;
 import org.dselent.course_load_scheduler.client.action.SendChangeRequestStateAction;
-import org.dselent.course_load_scheduler.client.receive.jsonkeys.ReceiveChangeRequestStateKeys;
 import org.dselent.course_load_scheduler.client.send.jsonkeys.SendChangeRequestStateKeys;
 import org.dselent.course_load_scheduler.client.translator.ActionTranslator;
 import org.dselent.course_load_scheduler.client.utils.JSONHelper;
 
-import com.google.gwt.json.client.JSONArray;
 import com.google.gwt.json.client.JSONObject;
 import com.google.gwt.json.client.JSONValue;
-import com.google.gwt.user.client.Window;
 
 public class SendChangeRequestStateActionTranslatorImpl implements ActionTranslator<SendChangeRequestStateAction, ReceiveChangeRequestStateAction>
 {

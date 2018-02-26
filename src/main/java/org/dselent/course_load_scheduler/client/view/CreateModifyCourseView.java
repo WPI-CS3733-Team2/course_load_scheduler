@@ -33,6 +33,12 @@ public interface CreateModifyCourseView extends BaseView<CreateModifyCoursePrese
 
 	public void setCourseNumberTextBoxText(String text);
 	
+	public TextBox getFrequencyTextBox();
+
+	public void setFrequencyTextBox(TextBox frequencyTextBox);
+
+	public void setFrequencyTextBoxText(String text);
+	
 	public TextBox getSectionNameTextBox();
 
 	public void setSectionNameTextBox(TextBox sectionNameTextBox);
@@ -56,6 +62,27 @@ public interface CreateModifyCourseView extends BaseView<CreateModifyCoursePrese
 	public void setPopTextBox(TextBox popTextBox);
 
 	public void setPopTextBoxText(String text);
+	
+	public TextBox getYearTextBox();
+
+	public void setYearTextBoxText(String text);
+
+	public TextBox getTermTextBox();
+
+	public void setTermTextBoxText(String text);
+
+	public TextBox getStartTimeTextBox();
+
+	public void setStartTimeTextBoxText(String text);
+
+	public TextBox getEndTimeTextBox();
+
+	public void setEndTimeTextBoxText(String text);
+
+	public TextBox getDaysTextBox();
+
+	public void setDaysTextBoxText(String text);
+
 	
 	public void showErrorMessages(String errorMessages);
 

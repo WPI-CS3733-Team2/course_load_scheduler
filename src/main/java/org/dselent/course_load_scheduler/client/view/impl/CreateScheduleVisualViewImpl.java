@@ -34,6 +34,7 @@ public class CreateScheduleVisualViewImpl extends BaseViewImpl<CreateScheduleVis
 	public CreateScheduleVisualViewImpl() {
 		initWidget(uiBinder.createAndBindUi(this));
 		initGrid();
+		initTabs();
 	}
 	
 	public TabBar getCalendarTabs() {

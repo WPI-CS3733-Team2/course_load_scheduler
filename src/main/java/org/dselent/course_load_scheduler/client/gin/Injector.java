@@ -44,7 +44,8 @@ import org.dselent.course_load_scheduler.client.view.impl.CreateScheduleAddFacul
 import org.dselent.course_load_scheduler.client.view.impl.CreateScheduleViewImpl;
 import org.dselent.course_load_scheduler.client.view.impl.ExampleViewImpl;
 import org.dselent.course_load_scheduler.client.service.impl.RequestServiceImpl;
-import org.dselent.course_load_scheduler.client.service.impl.FacultyCourseServiceImpl;
+import org.dselent.course_load_scheduler.client.service.impl.CourseServiceImpl;
+import org.dselent.course_load_scheduler.client.service.impl.ScheduleCreationServiceImpl;
 import org.dselent.course_load_scheduler.client.service.impl.FacultyCourseMappingServiceImpl;
 import org.dselent.course_load_scheduler.client.service.impl.ScheduleListServiceImpl;
 import org.dselent.course_load_scheduler.client.service.impl.ScheduleSpecificsServiceImpl;
@@ -124,10 +125,11 @@ public interface Injector extends Ginjector
     //services
     public UserServiceImpl getUserService();
     public RequestServiceImpl getRequestService();
-    public FacultyCourseServiceImpl	getFacultyCourseService();
+    public CourseServiceImpl	getCourseService();
     public FacultyCourseMappingServiceImpl getFacultyCourseMappingService();
     public ScheduleListServiceImpl getScheduleListService();
     public ScheduleSpecificsServiceImpl getScheduleSpecificsService();
+    public ScheduleCreationServiceImpl getScheduleCreationService();
     
     // global data
     public GlobalData getGlobalData();
