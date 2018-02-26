@@ -7,3 +7,5 @@
 .gwt/.gwt-log
 war/WEB-INF/lib/gwt-servlet.jar
 /bin/
+.classpath
+.classpath
