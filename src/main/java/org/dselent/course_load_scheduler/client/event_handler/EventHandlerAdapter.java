@@ -7,6 +7,7 @@ import org.dselent.course_load_scheduler.client.event.InvalidSubmitRequestEvent;
 import org.dselent.course_load_scheduler.client.event.ModifyCourseEvent;
 import org.dselent.course_load_scheduler.client.event.ReceiveAccountDetailsEvent;
 import org.dselent.course_load_scheduler.client.event.ReceiveChangeRequestStateEvent;
+import org.dselent.course_load_scheduler.client.event.ReceiveCreateRequestEvent;
 import org.dselent.course_load_scheduler.client.event.ReceiveFacultyCourseEvent;
 import org.dselent.course_load_scheduler.client.event.ReceiveFacultyCourseNavigationEvent;
 import org.dselent.course_load_scheduler.client.event.RequestCourseEvent;
@@ -14,8 +15,10 @@ import org.dselent.course_load_scheduler.client.event.RequestInboxNavigationEven
 import org.dselent.course_load_scheduler.client.event.ScheduleSpecificsEvent;
 import org.dselent.course_load_scheduler.client.event.SendChangePasswordEvent;
 import org.dselent.course_load_scheduler.client.event.SendChangeRequestStateEvent;
+import org.dselent.course_load_scheduler.client.event.SendCreateRequestEvent;
 import org.dselent.course_load_scheduler.client.event.ReceiveLoginEvent;
 import org.dselent.course_load_scheduler.client.event.SendLoginEvent;
+import org.dselent.course_load_scheduler.client.event.SendRequestsDetailsEvent;
 import org.dselent.course_load_scheduler.client.event.TerminateAccountEvent;
 import org.dselent.course_load_scheduler.client.event.TriggerChangePasswordWindowEvent;
 import org.dselent.course_load_scheduler.client.event.SearchUserEvent;
@@ -40,6 +43,7 @@ import org.dselent.course_load_scheduler.client.event.ViewScheduleNavigationEven
 import org.dselent.course_load_scheduler.client.event.UserCreatePageEvent;
 import org.dselent.course_load_scheduler.client.event.UserDetailsPageEvent;
 import org.dselent.course_load_scheduler.client.event.ReceivePendingRequestListEvent;
+import org.dselent.course_load_scheduler.client.event.ReceiveRequestsDetailsEvent;
 import org.dselent.course_load_scheduler.client.event.LoadPendingRequestListEvent;
 import org.dselent.course_load_scheduler.client.event.ReceiveScheduleSpecificsEvent;
 import org.dselent.course_load_scheduler.client.event.ReceiveViewScheduleNavigationEvent;
@@ -74,7 +78,9 @@ public abstract class EventHandlerAdapter implements InvalidLoginEventHandler, S
 		ReceiveTerminatedAccountEventHandler, FacultySectionEventHandler, ReceiveFacultyCourseNavigationEventHandler, 
 		ReceiveViewScheduleNavigationEventHandler, ReceiveScheduleSpecificsEventHandler, InvalidEventHandler,
 		SendAccountDetailsEventHandler, ReceiveAccountDetailsEventHandler,
-		InvalidAccountDetailsEventHandler
+		InvalidAccountDetailsEventHandler,
+		SendRequestsDetailsEventHandler, ReceiveRequestsDetailsEventHandler, SendCreateRequestEventHandler,
+		ReceiveCreateRequestEventHandler
 {
 
 
@@ -218,4 +224,16 @@ public abstract class EventHandlerAdapter implements InvalidLoginEventHandler, S
 	
 	@Override
 	public void onInvalid(InvalidEvent evt) {}
+	
+	@Override
+	public void onSendRequestsDetails(SendRequestsDetailsEvent evt) {}
+	
+	@Override
+	public void onReceiveRequestsDetails(ReceiveRequestsDetailsEvent evt) {}
+	
+	@Override
+	public void onSendCreateRequest(SendCreateRequestEvent evt) {}
+	
+	@Override
+	public void onReceiveCreateRequest(ReceiveCreateRequestEvent evt) {}
 }

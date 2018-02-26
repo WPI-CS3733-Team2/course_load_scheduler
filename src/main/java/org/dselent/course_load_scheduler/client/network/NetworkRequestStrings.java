@@ -2,7 +2,7 @@ package org.dselent.course_load_scheduler.client.network;
 
 public final class NetworkRequestStrings
 {
-	public static final String SERVER_LOCATION = "http://localhost:8081/";
+	public static final String SERVER_LOCATION = ServerString.SERVER_LOCATION;
 	public static final String BASE_REQUEST = "course_load_scheduler/";
 	public static String LOGIN = "user/login";
 	public static String ACCOUNT_DETAILS = "user/account_details";
@@ -13,6 +13,8 @@ public final class NetworkRequestStrings
 	public static String VIEW_COURSES = "course/search_course";
 	public static String DELETEUSER = "user/delete";
 	public static String VIEW_SECTIONS = "section/view_course_sections";
+	public static String REQUEST_DETAILS = "request/view_pending_requests_details";
+	public static String CREATE_REQUEST = "request/create_request";
 	//Will have to change if it isn't right
 	public static String CREATESCHEDULE = "schedule/create_schedule";
 	public static String FACULTY_COURSE_MAP = "faculty_course_map/map";
