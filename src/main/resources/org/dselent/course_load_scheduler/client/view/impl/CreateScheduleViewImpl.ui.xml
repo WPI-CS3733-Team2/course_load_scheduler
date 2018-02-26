@@ -31,7 +31,6 @@
 	</ui:style>
 	<g:HTMLPanel>
 		<g:VerticalPanel ui:field="createSchedulePanel">
-		<g:ListBox ui:field="navDropDown" width="740px"/>
 		<g:FlowPanel>
 			<g:Label text="Select Courses:" width="166px" addStyleNames="{style.select_course-label}"/>
 			<g:TextBox ui:field="searchTextBox" addStyleNames="{style.search-textbox}" width="644px" text="Search for courses..."/>
