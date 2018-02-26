@@ -23,7 +23,8 @@ public class CreateScheduleAddFacultyPresenterImpl extends BasePresenterImpl imp
 	private IndexPresenter parentPresenter;
 	private CreateScheduleAddFacultyView view;
 	private List<Course> courses = new ArrayList<Course>();
-	List<Pair<User, Integer>> pairs = new ArrayList<Pair<User, Integer>>();
+	private List<Pair<User, Integer>> pairs = new ArrayList<Pair<User, Integer>>();
+	private List<String> names = new ArrayList<String>();
 
 	@Inject
 	public CreateScheduleAddFacultyPresenterImpl(IndexPresenter parentPresenter, CreateScheduleAddFacultyView view)
@@ -87,8 +88,10 @@ public class CreateScheduleAddFacultyPresenterImpl extends BasePresenterImpl imp
 	public void onReceiveSelectFaculty(ReceiveSelectFacultyEvent evt) {
 		pairs.clear();
 		courses.clear();
+		names.clear();
 		pairs = evt.getAction().getUserFacultyPairs();
-		List<String> names = new ArrayList<String>();
+		view.getInnerVerticalPanel().clear();
+		
 		for(Pair<User, Integer> pair : pairs) {
 			User user = pair.getValue1();
 			String name = user.getFirstName() + " " + user.getLastName();
