@@ -26,7 +26,6 @@ public class RequestInboxViewImpl extends BaseViewImpl<RequestInboxPresenter> im
 	@UiField FlexTable RequestListFlexTable;
 	
 	@UiField Label detailCourseLabel;
-	@UiField Label detailSectionLabel;
 	@UiField Label detailFacultyIdLabel;
 	@UiField Label detailRequestIdLabel;
 	@UiField Label detailMessageLabel;
@@ -63,11 +62,6 @@ public class RequestInboxViewImpl extends BaseViewImpl<RequestInboxPresenter> im
 	@Override
 	public void setDetailCourseLabel(String text) {
 		this.detailCourseLabel.setText(text);
-	}
-	
-	@Override
-	public void setDetailSectionLabel(String text) {
-		this.detailSectionLabel.setText(text);
 	}
 	
 	@Override

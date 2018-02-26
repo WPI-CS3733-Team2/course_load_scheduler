@@ -23,6 +23,7 @@ import org.dselent.course_load_scheduler.client.presenter.RequestCoursePresenter
 import org.dselent.course_load_scheduler.client.view.RequestCourseView;
 
 import com.google.gwt.event.shared.HandlerRegistration;
+import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.rpc.StatusCodeException;
 import com.google.gwt.user.client.ui.HasWidgets;
 import com.google.gwt.view.client.ListDataProvider;

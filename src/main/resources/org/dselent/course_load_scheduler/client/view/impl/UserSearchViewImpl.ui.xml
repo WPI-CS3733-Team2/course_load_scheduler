@@ -31,7 +31,7 @@
 					<g:Button ui:field="createUser" text="Create User"/>
 				</g:Cell>
 			</g:HorizontalPanel>
-			<g:ScrollPanel width="621px" height="400px" ui:field="userScroll">
+			<g:ScrollPanel width="220px" height="400px" ui:field="userScroll">
 				<c:CellTable ui:field="userTable" />
 			</g:ScrollPanel>
 		</g:VerticalPanel>
