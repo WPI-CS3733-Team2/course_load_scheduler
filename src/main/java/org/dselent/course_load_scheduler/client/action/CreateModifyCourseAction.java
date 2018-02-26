@@ -9,11 +9,11 @@ import org.dselent.course_load_scheduler.client.model.Course;
  * @author dselent
  *
  */
-public class ModifyCourseAction 
+public class CreateModifyCourseAction 
 {
 	private Course course;
 	
-	public ModifyCourseAction(Course course)
+	public CreateModifyCourseAction(Course course)
 	{
 		this.course = course;
 	}
